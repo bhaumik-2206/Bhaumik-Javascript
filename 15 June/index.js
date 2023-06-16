@@ -24,7 +24,6 @@
 // function third() {
 //     console.log("This is third Function");
 // }
-
 // first();
 
 
