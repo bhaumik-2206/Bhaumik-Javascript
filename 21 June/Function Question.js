@@ -200,11 +200,9 @@
 // function calculatePrice(price, discount = 10) {
 //     return price - ((price * discount) / 100);
 // }
-// let ans = calculatePrice(1000);
-// console.log(ans);
-// const calculatePrice = (price, discount = 10) => {
-//     return price - ((price * discount) / 100);
-// }
+// let ans1 = calculatePrice(1000);
+// console.log(ans1);
+// const calculatePrice = (price, discount = 10) => price - ((price * discount) / 100);
 // let ans = calculatePrice(1000);
 // console.log(ans);
 
@@ -326,20 +324,31 @@
 
 
 // Question-14
-// function greet () {
-
+// function greet(name) {
+//     if (name == undefined) {
+//         console.log("Anonymous");
+//     } else {
+//         console.log("Good Morning");
+//     }
 // }
+// greet();
 
 
 
 // Question-15
 // function exponent(num, power = 2) {
-//     return num ** power;
+//     if (num != undefined) {
+//         return num ** power;
+//     } else {
+//         return 0;
+//     }
 // }
+// let ans2 = exponent(4, 3);
+// console.log(ans2);
 // let ans1 = exponent(4);
 // console.log(ans1);
-// let ans2 = exponent(4,3);
-// console.log(ans2);
+// let ans3 = exponent();
+// console.log(ans3);
 
 
 
@@ -361,3 +370,20 @@
 // console.log(ans1);
 // let ans2 = calculateMultiply();
 // console.log(ans2);
+
+// function power(num, pow) {
+//     if (num == undefined && pow == undefined) {
+//         return 0;
+//     }
+//     else if (pow == undefined) {
+//         return num ** 2;
+//     } else {
+//         return num ** pow;
+//     }
+// }
+// let a = power(7, 4);
+// console.log(a);
+// let b = power(7);
+// console.log(b);avg
+// let c = power();
+// console.log(c);
