@@ -384,6 +384,6 @@
 // let a = power(7, 4);
 // console.log(a);
 // let b = power(7);
-// console.log(b);avg
+// console.log(b);
 // let c = power();
 // console.log(c);

@@ -34,7 +34,7 @@
 // f_name(10, 20);          //throw an reference error argument has not defined
 
 
-// 3 :-New Keyeord
+// 3 :-New Keyword
 // function f_name(name) {
 //     this.fname = name;
 // }
@@ -119,14 +119,14 @@
 
 // let obj = new add("Bhaumik","Panchal");
 
-function function_name(){
-    return 1;
-}
+// function function_name(){
+//     return 1;
+// }
 
-const function_name =function(){
-    return 1;
-}
+// const function_name =function(){
+//     return 1;
+// }
 
-const function_name =()=>{
-    return 1;
-}
+// const function_name =()=>{
+//     return 1;
+// }
