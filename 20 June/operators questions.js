@@ -53,7 +53,7 @@
 // console.log("10" * "2");             //multiplication(*) is used to multiply two number or string
 // console.log("15" / "5");             //divison(/) is used to divide two number or string
 // console.log("10" % "3");             //Module(%) is used to return reminder string
-// console.log(("2.5") + 1.8);          //plus operator is used to concat two string if value are string 
+// console.log(("2.5") + 1.8);          //plus operator is used to concat two string if value are string
 // console.log(4 - Number("2.5"));      //Number is used to change string into number
 // console.log(1.5 * Number("3.2"));    //string into number-multiply
 // console.log(9.8 / Number("2"));      //string into number-divide
@@ -64,23 +64,47 @@
 // console.log(String(1.2) + "0.5");    //concat
 // console.log(6 - Number("1.2"));      //string into number-minus
 // const result = 10 * 2 / 5 + Math.pow(2, 3) - 4 % 3; console.log(result);     //math-left to right(multiply-divide)-module-plus-minus
-// console.log("hello" && 0);
-// console.log("" || "world");
-// console.log(null && true);
-// console.log(NaN || "value");
-// console.log(undefined && null);
-// console.log(10 && "number");
-// console.log("" || 0);
-// console.log(NaN && "value");
-// console.log(null || undefined);
-// console.log(false && "false");
-// console.log("hello" || 0);
-// console.log(0 && true);
-// console.log(NaN || null);
-// console.log(undefined && "undefined");
-// console.log(10 || "number");
-// console.log("" && 0);
-// console.log(NaN || "");
-// console.log(null && undefined);
-// console.log(false || "false");
-// console.log("hello" && 10);
+// console.log("hello" && 0);           //first condition true than print second statement in &&
+// console.log("" || "world");          //first condition false than print second statement in ||
+// console.log(null && true);           //first condition false than print first statement in &&
+// console.log(NaN || "value");         //first condition false than print second statement in ||
+// console.log(undefined && null);      //first condition false than print first statement in &&
+// console.log(10 && "number");         //first condition true than print second statement in &&
+// console.log("" || 0);                //first condition false than print second statement in ||
+// console.log(NaN && "value");         //first condition false than print first statement in &&
+// console.log(null || undefined);      //first condition false than print second statement in ||
+// console.log(false && "false");       //first condition false than print first statement in &&
+// console.log("hello" || 0);           //first condition true than print first statement in ||
+// console.log(0 && true);              //first condition false than print first statement in &&
+// console.log(NaN || null)             //first condition false than print second statement in ||
+// console.log(undefined && "undefined");//first condition false than print first statement in &&
+// console.log(10 || "number");         //first condition true than print first statement in ||
+// console.log("" && 0);                //first condition false than print first statement in &&
+// console.log(NaN || "");              //first condition false than print second statement in ||
+// console.log(null && undefined);      //first condition false than print first statement in &&
+// console.log(false || "false");       //first condition false than print second statement in ||
+// console.log("hello" && 10);          //first condition true than print second statement in &&
+// console.log(true ? "Yes" : "No");    //condition is true than print first statement
+// console.log(false ? 10 : 5);         //condition is false than print second statement
+// console.log(3 > 5 ? "Greater" : "Less");         //condition is false than print second statement
+// console.log(10 === 10 ? "Equal" : "Not equal");  //condition is true than print first statement
+// console.log(false ? "Hello" : "World");          //condition is false than print second statement
+// console.log(null ? "NotNull" : "Null");          //condition is false than print second statement
+// console.log(undefined ? "Defined" : "Undefined");//condition is false than print second statement
+// console.log('a' !== 'b' ? "Different" : "Same"); //condition is true than print first statement
+// console.log(1 < 0 ? "True" : "False");           //condition is false than print second statement
+// console.log(0 ? "Truthy" : "Falsy");             //condition is false than print second statement
+// console.log("" ? "Truthy" : "Falsy");            //condition is false than print second statement
+// console.log(NaN ? "Valid" : "Invalid");          //condition is false than print second statement
+// console.log([] ? "NotEmpty" : "Empty");
+// console.log([1, 2] ? "Exists" : "Not exists" );  //condition is true than print first statement
+// console.log({} ? "Object" : "Not object");
+// console.log(0.5 ? "True" : "False");             //condition is true than print first statement
+// console.log(undefined === null ? "Equal" : "Not equal");
+// console.log(10 > 5 ? "Greater" : "Less");        //condition is true than print first statement
+// console.log(null !== undefined ? "Different" : "Same");//condition is true than print first statement
+// console.log(true ? 1 : 0);                       //condition is true than print first statement
+let a = 10, b = 20, c = 30; console.log((a > b) ? ((a > c) ? a : c) : ((b > c) ? b : c));
+// first check the condition(a > b) if condition is
+// true: - than run first statement in first statement there are another statement(a > c) if this condition is true than return (a) else (c)
+// false: -than run first statement in second statement there are another statement(b > c) if this condition is true than return (b) else (c)
