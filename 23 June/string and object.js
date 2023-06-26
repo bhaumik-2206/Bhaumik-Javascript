@@ -100,8 +100,8 @@
 // console.log(p.replaceAll(' ', ','));
 
 //search
-let searchString = "search for everything";
-console.log(searchString.search("for"));         //this return an index of which we search for
+// let searchString = "search for everything";
+// console.log(searchString.search("for"));         //this return an index of which we search for
 
 //slice
 // let sliceString = "you can slice me with start and end value.";
@@ -154,8 +154,6 @@ console.log(searchString.search("for"));         //this return an index of which
 
 //Object
 
-
-
 //how to Declare an Object in JS
 // let obj = {
 //     f_name : "Bhaumik",
@@ -207,21 +205,76 @@ console.log(searchString.search("for"));         //this return an index of which
 // let { f_name: your_name, age: ages, address: ghar } = user;
 // console.log(your_name, ages, ghar);
 
+
+
 //Object Methods
+
 //Object.assign() Method
 // const first = { a: 1, b: 2 };
 // const second = { b: 5, c: 4 };
 // const forth = { c: 50, d: 45 };
 // const third = Object.assign(first, second, forth);
 // console.log(third);
-// const last = Object.assign(first, forth, second);
+// const last = Object.assign(first, forth, second);            //Example-1
 // console.log(last);
 
+// function PrintName(user) {
+//     const obj1 = {
+//         fname: "Bhaumik"
+//     }
+//     user = Object.assign(obj1, user);
+//     console.log(`Hello ${user.fname} ${user.lname}`);        //Example With Functions
+// }
+// PrintName({ lname: "Panchal" });
 
 
+//Object.is() Method
+// let obj1 = {
+//     f_name: "Bhaumik",
+//     l_name: "Panchal",
+//     age: 20
+// }
+// let obj2 = {
+//     l_name: "Bhaumik",
+//     f_name: "Panchal",
+//     ages: 20
+// }
+// let same_reference = obj1;
+// console.log(Object.is(obj1.f_name, obj2.l_name));       //true
+// console.log(Object.is(obj1.age, obj2.ages));            //true
+// console.log(Object.is(same_reference, obj1));            //true  
+// console.log(Object.is(same_reference, obj2));            //false  
+// same_reference = obj2;
+// console.log(Object.is(same_reference, obj2));            //Now they are same reference than return true  
 
 
+//Object.entries() Method
+// let object1 = {
+//     f_name: "bhaumik",
+//     l_name: "Panchal"
+// }
+// let store = Object.entries(object1);
+// console.log(store);
+// console.log(store[1]);
+// console.log(store[1][1]);
 
+//Object.values() Method
+// let object1 = {
+//     f_name: "bhaumik",
+//     l_name: "Panchal"
+// }
+// console.log(Object.values(object1));
+
+//Object.keys() Method
+// let object1 = {
+//     f_name: "bhaumik",
+//     l_name: "Panchal"
+// }
+// console.log(Object.keys(object1));
+// console.log(Object.keys("Bhaumik"));
+// console.log(Object.keys(100));
+// const anObj = { 100: "a", 2: "b", 7: "c" };
+// console.log(Object.keys(anObj));
 
 
 
@@ -341,3 +394,4 @@ console.log(searchString.search("for"));         //this return an index of which
 // console.log(myObject);
 // myObject = { name: "Vansh", age: 19 };
 // console.log(myObject);
+
