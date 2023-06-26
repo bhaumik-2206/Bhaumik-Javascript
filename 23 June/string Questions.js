@@ -260,15 +260,16 @@
 
 // 61 - Write a JavaScript function to check whether a string is blank or not.
 // function is_Blank(pass_para) {
+//     pass_para = pass_para.trim("");
 //     if (pass_para == "") {
 //         return true;
 //     } else {
 //         return false;
 //     }
 // }
-// console.log(is_Blank(''));      //true
-// console.log(is_Blank(' '));     //false
-// console.log(is_Blank('abc'));   //false
+// console.log(is_Blank(''));              //true
+// console.log(is_Blank('      '));        //false
+// console.log(is_Blank('abc'));           //false
 
 // 62 - Write a JavaScript function to split a string and convert it into an array of words.
 // function string_to_array(pass_string) {
