@@ -290,6 +290,16 @@
 // console.log(protect_email("robin_singh@example.com"));   //Output:  "robin...@example.com"
 // console.log(protect_email("Jay_prajapati@example.com"));   //Output:  "Jay_p.....@example.com"
 
+// 64 - Write a JavaScript function that hides email addresses to prevent unauthorized access.
+// function protect_email(pass_email) {
+//     return pass_email.replace(pass_email.slice(5, pass_email.indexOf("@")), ".....");
+//     return pass_email.slice(0, 4) + "...." + pass_email.slice(pass_email.indexOf("@"));
+// }
+// console.log(protect_email("robin_singh@example.com"));   //Output:  "robin...@example.com"
+
+
+
+
 // 65 - Write a JavaScript function to parameterize a string.
 // function string_parameterize(pass_string) {
 //     return pass_string.toLowerCase().split(" ").join("-");

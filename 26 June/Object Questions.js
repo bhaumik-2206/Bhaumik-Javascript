@@ -154,10 +154,3 @@
 // console.log(a);                              //{ x: 34, y: 56, z: { x: 34, y: 56, c: 12 } }
 
 
-
-// 64 - Write a JavaScript function that hides email addresses to prevent unauthorized access.
-// function protect_email(pass_email) {
-//     return pass_email.replace(pass_email.slice(5, pass_email.indexOf("@")), ".....");
-//     return pass_email.slice(0, 4) + "...." + pass_email.slice(pass_email.indexOf("@"));
-// }
-// console.log(protect_email("robin_singh@example.com"));   //Output:  "robin...@example.com"

@@ -143,6 +143,15 @@
 // });
 // console.log(a);
 
+// let f_name = [
+//     { fname: "Bhaumik", lname: "Panchal" },
+//     { fname: "Vansh", lname: "Panchal" },
+//     { fname: "Rudra", lname: "Solanki" },
+//     { fname: "Sachin", lname: "Israni" },
+//     { fname: "Raj", lname: "Bundela" }
+// ];
+// // console.log(f_name.map(x => x.fname + " " + x.lname));
+
 // -----------------------------7:-filter Method------------------------------
 // let words = ["hii", "how are you", "Hello", "Heiiii"];
 // let result = words.filter(word);          //return array which has length greater than 5
@@ -197,6 +206,15 @@
 // });
 // console.log(deleteWords);
 
+// let f_name = [
+//     { fname: "Bhaumik", lname: "Panchal" },
+//     { fname: "Vansh", lname: "Panchal" },
+//     { fname: "Rudra", lname: "Solanki" },
+//     { fname: "Sachin", lname: "Israni" },
+//     { fname: "Raj", lname: "Bundela" }
+// ];
+// console.log(f_name.filter(x => x.lname =="Panchal"));
+
 // -----------------------------8:-reduce Method------------------------------
 // let arr = [1, 2, 3, 4, 5];
 // let newarray = arr.reduce((value, index) => {
@@ -214,12 +232,20 @@
 // const sum = objects.reduce(
 //     (value, index) => value + index.x, 0
 // );
-// console.log(sum)
+// console.log(sum);
+
+// let arr = [10, 20, 30, 20, 10];
+// console.log(arr.reduce(function (max, next) {
+//     if (next > max) {
+//         max = next;
+//     }
+//     return max;
+// }));
 
 
 // -----------------------------9:-join Method------------------------------
-// let arr = [15, 16, 0, true, 17, 18, 19];
-// console.log(arr.join());
+// let arr = [15, 0, true, 17, 19];
+// console.log(arr.join());-
 // console.log(arr.join("-"));
 // console.log(arr.join("*"));                      //Return a string
 // console.log(arr);
@@ -235,7 +261,7 @@
 // console.log(arr1.join("-"));                                 //[object Object]-[object Object]-[object Object]
 
 // -----------------------------10:-reverse Method------------------------------
-// let arr = [15, 16, 0, true, 17, 18, 19, null];               //change original array
+// let arr = [15, 0, true, 17, 19, null];               //change original array
 // console.log(arr.reverse());
 // console.log(arr);
 // console.log(arr.reverse());
@@ -287,10 +313,14 @@
 // arr.splice(1, 3, "Raj","Bhaumik", "rudra");      //multiply value add
 // console.log(arr);
 
+// let arr = ["Bhaumik", "rudra", "Vansh", "Jay", "Empty", "Vansh", "Jay", "Empty", "Vansh", "Jay", "Empty", "Vansh", "Jay", "Empty"];
+// arr.splice(1, Infinity, "Raj","Bhaumik", "rudra");      //multiply value add
+// console.log(arr);
+
 
 // -----------------------------13:-find Method------------------------------
 // let arr = [1, 2, 3, 4, 5];
-// console.log(arr.find((value) => {
+// console.log(arr.find((value) => {                //return number
 //     return value > 3;
 // }));
 
@@ -314,7 +344,7 @@
 
 // -----------------------------14:-findIndex Method------------------------------
 // let arr = [1, 2, 3, 4, 5];
-// console.log(arr.findIndex((value) => {
+// console.log(arr.findIndex(function(value) {          //return index
 //     return value > 3;
 // }));
 
@@ -352,11 +382,13 @@
 // let arr = [1, 2, 3, undefined, null, true,"Bhaumik"];
 // console.log(arr.includes(undefined));           //true
 // console.log(arr.includes(undefined,4));         //false
-// console.log(arr.includes(undefined,-4));         //true
+// console.log(arr.includes(undefined,-4));        //true
 // console.log(arr.includes(null));                //true
 // console.log(arr.includes(true));                //true
-// console.log(arr.includes("Bhaumik"));                //true
+// console.log(arr.includes("Bhaumik"));           //true
 
+// let arr = [10, 20, , 40, 50];
+// console.log(arr.includes(undefined));
 
 // -----------------------------17:-concat Method------------------------------
 // let arr1 = [10, 20, 30];
@@ -365,7 +397,7 @@
 // console.log(arr1.concat(arr3, arr2));
 
 // let arr = [true,null,undefined];
-// console.log(arr.concat("Hello"));
+// console.log(arr.concat("Hello",10));
 
 // let arr = [true, null, undefined];
 // console.log(arr.concat(20, [30, 40]));
@@ -378,6 +410,14 @@
 // let arr2 = [40, , 60];
 // console.log(arr1.concat(arr2));
 
+// let arr1 = [10, 20, 30];
+// let arr2 = [40, 50, 60];
+// function arr_concat(array) {
+//     return array;
+// }
+// console.log(arr1.concat(arr_concat(arr1)));
+// console.log(arr1.concat(arr_concat(arr2)));
+
 // -----------------------------18:-at Method------------------------------
 // let arr = [10, 20, 30, 40, 50];
 // console.log(arr.at(3));
@@ -385,42 +425,111 @@
 // console.log(arr.at(3));
 // let arr = [10, 20, ,null, undefined,"40", 50];
 // console.log(arr.at(-3));
+// let arr = [10, 20, ,null, undefined,"40", 50];
+// console.log(arr.at(2));
+// let arr = [null, undefined, 40, "40", "Hello"];
+// function at_arr(){
+//     return 2
+// }
+// console.log(arr.at(at_arr()));
 
 // -----------------------------19:-some Method------------------------------
 // let arr = [1, 2, 3, 4, 5];
-// console.log(arr.some((value) => value % 2 === 0));       //atleast one true return true
+// console.log(arr.some((value) => value % 2 === 0));       //atleast one true -> return true
+
+// let arr = [10, 20, 30, 40, 50];
+// console.log(arr.some((value) => value > 0));
 
 // -----------------------------20:-every Method------------------------------
 // let arr = [2, 4, 6, 8];
 // console.log(arr.every((value) => value % 2 === 0));       //all become true -> return true
+
 // let arr = [1, 2, 3, 4, 5];
 // console.log(arr.every((value) => value % 2 === 0));
 
-// -----------------------------21:-fill Method------------------------------
-// let arr = [1, 2, 3, 4];
-// console.log(arr.fill(0, 2, 4));
-// console.log(arr.fill(5, 1));
-// console.log(arr.fill(6));
+// let arr = [2, 4, , 6, 8];
+// console.log(arr.every((value) => value % 2 === 0));  //array is not affected on empty array
 
+// let arr = [10, 20, 30, 40, 50];
+// console.log(arr.every((value) => value > 0));        //true all condition are true
+// console.log(arr.every((value) => value > 10));       //false first condition is false
+
+// arr = [1, 2, 3];
+// arr.every((elem, index, arr) => {
+//     arr.push("new");                                 //Here the new string is push in the array in the last index
+//     console.log(`[${arr}][${index}] -> ${elem}`);    //Here , we print arr index and ele
+//     return elem < 4;                                 //Here element is print only 4 time
+// });
+
+// arr = [1, 2, 3, 4];
+// arr.every((elem, index, arr) => {
+//     arr.pop();
+//     console.log(`[${arr}][${index}] -> ${elem}`);
+//     return elem < 4;
+// });
+
+// ----------------------------- 21: -fill Method------------------------------fill(value, start, end)
+// let arr = [1, 2, 3, 4];
+// console.log(arr.fill(0, 1, 3));             //To change 0 from 1 to 3 index
+// console.log(arr.fill(5, 1));                //To change 5 from 1 to array,length
+// console.log(arr.fill(6));                   //To change 6 from 0 to array.length
+// console.log(object);
 // let arr = ["B", "V", "S", "P", "J"];
 // console.log(arr.fill("a"));
 // console.log(arr.fill("a", 1));
 // console.log(arr.fill("a", 1, 3));
 
-// -----------------------------22:-isArray Method------------------------------
+// -----------------------------22:-isArray Method------------------------------Array.isArray(value)
 // console.log(Array.isArray([]));
-// console.log(Array.isArray('['));
+// console.log(Array.isArray('[}'));
 // console.log(Array.isArray([10,20]));
 // console.log(Array.isArray(new Array(5)));
 // let a=[10,20];
 // console.log(Array.isArray(a));
+// let a = [10, 20];
+// let b = a;
+// console.log(Array.isArray(b));
 // let a=[{10:20}];
 // console.log(Array.isArray(a));
 
-// -----------------------------23:-flat Method------------------------------
+// -----------------------------23:-flat Method------------------------------flat(depth/Infinity)
+// let arr = [1,2,3,[4,5]];
+// console.log(arr.flat());                 //default parameter is one(1)
 
+// let arr = [1,2,3,[4,5,[6,7,8]]];
+// console.log(arr.flat(2));           //This 2 is a depth. Compiler going in 2 depth and find all sub-array and add in main array.
 
-// -----------------------------24:-slice Method------------------------------
+// let arr = [1,2,[3,4,[5,6,[7,8,[9,10]]]]];
+// console.log(arr.flat(3));
+
+// let arr = [1,2,[3,4,[5,6,[7,8,[9,10]]]]];
+// console.log(arr.flat(4));
+
+// let arr =[1,[2,[3,[4,[5,[6,[7,[8,[9,[10]]]]]]]]]];
+// console.log(arr.flat(Infinity));         //Infinity is print all sub-array in the main array.
+
+// let arr = ["a","b",["c","d",["e","f"]]];
+// console.log(arr.flat(Infinity));
+
+// let arr = [1, , 2, , 3, , 4, , 5, , 6, ,];
+// console.log(arr.flat());                            //Remove a sparse array
+
+// let arr = [1, , 2, , 3, , 4, [, , 5,[, , 6, ,]]];
+// console.log(arr.flat());                            //return an empty object we array has depth 2 and we can not put a parameter
+
+// let arr = [1, , null, [undefined, [true, false, ["Bhaumik"]]]];
+// console.log(arr.flat(Infinity));
+
+// let arr = [1, 2, [4, { a: 10, b: 30, c: [30, 40, { a: 10, b: 30, c: [30, 40] }] }]]
+// console.log(arr.flat(Infinity));
+
+// let arr = [1,2,function hello(greeting) {
+
+//     return greeting;
+// },20];
+// console.log(arr.flat(Infinity));
+
+// -----------------------------24:-slice Method------------------------------slice(start,end)
 // let arr=[10,20,30,40,50];
 // console.log(arr.slice(2));
 // console.log(arr.slice(2,4));
@@ -437,25 +546,14 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // words = ["spray", "limit", "exuberant", "destruction", "elite", "present"];
 // const deleteWords = words.filter((word, index, arr) => {
 //     arr.pop();
 //     return word.length < 6;
 // });
 // console.log(deleteWords);
+
+// let obj = {
+//     0: 1, 1: 2
+// }
+// console.log(obj);
