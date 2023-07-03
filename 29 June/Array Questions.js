@@ -403,6 +403,28 @@ let array = [
 //     { name: "David", salary: 70000, department: "IT" },
 // ];
 //13-a
+// const employees = [
+//     { name: "John", salary: 50000, department: "IT" },
+//     { name: "Jane", salary: 60000, department: "HR" },
+//     { name: "Bob", salary: 55000, department: "IT" },
+//     { name: "Sophie", salary: 75000, department: "HR" },
+//     { name: "Mike", salary: 65000, department: "IT" },
+//     { name: "Emily", salary: 80000, department: "HR" },
+//     { name: "David", salary: 70000, department: "IT" },
+// ];
+// let salary = employees.filter(value=>{
+//     if(value.department=="IT"){
+//         return value.salary;
+//     }
+// }).map(value=>value.salary);
+// console.log(salary);
+// let a=0;
+// for (let i = 0; i < salary.length; i++) {
+//     a+=salary[i];
+// }
+// console.log(a/salary.length);
+
+//1. count the average salary of each department
 // function averageSalary(employees) {
 //     let a = 0;
 //     let b = 0;
@@ -460,3 +482,20 @@ let array = [
 // console.log(obj1);
 // console.log(obj2);
 // console.log(obj3);
+// const employees = [
+//     { name: "John", salary: 50000 },
+//     { name: "Jane", salary: 60000 },
+//     { name: "Mike", salary: 70000 },
+//     { name: "Alice", salary: "N/A" },
+//   ];
+  
+//   const salaries = employees.map((employee) => employee.salary);
+  
+//   const validSalaries = salaries.filter((salary) => typeof salary === "number");
+  
+//   const sum = validSalaries.reduce((acc, curr) => acc + curr, 0);
+  
+//   const averageSalary = sum / validSalaries.length;
+  
+//   console.log(averageSalary);
+  
