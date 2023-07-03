@@ -171,7 +171,7 @@ let userData = [
     },
 ]
 
-console.log(userData.filter(value => value.schoolName.ssc.marks == 80));
+// console.log(userData.filter(value => value.schoolName.ssc.marks == 80));
 
 // who is like to play cricket and studing BCA
 // function cricketBCA(arr) {
@@ -536,6 +536,9 @@ console.log(userData.filter(value => value.schoolName.ssc.marks == 80));
 
 
 
-let arr = ["first", ["second", ["third", { four: "forth" }]]];
+// let arr = ["first", ["second", ["third", { four: "forth" }]]];
 // let a = arr.filter(value => value.four == "forth");
 // console.log(a);
+
+
+

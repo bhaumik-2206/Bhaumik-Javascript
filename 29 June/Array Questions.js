@@ -20,7 +20,6 @@
 // }
 // console.log(names);
 
-
 //------------------------------2---------------------------
 // Write a code that adds new key in each object named: isMature
 // const users = [
@@ -54,11 +53,9 @@
 // console.log(users);
 // console.log(modifyArray);
 
-
 //------------------------------3---------------------------
 // let arr = [1, 2, 3, 5];                  //Here we can not use negative value in array index / If we like to use the minnagative value than use array.length-1.
 // console.log(arr[-1]);
-
 
 //------------------------------4---------------------------
 // const nestedArray = [
@@ -66,6 +63,19 @@
 //     [4, 5, 6],
 //     [7, 8, 9],
 // ];
+// let newarray = [];
+// function flat(arr) {
+//     arr.map(value => {
+//         if(Array.isArray(value)){
+//             flat(value);
+//         }else{
+//             newarray.push(value);
+//         }
+//     });
+//     return newarray;
+// }
+// console.log(flat(nestedArray));
+// console.log(flat([1,[2,[3,[4,[5,[6,[7,[8,[9,[10]]]]]]]]]]));
 // function printNestedArray(array) {
 //     if (typeof array != 'object') {
 //         console.log(array);
@@ -81,7 +91,6 @@
 // for (let value of oneArray) {                                //Here , we print all value of each and every value
 //     console.log(value);
 // }
-
 
 //------------------------------5---------------------------
 // const nestedObject = {
@@ -118,7 +127,6 @@
 //     }
 // }
 
-
 //------------------------------6---------------------------
 // let arr1 = [1, 2, 3];
 // let arr2 = ["1", 3, "gh"];
@@ -138,12 +146,10 @@
 // console.log(arr3.map(checkString).some(value => value === true));
 // console.log(arr4.map(checkString).some(value => value === true));
 
-
 //------------------------------7---------------------------
 // const numbers = [1, 2, 3, 4];
 // let a = numbers.map(String);
 // console.log(a);
-
 
 //------------------------------8---------------------------
 // const numbers = [1, 2, 3, 4];
@@ -153,104 +159,92 @@
 // });
 // console.log(numbers, doubled);
 
-
 //------------------------------9---------------------------
 let array = [
-    {
-        "id": "0001",
-        "type": "donut",
-        "name": "Cake",
-        "ppu": 0.55,
-        "batters":
-        {
-            "batter":
-                [
-                    { "id": "1001", "type": "Regular" },
-                    { "id": "1002", "type": "Chocolate" },
-                    { "id": "1003", "type": "Blueberry" },
-                    { "id": "1004", "type": "Devil's Food" }
-                ]
-        },
-        "topping":
-            [
-                { "id": "5001", "type": "None" },
-                { "id": "5002", "type": "Glazed" },
-                { "id": "5005", "type": "Sugar" },
-                { "id": "5007", "type": "Powdered Sugar" },
-                { "id": "5006", "type": "Chocolate with Sprinkles" },
-                { "id": "5003", "type": "Chocolate" },
-                { "id": "5004", "type": "Maple" }
-            ]
+  {
+    id: "0001",
+    type: "donut",
+    name: "Cake",
+    ppu: 0.55,
+    batters: {
+      batter: [
+        { id: "1001", type: "Regular" },
+        { id: "1002", type: "Chocolate" },
+        { id: "1003", type: "Blueberry" },
+        { id: "1004", type: "Devil's Food" },
+      ],
     },
-    {
-        "id": "0002",
-        "type": "donut2",
-        "name": "Raised",
-        "ppu": 0.55,
-        "batters":
-        {
-            "batter":
-                [
-                    { "id": "1001", "type": "Regular" }
-                ]
-        },
-        "topping":
-            [
-                { "id": "5001", "type": "None" },
-                { "id": "5002", "type": "Glazed" },
-                { "id": "5005", "type": "Sugar" },
-                { "id": "5003", "type": "Chocolate" },
-                { "id": "5004", "type": "Maple" }
-            ]
+    topping: [
+      { id: "5001", type: "None" },
+      { id: "5002", type: "Glazed" },
+      { id: "5005", type: "Sugar" },
+      { id: "5007", type: "Powdered Sugar" },
+      { id: "5006", type: "Chocolate with Sprinkles" },
+      { id: "5003", type: "Chocolate" },
+      { id: "5004", type: "Maple" },
+    ],
+  },
+  {
+    id: "0002",
+    type: "donut2",
+    name: "Raised",
+    ppu: 0.55,
+    batters: {
+      batter: [{ id: "1001", type: "Regular" }],
     },
-    {
-        "id": "0003",
-        "type": "donut3",
-        "name": "Old Fashioned",
-        "ppu": 0.55,
-        "batters":
-        {
-            "batter":
-                [
-                    { "id": "1001", "type": "Regular" },
-                    { "id": "1002", "type": "Chocolate" }
-                ]
-        },
-        "topping":
-            [
-                { "id": "5001", "type": "None" },
-                { "id": "5002", "type": "Glazed" },
-                { "id": "5003", "type": "Chocolate" },
-                { "id": "5004", "type": "Maple" }
-            ]
+    topping: [
+      { id: "5001", type: "None" },
+      { id: "5002", type: "Glazed" },
+      { id: "5005", type: "Sugar" },
+      { id: "5003", type: "Chocolate" },
+      { id: "5004", type: "Maple" },
+    ],
+  },
+  {
+    id: "0003",
+    type: "donut3",
+    name: "Old Fashioned",
+    ppu: 0.55,
+    batters: {
+      batter: [
+        { id: "1001", type: "Regular" },
+        { id: "1002", type: "Chocolate" },
+      ],
     },
-    {
-        "id": "0004",
-        "type": "donut1",
-        "name": "Old Fashioned",
-        "ppu": 0.55,
-        "batters":
-        {
-            "batter":
-                [
-                    { "id": "1001", "type": "Regular" }
-                ]
-        },
-        "topping":
-            [
-                { "id": "5001", "type": "None" },
-                { "id": "5002", "type": "Glazed" },
-                { "id": "5003", "type": "Chocolate" },
-                { "id": "5004", "type": "Maple" }
-            ]
-    }
+    topping: [
+      { id: "5001", type: "None" },
+      { id: "5002", type: "Glazed" },
+      { id: "5003", type: "Chocolate" },
+      { id: "5004", type: "Maple" },
+    ],
+  },
+  {
+    id: "0004",
+    type: "donut1",
+    name: "Old Fashioned",
+    ppu: 0.55,
+    batters: {
+      batter: [{ id: "1001", type: "Regular" }],
+    },
+    topping: [
+      { id: "5001", type: "None" },
+      { id: "5002", type: "Glazed" },
+      { id: "5003", type: "Chocolate" },
+      { id: "5004", type: "Maple" },
+    ],
+  },
 ];
+// let filterChocolate = array.filter(value=>value.topping.findIndex(value=>value.type=="Chocolate"));
+// console.log(filterChocolate);
 
+//1-filter donuts based on which have topping  Chocolate
 
-//1-Method-1
+// let filterChocolate = array.filter(value=>value.topping.find(value=>value.type=="Chocolate"));
+// console.log(filterChocolate);
+
 // let toppingChocolate = array.filter(value => value.topping.filter(topping => topping.type == "Chocolate").length);
 // console.log(toppingChocolate);
-//1-Method-2
+
 // function toppingChocolate(array) {
 //     let a = array.filter((value, index, arr) => {
 //         let topping = value.topping;
@@ -265,24 +259,28 @@ let array = [
 // }
 // toppingChocolate(array);
 
-//2-method-1
-// let regularWithChocolate = array.filter(value => {
-//     if (value.topping.filter(topping => topping.type == "Chocolate").length && value.batters.batter.filter(batter => batter.type == "Regular").length) {
-//         return value;
-//     }
-// });
+//2-filter donuts based which have batter type is regular and topping have Chocolate
+
+// let choAndRegular = array.filter(value=>value.batters.batter.find(value=>value.type="Regular") && value.topping.find(value=>value.type=="Chocolate"));
+// console.log(choAndRegular);
+
+// let regularWithChocolate = array.filter(value =>value.topping.filter(topping => topping.type == "Chocolate").length && value.batters.batter.filter(batter => batter.type == "Regular").length);
 // console.log(regularWithChocolate);
-//3-method-2
+
 // function regularWithChocolate(arr) {
 //     let arr2 = arr.filter(value => value.batters.batter.some(batter => batter.type === 'Regular') && value.topping.some(topping => topping.type === 'Chocolate'))
 //     return arr2;
 // }
 // console.log(regularWithChocolate(array));
 
-//3-method-1
+//3- filter donuts based on which have topping chocolate and Sugar
+
+// let choAndSugar = array.filter(value=>value.topping.find(value=>value.type=="Chocolate")&&value.topping.find(value=>value.type=="Sugar"));
+// console.log(choAndSugar);
+
 // let chocolateAndSugar = array.filter(value => value.topping.filter(topping => topping.type === 'Chocolate').length && value.topping.filter(topping => topping.type === 'Sugar').length);
 // console.log(chocolateAndSugar);
-// 3-method-2
+
 // function chocolateAndSugar(arr){
 //     let arr2 = arr.filter(value => value.topping.some(topping => topping.type === 'Chocolate') && value.topping.some(topping => topping.type === 'Sugar'));
 //     return arr2;
@@ -294,23 +292,21 @@ let array = [
 //     let a = array.filter(value => value.ppu > 0.5);
 //     console.log(a);
 // }
-// ppuGet(array);
+// console.log(ppuGet(array));
 
 //5
 // function printAllBatters(array) {
 //     let a = array.map(value => value.batters);
-//     console.log(a);
+//     return a;
 // }
-// printAllBatters(array);
+// console.log(printAllBatters(array));
 
-//6
+//6 - filter donuts based on which have 2 and more than 2 batter in it
 // function filterBatters(array) {
 //     let a = array.filter(value => value.batters.batter.length >= 2);
 //     console.log(a);
 // }
 // filterBatters(array);
-
-
 
 //------------------------------10---------------------------
 // let string1 = "George Raymond Richard Martin";
@@ -325,7 +321,6 @@ let array = [
 // }
 // getFirstChar(string1);
 // getFirstChar(string2);
-
 
 //------------------------------11---------------------------
 // let string = "Every developer likes to mix kubernetes and javascript";
@@ -347,17 +342,32 @@ let array = [
 // addNumber(string);
 
 //------------------------------12---------------------------
-// const products = [
-//     { name: "Product 1", price: 20, category: "Electronics" },
-//     { name: "Product 2", price: 30, category: "Clothes" },
-//     { name: "Product 3", price: 40, category: "Electronics" },
-//     { name: "Product 4", price: 50, category: "Clothes" },
-//     { name: "Product 5", price: 60, category: "Clothes" },
-//     { name: "Product 6", price: 70, category: "Electronics" },
-//     { name: "Product 7", price: 80, category: "Clothes" },
-//     { name: "Product 8", price: 90, category: "Electronics" },
-// ];
+const products = [
+  { name: "Product 1", price: 20, category: "Electronics" },
+  { name: "Product 2", price: 30, category: "Clothes" },
+  { name: "Product 3", price: 40, category: "Electronics" },
+  { name: "Product 4", price: 50, category: "Clothes" },
+  { name: "Product 5", price: 60, category: "Clothes" },
+  { name: "Product 6", price: 70, category: "Electronics" },
+  { name: "Product 7", price: 80, category: "Clothes" },
+  { name: "Product 8", price: 90, category: "Electronics" },
+];
 //12-a
+// function count(arr){
+//     let Clothes = []
+//     let Electronics = []
+//     arr.filter((value) =>{
+//         if(value.category == 'Clothes'){
+//             Clothes.push(value.category);
+//         }
+//         else if(value.category == 'Electronics'){
+//             Electronics.push(value.category);
+//         }
+//     })
+//     return {Clothes: Clothes.length, Electronics: Electronics.length};
+//  }
+//  console.log(count(products));
+
 // {Clothes: 4,Electronics: 4}
 // function makeNewObject(arrayName) {
 //     let newObject = {};
@@ -393,36 +403,46 @@ let array = [
 // console.log(aveObject);
 
 //------------------------------13---------------------------
-// const employees = [
-//     { name: "John", salary: 50000, department: "IT" },
-//     { name: "Jane", salary: 60000, department: "HR" },
-//     { name: "Bob", salary: 55000, department: "IT" },
-//     { name: "Sophie", salary: 75000, department: "HR" },
-//     { name: "Mike", salary: 65000, department: "IT" },
-//     { name: "Emily", salary: 80000, department: "HR" },
-//     { name: "David", salary: 70000, department: "IT" },
-// ];
-//13-a
-// const employees = [
-//     { name: "John", salary: 50000, department: "IT" },
-//     { name: "Jane", salary: 60000, department: "HR" },
-//     { name: "Bob", salary: 55000, department: "IT" },
-//     { name: "Sophie", salary: 75000, department: "HR" },
-//     { name: "Mike", salary: 65000, department: "IT" },
-//     { name: "Emily", salary: 80000, department: "HR" },
-//     { name: "David", salary: 70000, department: "IT" },
-// ];
-// let salary = employees.filter(value=>{
-//     if(value.department=="IT"){
-//         return value.salary;
-//     }
-// }).map(value=>value.salary);
-// console.log(salary);
-// let a=0;
-// for (let i = 0; i < salary.length; i++) {
-//     a+=salary[i];
+//------------------------------13---------------------------
+// 13-a
+const employees = [
+  { name: "John", salary: 50000, department: "IT" },
+  { name: "Jane", salary: 60000, department: "HR" },
+  { name: "Bob", salary: 55000, department: "IT" },
+  { name: "Sophie", salary: 75000, department: "HR" },
+  { name: "Mike", salary: 65000, department: "IT" },
+  { name: "Emily", salary: 80000, department: "HR" },
+  { name: "David", salary: 70000, department: "IT" },
+];
+
+// function addDepartment(arr) {
+
 // }
-// console.log(a/salary.length);
+// let result = addDepartment(employees);
+// console.log(result);
+
+// function averageSalary(arr) {
+//     let salaryit = arr.filter(value=>{
+//         if(value.department=="IT"){
+//             return value.salary;
+//         }
+//     }).map(value=>value.salary);
+//     let salaryhr = arr.filter(value=>{
+//         if(value.department=="HR"){
+//             return value.salary;
+//         }
+//     }).map(value=>value.salary);
+//     let a = 0;
+//     for (let i = 0; i < salaryit.length; i++) {
+//         a+=salaryit[i];
+//     }
+//     let b = 0;
+//     for (let i = 0; i < salaryhr.length; i++) {
+//         b+=salaryhr[i];
+//     }
+//     return {IT :a/salaryit.length , HR : b/salaryhr.length};
+// }
+// console.log(averageSalary(employees));
 
 //1. count the average salary of each department
 // function averageSalary(employees) {
@@ -449,6 +469,39 @@ let array = [
 //     let obj = {};
 //     let HR = [];
 //     let IT = [];
+//     employees.forEach(value=>{
+//         if(value.department == "HR"){
+//             HR.push(value.salary);
+//         }else if(value.department == "IT"){
+//             IT.push(value.salary);
+//         }
+//     });
+//     obj = { HR, IT }
+//     return obj;
+// }
+// let aveObject = averageSalary(employees);
+// console.log(aveObject);
+
+// function output(employees){
+//     let result={
+//         IT:[],
+//         HR:[]
+//     };
+//     employees.forEach((element) => {
+//         if(element.department==="IT"){
+//             result.IT.push(element.salary);
+//         }
+//         else if(element.department==="HR"){
+//             result.HR.push(element.salary);
+//         }
+//     });
+//     return result;
+// }
+// console.log(output(employees));
+// function averageSalary(employees) {
+//     let obj = {};
+//     let HR = [];
+//     let IT = [];
 //     for (let i = 0; i < employees.length; i++) {
 //         if (employees[i].department == "HR") {
 //             HR.push(employees[i].salary);
@@ -462,12 +515,79 @@ let array = [
 // let aveObject = averageSalary(employees);
 // console.log(aveObject);
 
+//------------------------------14---------------------------
+// let names = ["Raj", "Bhaumik", "Rudra", "Vansh", "Riddhi", "Ayushi"];
+// let obj = {};
+// names.forEach(value => {
+//     let keyName = value[0].toUpperCase();
+//     if (obj[keyName]) {
+//         obj[keyName].push(value);
+//     } else {
+//         obj[keyName] = [value];
+//     }
+// });
+// console.log(obj);
 
+//------------------------------15---------------------------
+// Without Depth
+// let nestedArray = [1, [2, [3, [4, [5, [6, [7, [8, [9, [10]]]]]]]]]];
+// let newarray = [];
+// function flatArray(arr) {
+//     arr.map(value => {
+//         if (Array.isArray(value)) {
+//             flatArray(value);
+//         } else {
+//             newarray.push(value);
+//         }
+//     });
+//     return newarray;
+// }
+// console.log(flatArray(nestedArray));
 
+// With Depth
+// let nestedArray = [1, [2, [3, [4, [5, [6, [7, [8, [9, [10]]]]]]]]]];
+// let newarray = [];
+// function flatArray(arr, depth = 1) {
+//     arr.map(value => {
+//         if (Array.isArray(value) && depth > 0) {
+//             flatArray(value, depth - 1);
+//         } else {
+//             newarray.push(value);
+//         }
+//     });
+//     return newarray;
+// }
+// console.log(nestedArray.flat(5));
+// console.log(flatArray(nestedArray, 5));
 
+//------------------------------16---------------------------
+// let arr = [1, 2, 3, 4, 5];
+// function map(array) {
+//     var result = [];
 
+//     for (var i = 0; i < array.length; i++) {
+//       result.push(arr[i]);
+//     }
 
+//     return result;
+//   }
+//   console.log(map(arr));
 
+//------------------------------17---------------------------
+// function myFilter(array) {
+//     let temp = [];
+//     for (let i = 0; i < array.length; i++) {
+//         if (array[i]>2) {
+//             temp.push(array[i]);
+//         }
+//     }
+//     return temp;
+// }
+// let arr = [1, 2, 3, 4, 5];
+// let a = myFilter(arr)
+// console.log(a);
+
+//------------------------------18---------------------------
 
 
 // function assign(obj1, obj2) {
@@ -488,14 +608,13 @@ let array = [
 //     { name: "Mike", salary: 70000 },
 //     { name: "Alice", salary: "N/A" },
 //   ];
-  
+
 //   const salaries = employees.map((employee) => employee.salary);
-  
+
 //   const validSalaries = salaries.filter((salary) => typeof salary === "number");
-  
+
 //   const sum = validSalaries.reduce((acc, curr) => acc + curr, 0);
-  
+
 //   const averageSalary = sum / validSalaries.length;
-  
+
 //   console.log(averageSalary);
-  
