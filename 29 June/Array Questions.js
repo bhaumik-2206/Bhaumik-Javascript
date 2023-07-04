@@ -403,20 +403,27 @@ const products = [
 // console.log(aveObject);
 
 //------------------------------13---------------------------
-//------------------------------13---------------------------
-// 13-a
-const employees = [
-  { name: "John", salary: 50000, department: "IT" },
-  { name: "Jane", salary: 60000, department: "HR" },
-  { name: "Bob", salary: 55000, department: "IT" },
-  { name: "Sophie", salary: 75000, department: "HR" },
-  { name: "Mike", salary: 65000, department: "IT" },
-  { name: "Emily", salary: 80000, department: "HR" },
-  { name: "David", salary: 70000, department: "IT" },
-];
-
+// // 13-a
+// const employees = [
+//   { name: "John", salary: 50000, department: "IT" },
+//   { name: "Jane", salary: 60000, department: "HR" },
+//   { name: "Bob", salary: 55000, department: "IT" },
+//   { name: "Sophie", salary: 75000, department: "HR" },
+//   { name: "Mike", salary: 65000, department: "IT" },
+//   { name: "Emily", salary: 80000, department: "HR" },
+//   { name: "David", salary: 70000, department: "IT" },
+// ];
+// let obj = {};
 // function addDepartment(arr) {
-
+//   arr.forEach((value) => {
+//     let keyName = value.department;
+//     if (obj[keyName]) {
+//       obj[keyName].push(value.salary);
+//     } else {
+//       obj[keyName] = [value.salary];
+//     }
+//   });
+//   console.log(obj);
 // }
 // let result = addDepartment(employees);
 // console.log(result);
@@ -465,23 +472,6 @@ const employees = [
 // console.log(aveObject);
 
 //13-b
-// function averageSalary(employees) {
-//     let obj = {};
-//     let HR = [];
-//     let IT = [];
-//     employees.forEach(value=>{
-//         if(value.department == "HR"){
-//             HR.push(value.salary);
-//         }else if(value.department == "IT"){
-//             IT.push(value.salary);
-//         }
-//     });
-//     obj = { HR, IT }
-//     return obj;
-// }
-// let aveObject = averageSalary(employees);
-// console.log(aveObject);
-
 // function output(employees){
 //     let result={
 //         IT:[],
@@ -516,7 +506,7 @@ const employees = [
 // console.log(aveObject);
 
 //------------------------------14---------------------------
-// let names = ["Raj", "Bhaumik", "Rudra", "Vansh", "Riddhi", "Ayushi"];
+// let names = ["Raj", "Bhaumik", "Rudra", "Vansh", "Riddhi", "Ayushi","Sachin","Krishna","Jeel","Bhakti","Prakhar","Dhruval"];
 // let obj = {};
 // names.forEach(value => {
 //     let keyName = value[0].toUpperCase();
@@ -588,7 +578,44 @@ const employees = [
 // console.log(a);
 
 //------------------------------18---------------------------
+// const input = [
+//   { name: "John", salary: 50000, department: "IT" },
+//   { name: "Jane", salary: 60000, department: "HR" },
+//   { name: "Bob", salary: 55000, department: "IT" },
+//   { name: "Sophie", salary: 75000, department: "HR" },
+//   { name: "Mike", salary: 65000, department: "IT" },
+//   { name: "Emily", salary: 80000, department: "HR" },
+//   { name: "David", salary: 70000, department: "IT" },
+// ];
+// let obj = {};
+// function groupData(arr) {
+//   arr.forEach((value) => {
+//     let keyName = value.name.charAt(0).toUpperCase();
+//     if (obj[keyName]) {
+//       obj[keyName].push(value);
+//     } else {
+//       obj[keyName] = [value];
+//     }
+//   });
+//   console.log(obj);
+// }
+// let groupTheData = groupData(input);
+// console.log(groupData);
 
+// let obj1 = {};
+// function groupData(arr) {
+//   arr.forEach((value) => {
+//     let keyName = value.department;
+//     if (obj1[keyName]) {
+//       obj1[keyName].push(value);
+//     } else {
+//       obj1[keyName] = [value];
+//     }
+//   });
+//   console.log(obj1);
+// }
+// let groupTheData = groupData(input);
+// console.log(groupData);
 
 // function assign(obj1, obj2) {
 //     for (let value in obj2) {
@@ -602,19 +629,3 @@ const employees = [
 // console.log(obj1);
 // console.log(obj2);
 // console.log(obj3);
-// const employees = [
-//     { name: "John", salary: 50000 },
-//     { name: "Jane", salary: 60000 },
-//     { name: "Mike", salary: 70000 },
-//     { name: "Alice", salary: "N/A" },
-//   ];
-
-//   const salaries = employees.map((employee) => employee.salary);
-
-//   const validSalaries = salaries.filter((salary) => typeof salary === "number");
-
-//   const sum = validSalaries.reduce((acc, curr) => acc + curr, 0);
-
-//   const averageSalary = sum / validSalaries.length;
-
-//   console.log(averageSalary);
