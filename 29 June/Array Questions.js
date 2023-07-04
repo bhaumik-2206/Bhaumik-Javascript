@@ -234,12 +234,27 @@ let array = [
     ],
   },
 ];
+
+let filterChocolate = array.filter((value) =>
+  value.topping.findIndex((value) => (value.type == "Chocolate")) !== -1
+);
+
+let filterSugar = array.filter((value) =>
+  value.batters.batter.findIndex((value) => (value.type == "Regular")) !== -1
+);
+
+// console.log(filterChocolate);
+// console.log(filterSugar);
+
+// console.log(filterChocolate);
+// let filterChocolate = array.filter(value=>value.topping.find(value=>value.type=="Chocolate"));
+// console.log(filterChocolate);
+
+//1-filter donuts based on which have topping  Chocolate
 // let filterChocolate = array.filter((value) =>
 //   value.topping.findIndex((value) => (value.type == "Chocolate")) !== -1
 // );
 // console.log(filterChocolate);
-
-//1-filter donuts based on which have topping  Chocolate
 // let filterChocolate = array.filter(value=>value.topping.find(value=>value.type=="Chocolate"));
 // console.log(filterChocolate);
 
@@ -317,6 +332,8 @@ let array = [
 // }
 // filterBatters(array);
 
+
+
 //------------------------------10---------------------------
 // let string1 = "George Raymond Richard Martin";
 // let string2 = "george raymond Richard Martin"
@@ -330,6 +347,8 @@ let array = [
 // }
 // getFirstChar(string1);
 // getFirstChar(string2);
+
+
 
 //------------------------------11---------------------------
 // let string = "Every developer likes to mix kubernetes and javascript";
@@ -349,6 +368,8 @@ let array = [
 //     console.log(c);
 // }
 // addNumber(string);
+
+
 
 //------------------------------12---------------------------
 const products = [
@@ -411,6 +432,8 @@ const products = [
 // let aveObject = averagePrice(products);
 // console.log(aveObject);
 
+
+
 //------------------------------13---------------------------
 // // 13-a
 // const employees = [
@@ -421,6 +444,7 @@ const products = [
 //   { name: "Mike", salary: 65000, department: "IT" },
 //   { name: "Emily", salary: 80000, department: "HR" },
 //   { name: "David", salary: 70000, department: "IT" },
+//   { name: "David", salary: 70000, department: "BCA" },
 // ];
 // let obj = {};
 // function addDepartment(arr) {
@@ -514,6 +538,8 @@ const products = [
 // let aveObject = averageSalary(employees);
 // console.log(aveObject);
 
+
+
 //------------------------------14---------------------------
 // let names = ["Raj", "Bhaumik", "Rudra", "Vansh", "Riddhi", "Ayushi","Sachin","Krishna","Jeel","Bhakti","Prakhar","Dhruval"];
 // let obj = {};
@@ -526,6 +552,26 @@ const products = [
 //     }
 // });
 // console.log(obj);
+
+// let names = ["Raj", "Bhaumik", "Rudra", "Vansh", "Riddhi", "Ayushi", "Sachin", "Krishna", "Jeel", "Bhakti", "Prakhar", "Dhruval"];
+// let obj = {};
+// names.forEach(value => {
+//   let keyName = value[value.length-1].toUpperCase();
+//   obj[keyName] = obj[keyName] || []
+//   obj[keyName].push(value);
+// });
+// console.log(obj);
+
+// let names = ["Raj", "Bhaumik", "Rudra", "Vansh", "Riddhi", "Ayushi", "Sachin", "Krishna", "Jeel", "Bhakti", "Prakhar", "Dhruval"];
+// let result = names.reduce((acc, cur) => {
+//     let keyName = cur[0].toUpperCase();
+//     if (acc[keyName] == null) {
+//         acc[keyName] = [];
+//     }
+//     acc[keyName].push(cur);
+//     return acc;
+// }, {});
+// console.log(result);
 
 //------------------------------15---------------------------
 // Without Depth
@@ -559,15 +605,15 @@ const products = [
 // console.log(nestedArray.flat(5));
 // console.log(flatArray(nestedArray, 5));
 
+
+
 //------------------------------16---------------------------
 // let arr = [1, 2, 3, 4, 5];
 // function map(array) {
 //     var result = [];
-
 //     for (var i = 0; i < array.length; i++) {
 //       result.push(arr[i]);
 //     }
-
 //     return result;
 //   }
 //   console.log(map(arr));
@@ -584,6 +630,8 @@ const products = [
 //   return num * 2;
 // });
 // console.log(result);
+
+
 
 //------------------------------17---------------------------
 // function myFilter(array) {
@@ -613,6 +661,8 @@ const products = [
 //   return num <3;
 // });
 // console.log(result);
+
+
 
 //------------------------------18---------------------------
 // const input = [
@@ -653,6 +703,60 @@ const products = [
 // }
 // let groupTheData = groupData(input);
 // console.log(groupData);
+
+
+//------------------------------19---------------------------
+// let arr1 = [{ a: 34 }, { a: 45 }, { a: 12 }, { a: 5 }, { a: 78 }];
+// let arr2 = arr1.map(item => item);                //Because the all object have same reference in arr1 and arr2.
+// arr2[2].b = 45;
+// console.log(arr1);     // [ { a: 34 }, { a: 45 }, { a: 12, b: 45 }, { a: 5 }, { a: 78 } ]
+// console.log(arr2);     // [ { a: 34 }, { a: 45 }, { a: 12, b: 45 }, { a: 5 }, { a: 78 } ]
+
+
+// let arr1 = [{ a: 34 }, { a: 45 }, { a: 12 }, { a: 5 }, { a: 78 }];
+// let arr2 = arr1.map((item, index, arr) => arr[index].b=45);
+// console.log(arr1);                 //Here we add the property in each object
+// console.log(arr2);
+
+// let arr1 = [{ a: 34 }, { a: 45 }, { a: 12 }, { a: 5 }, { b: 78 }];
+// let arr2 = arr1.map((item, index, arr) => {arr[index].a = 5;return item});
+// console.log(arr1);                 //Here we add the property in each object
+// console.log(arr2);
+
+// let arr1 = [{ a: 34 }, { a: 45 }, { a: 12 }, { a: 5 }, { a: 78 }];
+// let arr2 = arr1.map(item => item);                //Because the all object have same reference in arr1 and arr2.
+// arr2.b = 45;
+// console.log(arr1);     // [ { a: 34 }, { a: 45 }, { a: 12, b: 45 }, { a: 5 }, { a: 78 } ]
+// console.log(arr2);
+
+//------------------------------20---------------------------
+// let arr1 = [{ a: 34 }, { a: 45 }, { a: 12 }, { a: 5 }, { a: 78 }];
+// let arr2 = arr1.map(item => item.a * 2);                         //arr2 is return a different array which is store the (item.a*2) and return a new array.
+// console.log(arr1);   //[ { a: 34 }, { a: 45 }, { a: 12 }, { a: 5 }, { a: 78 } ]
+// console.log(arr2);   //[68, 90, 24, 10, 156]     return a new array in arr2
+
+
+//------------------------------21---------------------------
+// let arr = [1, 2, 3, 4, 5];
+// let arr2 = arr.reduce((a, c) => a + c).map(item => item);
+// console.log(arr2);               //We cannot chaining the map function with integer(number)
+
+
+//------------------------------22---------------------------
+// const example = ({ a, b, c }) => {              //Here, we pass only one parameter with key name a,b and c and
+//   console.log(a, b, c);
+// };
+// example(0, 1, 2);                               //Here , we pass three argument (values) 0 , 1 , 2 and function take only one object as argument
+// example({ a: 0, b: 1, c: 2 });                  //Here , we solve the problem , example call the object as argument and perform the task.
+
+
+
+
+
+
+
+
+
 
 // function assign(obj1, obj2) {
 //     for (let value in obj2) {
