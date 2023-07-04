@@ -234,11 +234,12 @@ let array = [
     ],
   },
 ];
-// let filterChocolate = array.filter(value=>value.topping.findIndex(value=>value.type=="Chocolate"));
+// let filterChocolate = array.filter((value) =>
+//   value.topping.findIndex((value) => (value.type == "Chocolate")) !== -1
+// );
 // console.log(filterChocolate);
 
 //1-filter donuts based on which have topping  Chocolate
-
 // let filterChocolate = array.filter(value=>value.topping.find(value=>value.type=="Chocolate"));
 // console.log(filterChocolate);
 
@@ -260,6 +261,8 @@ let array = [
 // toppingChocolate(array);
 
 //2-filter donuts based which have batter type is regular and topping have Chocolate
+// let choAndRegular = array.filter(value=>value.batters.batter.find(value=>value.type="Regular") && value.topping.find(value=>value.type=="Chocolate"));
+// console.log(choAndRegular);
 
 // let choAndRegular = array.filter(value=>value.batters.batter.find(value=>value.type="Regular") && value.topping.find(value=>value.type=="Chocolate"));
 // console.log(choAndRegular);
@@ -274,8 +277,14 @@ let array = [
 // console.log(regularWithChocolate(array));
 
 //3- filter donuts based on which have topping chocolate and Sugar
-
 // let choAndSugar = array.filter(value=>value.topping.find(value=>value.type=="Chocolate")&&value.topping.find(value=>value.type=="Sugar"));
+// console.log(choAndSugar);
+
+// let choAndSugar = array.filter(
+//   (value) =>
+//     value.topping.findIndex((value) => value.type == "Chocolate") &&
+//     value.topping.findIndex((value) => value.type == "Sugar") !== -1
+// );
 // console.log(choAndSugar);
 
 // let chocolateAndSugar = array.filter(value => value.topping.filter(topping => topping.type === 'Chocolate').length && value.topping.filter(topping => topping.type === 'Sugar').length);
@@ -563,6 +572,19 @@ const products = [
 //   }
 //   console.log(map(arr));
 
+// let arr = [1, 2, 3, 4, 5];
+// function myMap(value, callback) {
+//   let emptyArray = [];
+//   for (let i = 0; i < value.length; i++) {
+//     emptyArray.push(callback(value[i], i, value));
+//   }
+//   return emptyArray;
+// }
+// let result = myMap(arr, function (num) {
+//   return num * 2;
+// });
+// console.log(result);
+
 //------------------------------17---------------------------
 // function myFilter(array) {
 //     let temp = [];
@@ -576,6 +598,21 @@ const products = [
 // let arr = [1, 2, 3, 4, 5];
 // let a = myFilter(arr)
 // console.log(a);
+
+// let arr = [1, 2, 3, 4, 5];
+// function myMap(value, callback) {
+//   let emptyArray = [];
+//   for (let i = 0; i < value.length; i++) {
+//     if (callback(value[i], i, value)) {
+//       emptyArray.push(value[i]);
+//     }
+//   }
+//   return emptyArray;
+// }
+// let result = myMap(arr, function (num) {
+//   return num <3;
+// });
+// console.log(result);
 
 //------------------------------18---------------------------
 // const input = [
