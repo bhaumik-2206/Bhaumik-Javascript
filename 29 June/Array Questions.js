@@ -160,88 +160,88 @@
 // console.log(numbers, doubled);
 
 //------------------------------9---------------------------
-let array = [
-  {
-    id: "0001",
-    type: "donut",
-    name: "Cake",
-    ppu: 0.55,
-    batters: {
-      batter: [
-        { id: "1001", type: "Regular" },
-        { id: "1002", type: "Chocolate" },
-        { id: "1003", type: "Blueberry" },
-        { id: "1004", type: "Devil's Food" },
-      ],
-    },
-    topping: [
-      { id: "5001", type: "None" },
-      { id: "5002", type: "Glazed" },
-      { id: "5005", type: "Sugar" },
-      { id: "5007", type: "Powdered Sugar" },
-      { id: "5006", type: "Chocolate with Sprinkles" },
-      { id: "5003", type: "Chocolate" },
-      { id: "5004", type: "Maple" },
-    ],
-  },
-  {
-    id: "0002",
-    type: "donut2",
-    name: "Raised",
-    ppu: 0.55,
-    batters: {
-      batter: [{ id: "1001", type: "Regular" }],
-    },
-    topping: [
-      { id: "5001", type: "None" },
-      { id: "5002", type: "Glazed" },
-      { id: "5005", type: "Sugar" },
-      { id: "5003", type: "Chocolate" },
-      { id: "5004", type: "Maple" },
-    ],
-  },
-  {
-    id: "0003",
-    type: "donut3",
-    name: "Old Fashioned",
-    ppu: 0.55,
-    batters: {
-      batter: [
-        { id: "1001", type: "Regular" },
-        { id: "1002", type: "Chocolate" },
-      ],
-    },
-    topping: [
-      { id: "5001", type: "None" },
-      { id: "5002", type: "Glazed" },
-      { id: "5003", type: "Chocolate" },
-      { id: "5004", type: "Maple" },
-    ],
-  },
-  {
-    id: "0004",
-    type: "donut1",
-    name: "Old Fashioned",
-    ppu: 0.55,
-    batters: {
-      batter: [{ id: "1001", type: "Regular" }],
-    },
-    topping: [
-      { id: "5001", type: "None" },
-      { id: "5002", type: "Glazed" },
-      { id: "5003", type: "Chocolate" },
-      { id: "5004", type: "Maple" },
-    ],
-  },
-];
+// let array = [
+//   {
+//     id: "0001",
+//     type: "donut",
+//     name: "Cake",
+//     ppu: 0.55,
+//     batters: {
+//       batter: [
+//         { id: "1001", type: "Regular" },
+//         { id: "1002", type: "Chocolate" },
+//         { id: "1003", type: "Blueberry" },
+//         { id: "1004", type: "Devil's Food" },
+//       ],
+//     },
+//     topping: [
+//       { id: "5001", type: "None" },
+//       { id: "5002", type: "Glazed" },
+//       { id: "5005", type: "Sugar" },
+//       { id: "5007", type: "Powdered Sugar" },
+//       { id: "5006", type: "Chocolate with Sprinkles" },
+//       { id: "5003", type: "Chocolate" },
+//       { id: "5004", type: "Maple" },
+//     ],
+//   },
+//   {
+//     id: "0002",
+//     type: "donut2",
+//     name: "Raised",
+//     ppu: 0.55,
+//     batters: {
+//       batter: [{ id: "1001", type: "Regular" }],
+//     },
+//     topping: [
+//       { id: "5001", type: "None" },
+//       { id: "5002", type: "Glazed" },
+//       { id: "5005", type: "Sugar" },
+//       { id: "5003", type: "Chocolate" },
+//       { id: "5004", type: "Maple" },
+//     ],
+//   },
+//   {
+//     id: "0003",
+//     type: "donut3",
+//     name: "Old Fashioned",
+//     ppu: 0.55,
+//     batters: {
+//       batter: [
+//         { id: "1001", type: "Regular" },
+//         { id: "1002", type: "Chocolate" },
+//       ],
+//     },
+//     topping: [
+//       { id: "5001", type: "None" },
+//       { id: "5002", type: "Glazed" },
+//       { id: "5003", type: "Chocolate" },
+//       { id: "5004", type: "Maple" },
+//     ],
+//   },
+//   {
+//     id: "0004",
+//     type: "donut1",
+//     name: "Old Fashioned",
+//     ppu: 0.55,
+//     batters: {
+//       batter: [{ id: "1001", type: "Regular" }],
+//     },
+//     topping: [
+//       { id: "5001", type: "None" },
+//       { id: "5002", type: "Glazed" },
+//       { id: "5003", type: "Chocolate" },
+//       { id: "5004", type: "Maple" },
+//     ],
+//   },
+// ];
 
-let filterChocolate = array.filter((value) =>
-  value.topping.findIndex((value) => (value.type == "Chocolate")) !== -1
-);
+// let filterChocolate = array.filter((value) =>
+//   value.topping.findIndex((value) => (value.type == "Chocolate")) !== -1
+// );
 
-let filterSugar = array.filter((value) =>
-  value.batters.batter.findIndex((value) => (value.type == "Regular")) !== -1
-);
+// let filterSugar = array.filter((value) =>
+//   value.batters.batter.findIndex((value) => (value.type == "Regular")) !== -1
+// );
 
 // console.log(filterChocolate);
 // console.log(filterSugar);
@@ -372,16 +372,16 @@ let filterSugar = array.filter((value) =>
 
 
 //------------------------------12---------------------------
-const products = [
-  { name: "Product 1", price: 20, category: "Electronics" },
-  { name: "Product 2", price: 30, category: "Clothes" },
-  { name: "Product 3", price: 40, category: "Electronics" },
-  { name: "Product 4", price: 50, category: "Clothes" },
-  { name: "Product 5", price: 60, category: "Clothes" },
-  { name: "Product 6", price: 70, category: "Electronics" },
-  { name: "Product 7", price: 80, category: "Clothes" },
-  { name: "Product 8", price: 90, category: "Electronics" },
-];
+// const products = [
+//   { name: "Product 1", price: 20, category: "Electronics" },
+//   { name: "Product 2", price: 30, category: "Clothes" },
+//   { name: "Product 3", price: 40, category: "Electronics" },
+//   { name: "Product 4", price: 50, category: "Clothes" },
+//   { name: "Product 5", price: 60, category: "Clothes" },
+//   { name: "Product 6", price: 70, category: "Electronics" },
+//   { name: "Product 7", price: 80, category: "Clothes" },
+//   { name: "Product 8", price: 90, category: "Electronics" },
+// ];
 //12-a
 // function count(arr){
 //     let Clothes = []
@@ -729,6 +729,7 @@ const products = [
 // console.log(arr1);     // [ { a: 34 }, { a: 45 }, { a: 12, b: 45 }, { a: 5 }, { a: 78 } ]
 // console.log(arr2);
 
+
 //------------------------------20---------------------------
 // let arr1 = [{ a: 34 }, { a: 45 }, { a: 12 }, { a: 5 }, { a: 78 }];
 // let arr2 = arr1.map(item => item.a * 2);                         //arr2 is return a different array which is store the (item.a*2) and return a new array.
@@ -750,12 +751,204 @@ const products = [
 // example({ a: 0, b: 1, c: 2 });                  //Here , we solve the problem , example call the object as argument and perform the task.
 
 
+//------------------------------23---------------------------
+// let arr = [1, 2, 3, 4, 5];
+// let sumOfSquare = arr.reduce((acc, cur) => {
+//   return acc + cur ** 2
+// });
+// console.log(sumOfSquare);
+
+
+//------------------------------24---------------------------
+// const students = [
+//   { name: 'Alice', age: 20, grade: 'A' },
+//   { name: 'Bob', age: 18, grade: 'B' },
+//   { name: 'Charlie', age: 19, grade: 'A' },
+//   { name: 'David', age: 20, grade: 'C' },
+// ];
+
+
+//----1----
+// let sortAge = students.sort((a, b) => a.age - b.age);
+// console.log(sortAge);
+
+// let result = students.reduce((acc, cur) => {
+//     let age = cur.age;
+//     if (acc[age] == null) {
+//         acc[age] = []
+//     }
+//     acc[age].push(cur)
+//     return acc
+// }, {});
+// console.log(result);
+
+
+//----2----
+// let sortGrade = students.sort((a, b) => {
+//   if (a.grade < b.grade) {
+//     return -1;
+//   }
+//   if (a.grade > b.grade) {
+//     return 1;
+//   }
+//   return 0;
+// });
+// console.log(sortGrade);
+
+// let result = students.reduce((acc, cur) => {
+//     let grade = cur.grade;
+//     if (acc[grade] == null) {
+//         acc[grade] = []
+//     }
+//     acc[grade].push(cur)
+//     return acc
+// }, {});
+// console.log(result);
+
+
+//----3----
+// let sortName = students.sort((a, b) => {
+//   if (a.name < b.name) {
+//     return -1;
+//   }
+//   if (a.name > b.name) {
+//     return 1;
+//   }
+//   return 0;
+// });
+// console.log(sortName);
+
+// let result = students.reduce((acc, cur) => {
+//   let name = cur.name;
+//   if (acc[name] == null) {
+//     acc[name] = []
+//   }
+//   acc[name].push(cur)
+//   return acc
+// }, {});
+// console.log(result);
+
+
+//----4----
+// function average(arr) {
+//   let length = 0;
+//   let sum = arr.reduce((acc, cur) => {
+//     length++;
+//     return acc + cur.age;
+//   }, 0);
+//   return (sum / length);
+// }
+// console.log(average(students));
+
+
+//----5----
+// function sum(arr) {
+//   let sumOfNumber = arr.reduce((acc, cur) => acc + cur.age, 0);
+//   return sumOfNumber;
+// }
+// console.log(sum(students));
+
+
+//------------------------------25---------------------------
+// const nestedArray = [[1, 2], [3, 4], [5, 6]];
+// let result = nestedArray.reduce((acc, cur) => {
+//   if (Array.isArray(cur)) {
+//     for (let i = 0; i < cur.length; i++) {
+//       acc.push(cur[i]);
+//     }
+//   } else {
+//     acc.push(cur);
+//   }
+//   return acc
+// }, []);
+// console.log(result);
+// function flat(arr) {
+//   let result = arr.reduce((acc, cur) => acc.concat(cur),[]);
+//   return result;
+// }
+// console.log(flat(nestedArray));
+
+
+//------------------------------26---------------------------
+// const numbers = [1, 2, 3, 4, 5, 6, 7, 8];
+// function squareEven(arr) {
+//   let result = arr.reduce((acc, cur) => {
+//     if (cur % 2 === 0) {
+//       acc.push(cur *cur);
+//     }
+//     return acc;
+//   }, []);
+//   return result;
+// }
+// console.log(squareEven(numbers));
+
+
+//------------------------------27---------------------------
+// const numbers = [1, 2, 2, 3, 4, 4, 5];
+// function removeDuplicateValue(numbers) {
+//   let remove = numbers.reduce((acc, cur) => {
+//     if (acc.includes(cur) == false) {
+//       acc.push(cur);
+//     }
+//     return acc;
+//   }, []);
+//   return remove;
+// }
+// console.log(removeDuplicateValue(numbers));
+
+
+//------------------------------28---------------------------
+// const words = ['apple', 'banana', 'orange'];
+// function findFirstA(arr) {
+//   let result = arr.find(value => value.includes('a'))
+//   return result;
+// }
+// console.log(findFirstA(words));
+
+
+//------------------------------29---------------------------
+// const numbers = [2, 4, 6, 8, 9, 10];
+// let firstOddNumber = numbers.findIndex(value=>value%2!=0)
+// console.log(firstOddNumber);
+
+
+//------------------------------30---------------------------
+// Write a function that returns the factorial of given number
+// function factorial(number) {
+//   if (number == 1 || number == 0) {
+//     return 1;
+//   } else {
+//     return number * factorial(number - 1);
+//   }
+// }
+// console.log(factorial(5));
+
+
+//------------------------------31---------------------------
+// const people = [
+//   { name: 'Alice', age: 18 },
+//   { name: 'Bob', age: 20 },
+//   { name: 'Charlie', age: 19 },
+//   { name: 'David', age: 21 }
+// ];
+// function findIndexOfA(arr) {
+//   let result = arr.findIndex(value => value.name.charAt() == 'A' && value.age < 20);
+//   return result;
+// }
+// console.log(findIndexOfA(people));
 
 
 
 
 
 
+// function myFunction(a) {
+//   let f = a[0];
+//   let b = a.every(value => value === f);
+//   return b;
+// }
+// console.log(myFunction(['test', 'test', 'test']));
+// console.log(myFunction(['10', 10, 10, 10]));
 
 
 // function assign(obj1, obj2) {
