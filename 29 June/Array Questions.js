@@ -1092,16 +1092,33 @@
 // console.log(result);
 
 //------------------------------38---------------------------
-function num_string_range(start, end, skip) {
-    let emptyArray = [];
-    
-    return emptyArray;
-}
-console.log(num_string_range('a', 'z', 2));     // ["a", "c", "e", "g", "i", "k", "m", "o", "q", "s", "u", "w", "y"]
-console.log(num_string_range('A', 'Z', 2));     // ["Z", "X", "V", "T", "R", "P", "N", "L", "J", "H", "F", "D", "B"]
-console.log(num_string_range(0, -5, 1));        //  [0, -1, -2, -3, -4, -5]
-console.log(num_string_range(0, 25, 5));        //  [0, 5, 10, 15, 20, 25]
-console.log(num_string_range(20, 5, 5));        //  [20, 15, 10, 5]
+// function num_string_range(start, end, skip) {
+//     let arr = [];
+//     if (typeof start === 'string' && typeof end == 'string') {
+//         const startCode = start.charCodeAt(0);
+//         const endCode = end.charCodeAt(0);
+//         for (let i = startCode; i <= endCode; i += skip) {
+//             let str1 = String.fromCharCode(i);
+//             arr.push(str1)
+//         }
+//     } else if (typeof start === 'number' && typeof end == 'number') {
+//         if (start < end) {
+//             for (let i = start; i <= end; i += skip) {
+//                 arr.push(i);
+//             }
+//         } else if (start > end) {
+//             for (let i = start; i >= end; i -= skip) {
+//                 arr.push(i);
+//             }
+//         }
+//     }
+//     return arr;
+// }
+// console.log(num_string_range('a', 'z', 2));     // ["a", "c", "e", "g", "i", "k", "m", "o", "q", "s", "u", "w", "y"]
+// console.log(num_string_range('A', 'Z', 2));     // ["Z", "X", "V", "T", "R", "P", "N", "L", "J", "H", "F", "D", "B"]
+// console.log(num_string_range(0, -5, 1));        //  [0, -1, -2, -3, -4, -5]
+// console.log(num_string_range(0, 25, 5));        //  [0, 5, 10, 15, 20, 25]
+// console.log(num_string_range(20, 5, 5));        //  [20, 15, 10, 5]
 
 //------------------------------39---------------------------
 // Write a JavaScript function to remove a specific element from an array.
@@ -1119,7 +1136,17 @@ console.log(num_string_range(20, 5, 5));        //  [20, 15, 10, 5]
 // console.log(contains((arr),5));
 // console.log(contains((arr),10));
 
-
+// function a(num1, num2) {
+//     let arr = [];
+//     const startCode = num1.charCodeAt(0);
+//     const endCode = num2.charCodeAt(0);
+//     for (let i = startCode; i < endCode; i += 3) {
+//         let str1 = String.fromCharCode(i);
+//         arr.push(str1)
+//     }
+//     return arr;
+// }
+// console.log(a('a', 'z'));
 
 
 
