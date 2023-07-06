@@ -887,7 +887,7 @@
 // const numbers = [1, 2, 2, 3, 4, 4, 5];
 // function removeDuplicateValue(numbers) {
 //   let remove = numbers.reduce((acc, cur) => {
-//     if (acc.includes(cur) == false) {
+//     if (!acc.includes(cur)) {
 //       acc.push(cur);
 //     }
 //     return acc;
@@ -937,6 +937,187 @@
 // }
 // console.log(findIndexOfA(people));
 
+//------------------------------32---------------------------
+// function fun_name(arrayOfArray, array) {
+//     let result = arrayOfArray.some(value => {
+//         let h = [];
+//         for (let i = 0; i < value.length; i++) {
+//             if (value.includes(array[i])) {
+//                 h.push(true);
+//             } else {
+//                 h.push(false);
+//             }
+//         }
+//         // console.log(h);
+//         return h.every(e => e == true);
+//     });
+//     return result;
+// }
+// function fun_name(arrayOfArray, array) {
+//     let result = arrayOfArray.some(value => {
+//         let arrayOfIndividual = [];
+//         value.forEach((item, index) => {
+//             if (item === array[index]) {
+//                 arrayOfIndividual.push(true);
+//             } else {
+//                 arrayOfIndividual.push(false);
+//             }
+//         });
+//         // console.log(arrayOfIndividual);
+//         return arrayOfIndividual.every(e => e === true);
+//     });
+//     return result;
+// }
+// console.log(fun_name([[1, 2], [34, 67], [67, 77], [88, 90]], [1, 2]));                      //true
+// console.log(fun_name([[1, 2], [34, 67], [67, 77], [88, 90]], [2, 1]));                      //true
+// console.log(fun_name([[1, 2], [34, 67], [67, 77], [88, 90]], [22, 15]));                    //false
+// console.log(fun_name([[1, 2], [34, 67], [67, 77], [22, 90, 15], [88, 90]], [22, 15, 90]));  //true
+
+// function fun_name(arrayOfArray, array) {
+//     let arr = arrayOfArray.flat(Infinity);
+//     let a = array.map(e => {
+//         for (let i = 0; i < arr.length; i++) {
+//             if (e == arr[i]) {
+//                 return true;
+//             }
+//         }
+//     });
+//     let result = a.every(e => e == true)
+//     return result;
+// }
+
+
+//------------------------------33---------------------------
+// function fun_name(arrayOfArray, array) {
+//     let result = arrayOfArray.some(value => {
+//         let arrayOfIndividual = [];
+//         value.forEach((item, index) => {
+//             if (item === array[index]) {
+//                 arrayOfIndividual.push(true);
+//             } else {
+//                 arrayOfIndividual.push(false);
+//             }
+//         });
+//         // console.log(arrayOfIndividual);
+//         return arrayOfIndividual.every(e => e === true);
+//     });
+//     return result;
+// }
+// console.log(fun_name([[1, 2], [34, 67], [67, 77], [88, 90]], [1, 2]));                        // true
+// console.log(fun_name([[1, 2], [34, 67], [67, 77], [88, 90]], [2, 1]));                        // false
+// console.log(fun_name([[1, 2], [34, 67], [67, 77], [88, 90]], [22, 15]));                      // false
+// console.log(fun_name([[1, 2], [34, 67], [67, 77], [22, 90, 15], [88, 90]], [22, 15, 90]));    // false
+
+// for (let i = 0; i < value.length; i++) {
+//     if (value.at(i) === array.at(i)) {
+//         arrayOfIndividual.push(true);
+//     } else {
+//         arrayOfIndividual.push(false);
+//     }
+// }
+// function fun_name(arrayOfArray, array) {
+//     let a = arrayOfArray.some(val => val.every((ele, i) => ele == array[i]))
+//     return a;
+// }
+
+//------------------------------34---------------------------
+// Write a JavaScript program to compute the union of two arrays
+
+// function union(arr1, arr2) {
+//     let numbers = [...arr1, ...arr2]
+//     let remove = numbers.reduce((acc, cur) => {
+//         if (!acc.includes(cur)) {
+//             acc.push(cur);
+//         }
+//         return acc;
+//     }, []).sort((a, b) => a - b);
+//     return remove;
+// }
+// console.log(union([1, 2, 3], [100, 2, 1, 10]));              //[ 1, 2, 3, 10, 100 ]
+
+//------------------------------35---------------------------
+// Write a JavaScript function to find the difference between two arrays.
+// function difference(arr1, arr2) {
+//     arr1 = arr1.flat(Infinity);
+//     arr2 = arr2.flat(Infinity);
+//     let diffVar = [];
+//     arr1.filter(value => arr2.includes(value) ? true : diffVar.push(String(value)));
+//     arr2.filter(value => arr1.includes(value) ? true : diffVar.push(String(value)));
+//     return diffVar.sort((a, b) => a - b);
+// }
+// console.log(difference([1, 2, 3], [100, 2, 1, 10]));
+// console.log(difference([1, 2, 3, 4, 5], [1, [2], [3, [[4]]], [5, 6]]));
+// console.log(difference([1, 2, 3], [100, 2, 1, 10]));
+
+
+//------------------------------36---------------------------
+// Write a JavaScript program to find a pair of elements (indices of the two numbers) in a given array whose sum equals a specific target number.
+// (FOR NOW CONSIDER THERE ARE ONLY ONE PAIR WHICH IS POSSIBLE SOLUTION)
+
+// function returnSumInteger(array, sum) {
+//     let a = array.map((value, index, arr) => {
+//         let b = [];
+//         let h = value;
+//         for (let i = 0; i < array.length; i++) {
+//             if (h + array[i] === sum) {
+//                 b.push(h, array[i]);
+//             }
+//         }
+//         return b;
+//     });
+//     return a[1];
+// }
+// console.log(returnSumInteger([10,20,10,40,50,60,70], 50));
+
+// function returnSumInteger(array, sum) {
+//     let a = array.reduce((acc, cur, index, arr) => {
+//         for (let i = 0; i < array.length; i++) {
+//             if (cur + array[i] === sum) {
+//                 acc.push([cur, array[i]]);
+//             }
+//         }
+//         return acc;
+//     }, []);
+//     return a[1];
+// }
+// console.log(returnSumInteger([10,20,10,40,50,60,70], 50));
+
+//------------------------------37---------------------------
+// let arr = [NaN, 0, 15, false, -22, '', undefined, 47, null]
+// let result = arr.filter(value => {
+//     if (value > 0 || value < 0) {
+//         return value;
+//     }
+// });
+// console.log(result);
+
+//------------------------------38---------------------------
+function num_string_range(start, end, skip) {
+    let emptyArray = [];
+    
+    return emptyArray;
+}
+console.log(num_string_range('a', 'z', 2));     // ["a", "c", "e", "g", "i", "k", "m", "o", "q", "s", "u", "w", "y"]
+console.log(num_string_range('A', 'Z', 2));     // ["Z", "X", "V", "T", "R", "P", "N", "L", "J", "H", "F", "D", "B"]
+console.log(num_string_range(0, -5, 1));        //  [0, -1, -2, -3, -4, -5]
+console.log(num_string_range(0, 25, 5));        //  [0, 5, 10, 15, 20, 25]
+console.log(num_string_range(20, 5, 5));        //  [20, 15, 10, 5]
+
+//------------------------------39---------------------------
+// Write a JavaScript function to remove a specific element from an array.
+// function remove_array_element(arr, element) {
+//     return arr.filter(value => value !== element)
+// }
+// console.log(remove_array_element([2, 5, 9, 6], 5));
+
+//------------------------------40---------------------------
+// Write a JavaScript function to find an array containing a specific element.
+// function contains(arr,element) {
+//     return arr.includes(element);
+// }
+// let arr = [2, 5, 9, 6];
+// console.log(contains((arr),5));
+// console.log(contains((arr),10));
 
 
 
@@ -963,3 +1144,7 @@
 // console.log(obj1);
 // console.log(obj2);
 // console.log(obj3);
+
+
+
+// console.log("".concat({ a: 19 }));
