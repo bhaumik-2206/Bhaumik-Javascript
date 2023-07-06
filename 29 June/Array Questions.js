@@ -1136,17 +1136,6 @@
 // console.log(contains((arr),5));
 // console.log(contains((arr),10));
 
-// function a(num1, num2) {
-//     let arr = [];
-//     const startCode = num1.charCodeAt(0);
-//     const endCode = num2.charCodeAt(0);
-//     for (let i = startCode; i < endCode; i += 3) {
-//         let str1 = String.fromCharCode(i);
-//         arr.push(str1)
-//     }
-//     return arr;
-// }
-// console.log(a('a', 'z'));
 
 
 
