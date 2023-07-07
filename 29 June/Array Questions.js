@@ -63,6 +63,8 @@
 //     [4, 5, 6],
 //     [7, 8, 9],
 // ];
+// let flatArray = nestedArray.flat(Infinity);
+// console.log(flatArray);
 // let newarray = [];
 // function flat(arr) {
 //     arr.map(value => {
@@ -128,6 +130,14 @@
 // }
 
 //------------------------------6---------------------------
+// function checkString(arr) {
+//     return arr.some(value => value === Number(value));
+// }
+// console.log(checkString([1, 2, 3]));
+// console.log(checkString(["1", 3, "gh"]));
+// console.log(checkString(["a", "3dh", "gh"]));
+// console.log(checkString(["1", "a", "h"]));
+
 // let arr1 = [1, 2, 3];
 // let arr2 = ["1", 3, "gh"];
 // let arr3 = ["a", "3dh", "gh"];
@@ -160,90 +170,89 @@
 // console.log(numbers, doubled);
 
 //------------------------------9---------------------------
-// let array = [
-//   {
-//     id: "0001",
-//     type: "donut",
-//     name: "Cake",
-//     ppu: 0.55,
-//     batters: {
-//       batter: [
-//         { id: "1001", type: "Regular" },
-//         { id: "1002", type: "Chocolate" },
-//         { id: "1003", type: "Blueberry" },
-//         { id: "1004", type: "Devil's Food" },
-//       ],
-//     },
-//     topping: [
-//       { id: "5001", type: "None" },
-//       { id: "5002", type: "Glazed" },
-//       { id: "5005", type: "Sugar" },
-//       { id: "5007", type: "Powdered Sugar" },
-//       { id: "5006", type: "Chocolate with Sprinkles" },
-//       { id: "5003", type: "Chocolate" },
-//       { id: "5004", type: "Maple" },
-//     ],
-//   },
-//   {
-//     id: "0002",
-//     type: "donut2",
-//     name: "Raised",
-//     ppu: 0.55,
-//     batters: {
-//       batter: [{ id: "1001", type: "Regular" }],
-//     },
-//     topping: [
-//       { id: "5001", type: "None" },
-//       { id: "5002", type: "Glazed" },
-//       { id: "5005", type: "Sugar" },
-//       { id: "5003", type: "Chocolate" },
-//       { id: "5004", type: "Maple" },
-//     ],
-//   },
-//   {
-//     id: "0003",
-//     type: "donut3",
-//     name: "Old Fashioned",
-//     ppu: 0.55,
-//     batters: {
-//       batter: [
-//         { id: "1001", type: "Regular" },
-//         { id: "1002", type: "Chocolate" },
-//       ],
-//     },
-//     topping: [
-//       { id: "5001", type: "None" },
-//       { id: "5002", type: "Glazed" },
-//       { id: "5003", type: "Chocolate" },
-//       { id: "5004", type: "Maple" },
-//     ],
-//   },
-//   {
-//     id: "0004",
-//     type: "donut1",
-//     name: "Old Fashioned",
-//     ppu: 0.55,
-//     batters: {
-//       batter: [{ id: "1001", type: "Regular" }],
-//     },
-//     topping: [
-//       { id: "5001", type: "None" },
-//       { id: "5002", type: "Glazed" },
-//       { id: "5003", type: "Chocolate" },
-//       { id: "5004", type: "Maple" },
-//     ],
-//   },
-// ];
+let array = [
+    {
+        id: "0001",
+        type: "donut",
+        name: "Cake",
+        ppu: 0.55,
+        batters: {
+            batter: [
+                { id: "1001", type: "Regular" },
+                { id: "1002", type: "Chocolate" },
+                { id: "1003", type: "Blueberry" },
+                { id: "1004", type: "Devil's Food" },
+            ],
+        },
+        topping: [
+            { id: "5001", type: "None" },
+            { id: "5002", type: "Glazed" },
+            { id: "5005", type: "Sugar" },
+            { id: "5007", type: "Powdered Sugar" },
+            { id: "5006", type: "Chocolate with Sprinkles" },
+            { id: "5003", type: "Chocolate" },
+            { id: "5004", type: "Maple" },
+        ],
+    },
+    {
+        id: "0002",
+        type: "donut2",
+        name: "Raised",
+        ppu: 0.55,
+        batters: {
+            batter: [{ id: "1001", type: "Regular" }],
+        },
+        topping: [
+            { id: "5001", type: "None" },
+            { id: "5002", type: "Glazed" },
+            { id: "5005", type: "Sugar" },
+            { id: "5003", type: "Chocolate" },
+            { id: "5004", type: "Maple" },
+        ],
+    },
+    {
+        id: "0003",
+        type: "donut3",
+        name: "Old Fashioned",
+        ppu: 0.55,
+        batters: {
+            batter: [
+                { id: "1001", type: "Regular" },
+                { id: "1002", type: "Chocolate" },
+            ],
+        },
+        topping: [
+            { id: "5001", type: "None" },
+            { id: "5002", type: "Glazed" },
+            { id: "5003", type: "Chocolate" },
+            { id: "5004", type: "Maple" },
+        ],
+    },
+    {
+        id: "0004",
+        type: "donut1",
+        name: "Old Fashioned",
+        ppu: 0.55,
+        batters: {
+            batter: [{ id: "1001", type: "Regular" }],
+        },
+        topping: [
+            { id: "5001", type: "None" },
+            { id: "5002", type: "Glazed" },
+            { id: "5003", type: "Chocolate" },
+            { id: "5004", type: "Maple" },
+        ],
+    },
+];
 
 // let filterChocolate = array.filter((value) =>
 //   value.topping.findIndex((value) => (value.type == "Chocolate")) !== -1
 // );
+// console.log(filterChocolate);
 
 // let filterSugar = array.filter((value) =>
 //   value.batters.batter.findIndex((value) => (value.type == "Regular")) !== -1
 // );
-
-// console.log(filterChocolate);
 // console.log(filterSugar);
 
 // console.log(filterChocolate);
@@ -337,16 +346,12 @@
 //------------------------------10---------------------------
 // let string1 = "George Raymond Richard Martin";
 // let string2 = "george raymond Richard Martin"
-// function getFirstChar(string){
+// function getFirstChar(string) {
 //     let a = string.split(" ");
-//     let c = "";
-//     for (let value in a) {
-//         c += a[value].charAt(0).toUpperCase();
-//     }
-//     console.log(c);
+//     return a.map(value => value.charAt(0).toUpperCase()).join("");
 // }
-// getFirstChar(string1);
-// getFirstChar(string2);
+// console.log(getFirstChar(string1));
+// console.log(getFirstChar(string2));
 
 
 
@@ -354,35 +359,57 @@
 // let string = "Every developer likes to mix kubernetes and javascript";
 // function addNumber(string) {
 //     let a = string.split(" ");
-//     let c = "";
-//     for (let value in a) {
-//         if (a[value].slice(1, a[value].length - 1).length === 0) {
-//             c += a[value].charAt(0) + a[value].charAt(a[value].length - 1) + " ";
-//         } else if (a[value].slice(1, a[value].length - 1).length === 1) {
-//             c += a[value].charAt(0) + a[value].slice(1,2) + a[value].charAt(a[value].length - 1) + " ";
+//     return a.map(value => {
+//         if (value.length <= 3) {
+//             return value;
+//         } else {
+//             return value.charAt(0) + value.slice(1, value.length - 1).length + value.charAt(value.length - 1);
 //         }
-//         else {
-//             c += a[value].charAt(0) + a[value].slice(1, a[value].length - 1).length + a[value].charAt(a[value].length - 1) + " ";
-//         }
-//     }
-//     console.log(c);
+//     }).join(" ");
 // }
-// addNumber(string);
+// console.log(addNumber(string));
 
 
 
 //------------------------------12---------------------------
 // const products = [
-//   { name: "Product 1", price: 20, category: "Electronics" },
-//   { name: "Product 2", price: 30, category: "Clothes" },
-//   { name: "Product 3", price: 40, category: "Electronics" },
-//   { name: "Product 4", price: 50, category: "Clothes" },
-//   { name: "Product 5", price: 60, category: "Clothes" },
-//   { name: "Product 6", price: 70, category: "Electronics" },
-//   { name: "Product 7", price: 80, category: "Clothes" },
-//   { name: "Product 8", price: 90, category: "Electronics" },
+//     { name: "Product 1", price: 20, category: "Electronics" },
+//     { name: "Product 2", price: 30, category: "Clothes" },
+//     { name: "Product 3", price: 40, category: "Electronics" },
+//     { name: "Product 4", price: 50, category: "Clothes" },
+//     { name: "Product 5", price: 60, category: "Clothes" },
+//     { name: "Product 6", price: 70, category: "Electronics" },
+//     { name: "Product 7", price: 80, category: "Clothes" },
+//     { name: "Product 8", price: 90, category: "Electronics" },
 // ];
+// function averagePrice(arr) {
+//     let a = arr.reduce((acc, cur) => {
+//         let keyName = cur.category;
+//         if(acc[keyName]){
+//             acc[keyName].push(cur.price)
+//         }else{
+//             acc[keyName] = [cur.price];
+//         }
+//         return acc;
+//     }, {});
+//     return a;
+// }
+// console.log(averagePrice(products));
 //12-a
+// function count(arr) {
+//     let emptyObject = {};
+//     arr.forEach(value => {
+//         let keyName = value.category;
+//         if (emptyObject[keyName]) {
+//             emptyObject[keyName]++;
+//             count++;
+//         } else {
+//             emptyObject[keyName] = value;
+//         }
+//     });
+//     return emptyObject
+// }
+// console.log(count(products));
 // function count(arr){
 //     let Clothes = []
 //     let Electronics = []
@@ -437,29 +464,16 @@
 //------------------------------13---------------------------
 // // 13-a
 // const employees = [
-//   { name: "John", salary: 50000, department: "IT" },
-//   { name: "Jane", salary: 60000, department: "HR" },
-//   { name: "Bob", salary: 55000, department: "IT" },
-//   { name: "Sophie", salary: 75000, department: "HR" },
-//   { name: "Mike", salary: 65000, department: "IT" },
-//   { name: "Emily", salary: 80000, department: "HR" },
-//   { name: "David", salary: 70000, department: "IT" },
-//   { name: "David", salary: 70000, department: "BCA" },
+//     { name: "John", salary: 50000, department: "IT" },
+//     { name: "Jane", salary: 60000, department: "HR" },
+//     { name: "Bob", salary: 55000, department: "IT" },
+//     { name: "Sophie", salary: 75000, department: "HR" },
+//     { name: "Mike", salary: 65000, department: "IT" },
+//     { name: "Emily", salary: 80000, department: "HR" },
+//     { name: "David", salary: 70000, department: "IT" },
+//     { name: "David", salary: 70000, department: "BCA" },
 // ];
-// let obj = {};
-// function addDepartment(arr) {
-//   arr.forEach((value) => {
-//     let keyName = value.department;
-//     if (obj[keyName]) {
-//       obj[keyName].push(value.salary);
-//     } else {
-//       obj[keyName] = [value.salary];
-//     }
-//   });
-//   console.log(obj);
-// }
-// let result = addDepartment(employees);
-// console.log(result);
+
 
 // function averageSalary(arr) {
 //     let salaryit = arr.filter(value=>{
@@ -504,43 +518,53 @@
 // let aveObject = averageSalary(employees);
 // console.log(aveObject);
 
-//13-b
-// function output(employees){
-//     let result={
-//         IT:[],
-//         HR:[]
-//     };
-//     employees.forEach((element) => {
-//         if(element.department==="IT"){
-//             result.IT.push(element.salary);
+// 13-b
+// function averagePrice(arr) {
+//     let a = arr.reduce((acc, cur) => {
+//         let keyName = cur.department;
+//         if (acc[keyName]) {
+//             acc[keyName].push(cur.salary)
+//         } else {
+//             acc[keyName] = [cur.salary];
 //         }
-//         else if(element.department==="HR"){
-//             result.HR.push(element.salary);
-//         }
-//     });
-//     return result;
+//         return acc;
+//     }, {});
+//     return a;
 // }
-// console.log(output(employees));
-// function averageSalary(employees) {
-//     let obj = {};
-//     let HR = [];
-//     let IT = [];
-//     for (let i = 0; i < employees.length; i++) {
-//         if (employees[i].department == "HR") {
-//             HR.push(employees[i].salary);
-//         } else if (employees[i].department == "IT") {
-//             IT.push(employees[i].salary);
-//         }
+// console.log(averagePrice(employees));
+
+// let obj = {};
+// function addDepartment(arr) {
+//   arr.forEach((value) => {
+//     let keyName = value.department;
+//     if (obj[keyName]) {
+//       obj[keyName].push(value.salary);
+//     } else {
+//       obj[keyName] = [value.salary];
 //     }
-//     obj = { HR, IT }
-//     return obj;
+//   });
+//   console.log(obj);
 // }
-// let aveObject = averageSalary(employees);
-// console.log(aveObject);
+// let result = addDepartment(employees);
+// console.log(result);
 
 
 
 //------------------------------14---------------------------
+// let names = ["Raj", "Bhaumik", "Rudra", "Vansh", "Riddhi", "Ayushi", "Sachin", "Krishna", "Jeel", "Bhakti", "Prakhar", "Dhruval"];
+// function groupByAlphabet(arr) {
+//     return arr.reduce((acc, cur) => {
+//         let keyName = cur.charAt(0).toUpperCase();
+//         if (acc[keyName]) {
+//             acc[keyName].push(cur)
+//         } else {
+//             acc[keyName] = [cur];
+//         }
+//         return acc;
+//     }, {});
+// }
+// console.log(groupByAlphabet(names));
+
 // let names = ["Raj", "Bhaumik", "Rudra", "Vansh", "Riddhi", "Ayushi","Sachin","Krishna","Jeel","Bhakti","Prakhar","Dhruval"];
 // let obj = {};
 // names.forEach(value => {
@@ -665,15 +689,42 @@
 
 
 //------------------------------18---------------------------
-// const input = [
-//   { name: "John", salary: 50000, department: "IT" },
-//   { name: "Jane", salary: 60000, department: "HR" },
-//   { name: "Bob", salary: 55000, department: "IT" },
-//   { name: "Sophie", salary: 75000, department: "HR" },
-//   { name: "Mike", salary: 65000, department: "IT" },
-//   { name: "Emily", salary: 80000, department: "HR" },
-//   { name: "David", salary: 70000, department: "IT" },
-// ];
+const input = [
+    { name: "John", salary: 50000, department: "IT" },
+    { name: "Jane", salary: 60000, department: "HR" },
+    { name: "Bob", salary: 55000, department: "IT" },
+    { name: "Sophie", salary: 75000, department: "HR" },
+    { name: "Mike", salary: 65000, department: "IT" },
+    { name: "Emily", salary: 80000, department: "HR" },
+    { name: "David", salary: 70000, department: "IT" },
+];
+// --------1------reduce---------
+// function groupData(arr) {
+//     return arr.reduce((acc, cur) => {
+//         let keyName = cur.name.charAt(0).toUpperCase();
+//         if (acc[keyName]) {
+//             acc[keyName].push(cur);
+//         } else {
+//             acc[keyName] = [cur];
+//         }
+//         return acc;
+//     }, {});
+// }
+// console.log(groupData(input));
+// function groupDepartment(arr) {
+//     return arr.reduce((acc, cur) => {
+//         let keyName = cur.department;
+//         if (acc[keyName]) {
+//             acc[keyName].push(cur);
+//         } else {
+//             acc[keyName] = [cur];
+//         }
+//         return acc;
+//     }, {});
+// }
+// console.log(groupDepartment(input));
+
+// --------1------forEach---------
 // let obj = {};
 // function groupData(arr) {
 //   arr.forEach((value) => {
@@ -688,7 +739,6 @@
 // }
 // let groupTheData = groupData(input);
 // console.log(groupData);
-
 // let obj1 = {};
 // function groupData(arr) {
 //   arr.forEach((value) => {
@@ -753,19 +803,17 @@
 
 //------------------------------23---------------------------
 // let arr = [1, 2, 3, 4, 5];
-// let sumOfSquare = arr.reduce((acc, cur) => {
-//   return acc + cur ** 2
-// });
+// let sumOfSquare = arr.reduce((acc, cur) => acc + cur ** 2);
 // console.log(sumOfSquare);
 
 
 //------------------------------24---------------------------
-// const students = [
-//   { name: 'Alice', age: 20, grade: 'A' },
-//   { name: 'Bob', age: 18, grade: 'B' },
-//   { name: 'Charlie', age: 19, grade: 'A' },
-//   { name: 'David', age: 20, grade: 'C' },
-// ];
+const students = [
+    { name: 'Alice', age: 20, grade: 'A' },
+    { name: 'Bob', age: 18, grade: 'B' },
+    { name: 'Charlie', age: 19, grade: 'A' },
+    { name: 'David', age: 20, grade: 'C' },
+];
 
 
 //----1----
@@ -784,14 +832,17 @@
 
 
 //----2----
+// let sortGrade = students.sort((a, b) => a.grade < b.grade ? -1 : 1);
+// console.log(sortGrade);
+
 // let sortGrade = students.sort((a, b) => {
-//   if (a.grade < b.grade) {
-//     return -1;
-//   }
-//   if (a.grade > b.grade) {
-//     return 1;
-//   }
-//   return 0;
+//     if (a.grade < b.grade) {
+//         return -1;
+//     }
+//     if (a.grade > b.grade) {
+//         return 1;
+//     }
+//     return 0;
 // });
 // console.log(sortGrade);
 
@@ -807,14 +858,17 @@
 
 
 //----3----
+// let sortName = students.sort((a, b) => a.name < b.name ? -1 : 1);
+// console.log(sortName);
+
 // let sortName = students.sort((a, b) => {
-//   if (a.name < b.name) {
-//     return -1;
-//   }
-//   if (a.name > b.name) {
-//     return 1;
-//   }
-//   return 0;
+//     if (a.name < b.name) {
+//         return -1;
+//     }
+//     if (a.name > b.name) {
+//         return 1;
+//     }
+//     return 0;
 // });
 // console.log(sortName);
 
@@ -831,6 +885,13 @@
 
 //----4----
 // function average(arr) {
+//     return arr.reduce((acc, cur) => {
+//         return acc + cur.age;
+//     }, 0) / arr.length;
+// }
+// console.log(average(students));
+
+// function average(arr) {
 //   let length = 0;
 //   let sum = arr.reduce((acc, cur) => {
 //     length++;
@@ -843,8 +904,7 @@
 
 //----5----
 // function sum(arr) {
-//   let sumOfNumber = arr.reduce((acc, cur) => acc + cur.age, 0);
-//   return sumOfNumber;
+//     return arr.reduce((acc, cur) => acc + cur.age, 0);
 // }
 // console.log(sum(students));
 
@@ -852,19 +912,20 @@
 //------------------------------25---------------------------
 // const nestedArray = [[1, 2], [3, 4], [5, 6]];
 // let result = nestedArray.reduce((acc, cur) => {
-//   if (Array.isArray(cur)) {
-//     for (let i = 0; i < cur.length; i++) {
-//       acc.push(cur[i]);
+//     if (Array.isArray(cur)) {
+//         for (let i = 0; i < cur.length; i++) {
+//             acc.push(cur[i]);
+//         }
+//     } else {
+//         acc.push(cur);
 //     }
-//   } else {
-//     acc.push(cur);
-//   }
-//   return acc
+//     return acc
 // }, []);
 // console.log(result);
+
 // function flat(arr) {
-//   let result = arr.reduce((acc, cur) => acc.concat(cur),[]);
-//   return result;
+//     let result = arr.reduce((acc, cur) => acc.concat(cur), []);
+//     return result;
 // }
 // console.log(flat(nestedArray));
 
@@ -872,13 +933,12 @@
 //------------------------------26---------------------------
 // const numbers = [1, 2, 3, 4, 5, 6, 7, 8];
 // function squareEven(arr) {
-//   let result = arr.reduce((acc, cur) => {
-//     if (cur % 2 === 0) {
-//       acc.push(cur *cur);
-//     }
-//     return acc;
-//   }, []);
-//   return result;
+//     return arr.reduce((acc, cur) => {
+//         if (cur % 2 === 0) {
+//             acc.push(cur * cur);
+//         }
+//         return acc;
+//     }, []);
 // }
 // console.log(squareEven(numbers));
 
@@ -886,13 +946,13 @@
 //------------------------------27---------------------------
 // const numbers = [1, 2, 2, 3, 4, 4, 5];
 // function removeDuplicateValue(numbers) {
-//   let remove = numbers.reduce((acc, cur) => {
-//     if (!acc.includes(cur)) {
-//       acc.push(cur);
-//     }
-//     return acc;
-//   }, []);
-//   return remove;
+//     let remove = numbers.reduce((acc, cur) => {
+//         if (!acc.includes(cur)) {
+//             acc.push(cur);
+//         }
+//         return acc;
+//     }, []);
+//     return remove;
 // }
 // console.log(removeDuplicateValue(numbers));
 
@@ -900,40 +960,39 @@
 //------------------------------28---------------------------
 // const words = ['apple', 'banana', 'orange'];
 // function findFirstA(arr) {
-//   let result = arr.find(value => value.includes('a'))
-//   return result;
+//     return arr.find(value => value.includes('a'));
 // }
 // console.log(findFirstA(words));
 
 
 //------------------------------29---------------------------
 // const numbers = [2, 4, 6, 8, 9, 10];
-// let firstOddNumber = numbers.findIndex(value=>value%2!=0)
+// let firstOddNumber = numbers.findIndex(value => value % 2 != 0)
 // console.log(firstOddNumber);
 
 
 //------------------------------30---------------------------
 // Write a function that returns the factorial of given number
 // function factorial(number) {
-//   if (number == 1 || number == 0) {
-//     return 1;
-//   } else {
-//     return number * factorial(number - 1);
-//   }
+//     if (number == 1 || number == 0) {
+//         return 1;
+//     } else {
+//         return number * factorial(number - 1);
+//     }
 // }
 // console.log(factorial(5));
+// console.log(factorial(7));
 
 
 //------------------------------31---------------------------
 // const people = [
-//   { name: 'Alice', age: 18 },
-//   { name: 'Bob', age: 20 },
-//   { name: 'Charlie', age: 19 },
-//   { name: 'David', age: 21 }
+//     { name: 'Alice', age: 18 },
+//     { name: 'Bob', age: 20 },
+//     { name: 'Charlie', age: 19 },
+//     { name: 'David', age: 21 }
 // ];
 // function findIndexOfA(arr) {
-//   let result = arr.findIndex(value => value.name.charAt() == 'A' && value.age < 20);
-//   return result;
+//     return arr.findIndex(value => value.name.charAt() == 'A' && value.age < 20);
 // }
 // console.log(findIndexOfA(people));
 
@@ -948,7 +1007,6 @@
 //                 h.push(false);
 //             }
 //         }
-//         // console.log(h);
 //         return h.every(e => e == true);
 //     });
 //     return result;
@@ -1024,14 +1082,13 @@
 // Write a JavaScript program to compute the union of two arrays
 
 // function union(arr1, arr2) {
-//     let numbers = [...arr1, ...arr2]
-//     let remove = numbers.reduce((acc, cur) => {
+//     let numbers = [...arr1, ...arr2];
+//     return numbers.reduce((acc, cur) => {
 //         if (!acc.includes(cur)) {
 //             acc.push(cur);
 //         }
 //         return acc;
 //     }, []).sort((a, b) => a - b);
-//     return remove;
 // }
 // console.log(union([1, 2, 3], [100, 2, 1, 10]));              //[ 1, 2, 3, 10, 100 ]
 
@@ -1067,7 +1124,7 @@
 //     });
 //     return a[1];
 // }
-// console.log(returnSumInteger([10,20,10,40,50,60,70], 50));
+// console.log(returnSumInteger([10, 20, 10, 40, 50, 60, 70], 50));
 
 // function returnSumInteger(array, sum) {
 //     let a = array.reduce((acc, cur, index, arr) => {
@@ -1080,28 +1137,17 @@
 //     }, []);
 //     return a[1];
 // }
-// console.log(returnSumInteger([10,20,10,40,50,60,70], 50));
+// console.log(returnSumInteger([10, 20, 10, 40, 50, 60, 70], 50));
 
 //------------------------------37---------------------------
 // let arr = [NaN, 0, 15, false, -22, '', undefined, 47, null]
-// let result = arr.filter(value => {
-//     if (value > 0 || value < 0) {
-//         return value;
-//     }
-// });
+// let result = arr.filter(value => value > 0 || value < 0 ? value : false);
 // console.log(result);
 
 //------------------------------38---------------------------
 // function num_string_range(start, end, skip) {
 //     let arr = [];
-//     if (typeof start === 'string' && typeof end == 'string') {
-//         const startCode = start.charCodeAt(0);
-//         const endCode = end.charCodeAt(0);
-//         for (let i = startCode; i <= endCode; i += skip) {
-//             let str1 = String.fromCharCode(i);
-//             arr.push(str1)
-//         }
-//     } else if (typeof start === 'number' && typeof end == 'number') {
+//     if (typeof start === 'number' && typeof end == 'number') {
 //         if (start < end) {
 //             for (let i = start; i <= end; i += skip) {
 //                 arr.push(i);
@@ -1110,6 +1156,13 @@
 //             for (let i = start; i >= end; i -= skip) {
 //                 arr.push(i);
 //             }
+//         }
+//     } else if (typeof start === 'string' && typeof end == 'string') {
+//         const startCode = start.charCodeAt(0);
+//         const endCode = end.charCodeAt(0);
+//         for (let i = startCode; i <= endCode; i += skip) {
+//             let str1 = String.fromCharCode(i);
+//             arr.push(str1)
 //         }
 //     }
 //     return arr;
@@ -1135,6 +1188,63 @@
 // let arr = [2, 5, 9, 6];
 // console.log(contains((arr),5));
 // console.log(contains((arr),10));
+
+
+//------------------------------41---------------------------
+// Write a JavaScript program to count the number of arrays inside a given array.
+// function countArray(arr) {
+//     let a = arr.reduce((acc, cur) => {
+//         if (Array.isArray(cur)) {
+//             acc++;
+//         }
+//         return acc;
+//     }, 0);
+//     return a;
+// }
+// function countArray(arr) {
+//     return arr.filter(value => Array.isArray(value)).length;
+// }
+// console.log(countArray(([2, 8, [6], 3, 3, 5, 3, 4, [5, 4]])));
+// console.log(countArray(([2, 8, [6, 3, 3], [4], 5, [3, 4, [5, 4]]])));
+
+
+//------------------------------42---------------------------
+// Write a JavaScript program to find the maximum length of arrays inside a given array.
+// function findMaximumLength(arr) {
+//     let a = arr.map(value => {
+//         if (Array.isArray(value)) {
+//             return value.length;
+//         }
+//     }).filter(value => Number(value)).reduce((acc, cur) => acc > cur ? acc : cur, 0);
+//     return a;
+// }
+// function findMaximumLength(arr) {
+//     return arr.filter(value => Array.isArray(value)).map(value => value.length).reduce((acc, cur) => acc > cur ? acc : cur, 0);
+// }
+// console.log(findMaximumLength([2, 8, [6], 3, 3, 5, 3, 4, [5, 4], [6]]));
+// console.log(findMaximumLength([2, 8, [6, 3, 3], [4], 5, [3, 4, [5, 4]]]));
+// console.log(findMaximumLength([2, 8, [6, 3, 3], [4], 5, [3, 4, [5, 4]], [23, 56]]));
+// console.log(findMaximumLength([1, 5, 2, 6, 4, 23, 89]));
+
+//------------------------------43---------------------------
+// Write a JavaScript program to check if an array is a factor chain or not. A factor chain is an array in which the previous element is a factor of the next    consecutive element. The following is a factor chain:
+// function factorChaining(arr) {
+//     let empty = [];
+//     let a = arr.reduce((acc, cur) => {
+//         if (cur % acc === 0) {
+//             empty.push(true);
+//         } else {
+//             empty.push(false);
+//         }
+//         return cur;
+//     })
+//     return empty.every(value => value === true);
+// }
+// console.log(factorChaining([2, 4, 8, 16, 32]));         // true
+// console.log(factorChaining([2, 4, 16, 32, 64]));        // true
+// console.log(factorChaining([2, 4, 16, 32, 68]));        // false
+
+
 
 
 

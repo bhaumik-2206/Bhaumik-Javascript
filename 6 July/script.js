@@ -121,36 +121,36 @@
 // console.log(arr.flat());
 // console.log(arr);
 
-const employees = [
-    {
-        id: 1,
-        name: 'Raj Bundela',
-        department: 'Marketing',
-        salary: 50000,
-        active: true,
-    },
-    {
-        id: 2,
-        name: 'Bhaumik Panchal',
-        department: 'Sales',
-        salary: 60000,
-        active: true,
-    },
-    {
-        id: 3,
-        name: 'Vivek Panchal',
-        department: 'Finance',
-        salary: 70000,
-        active: false,
-    },
-    {
-        id: 4,
-        name: 'Pinki Panchal',
-        department: 'HR',
-        salary: 55000,
-        active: true,
-    },
-];
+// const employees = [
+//     {
+//         id: 1,
+//         name: 'Raj Bundela',
+//         department: 'Marketing',
+//         salary: 50000,
+//         active: true,
+//     },
+//     {
+//         id: 2,
+//         name: 'Bhaumik Panchal',
+//         department: 'Sales',
+//         salary: 60000,
+//         active: true,
+//     },
+//     {
+//         id: 3,
+//         name: 'Vivek Panchal',
+//         department: 'Finance',
+//         salary: 70000,
+//         active: false,
+//     },
+//     {
+//         id: 4,
+//         name: 'Pinki Panchal',
+//         department: 'HR',
+//         salary: 55000,
+//         active: true,
+//     },
+// ];
 
 // Example 1: Filter active employees and sort by salary
 // function activeSortSalary(arr) {
@@ -169,15 +169,17 @@ const employees = [
 
 
 // Example 3: Map the names of all employees and convert them to uppercase
-function nameUpperCase(arr) {
-    let nameUppercase = arr.map();
-}
+// function nameUpperCase(arr) {
+//     let nameUppercase = arr.map();
+// }
 
 
 
 
 
 // let a = ["JS", "CSS", "JQuery"];
+// let b = a.join('","');
+// console.log('"' + b + '"');
 // let result = a.reduce((accu, curr) => {
 //     return accu + '","' + curr;
 // })
@@ -205,17 +207,11 @@ function nameUpperCase(arr) {
 // // Input :- Hello World -  output :- olleH dlroW
 // function reverseWord(pass_string) {
 //     let splitWord = pass_string.split(" ");
-//     // console.log(splitWord);
 //     let newArray = [];
 //     for (const value of splitWord) {
-//         let splitLetter = value.split("");
-//         // console.log(splitLetter);
-//         splitLetter.reverse();
-//         // console.log(splitLetter);
-//         let joinLetter = splitLetter.join("");
-//         newArray.push(joinLetter);
+//         let splitLetter = value.split("").reverse().join("");
+//         newArray.push(splitLetter);
 //     }
-//     // console.log(newArray);
 //     return newArray.join(" ");
 // }
 // console.log(reverseWord("Hello World"));
