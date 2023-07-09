@@ -382,20 +382,16 @@ let array = [
 //     { name: "Product 7", price: 80, category: "Clothes" },
 //     { name: "Product 8", price: 90, category: "Electronics" },
 // ];
-// function averagePrice(arr) {
-//     let a = arr.reduce((acc, cur) => {
-//         let keyName = cur.category;
-//         if(acc[keyName]){
-//             acc[keyName].push(cur.price)
-//         }else{
-//             acc[keyName] = [cur.price];
-//         }
-//         return acc;
-//     }, {});
-//     return a;
-// }
-// console.log(averagePrice(products));
+
 //12-a
+// function getCategory(acc) {
+//     return acc.reduce((acc, cur) => {
+//         acc[cur.category] = (acc[cur.category] || 0) + 1;
+//         return acc;
+//     }, {})
+// }
+// console.log(getCategory(products));
+
 // function count(arr) {
 //     let emptyObject = {};
 //     arr.forEach(value => {
@@ -410,34 +406,6 @@ let array = [
 //     return emptyObject
 // }
 // console.log(count(products));
-// function count(arr){
-//     let Clothes = []
-//     let Electronics = []
-//     arr.filter((value) =>{
-//         if(value.category == 'Clothes'){
-//             Clothes.push(value.category);
-//         }
-//         else if(value.category == 'Electronics'){
-//             Electronics.push(value.category);
-//         }
-//     })
-//     return {Clothes: Clothes.length, Electronics: Electronics.length};
-//  }
-//  console.log(count(products));
-
-// {Clothes: 4,Electronics: 4}
-// function makeNewObject(arrayName) {
-//     let newObject = {};
-//     let Clothes = arrayName.filter(value => value.category == "Clothes");
-//     let Electronics = arrayName.filter(value => value.category == "Electronics");
-//     let a = Clothes.length;
-//     let b = Electronics.length;
-//     newObject.Clothes = a;
-//     newObject.Electronics = b;
-//     return newObject;
-// }
-// let newObj = makeNewObject(products);
-// console.log(newObj);
 
 // 12-b
 // function averagePrice(products) {
@@ -458,7 +426,19 @@ let array = [
 // }
 // let aveObject = averagePrice(products);
 // console.log(aveObject);
-
+// function averagePrice(arr) {
+//     let a = arr.reduce((acc, cur) => {
+//         let keyName = cur.category;
+//         if (acc[keyName]) {
+//             acc[keyName].push(cur.price)
+//         } else {
+//             acc[keyName] = [cur.price];
+//         }
+//         return acc;
+//     }, {});
+//     return a;
+// }
+// console.log(averagePrice(products));
 
 
 //------------------------------13---------------------------
@@ -974,11 +954,7 @@ const students = [
 //------------------------------30---------------------------
 // Write a function that returns the factorial of given number
 // function factorial(number) {
-//     if (number == 1 || number == 0) {
-//         return 1;
-//     } else {
-//         return number * factorial(number - 1);
-//     }
+//     return (number == 1 || number == 0) ? 1 : number * factorial(number - 1);
 // }
 // console.log(factorial(5));
 // console.log(factorial(7));
@@ -1021,7 +997,6 @@ const students = [
 //                 arrayOfIndividual.push(false);
 //             }
 //         });
-//         // console.log(arrayOfIndividual);
 //         return arrayOfIndividual.every(e => e === true);
 //     });
 //     return result;
@@ -1139,6 +1114,20 @@ const students = [
 // }
 // console.log(returnSumInteger([10, 20, 10, 40, 50, 60, 70], 50));
 
+// function pairOfSum(array, sum) {
+//     let arr = Array(array).fill().map((v, i) => i + 1);
+//     let a = arr.reduce((acc, cur, index, arr) => {
+//         for (let i = index; i < arr.length; i++) {
+//             if (cur + arr[i] === sum) {
+//                 acc.push([cur, arr[i]]);
+//             }
+//         }
+//         return acc;
+//     }, []);
+//     return a;
+// }
+// console.log(pairOfSum(10, 17));
+
 //------------------------------37---------------------------
 // let arr = [NaN, 0, 15, false, -22, '', undefined, 47, null]
 // let result = arr.filter(value => value > 0 || value < 0 ? value : false);
@@ -1191,6 +1180,12 @@ const students = [
 
 
 //------------------------------41---------------------------
+// function countArray(arr) {
+//     return arr.filter(value => Array.isArray(value)).length;
+// }
+// console.log(countArray(([2, 8, [6], 3, 3, 5, 3, 4, [5, 4]])));
+// console.log(countArray(([2, 8, [6, 3, 3], [4], 5, [3, 4, [5, 4]]])));
+
 // Write a JavaScript program to count the number of arrays inside a given array.
 // function countArray(arr) {
 //     let a = arr.reduce((acc, cur) => {
@@ -1201,14 +1196,17 @@ const students = [
 //     }, 0);
 //     return a;
 // }
-// function countArray(arr) {
-//     return arr.filter(value => Array.isArray(value)).length;
-// }
-// console.log(countArray(([2, 8, [6], 3, 3, 5, 3, 4, [5, 4]])));
-// console.log(countArray(([2, 8, [6, 3, 3], [4], 5, [3, 4, [5, 4]]])));
 
 
 //------------------------------42---------------------------
+// function findMaximumLength(arr) {
+//     return arr.filter(value => Array.isArray(value)).map(value => value.length).reduce((acc, cur) => acc > cur ? acc : cur, 0);
+// }
+// console.log(findMaximumLength([2, 8, [6], 3, 3, 5, 3, 4, [5, 4], [6]]));
+// console.log(findMaximumLength([2, 8, [6, 3, 3], [4], 5, [3, 4, [5, 4]]]));
+// console.log(findMaximumLength([2, 8, [6, 3, 3], [4], 5, [3, 4, [5, 4]], [23, 56]]));
+// console.log(findMaximumLength([1, 5, 2, 6, 4, 23, 89]));
+
 // Write a JavaScript program to find the maximum length of arrays inside a given array.
 // function findMaximumLength(arr) {
 //     let a = arr.map(value => {
@@ -1218,13 +1216,6 @@ const students = [
 //     }).filter(value => Number(value)).reduce((acc, cur) => acc > cur ? acc : cur, 0);
 //     return a;
 // }
-// function findMaximumLength(arr) {
-//     return arr.filter(value => Array.isArray(value)).map(value => value.length).reduce((acc, cur) => acc > cur ? acc : cur, 0);
-// }
-// console.log(findMaximumLength([2, 8, [6], 3, 3, 5, 3, 4, [5, 4], [6]]));
-// console.log(findMaximumLength([2, 8, [6, 3, 3], [4], 5, [3, 4, [5, 4]]]));
-// console.log(findMaximumLength([2, 8, [6, 3, 3], [4], 5, [3, 4, [5, 4]], [23, 56]]));
-// console.log(findMaximumLength([1, 5, 2, 6, 4, 23, 89]));
 
 //------------------------------43---------------------------
 // Write a JavaScript program to check if an array is a factor chain or not. A factor chain is an array in which the previous element is a factor of the next    consecutive element. The following is a factor chain:
