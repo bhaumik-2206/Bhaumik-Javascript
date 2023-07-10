@@ -144,6 +144,39 @@
 
 
 
+// console.log(10 - - 10);
+
+// let a = ["raj", "bhaumik", "vansh"]
+// let [b] = a;
+// console.log(b);
+
+// let obj1 = { a: 10, b: 20 };
+// let obj2 = { c: 30, b: 40 };
+// let obj3 = { ...obj1, ...obj2 };
+// console.log(obj3);
+
+// console.log(false || {} || null);
+
+// console.log(null || "" || undefined || null);
+
+// let a = 1, b = 1, c = 1;
+// console.log(a === b === c);
+
+// console.log(+"1");
+// console.log(typeof +"1");
+
+// let num = [1, 2, 3];
+// num[9] = num;
+// console.log(num);
+
+// let obj = { a: 10 };
+// let arr1 = [obj];
+// obj = null;
+// console.log(arr1);
+// console.log(obj);
+
+// console.log(typeof 3 + 4 + '5');
+
 
 // let a = {};
 // let b = {};
