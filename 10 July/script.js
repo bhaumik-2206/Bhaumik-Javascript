@@ -116,7 +116,31 @@
 // }
 // console.log(makeObject("Hello"));
 
+// Implement a function that removes duplicate characters from a string and returns the resulting string without changing the order of the characters.
+// function removeDuplicate(string) {
+//     let a = string.split("");
+//     let empty=[];
+//     a.forEach(value => {
+//         if(!empty.includes(value)){
+//             empty.push(value);
+//         }
+//     });
+//     return empty.join("");
+// }
+// console.log(removeDuplicate("hello"));
 
+// let string = "remove white space in this string";
+// function removeWhiteSpace(string) {
+//     let a = string.split(" ");
+//     let b = a.map(value => value[0].toUpperCase() + value.slice(1));
+//     let joinString = b.join("");
+//     return joinString.charAt(0).toLowerCase() + joinString.slice(1);
+// }
+// console.log(removeWhiteSpace(string));.
+
+// let string = "Hello this is a javascript ";
+// let a = string.replaceAll(" ","...")
+// console.log(a);
 
 
 
