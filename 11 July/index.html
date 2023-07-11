@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background: black;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .clock {
+            font-size: 6rem;
+            border: 5px solid white;
+            padding: 1rem;
+            background-color: black;
+            color: white;
+            text-align: center;
+            border-radius: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="clock" id="digital"></div>
+    <div class="clock" id="digital2"></div>
+
+    <script>
+        //method - 1
+        function call() {
+            let date = new Date();
+            let hour = date.getHours();
+            let min = date.getMinutes();
+            let sec = date.getSeconds();
+            let mili = date.getMilliseconds();
+            if (sec < 10) {
+                sec = "0" + sec;
+            }
+            if (hour < 10) {
+                hour = "0" + hour;
+            }
+            if (min < 10) {
+                min = "0" + min;
+            }
+            if (mili < 10) {
+                mili = "00" + mili;
+            }else if (mili < 100) {
+                mili = "0" + mili;
+            }
+            let clock = hour + ":" + min + ":" + sec + ":" + mili;
+            document.getElementById("digital").innerHTML = clock;
+        }
+        setInterval(call, 1);
+
+
+        // Method - 2
+        function call1() {
+            let date = new Date();
+            document.getElementById("digital2").innerHTML = date.toLocaleTimeString();
+        }
+        setInterval(call1, 1);
+    </script>
+</body>
+
+</html>

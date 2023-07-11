@@ -2,7 +2,8 @@
 // console.log(nowTime);
 
 // year , month , day , hour , second , minisecond.
-// let newDate = new Date(2022, 5, 22, 12, 0, 0);
+// let newDate = new Date(2022, 5, 22, 12, 0, 0, 0);
+// let newDate = new Date("22/06/2022");
 // console.log(newDate);
 
 // let date = new Date("2023/06/22")
@@ -32,7 +33,7 @@
 // console.log(date);
 
 
-// setUTCFullYear(yearValue, monthValue, dateValue) :- 
+// setUTCFullYear(yearValue, monthValue, dateValue) :-
 // let date = new Date();
 // // console.log(date.setUTCFullYear(1990));
 // date.setUTCFullYear(2024);
@@ -146,17 +147,17 @@
 // let date = new Date();
 // console.log(date.getSeconds());
 
-// setSeconds(secondsValue, msValue) :- 
+// setSeconds(secondsValue, msValue) :-
 // let date = new Date();
 // date.setSeconds(30);
 // console.log(date);
 
-// getUTCSeconds() :- 
+// getUTCSeconds() :-
 // let date = new Date();
 // console.log(date.getUTCSeconds());
 // console.log(date.getSeconds());
 
-// setUTCSeconds(secondsValue, msValue) :- 
+// setUTCSeconds(secondsValue, msValue) :-
 // let date = new Date();
 // console.log(date);
 // date.setUTCSeconds(30);
@@ -164,21 +165,21 @@
 
 
 //*****************Millisecond******************//
-// getMilliseconds() :- 
+// getMilliseconds() :-
 // let date = new Date();
 // console.log(date.getMilliseconds());
 
-// setMilliseconds(millisecondsValue) :- 
+// setMilliseconds(millisecondsValue) :-
 // let date = new Date();
 // let a = date.setMilliseconds(500);
 // console.log(a);
 // console.log(date);
 
-// getUTCMilliseconds() :- 
+// getUTCMilliseconds() :-
 // let date = new Date();
 // console.log(date.getUTCMilliseconds());
 
-// setUTCMilliseconds(millisecondsValue) :- 
+// setUTCMilliseconds(millisecondsValue) :-
 // let date = new Date();
 // let a = date.setUTCMilliseconds(500);
 // console.log(a);
@@ -198,11 +199,31 @@
 // console.log(date1.getUTCDay());
 // console.log(date2.getUTCDay());
 
-// toDateString() :- 
+// toDateString() :-
 // let date = new Date();
 // console.log(date.toDateString());
 // console.log(date);
 
+// toLocaleString() :-
+// let date = new Date();
+// console.log(date.toLocaleString());
+
+// toLocaleDateString() :-
+// let date = new Date();
+// console.log(date.toLocaleDateString());
+
+// toLocaleTimeString() :-
+// let date = new Date();
+// console.log(date.toLocaleTimeString());
+
+// Date.parse(dateString) :-
+// let date = Date.parse("2012");
+// console.log(date);
+
+
+
+// let date = new Date("6/22/2005 12:12:12");
+// console.log(date);
 
 
 
@@ -212,11 +233,6 @@
 // console.log(moment().format("D MMMM YYYY"));
 // console.log(moment().format("D MM YYYY"));
 // console.log(moment().format("D-MM-YY"));
-
-
-
-
-
 
 // let newDate = new Date("3-12-2024");
 // console.log(newDate);
