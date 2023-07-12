@@ -132,10 +132,10 @@
 //     return dates[date];
 // }
 // console.log(transform("YYYY/MM/DD"));
-// console.log(transform("YYYY-MM-DD"));
+// console.log(transform("DD-MM-YYYY"));
 // console.log(transform("HH:MM:SS"));
 
-// function general(add, type) {
+// function general(add = 0, type = date) {
 //     let date = new Date();
 //     switch (type) {
 //         case 'year':
@@ -180,7 +180,6 @@
 
 // 14. Write a JavaScript function to get the number of days in a year.
 // function days_of_a_year(year) {
-//     let date = new Date(year);
 //     if (year % 4 === 0) {
 //         return 366;
 //     } else {
@@ -189,3 +188,123 @@
 // }
 // console.log(days_of_a_year(2015));
 // console.log(days_of_a_year(2016));
+
+// 16. Write a JavaScript function to count the number of days passed since the year began.
+// function days_passed(date) {
+//     let ldate = date;
+//     let fdate = new Date(date.getFullYear(), 0, 0);
+//     console.log(fdate);
+//     return (ldate.getTime() - fdate.getTime()) / (1000 * 60 * 60 * 24);
+// }
+// console.log(days_passed(new Date(2015, 0, 15)));
+// console.log(days_passed(new Date(2015, 11, 14)));
+
+// 18. Write a JavaScript program to calculate age.
+// function calculate_age(date) {
+//     return new Date().getFullYear() - date.getFullYear();
+// }
+// console.log(calculate_age(new Date(1982, 11, 4)));
+// console.log(calculate_age(new Date(1962, 1, 1)));
+
+// 20. Write a JavaScript function to get a textual representation of a day.
+// function short_Days(date) {
+//     let dayName = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+//     return dayName[date.getDay()]
+// }
+// console.log(short_Days(new Date(2015, 10, 1)));
+
+// 23. Write a JavaScript function to get the English ordinal suffix for the day of the month, 2 characters (st, nd, rd, or th).
+// function english_ordinal_suffix(date) {
+//     month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+//     let d = date.getDate();
+//     if (d == 1 || d == 21 || d == 31) {
+//         return date.getDate() + "st " + month[date.getMonth()] + " " + date.getFullYear();
+//     } else if (d == 2 || d == 22) {
+//         return date.getDate() + "nd " + month[date.getMonth()] + " " + date.getFullYear();
+//     } else if (d == 3 || d == 23) {
+//         return date.getDate() + "rd " + month[date.getMonth()] + " " + date.getFullYear();
+//     } else {
+//         return date.getDate() + "th " + month[date.getMonth()] + " " + date.getFullYear();
+//     }
+// }
+// console.log(english_ordinal_suffix(new Date(2015, 10, 1)));
+// console.log(english_ordinal_suffix(new Date(1900, 10, 2)));
+// console.log(english_ordinal_suffix(new Date(2015, 10, 3)));
+// console.log(english_ordinal_suffix(new Date(2021, 10, 40)));
+
+// Difference Between Two Dates
+// function differense(date1, date2) {
+//     console.log("Year Differefce is :- " + Math.abs(date2.getFullYear() - date1.getFullYear()));
+//     let month1 = date1.getTime();
+//     let month2 = date2.getTime();
+//     console.log("Month Differefce is :- " + Math.abs(Math.ceil((month1 - month2) / (1000 * 60 * 60 * 24 * 30))));
+//     let week1 = date1.getTime();
+//     let week2 = date2.getTime();
+//     console.log("Week Differefce is :- " + Math.abs(Math.ceil((week1 - week2) / (1000 * 60 * 60 * 24 * 7))));
+//     let day1 = date1.getTime();
+//     let day2 = date2.getTime();
+//     console.log("Day Differefce is :- " + Math.abs(Math.ceil((day1 - day2) / (1000 * 60 * 60 * 24))));
+//     let hour1 = date1.getTime();
+//     let hour2 = date2.getTime();
+//     console.log("Hour Differefce is :- " + Math.abs(Math.ceil((hour1 - hour2) / (1000 * 60 * 60 ))));
+// }
+// differense(new Date("June 13, 2017 08:11:00"), new Date("October 19, 2014 11:13:00"));
+
+
+
+// const d1 = new Date('Thu, 01 Jan 1970 00:00:00 GMT');
+// const d2 =  Date('Thu, 01 Jan 1970 00:00:00 GMT');
+// console.log(d1);
+// console.log(d2);
+
+// const date = new Date(2020);
+// console.log(date.getFullYear());
+
+
+
+// Number Questions :-
+// Write a JavaScript function to generate a random integer.
+// function randomValue(start = 0, end = 0) {
+//     return end + Math.round(Math.random() * (start - end + 1));
+// }
+// console.log(randomValue(20, 1));
+// console.log(randomValue(1, 10));
+// console.log(randomValue(6));
+// console.log(randomValue());
+
+// Write a JavaScript function to format a number up to specified decimal places.
+// function decimals(number,afterDot) {
+//     return number.toFixed(afterDot);
+// }
+// console.log(decimals(2.100212, 2));
+// console.log(decimals(2.100212, 3));
+// console.log(decimals(2100, 2));
+
+// Write a JavaScript function to find the highest value in an array.
+// function max(arr) {
+//     return Math.max(...arr);
+// }
+// console.log(max([12, 34, 56, 1]));
+// console.log(max([-12, -34, 0, -56, -1]));
+
+// Write a JavaScript function to find the lowest value in an array.
+// function min(arr) {
+//     return Math.min(...arr)
+// }
+// console.log(min([12,34,56,1]));
+// console.log(min([-12,-34,0,-56,-1]));
+
+// Write a JavaScript function to test if a number is a power of 2.
+// function power_of_2(number) {
+//     for (let i = 1; i < number; i++) {
+//         if (Math.pow(2, i) === number) {
+//             return true;
+//         }
+//     }
+//     return false;
+// }
+// console.log(power_of_2(16));
+// console.log(power_of_2(18));
+// console.log(power_of_2(256));
+
+//
