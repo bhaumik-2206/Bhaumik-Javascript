@@ -101,7 +101,91 @@
 // console.log(124578.153.toLocaleString("zh-Hans-CN-u-nu-hanidec"));
 
 // console.log(10.124578.toPrecision(4));
+// console.log(0.004.toPrecision(4));
 
 // console.log(Number("123dhf"));
 // console.log(Number.parseFloat("123dhf"));
 // console.log(Number.parseInt("123dhf"));
+
+//----------------
+// let arr = [0, 1, 2, 3, 4, 5];
+// arr.reduce(a => a) || arr.map(a => a * 3);
+// console.log(arr);
+
+// let date = new Date();
+// console.log(date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear());
+
+// function transform(date) {
+//     let curDate = new Date();
+//     date = date.toUpperCase();
+//     let dates = {
+//         "YYYY/MM/DD": curDate.getFullYear() + "/" + curDate.getMonth() + "/" + curDate.getDay(),
+//         "YYYY-MM-DD": curDate.getFullYear() + "-" + curDate.getMonth() + "-" + curDate.getDay(),
+//         "YYYY/DD/MM": curDate.getFullYear() + "/" + curDate.getDay() + "/" + curDate.getMonth(),
+//         "YYYY-DD-MM": curDate.getFullYear() + "-" + curDate.getDay() + "-" + curDate.getMonth(),
+//         "DD/MM/YYYY": curDate.getDay() + "/" + curDate.getMonth() + "/" + curDate.getFullYear(),
+//         "DD-MM-YYYY": curDate.getDay() + "-" + curDate.getMonth() + "-" + curDate.getFullYear(),
+//         "MM/DD/YYYY": curDate.getMonth() + "/" + curDate.getDay() + "/" + curDate.getFullYear(),
+//         "MM-DD-YYYY": curDate.getMonth() + "-" + curDate.getDay() + "-" + curDate.getFullYear(),
+//         "HH:MM:SS": curDate.getHours() + ":" + curDate.getMinutes() + ":" + curDate.getSeconds(),
+//     }
+//     return dates[date];
+// }
+// console.log(transform("YYYY/MM/DD"));
+// console.log(transform("YYYY-MM-DD"));
+// console.log(transform("HH:MM:SS"));
+
+// function general(add, type) {
+//     let date = new Date();
+//     switch (type) {
+//         case 'year':
+//             date.setFullYear(date.getFullYear() + add);
+//             break;
+//         case 'month':
+//             date.setMonth(date.getMonth() + add);
+//             break;
+//         case 'date':
+//             date.setDate(date.getDate() + add);
+//             break;
+//         case 'hours':
+//             date.setHours(date.getHours() + add);
+//             break;
+//         case 'minute':
+//             date.setMinutes(date.getMinutes() + add);
+//             break;
+//         case 'second':
+//             date.setSeconds(date.getSeconds() + add);
+//             break;
+//         default:
+//             break;
+//     }
+//     return date;
+// }
+// console.log(general(10, 'month'));
+// console.log(general(10, 'date'));
+// console.log(general(10, 'year'));
+// console.log(general(100000, 'second'));
+
+
+
+
+// 13. Write a JavaScript function that returns the number of minutes in hours and minutes.
+// function timeConvert(minutes) {
+//     let hour = Math.floor(minutes / 60);
+//     let min = minutes % 60;
+//     return minutes + " minutes = " + hour + " hour(s) and " + min + " minutes(s)";
+//     return `${minutes} minutes = ${hour} hour(s) and ${min} minute(s).`;
+// }
+// console.log(timeConvert(200));
+
+// 14. Write a JavaScript function to get the number of days in a year.
+// function days_of_a_year(year) {
+//     let date = new Date(year);
+//     if (year % 4 === 0) {
+//         return 366;
+//     } else {
+//         return 365;
+//     }
+// }
+// console.log(days_of_a_year(2015));
+// console.log(days_of_a_year(2016));
