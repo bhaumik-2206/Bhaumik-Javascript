@@ -1,3 +1,6 @@
+12 July:-
+09:54 -  => numbers in JS and its method (parseInt , parseFloat , isFinite , toFixed)
+
 11 July:-
 09:55 - 11:10 => string , object , control Statement(Loops and if_else) revision 
 11:10 - 11:50 => Assessment
@@ -11,7 +14,7 @@
 04:40 - 05:05 => Break
 05:05 - 06:00 => Date Questions
 06:00 - 07:00 => Class session
-07:00 -  => 
+07:00 - 07:30 =>  
 
 10 July:-
 09:52 - 11:00 => practical with visualization (object and array)
