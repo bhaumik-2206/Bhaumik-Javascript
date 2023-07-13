@@ -63,17 +63,51 @@
 // console.log(randomBgColor());
 
 // Write a JavaScript function to get all prime numbers from 0 to a specified number.
-function primeFactorsTo(number) {
-    let prime = [];
-    for (let i = 0; i < number; i++) {
-        if (number % i == 0) {
-            if (i == 1 || i == number) {
-                continue;
-            } else {
-                prime.push(i);
-            }
-        }
-    }
-    return prime;
-}
-console.log(primeFactorsTo(15));
+// function primeFactorsTo(number) {
+//     let prime = [];
+//     for (let i = 0; i < number; i++) {
+//         if (number % i == 0) {
+//             if (i == 1 || i == number) {
+//                 continue;
+//             } else {
+//                 prime.push(i);
+//             }
+//         }
+//     }
+//     return prime;
+// }
+// console.log(primeFactorsTo(15));
+
+
+
+// -----------------------------------
+// console.log(document.documentElement);
+// console.log(document.body);
+// console.log(document.head);
+
+// console.log(document.body.childNodes);
+// console.log(document.body.children);        // textnode and comment node ignore in this
+
+// console.log(document.body.firstChild);
+// console.log(document.body.lastChild);
+// console.log(document.body.firstElementChild);
+// console.log(document.body.lastElementChild);
+
+// let a = Array.from(document.body.children);
+// console.log(a);
+
+// let ul = document.body.children[0];
+// console.log(ul);
+// console.log(ul.nextSibling);
+// console.log(ul.children[0].textContent);
+// console.log(ul.children[0].nextElementSibling.textContent);
+
+// let table = document.body.children[1];
+// console.log(table.tBodies[0]);
+// console.log(table.tBodies[0].rows);
+// console.log(table.tBodies[0].rows[0]);
+// console.log(table.tBodies[0].rows[0].cells);
+// console.log(table.tBodies[0].rows[0].cells[0].textContent);
+// console.log(table.rows);
+
+console.log(firstTable);

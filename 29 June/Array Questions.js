@@ -1200,12 +1200,19 @@ const students = [
 
 //------------------------------42---------------------------
 // function findMaximumLength(arr) {
-//     return arr.filter(value => Array.isArray(value)).map(value => value.length).reduce((acc, cur) => acc > cur ? acc : cur, 0);
+    // let max = 0;
+    // arr.forEach(value => {
+    //     if (Array.isArray(value) && max < value.length) {
+    //         max = value.length;
+    //     }
+    // });
+    // return max;
 // }
 // console.log(findMaximumLength([2, 8, [6], 3, 3, 5, 3, 4, [5, 4], [6]]));
 // console.log(findMaximumLength([2, 8, [6, 3, 3], [4], 5, [3, 4, [5, 4]]]));
 // console.log(findMaximumLength([2, 8, [6, 3, 3], [4], 5, [3, 4, [5, 4]], [23, 56]]));
 // console.log(findMaximumLength([1, 5, 2, 6, 4, 23, 89]));
+// return arr.filter(value => Array.isArray(value)).map(value => value.length).reduce((acc, cur) => acc > cur ? acc : cur, 0);
 
 // Write a JavaScript program to find the maximum length of arrays inside a given array.
 // function findMaximumLength(arr) {
