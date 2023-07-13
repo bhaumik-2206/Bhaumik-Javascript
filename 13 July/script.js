@@ -141,10 +141,67 @@
 
 // console.log(document.getElementsByName('hello'));
 
-// getElementByTagName :- 
+//
+// getElementByTagName :-
 // let selectAllDiv = document.getElementsByTagName("div");
 // console.log(selectAllDiv);
 // selectAllDiv[0].style.color = "red"
 // console.log(selectAllDiv[0]);
 // console.log(selectAllDiv[0].textContent);
 
+// getElementsByName()
+// let getName = document.getElementsByName('input');
+// console.log(getName);
+// // getName[0].style.color = "red";
+// // getName[2].style.color = "red";
+// for (let i = 0; i < getName.length; i++) {
+//     getName[i].style.backgroundColor = "red";
+//     getName[i].style.color = "white";
+// }
+
+// getElementsByTagName()
+// let getClass = document.getElementsByClassName('allDiv');;
+// console.log(getClass);
+// for (let i = 0; i < getClass.length; i++) {
+//     getClass[i].style.textAlign = "center";
+//     getClass[i].style.backgroundColor = "black";
+//     getClass[i].style.color = "white";
+// }
+
+// getElementById()
+// let getID = document.getElementById('getID');
+// getID.style.fontSize = '100px';
+
+// querySelector()
+// This is match the first element of a specify class
+// let withQueryS = document.querySelector('div');
+// console.log(withQueryS);        // return only first element of (.allDiv) querySelector
+
+// querySelectorAll()
+// let withQuerySAll = document.querySelectorAll('.allDiv');
+// console.log(withQuerySAll);
+// console.log(withQuerySAll[1]);
+
+
+// function printDate() {
+//     document.getElementById('getName').innerHTML = new Date();
+// }
+
+// console.log(document.querySelectorAll('#getID , .allDiv'));
+// console.log(document.querySelector('.allDiv , #getID'));
+
+// let newEle = document.createElement('h1');
+// let text = document.createTextNode("This is Javascript");
+// newEle.appendChild(text);
+// document.body.append(newEle);
+// console.log(newEle);
+
+
+// document.body.onload = addElement;
+// function addElement() {
+//     const newDiv = document.createElement("div");
+//     const newContent = document.createTextNode("Hi there and greetings!");
+//     newDiv.appendChild(newContent);
+//     const currentDiv = document.getElementById("div1");
+//     document.body.insertBefore(newDiv, currentDiv);
+// }

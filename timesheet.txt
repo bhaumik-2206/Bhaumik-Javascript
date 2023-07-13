@@ -5,7 +5,10 @@
 12:00 - 01:10 => DOM
 01:10 - 01:30 => Break
 01:30 - 04:00 => Watch video and some practical with watching video (DOM malipulation)
-
+04:00 - 04:40 => Typing Practice 
+04:40 - 05:00 => 
+05:00 - 5:30 => Break
+05:30 -  => 
 
 
 12 July:-
