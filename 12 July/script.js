@@ -193,7 +193,6 @@
 // function days_passed(date) {
 //     let ldate = date;
 //     let fdate = new Date(date.getFullYear(), 0, 0);
-//     console.log(fdate);
 //     return (ldate.getTime() - fdate.getTime()) / (1000 * 60 * 60 * 24);
 // }
 // console.log(days_passed(new Date(2015, 0, 15)));
@@ -307,4 +306,73 @@
 // console.log(power_of_2(18));
 // console.log(power_of_2(256));
 
-//
+// Find the Number of Days in a Month:
+// function findNumberOfDays(year, month) {
+//     let date = new Date(year, month - 1);
+//     let date2 = new Date(year, month);
+//     let diff = date2 - date;
+//     return (diff) / (1000 * 60 * 60 * 24);
+
+// }
+// console.log(findNumberOfDays(2012, 3));
+
+
+// Count total working days and total weekend in specific month and year
+// function totalWorkingDaysInMonth(year, month) {
+//     let date = new Date(year, month - 1);
+//     let date2 = new Date(year, month);
+//     let diff = date2 - date;
+//     let working = 0;
+//     let weekend = 0;
+//     let diff_days = (diff) / (1000 * 60 * 60 * 24);
+//     for (let i = 1; i <= diff_days; i++) {
+//         date.setDate(i);
+//         if (date.getDay() == 0 || date.getDay() == 6) {
+//             weekend++;
+//         } else {
+//             working++;
+//         }
+//     }
+//     return { Working: working, Weekend: weekend }
+// }
+// console.log(totalWorkingDaysInMonth(2023, 1));
+
+
+
+// Check if a Year is a Leap Year:
+// function checkLeapYear(year) {
+//     if (year % 4 === 0) {
+//         return year + " is Leap Year";
+//     } else {
+//         return "This is not a leap year"
+//     }
+// }
+// console.log(checkLeapYear(2022));
+// console.log(checkLeapYear(2024));
+
+
+// Find the Quarter of a Date:
+// function quarterOfDate(date) {
+//     let date1 = new Date(date)
+//     return Math.ceil((date1.getMonth() + 1) / 4);
+// }
+// console.log(quarterOfDate("12/22/2023"));
+// console.log(quarterOfDate("8/22/2023"));
+// console.log(quarterOfDate("1/22/2023"));
+
+
+// function totalWorkingDaysInYear(year) {
+//     let totalWorkingDays = 0;
+//     let a = 0;
+//     const startDate = new Date(year, 0, 1);
+//     const endDate = new Date(year, 11, 31);
+//     for (let date = startDate.getTime(); date <= endDate.getTime(); startDate.setTime(date += (1000 * 60 * 60 * 24))) {
+//         if (startDate.getDay() === 0 || startDate.getDay() === 6) {
+//             totalWorkingDays++;
+//         }else{
+//             a++;
+//         }
+//     }
+//     return a;
+// }
+// console.log(totalWorkingDaysInYear(2023));

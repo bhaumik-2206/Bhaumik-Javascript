@@ -1,3 +1,7 @@
+13 July:-
+09:54 -  => 
+
+
 12 July:-
 09:54 - 10:50 => numbers in JS and its method (parseInt , parseFloat , isFinite , toFixed) some date function
 10:50 - 11:35 => Class Session on date and math with its method 
@@ -6,7 +10,9 @@
 01:15 : 01:40 => Break
 01:40 - 02:30 => Other Date Questions ans also research on ISO and UTC 
 02:30 - 03:15 => Date questions like difference between two date (year,month,week,Day Hour)
-03:15 -  => 
+03:15 - 04:30 => Math Questions
+04:30 - 05:00 => Break
+05:00 - 07:00 => Practical date and math (solve one questions how to get working days in specific month)
 
 11 July:-
 09:55 - 11:10 => string , object , control Statement(Loops and if_else) revision 
