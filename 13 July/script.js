@@ -80,7 +80,7 @@
 
 
 
-// -----------------------------------
+// ------------------DOM-----------------
 // console.log(document.documentElement);
 // console.log(document.body);
 // console.log(document.head);
@@ -110,4 +110,41 @@
 // console.log(table.tBodies[0].rows[0].cells[0].textContent);
 // console.log(table.rows);
 
-console.log(firstTable);
+// console.log(firstTable);
+// firstTable.style.backgroundColor = 'red';
+// let table = document.getElementById('firstTable');
+// table.style.backgroundColor = "blue";
+// table.style.fontSize = "2rem";
+
+// console.log(document.getElementsByClassName('tables'));
+// console.log(document.getElementsByTagName('table'));
+// console.log(document.getElementsByTagNameNS('table'));
+
+// let b = document.querySelector(".list");
+// console.log(b);
+// console.log(document.querySelectorAll(".list"));
+
+// console.log(document.querySelector("#firstTable"));
+
+// console.log(document.querySelectorAll('ul>li:last-child'));
+// console.log(document.querySelectorAll('ul>li:last-child')[0].textContent);
+// console.log(document.querySelectorAll('ul>li:nth-child(1)')[0].textContent);
+
+// console.log(ulTag.id);
+// console.log(ulTag.getAttribute('data'));
+// ulTag.setAttribute('greet', 'hello');
+// console.log(ulTag.getAttribute('greet'));
+// ulTag.removeAttribute("data");
+// console.log(ulTag.getAttribute('data'));
+// console.log(ulTag.hasAttribute('data'));
+// console.log(ulTag.attributes);
+
+// console.log(document.getElementsByName('hello'));
+
+// getElementByTagName :- 
+// let selectAllDiv = document.getElementsByTagName("div");
+// console.log(selectAllDiv);
+// selectAllDiv[0].style.color = "red"
+// console.log(selectAllDiv[0]);
+// console.log(selectAllDiv[0].textContent);
+
