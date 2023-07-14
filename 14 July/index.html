@@ -5,6 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        #parent {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+
+        #child {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }
+    </style>
 </head>
 
 <body>
@@ -23,7 +36,6 @@
 
     <button id="button">Click Me!!</button><br><br>
 
-
     <p>click remove element to stop color</p>
     <button id="removeEvent" onclick="stopEvent()">Remove Event</button>
     <p id="random"></p>
@@ -31,8 +43,33 @@
     <button class="raco" onclick="randomBgColor()">Click Me to change bg color</button>
 
 
-    <input type="text" id="name">
-    <p id="print"></p>
+    <br><br>
+    <button id="removePara" onclick="removepara()">Remove Para</button>
+    <p id="para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error distinctio voluptates qui voluptatibus
+        ullam nesciunt quisquam delectus, similique nihil ad praesentium ex minima cum? Aliquid pariatur iusto earum
+        explicabo in!</p>
+
+    <button id="all">Hover/Click</button>
+    <p id="printme"></p>
+
+
+    <div id="parent">
+        <div id="child"></div>
+    </div>
+
+    <div id="main">
+        <div class="child-1">child-1</div>
+        <div class="child-2">child-2</div>
+        <div class="child-3">child-3</div>
+        <div class="child-4">child-4</div>
+    </div>
+
+    <input type="text" id="input">
+    <button id="printInput">Enter</button>
+    <ul id="addLi"></ul>
+    
+
+
 
     <script src="script.js"></script>
 </body>

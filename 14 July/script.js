@@ -120,20 +120,21 @@
 
 // let arr = [1, 2, 3];
 // let arr2 = [100, 2, 3, 4, 10];
+// let arr = [100, 2, 1, 10, 1, 1, 1];
+// let arr2 = [1, 2, 3];
 // arr2.forEach(value => {
 //     if (!arr.includes(value)) {
 //         arr.push(value);
 //     }
 // })
-// console.log(arr);
-// let a = arr.sort((a, b) => a- b);
+// let a = arr.sort((a, b) => a - b);
 // console.log(a);
 
 // function fun(string) {
 //     let a = string.split('');
 //     let b = [];
 //     a.forEach(value => {
-//         if (value <= 9 || value >= 0) {
+//         if (Number(value)) {
 //             b.push(Number(value));
 //         }
 //     });
@@ -146,6 +147,19 @@
 //     return obj.st;
 // }
 // console.log(abc(obj, 'name'));
+
+// function abc() {
+//     const ab = () => 40;
+//     abcd(() => ab());
+// }
+// function abcd(cb) {
+//     let a = cb();
+//     console.log(a);
+// }
+// console.log(abc());
+
+// let text1;
+// console.log(typeof text1);
 
 
 // let arr1 = [
@@ -176,4 +190,55 @@
 //     // return b.every(i => i === true);
 // }
 // console.log(abcd(arr1));
+
+// let removePara = document.getElementById('removePara');
+// let para = document.getElementById('para');
+// removePara.addEventListener("click", function removepara () {
+//     if (para.style.display != "none") {
+//         para.style.display = "none";
+//     } else {
+//         para.style.display = "block";
+//     }
+// });
+
+// let all = document.getElementById('all');
+// let printme = document.getElementById('printme');
+// all.addEventListener('click', function () {
+//     printme.innerHTML = "Now You Click Button";
+// });
+// all.addEventListener('mouseover', function () {
+//     printme.innerHTML = "Now You Hover Me";
+// });
+// all.addEventListener('mouseout', function () {
+//     printme.innerHTML = "Now You Are Outside The Button";
+// });
+
+// let parent = document.getElementById('parent');
+// let child = document.getElementById('child');
+// child.addEventListener("click", function () {
+//     console.log("This is Child");
+// })
+// parent.addEventListener("click", function () {
+//     console.log("This is Parent");
+// }, { once: true })
+// document.addEventListener("click", function () {
+//     console.log("This is Document");
+// }/*, { capture: true }*/)               // document comes first
+
+// let main = document.getElementById('main');
+// main.addEventListener("click", function (value) {
+//     value.target.remove();
+//     console.log(value.target);
+// })
+
+// let input = document.getElementById('input');
+// let printInput = document.getElementById('printInput');
+// let addLi = document.getElementById('addLi');
+// printInput.addEventListener("click", function abc () {
+//     let value1 = input.value;
+//     let newLi = document.createElement('li');
+//     newLi.textContent = value1;
+//     addLi.appendChild(newLi);
+//     input.value = '';
+// });
 
