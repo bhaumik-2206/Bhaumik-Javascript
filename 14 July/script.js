@@ -61,39 +61,38 @@
 // newb.textContent = "<b> Hello World </b>";       // Not Working
 // document.body.append(newb);
 
-let btn = document.getElementById('button');
-btn.addEventListener("click", function () {
-    btn.innerHTML = "Hello World";
-    btn.style.color = "white";
-    btn.style.backgroundColor = "black";
-    btn.style.padding = "10px 20px";
-});
-btn.addEventListener("mouseout", function () {
-    btn.innerHTML = "Click Me!!";
-    btn.style.color = "black";
-    btn.style.backgroundColor = "white";
-});
+// let btn = document.getElementById('button');
+// btn.addEventListener("click", function () {
+//     btn.innerHTML = "Hello World";
+//     btn.style.color = "white";
+//     btn.style.backgroundColor = "black";
+//     btn.style.padding = "10px 20px";
+// });
+// btn.addEventListener("mouseout", function () {
+//     btn.innerHTML = "Click Me!!";
+//     btn.style.color = "black";
+//     btn.style.backgroundColor = "white";
+// });
 
 // Random color on hove and stop color after click on remove element button
 // document.addEventListener("mousemove", randomBgColor);
 // function stopEvent() {
 //     document.removeEventListener("mousemove", randomBgColor);
 // }
-function randomBgColor() {
-    let red = Math.ceil(Math.random() * 256);
-    let green = Math.ceil(Math.random() * 256);
-    let blue = Math.ceil(Math.random() * 256);
-    let backgroungColor = 'rgb(' + red + ',' + green + ',' + blue + ')';
-    console.log(backgroungColor);
-    document.body.style.background = backgroungColor;
-}
+// function randomBgColor() {
+//     let red = Math.ceil(Math.random() * 256);
+//     let green = Math.ceil(Math.random() * 256);
+//     let blue = Math.ceil(Math.random() * 256);
+//     let backgroungColor = 'rgb(' + red + ',' + green + ',' + blue + ')';
+//     document.body.style.background = backgroungColor;
+// }
 
-let enterName = document.getElementById('name');
-function print() {
-    document.addEventListener("onclick", function () {
-        document.getElementById("print").innerHTML = enterName.ariaValueMax;
-    })
-}
+// let enterName = document.getElementById('name');
+// function print() {
+//     document.addEventListener("onclick", function () {
+//         document.getElementById("print").innerHTML = enterName.ariaValueMax;
+//     })
+// }
 
 
 
@@ -117,3 +116,64 @@ function print() {
 // }
 // console.log(moment("yyyy/MM/DD"));
 // console.log(moment("YYYY-MM-DD"));
+
+
+// let arr = [1, 2, 3];
+// let arr2 = [100, 2, 3, 4, 10];
+// arr2.forEach(value => {
+//     if (!arr.includes(value)) {
+//         arr.push(value);
+//     }
+// })
+// console.log(arr);
+// let a = arr.sort((a, b) => a- b);
+// console.log(a);
+
+// function fun(string) {
+//     let a = string.split('');
+//     let b = [];
+//     a.forEach(value => {
+//         if (value <= 9 || value >= 0) {
+//             b.push(Number(value));
+//         }
+//     });
+//     return b;
+// }
+// console.log(fun('ab34bb43b'));
+
+// let obj = { name: "hello" };
+// function abc(obj, st) {
+//     return obj.st;
+// }
+// console.log(abc(obj, 'name'));
+
+
+// let arr1 = [
+//     {
+//         id: 1,
+//         slot: [
+//             { dosage: "g" },
+//             { dosage: "hello" },
+//         ]
+//     },
+//     {
+//         id: 2,
+//         slot: [
+//             { dosage: "a" },
+//             { dosage: "b" },
+//         ]
+//     },
+// ]
+// function abcd(arr) {
+//     return  arr.every(value => {
+//         if (value.slot.every(value => {
+//             let a = value.dosage.trim();
+//             return a.length > 0;
+//         })) {
+//             return true;
+//         }
+//     })
+//     // return b.every(i => i === true);
+// }
+// console.log(abcd(arr1));
+
