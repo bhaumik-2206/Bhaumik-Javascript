@@ -48,9 +48,3 @@
 //         body.className == "black";
 //     }
 // })
-for (let letter = 97; letter <= 122; letter++) {
-    console.log(String.fromCharCode(letter));
-    if (letter == 100) {
-        break;
-    }
-}

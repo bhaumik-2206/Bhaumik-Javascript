@@ -23,13 +23,12 @@
         for (let i = 0; i < name.length; i++) {
             for (let j = start; j <= end; j++) {
                 console.log(String.fromCharCode(j));
-                // myName.replaceChild = String.fromCharCode(j);
+                document.getElementById('p').innerHTML = String.fromCharCode(j) + " " + j;
                 if (String.fromCharCode(j) == name[i]) {
                     break;
                 }
             }
         }
-
 
     </script>
 </body>

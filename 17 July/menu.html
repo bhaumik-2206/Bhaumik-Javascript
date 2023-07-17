@@ -31,6 +31,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            transition: 1s ease;
         }
 
         nav {
@@ -46,14 +47,18 @@
             font-size: 2rem;
             display: none;
             padding: 10px 20px;
+            text-align: right;
+            position: absolute;
+            right: 20px;
+            top: 20px;
         }
 
         .mark {
             font-size: 2rem;
             text-align: right;
             position: absolute;
-            top: 10px;
-            right: 20px;
+            right: 40px;
+            top: 30px;
             display: none;
             z-index: 10;
             color: white;
@@ -61,25 +66,23 @@
 
         @media only screen and (max-width: 600px) {
             .menu {
-                text-align: right;
                 display: block;
             }
 
             nav {
                 background-color: transparent;
+                transition: 1s ease;
             }
 
             ul {
                 text-align: center;
                 width: 100%;
                 background-color: black;
-                position: relative;
+                position: absolute;
+                transition: 1s ease;
                 right: 100%;
-                display: none;
-            }
-
-            ul>li{
-                border-bottom: 1px solid white;
+                top: 0;
+                display: block;
             }
         }
     </style>
@@ -87,37 +90,49 @@
 
 <body>
 
-    <nav>
+    <nav id="nav">
         <ul id="ul">
-            <li><a href="#">Home</a></li>
+            <li><a href="https://www.google.com/">Home</a></li>
             <li><a href="#">Price</a></li>
             <li><a href="#">About Us</a></li>
             <li><a href="#">Contact</a></li>
             <li><a href="#">Log In</a></li>
         </ul>
+        <i class="fa-solid fa-bars menu" id="mainMenu"></i>
+        <i class="fa-solid fa-xmark mark" id="mark"></i>
     </nav>
-    <i class="fa-solid fa-bars menu" id="mainMenu"></i>
-    <i class="fa-solid fa-xmark mark" id="mark"></i>
 
     <script>
         let mainMenu = document.getElementById('mainMenu');
+        let nav = document.getElementById('nav');
         let ul = document.getElementById('ul');
         let mark = document.getElementById('mark');
-        
+        let max = window.matchMedia("(max-width: 600px)");
         mainMenu.addEventListener('click', function () {
             ul.style.display = "block";
-            ul.style.right = "0%";
-            // ul.style.transition = "1s ease";
+            ul.style.right = "0";
+            nav.style.transition = "1s ease";
             mainMenu.style.display = "none";
             mark.style.display = 'block';
         });
 
         mark.addEventListener('click', function () {
-            ul.style.display = "none";
-            ul.style.right = "100%";
-            mainMenu.style.display = "block";
-            mark.style.display = 'none';
-        })
+            ul.style.display = "";
+            ul.style.right = "";
+            mainMenu.style.display = "";
+            mark.style.display = '';
+        });
+        window.addEventListener('resize', function () {
+            if (window.innerWidth < 600) {
+                ul.style.display = "none";
+                mainMenu.style.display = "block";
+                mark.style.display = "none";
+            } else {
+                ul.style.display = "flex";
+                mainMenu.style.display = "none";
+                mark.style.display = "none";
+            }
+        });
     </script>
 </body>
 
