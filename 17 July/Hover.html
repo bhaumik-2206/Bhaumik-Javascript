@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hover Task</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <h1 id="myName">BHAUMIK</h1>
+    <p id="p"></p>
+
+    <script>
+        let myName = document.getElementById("myName");
+        let name = myName.innerHTML;
+        let start = 'A'.charCodeAt();
+        let end = 'Z'.charCodeAt();
+        for (let i = 0; i < name.length; i++) {
+            for (let j = start; j <= end; j++) {
+                console.log(String.fromCharCode(j));
+                // myName.replaceChild = String.fromCharCode(j);
+                if (String.fromCharCode(j) == name[i]) {
+                    break;
+                }
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
