@@ -48,3 +48,63 @@
 //         body.className == "black";
 //     }
 // })
+
+// let arr = [1, 2, [3, 4, 5], [1, 2], [5, 8]];
+// function compare(arr1, arr2) {
+//     return arr1.every((value, index) => arr1[index] === arr2[index]);
+// }
+// function compareWithValue(arr, number) {
+//     return arr.some(value => Array.isArray(value) && compare(value, number));
+// }
+// console.log(compareWithValue(arr, [1, 2]));
+// console.log(compareWithValue(arr, [2, 1]));
+// console.log(compareWithValue(arr, [5, 8]));
+
+// let arr = [1, 2, [3, 4, 5], [1, 2], [5, 8]];
+// function compare(arr1, arr2) {
+//     return arr1.every((value, index) => arr1.includes(arr2[index]));
+// }
+// function compareWithValue(arr, number) {
+//     return arr.some(value => Array.isArray(value) && compare(value, number));
+// }
+// console.log(compareWithValue(arr, [1, 2]));
+// console.log(compareWithValue(arr, [3, 4, 5]));
+// console.log(compareWithValue(arr, [5, 4, 3]));
+// console.log(compareWithValue(arr, [5, 9]));
+
+// function factorChaining(numbers) {
+//     for (let i = 0; i < numbers.length - 1; i++) {
+//         if (numbers[i + 1] % numbers[i] !== 0) {
+//             return false;
+//         }
+//     }
+//     return true;
+// }
+// console.log(factorChaining([2, 4, 8, 16, 32]));    // Output: true
+// console.log(factorChaining([2, 4, 16, 32, 64]));   // Output: true
+// console.log(factorChaining([2, 4, 16, 32, 68]));   // Output: false
+
+// let arr1 = [1, 2, 3, 4, 5];
+// let arr2 = [
+//     { id: 1, product: "PC" },
+//     { id: 4, product: "Notebok" },
+//     { id: 7, product: "Laptop" },
+// ]
+// function filterDiffId(arr1, arr2) {
+//     return arr2.filter(value => !arr1.includes(value.id));
+// }
+// console.log(filterDiffId(arr1,arr2));
+
+// function findMaximumLength(arr) {
+//     let a = 0;
+//     arr.forEach(value => {
+//         if (Array.isArray(value) && a < value.length) {
+//             a = value.length;
+//         }
+//     });
+//     return a;
+// }
+// console.log(findMaximumLength([2, 8, [6], 3, 3, 5, 3, 4, [5, 4], [6]]));
+// console.log(findMaximumLength([2, 8, [6, 3, 3], [4], 5, [3, 4, [5, 4]]]));
+// console.log(findMaximumLength([2, 8, [6, 3, 3], [4], 5, [3, 4, [5, 4]], [23, 56]]));
+// console.log(findMaximumLength([1, 5, 2, 6, 4, 23, 89]));
