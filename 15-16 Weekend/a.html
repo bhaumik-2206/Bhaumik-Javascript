@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Mouse Events</h1>
+    <button id="click">Click</button>
+    <button id="doubleclick">Double Click</button>
+    <button id="mousedown">Mouse Down</button>
+    <button id="mouseup">Mouse Up</button>
+    <button id="mouseover">Mouse Over</button>
+    <button id="mouseout">Mouse Out</button>
+    <button id="mousemove">Mouse Move</button>
+
+    <h1>Keyboard Events</h1>
+    <p>Key Down</p>
+    <input type="text" id="keydown">
+    <p>Key Up</p>
+    <input type="text" id="keyup">
+    <p>Key Press</p>
+    <input type="text" id="keypress">
+
+    <h1>Form Events</h1>
+    
+
+    <script>
+        // -----------------------Mouse Events---------------------
+        // 1 :- Click Event
+        let click = document.getElementById('click');
+        click.addEventListener('click', (event) => {
+            console.log("Click Event");
+        });
+
+        // 2 :- Double Click Event
+        let doubleclick = document.getElementById('doubleclick');
+        doubleclick.addEventListener('dblclick', function () {
+            console.log("Double Click Event");
+        });
+
+        // 3 :- Mouse Down Event
+        let mousedown = document.getElementById('mousedown');
+        mousedown.addEventListener('mousedown', function () {
+            console.log("Mouse Down Event");
+        });
+
+        // 4 :- Mouse Up Event
+        let mouseup = document.getElementById('mouseup');
+        mouseup.addEventListener('mouseup', function () {
+            console.log("Mouse Up Event");
+        });
+
+        // 5 :- Mouse Over Event
+        let mouseover = document.getElementById('mouseover');
+        mouseover.addEventListener('mouseover', function () {
+            console.log("Mouse Over Event");
+        });
+
+        // 6 :- ouse Out Event
+        let mouseout = document.getElementById('mouseout');
+        mouseout.addEventListener('mouseout', function () {
+            console.log("Mouse Out Event");
+        });
+
+        // 6 :- ouse Move Event
+        let mousemove = document.getElementById('mousemove');
+        mousemove.addEventListener('mousemove', function () {
+            console.log("Mouse Move Event");
+        });
+
+        // -----------------------Keyboard Events---------------------
+        // keydown Event
+        let keydown = document.getElementById('keydown');
+        keydown.addEventListener('keydown',function () {
+            let a  = keydown.value;
+            console.log(a);
+        });
+        // keyup Event
+        let keyup = document.getElementById('keyup');
+        keyup.addEventListener('keyup',function () {
+            let a  = keyup.value;
+            console.log(a);
+        });
+        // keypress Event
+        let keypress = document.getElementById('keypress');
+        keypress.addEventListener('keypress',function () {
+            let a  = keypress.value;
+            console.log(a);
+        });
+        
+        // -----------------------Form Events---------------------
+        // submit Event
+        // change Event
+        // input Event
+        // focus Event
+        // blur Event
+        
+        // -----------------------Window Events---------------------
+        // load Event
+        // resize Event
+        // scroll Event
+        
+        // -----------------------Touch Events---------------------
+        //touchstart Event
+        //touchend Event
+        //touchmove Event
+
+    </script>
+</body>
+
+</html>

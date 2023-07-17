@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: cornflowerblue;
+        }
+
+        .imageGallary {
+            width: 100%;
+            display: flex;
+        }
+
+        .image {
+            width: 25%;
+            height: 300px;
+            padding: 10px;
+        }
+
+        img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            color: white;
+            display: none;
+            z-index: 10;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Image Gallary -->
+
+    <div class="close" id="off">
+        <i class="fa-solid fa-xmark"></i>
+    </div>
+    <div class="imageGallary" id="main">
+        <div class="image">
+            <img id="plan" src="Image.jpg" alt="">
+        </div>
+        <div class="image">
+            <img id="tree" src="dawid-zawila--G3rw6Y02D0-unsplash.jpg" alt="">
+        </div>
+        <div class="image">
+            <img id="temple" src="beautiful-kedarnath-temple-uttarakhand-india-217627350.jpg" alt="">
+        </div>
+        <div class="image">
+            <img id="moon" src="wallpaper2you_129065.jpg" alt="">
+        </div>
+    </div>
+
+    <script>
+        let plan = document.getElementById('plan');
+        let image = document.querySelectorAll('.image');
+        let imgTag = document.querySelectorAll('img');
+        let main = document.getElementById('main');
+        let off = document.getElementById('off');
+
+        main.addEventListener("click", function (value) {
+            console.log(value.target);
+            value.target.style.width = "100vw";
+            value.target.style.height = "100vh";
+            value.target.style.position = 'absolute';
+            value.target.style.zIndex = '9';
+            value.target.style.top = "0";
+            value.target.style.left = "0";
+            off.style.display = "block";
+        })
+
+
+        off.addEventListener('click', function () {
+            imgTag.forEach(item => {
+                item.style.width = "100%";
+                item.style.height = "200px";
+                item.style.position = "relative";
+            });
+            off.style.display = "none";
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: lightblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        #clock>* {
+            font-size: 5rem;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: chocolate;
+            color: chartreuse;
+            font-weight: bold;
+            font-size: 2rem;
+            border: none;
+            border-radius: 10px;
+            margin-inline: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Stop Watch -->
+    <div id="clock">
+        <span id="hour">00</span>
+        <span>:</span>
+        <span id="minute">00</span>
+        <span>:</span>
+        <span id="second">00</span>
+        <span>:</span>
+        <span id="mili">00</span>
+    </div>
+    <div>
+        <button id="start">START</button>
+        <button id="stop">STOP</button>
+        <button id="reset">RESET</button>
+    </div>
+
+
+
+    <script>
+        // Stop Watch
+
+        let start = document.getElementById('start');
+        let stop = document.getElementById('stop');
+        let reset = document.getElementById('reset');
+        let printhour = document.getElementById('hour');
+        let printminute = document.getElementById('minute');
+        let printsecond = document.getElementById('second');
+        let printmili = document.getElementById('mili');
+        let hour = 0;
+        let minute = 0;
+        let second = 0;
+        let mili = 0;
+
+        start.addEventListener('click', function () {
+            condition = true;
+            stopWatch();
+        })
+        stop.addEventListener('click', function () {
+            condition = false;
+        })
+        reset.addEventListener('click', function () {
+            condition = false;
+            hour = 0;
+            minute = 0;
+            second = 0;
+            mili = 0;
+            printhour.innerHTML = '00';
+            printminute.innerHTML = '00';
+            printsecond.innerHTML = '00';
+            printmili.innerHTML = '00';
+        })
+
+        function stopWatch() {
+            if (condition) {
+                mili++;
+                if (mili === 100) {
+                    second++;
+                    mili = 0;
+                }
+                if (second === 60) {
+                    minute++;
+                    second = 0;
+                }
+                if (minute === 60) {
+                    hour++;
+                    minute = 0;
+                }
+
+                let h = hour;
+                let m = minute;
+                let s = second;
+                let mi = mili;
+
+                if (hour < 10) {
+                    h = "0" + h;
+                }
+                if (second < 10) {
+                    s = "0" + s;
+                }
+                if (minute < 10) {
+                    m = "0" + m;
+                }
+                if (mili < 10) {
+                    mi = "0" + mi;
+                }
+                printhour.innerHTML = h;
+                printminute.innerHTML = m;
+                printsecond.innerHTML = s;
+                printmili.innerHTML = mi;
+                setTimeout(stopWatch, 10);
+            }
+        }
+    </script>
+</body>
+
+</html>
