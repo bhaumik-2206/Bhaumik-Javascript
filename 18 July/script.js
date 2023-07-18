@@ -190,6 +190,24 @@
 // }
 // findMax();
 
+// Create a JavaScript function called calculatePrice that takes a two parameter price, discount and returns discounted price. 	(defaultDiscount = 10%)
+// function calculatePrice(price, discount = 10) {          // Normal Function
+//     return price - (price / discount);
+// }
+// console.log(calculatePrice(1000));
+// const calculatePrice = (price, discount = 10) => {       // Arrow Function
+//     return price - (price / discount);
+// }
+// console.log(calculatePrice(1000));
+
+// What is the syntax for declaring a JavaScript function called calculateMultiply that takes two parameters num1 and num2, and returns their multiplication? (make sure that never give an error if i passed anything) (if not pass anything then return 1)
+// function calculateMultiply(num1 = 1, num2 = 1) {
+//     return num1 * num2;
+// }
+// console.log(calculateMultiply(10,5));
+// console.log(calculateMultiply());
+
+
 
 
 // -------------------------String--------------------
@@ -218,6 +236,72 @@
 // }
 // console.log(printVowels("Hello"));
 
+// function is_string(pass_string) {
+//     return typeof pass_string == 'string' ? true : false;
+// }
+// console.log(is_string('w3resource'));
+// console.log(is_string([1, 2, 4, 0]));
+
+// function is_Blank(string) {
+//     return string.trim() === "" ? true : false;
+// }
+// console.log(is_Blank(''));
+// console.log(is_Blank('abc'));
+
+// function string_to_array(string) {
+//     return string.split(" ");
+// }
+// console.log(string_to_array("Robin Singh"));
+
+// function truncate_string(string, number) {
+//     return string.substring(0, number);
+// }
+// console.log(truncate_string("Robin Singh", 4));
+
+// function protect_email(email) {
+//     return email.slice(0,4) + "...." + email.slice(email.indexOf('@'));
+// }
+// console.log(protect_email("robin_singh@example.com"));
+// console.log(protect_email("rajbhundela@example.com"));
+
+// function string_parameterize(string) {
+//     return string.toLowerCase().replaceAll(" ","-")
+// }
+// console.log(string_parameterize("Robin Singh from USA."));
+
+// function capitalize_Words(string) {
+//     return string.split(" ").map(v => v.charAt(0).toUpperCase() + v.slice(1)).join(" ");
+// }
+// console.log(capitalize_Words('js string exercises'));
+
+// function insert(string, add = "", index = 0) {
+//     return string.slice(0, index) + add + string.slice(index);
+// }
+// console.log(insert('We are doing some exercises.'));
+// console.log(insert('We are doing some exercises.', 'JavaScript '));
+// console.log(insert('We are doing some exercises.', 'JavaScript ', 18));
+
+
+// function removeDuplicateValue(string) {
+//     let removeString = "";
+//     for (let i = 0; i < string.length; i++) {
+//         if (removeString.indexOf(string[i]) == -1) {
+//             removeString += string[i];
+//         }
+//     }
+//     return removeString;
+// }
+// console.log(removeDuplicateValue("Hello"));
+
+// let string = "Hello Javascript";
+// function getWord(string, character) {
+//     let a = string.split(" ");
+//     let b = a.filter(value => {
+//         return value.includes(character);
+//     });
+//     return b.join("");
+// }
+// console.log(getWord(string, 'l'));
 
 
 
