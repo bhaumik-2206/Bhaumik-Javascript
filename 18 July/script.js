@@ -1,3 +1,226 @@
+// ------------------------Scope---------------------
+// let a = 10;
+// function hello() {
+//     a = 20;
+//     console.log(a);
+// }
+// hello();
+// let a = 10;
+// {
+//     let b = 20;
+//     function hi() {
+//         let c = 30;
+//         function no() {
+//             console.log(a);      //10
+//             console.log(b);      //20
+//             console.log(c);      //30
+//             console.log(d);      // d is not defined
+//         };
+//         no()
+//     }
+// }
+// hi();
+
+// const a = 10;
+// {
+//     const a = 20;
+//     const b = 20;
+//     console.log(a);
+//     console.log(b);
+// }
+// console.log(a);
+
+// {
+//     const a = 20;
+// }
+// a = 30
+// console.log(a);
+
+
+
+// ------------------------Function-------------------
+// function first() {
+//     let a = ab = () => 1;
+//     return a;
+// }
+// let a = first();
+// console.log(a);     // Here , this is function
+// console.log(a());   // Here answer is 1
+
+// function first() {
+//     let a = ab = () => {
+//         let b = bc = () => {
+//             return 10;
+//         }
+//         return b;
+//     }
+//     return a;
+// }
+// let newOne = first();
+// console.log(newOne);
+// let second = newOne();
+// console.log(second);
+// console.log(second());
+
+// function abc() {
+//     let a = ab = () => 10;
+//     console.log(a);
+//     return bc();
+// }
+// function bc() {
+//     return z = () => 20;
+// }
+// let a = abc();
+// console.log(a);
+
+// function abc() {
+//     const ab = () => 40;
+//     abcd(() => ab());
+// }
+// function abcd(cb) {
+//     let a = cb();
+//     console.log(a);
+// }
+// console.log(abc());
+
+
+// What is the syntax for declaring a JavaScript function called calculateSum that takes two parameters num1 and num2, and returns their sum? (write all four types of functions as we discussed in session)
+// With parameter and with return value
+// function calculateSum(num1, num2) {
+//     return num1 + num2;
+// }
+// console.log(calculateSum(10, 20));
+
+// With parameter and without return value
+// function calculateSum(num1, num2) {
+//     console.log(num1 + num2);
+// }
+// calculateSum(10, 20);
+
+// without parameter and with return value
+// function calculateSum() {
+//     let num1 = 10;
+//     let num2 = 20;
+//     return num1+num2
+// }
+// console.log(calculateSum(10, 20));
+
+// Without parameter and Without return value
+// function calculateSum() {
+//     let num1 = 10;
+//     let num2 = 20;
+//     console.log(num1 + num2);
+// }
+// calculateSum(10, 20);
+
+// Write a function that takes three parameters and returns the maximum number of three.(use ternary operator and if..else as well) (Also make all four types of function as we discussed in session) (total: 8 functions definition)
+// With parameter and with return value
+// function findMax(a, b, c) {
+//     return a > b ? (a > c ? a : c) : (b > c ? b : c);
+// }
+// console.log(findMax(10, 20, 30));
+// function findMax(a, b, c) {
+//     if (a > b && a > c) {
+//         return a;
+//     } else if (b > c) {
+//         return b;
+//     } else {
+//         return c;
+//     }
+// }
+// console.log(findMax(10, 20, 30));
+
+// With parameter and without return value
+// function findMax(a, b, c) {
+//     console.log(a > b ? (a > c ? a : c) : (b > c ? b : c));
+// }
+// findMax(10, 20, 30)
+// function findMax(a, b, c) {
+//     if (a > b && a > c) {
+//         console.log(a);
+//     } else if (b > c) {
+//         console.log(b);
+//     } else {
+//         console.log(c);
+//     }
+// }
+// findMax(10, 20, 30);
+
+// Without parameter and with return value
+// function findMax() {
+//     let a = 10;
+//     let b = 20;
+//     let c = 30;
+//     return a > b ? (a > c ? a : c) : (b > c ? b : c);
+// }
+// console.log(findMax());
+// function findMax() {
+//     let a = 10;
+//     let b = 20;
+//     let c = 30;
+//     if (a > b && a > c) {
+//         return a;
+//     } else if (b > c) {
+//         return b;
+//     } else {
+//         return c;
+//     }
+// }
+// console.log(findMax());
+
+// Without parameter and without return value
+// function findMax() {
+//     let a = 10;
+//     let b = 20;
+//     let c = 30;
+//     console.log(a > b ? (a > c ? a : c) : (b > c ? b : c));
+// }
+// findMax();
+// function findMax() {
+//     let a = 10;
+//     let b = 20;
+//     let c = 30;
+//     if (a > b && a > c) {
+//         console.log(a);
+//     } else if (b > c) {
+//         console.log(b);
+//     } else {
+//         console.log(c);
+//     }
+// }
+// findMax();
+
+
+
+// -------------------------String--------------------
+//at, chatAt, charCodeAt, concat, endsWith, includes, indexOf, lastIndexOf, match, matchAll, padEnd, padStart, replace,replaceAll, search, slice, split, startsWith, substring, toLowerCase, toUpperCase, trim, trimEnd, trimStart
+// Write a function that counts the number of vowels in a string.
+// function countVowels(string) {
+//     let a = 0;
+//     for (let i = 0; i < string.length; i++) {
+//         if (string[i] == 'a' || string[i] == 'e' || string[i] == 'i' || string[i] == 'o' || string[i] == 'u' || string[i] == 'A' || string[i] == 'E' || string[i] == 'I' || string[i] == 'O' || string[i] == 'U') {
+//             a++;
+//         }
+//     }
+//     return a;
+// }
+// console.log(countVowels("Hello"));
+
+// Print Vowels in given string
+// function printVowels(string) {
+//     let a = [];
+//     for (let i = 0; i < string.length; i++) {
+//         if (string[i] == 'a' || string[i] == 'e' || string[i] == 'i' || string[i] == 'o' || string[i] == 'u' || string[i] == 'A' || string[i] == 'E' || string[i] == 'I' || string[i] == 'O' || string[i] == 'U') {
+//             a.push(string[i]);
+//         }
+//     }
+//     return a;
+// }
+// console.log(printVowels("Hello"));
+
+
+
+
 // --------------------------Object-------------------
 // let car = {
 //     brand: "BMW",
@@ -204,8 +427,8 @@
 // console.log(average(books));
 
 // Implement a function that takes a string and returns an object with each unique word in the string as a key and the number of occurrences of that word as the value.
-let string = "This is a new sentence. we are learning Javascript";
-function returnAnObject(string) {
-    return string.split("");
-}
-console.log(returnAnObject(string));
+// let string = "This is a new sentence. we are learning Javascript";
+// function returnAnObject(string) {
+//     return string.split("");
+// }
+// console.log(returnAnObject(string));
