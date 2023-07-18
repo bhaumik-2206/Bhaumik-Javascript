@@ -213,10 +213,13 @@
 // -------------------------String--------------------
 //at, chatAt, charCodeAt, concat, endsWith, includes, indexOf, lastIndexOf, match, matchAll, padEnd, padStart, replace,replaceAll, search, slice, split, startsWith, substring, toLowerCase, toUpperCase, trim, trimEnd, trimStart
 // Write a function that counts the number of vowels in a string.
+// function vowels(string) {
+//     return ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'].includes(string);
+// }
 // function countVowels(string) {
 //     let a = 0;
 //     for (let i = 0; i < string.length; i++) {
-//         if (string[i] == 'a' || string[i] == 'e' || string[i] == 'i' || string[i] == 'o' || string[i] == 'u' || string[i] == 'A' || string[i] == 'E' || string[i] == 'I' || string[i] == 'O' || string[i] == 'U') {
+//         if (vowels(string[i])) {
 //             a++;
 //         }
 //     }
@@ -228,7 +231,7 @@
 // function printVowels(string) {
 //     let a = [];
 //     for (let i = 0; i < string.length; i++) {
-//         if (string[i] == 'a' || string[i] == 'e' || string[i] == 'i' || string[i] == 'o' || string[i] == 'u' || string[i] == 'A' || string[i] == 'E' || string[i] == 'I' || string[i] == 'O' || string[i] == 'U') {
+//         if (vowels(string[i])) {
 //             a.push(string[i]);
 //         }
 //     }
@@ -303,6 +306,95 @@
 // }
 // console.log(getWord(string, 'l'));
 
+// How do you count the number of Letter in a string in JavaScript?
+// function countNumberOfWord(string) {
+//     return string.split(" ").join("").length;
+// }
+// console.log(countNumberOfWord("Hello World"));
+
+// Find Longest word in JS
+// function findLongestWord(string) {
+//     let a = "";
+//     let b = 0;
+//     string.split(" ").forEach(value => {
+//         if (value.length >= b) {
+//             b = value.length;
+//             a = value;
+//         }
+//     });
+//     return a;
+// }
+// console.log(findLongestWord("Hello we are learning javascript"));
+
+// Remove HTML tags
+// function remobveHTMLTags(string) {
+//     return string.slice(string.indexOf(">")+1,string.lastIndexOf("<"));
+// }
+// console.log(remobveHTMLTags("<h1>Hello World</h1>"));
+
+// let string = "Bhaumik Vansh Jeel Krishna Rudra Sachin Dhruval Bhakti Meghna Pujan Prakhar";
+// function randomName(string) {
+//     let a = string.split(" ");
+//     let r = Math.floor(Math.random() * (a.length - 0) + 0);
+//     console.log(r);
+//     return a.at(r);
+// }
+// console.log(randomName(string));
+
+// let string1 = "abcd";
+// let string2 = "cdef";
+// function differenceBetweenString(str1, str2) {
+//     let a = "";
+//     for (let i = 0; i < str1.length; i++) {
+//         if (!str2.includes(str1[i])) {
+//             a += str1[i];
+//         }
+//     }
+//     for (let i = 0; i < str2.length; i++) {
+//         if (!str1.includes(str2[i])) {
+//             a += str2[i];
+//         }
+//     }
+//     return a;
+// }
+// console.log(differenceBetweenString(string1, string2));
+
+
+// function abc(a, b) {
+//     for (let i = 0; i <= (Math.pow(a, i)); i++) {
+//         if (Math.pow(a, i) == b) {
+//             return true;
+//         }
+//     }
+// }
+// console.log(abc(3, 9));
+// console.log(abc(3, 10));
+
+// function isPower_of_two(a, b) {
+//     if( b % a !== 0) return false
+//     for (let i = 0; i < b; i++) {
+//         console.log(i);
+//         if (Math.pow(a, i) == b) {
+//             return true;
+//         }else if(Math.pow(a, i) > b){
+//             return false;
+//         }
+//     }
+//     return false;
+// }
+// console.log(isPower_of_two(3, 9));
+// console.log(isPower_of_two(3, 90));
+
+
+// let a = 10;
+// console.log(a++ + ++a + ++a + a++ + --a + a-- + a++ + ++a); //10 + 12 + 13 + 13 + 13 + 13 + 12 + 14
+// console.log((1000000000000000128).toFixed(10));
+// console.log(20.25.toExponential(2));
+// console.log(typeof 20.23.toFixed(2));
+// console.log(typeof 20.23.toExponential(2));
+// console.log(typeof 20.23.toLocaleString(2));
+// console.log(typeof 20.23.toPrecision(2));
+// console.log(typeof 20.23.toString(2));
 
 
 // --------------------------Object-------------------
