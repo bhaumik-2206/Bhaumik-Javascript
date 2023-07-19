@@ -193,7 +193,7 @@
 // let array = [1, 2, 3, 4, 5];
 // const [a, b] = array;
 // const [a, , b] = array;
-// const [a = aDefault, b] = array;         // -- 
+// const [a = aDefault, b] = array;         // --
 // const [a, b, ...rest] = array;
 // const [a, , b, ...rest] = array;
 // const [a, b, ...{ pop, push }] = array;
@@ -408,10 +408,93 @@
 // }
 // console.log(diffArray(string));
 
+// function getSameElement(arr1, arr2) {
+//     let arr = [];
+//     arr1.forEach((value,index) => {
+//         if(arr2.includes(value)){
+//             arr.push(value);
+//         }
+//     });
+//     return arr;
+// }
+// console.log(getSameElement([1, 2, 3, 4], [3, 4, 5, 6]));
 
+// function medianElement(arr) {
+//     arr.sort((a, b) => a - b);
+//     let a;
+//     if (arr.length % 2 == 0) {
+//         let b = (arr[((arr.length / 2) - 1)] + arr[(arr.length / 2)]) / 2;
+//         console.log(b);
+//         return arr[b];
+//     } else {
+//         a = Math.floor((arr.length) / 2);
+//     }
+//     return arr[a];
+// }
+// console.log(medianElement([5, 2, 8, 1, 3]));
+// console.log(medianElement([5, 2, 8, 1]));
 
+// function rotate(arr, number) {
+//     let empty = [];
+//     let findNumberIndex = arr.findIndex(value => value == number)
+//     let a = arr.slice(findNumberIndex + 1);
+//     let b = arr.slice(0, findNumberIndex+1);
+//     return a.concat(b);
+// }
+// console.log(rotate([1, 2, 3, 4, 5], 2)); // [3 , 4 , 5 , 1 , 2]
 
+// let arr = ["apple", "banana", "mango", "apple"];
+// function removeDuplicate(arr) {
+//     let a = [];
+//     arr.forEach(value => {
+//         value.toLowerCase();
+//         if (!a.includes(value)) {
+//             a.push(value);
+//         }
+//     });
+//     return a;
+// }
+// console.log(removeDuplicate(arr));
 
+// let arr = [
+//     { id: 6 },
+//     { id: 1 },
+//     { id: 2 },
+//     { id: 3 },
+//     { id: 3 },
+//     { id: 1 },
+// ]
+// function removeDuplicateId(arr) {
+//     let a = [];
+//     arr.forEach(value => {
+//         if (!(a.find(e => e.id == value.id))) {
+//             a.push(value);
+//         }
+//     });
+//     return a;
+// }
+// console.log(removeDuplicateId(arr));
+
+// function findkthElement(arr, element) {
+//     arr.sort((a, b) => a - b);
+//     return arr[arr.length - element];
+// }
+// console.log(findkthElement([5, 2, 8, 1, 3], 3));
+
+// function table(number) {
+//     for (let i = 1; i <= 10; i++) {
+//         console.log(number + "*" + i + "=" + i * number);
+//     }
+// }
+// console.log(table(4));
+
+// function multiplyOther(arr) {
+//     let a = arr.map(value => {
+//         return arr.reduce((acc, cur) => cur == value ? acc : acc * cur, 1);
+//     });
+//     return a;
+// }
+// console.log(multiplyOther([1, 2, 3, 4]));
 
 
 // Write a JavaScript function to find the longest common starting substring in a set of strings
@@ -419,10 +502,12 @@
 //     let a = "";
 //     let b = arr1[1].split("");
 //     let c = arr1[0].split("");
-//     for (let i = 0; i < b.length; i++) {             // doubt
+//     for (let i = 0; i < b.length; i++) {
 //         console.log(b[i]);
 //         if (b[i] == c[i]) {
 //             a += c[i];
+//         } else {
+//             break;
 //         }
 //     }
 //     return a;
