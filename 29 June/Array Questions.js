@@ -1157,7 +1157,7 @@ const students = [
 //     return arr;
 // }
 // console.log(num_string_range('a', 'z', 2));     // ["a", "c", "e", "g", "i", "k", "m", "o", "q", "s", "u", "w", "y"]
-// console.log(num_string_range('A', 'Z', 2));     // ["Z", "X", "V", "T", "R", "P", "N", "L", "J", "H", "F", "D", "B"]
+// console.log(num_string_range('A', 'Z', 2));     // ['A', 'C', 'E', 'G','I', 'K', 'M', 'O','Q', 'S', 'U', 'W','Y']
 // console.log(num_string_range(0, -5, 1));        //  [0, -1, -2, -3, -4, -5]
 // console.log(num_string_range(0, 25, 5));        //  [0, 5, 10, 15, 20, 25]
 // console.log(num_string_range(20, 5, 5));        //  [20, 15, 10, 5]

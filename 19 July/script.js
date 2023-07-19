@@ -17,6 +17,197 @@
 // console.log(obj2);
 // console.log(obj3);
 
+// function operationObj(obj) {
+//     obj = { ...obj, c: 12 }
+//     console.log(obj);
+// }
+// let a = { x: 34, y: 56 }
+// operationObj(a);
+// console.log(a);
+
+// const source = { a: 1 };
+// const target = { b: 2 };
+// Object.assign(target, source);
+// console.log(target);
+
+// const obj1 = { a: 12, b: 23 };
+// const obj2 = obj1;
+// const obj3 = { ...obj1 };
+// obj1.c = 23;
+// console.log(obj1.c, obj2.c, obj3.c);
+
+// const obj1 = { a: 12, b: 23 };
+// const obj2 = { a: 44, b: 45 };
+// const obj3 = Object.assign(obj1, obj2);
+// obj2.a = 22;
+// console.log(obj1, obj2, obj3);
+
+// const obj1 = { a: 77, b: 67 };
+// const obj2 = { a: 90, b: 34 };
+// const obj3 = Object.assign(obj1, obj2);
+// obj1.a = 22;
+// console.log(obj3);
+
+// const obj1 = { a: 77, b: 67 };
+// const obj2 = { a: 90, b: 34 };
+// const obj3 = Object.assign({}, obj1, obj2);
+// obj1.a = 22;
+// console.log(obj3);
+
+// const source = { a: { b: 1 } };
+// const target = {};
+// Object.assign(target, source);
+// console.log(target);
+
+// const source = { a: { b: 1 } };
+// const target = {};
+// Object.assign(target, JSON.parse(JSON.stringify(source)));
+// source.a.b = 2;
+// console.log(target);
+
+// const source = { a: 1 };
+// const target = Object.assign({}, source);
+// delete target.a;
+// console.log(source);
+
+// const target = { a: 1 };
+// const source = { b: 2 };
+// const result = Object.assign(target, source);
+// console.log(result === source);
+
+// const target = { a: 1 };
+// const source = { b: 2 };
+// const result = Object.assign(target, source);
+// console.log(result === { a: 1, b: 2 });
+
+// const target = { a: 1 };
+// const source = { b: 2 };
+// Object.assign(target, source);
+// target.b = 234;
+// console.log(source);
+
+// const target = {};
+// const source = { a: 1 };
+// const result = Object.assign(target, source);
+// source.a = 2;
+// console.log(result);
+
+// const target = {};
+// const source = { a: { b: 1 } };
+// const result = Object.assign(target, source);
+// result.a.b = 2;
+// console.log(source);
+
+// const target = { a: { b: 1 } };
+// const source = { a: [2, 3, 4] };
+// const result = Object.assign(target, source);
+// console.log(result);
+
+// const target = { a: { b: 1 } };
+// const source = { a: [2, 3, 4] };
+// const result = Object.assign(target, source);
+// target.a[2] = 90;
+// console.log(result);
+
+// const target = { a: { b: { c: 1 } } };
+// const source = { a: { b: { d: 2 } } };
+// const result = Object.assign(target, source);
+// result.a.b.d = 3;
+// console.log(target);
+
+// var student = {
+//     name: "David Rayy",
+//     sclass: "VI",
+//     rollno: 12
+// };
+// for (const key in student) {
+//     console.log(key + " " + student[key]);
+// }
+
+// function operationObj(obj) {
+//     obj = { ...obj, c: 12 }
+// }
+// let a = { x: 34, y: 56 }
+// operationObj(a);
+// console.log(a);
+
+// function operationObj(obj) {
+//     obj.z = { ...obj, c: 12 }
+// }
+// let a = { x: 34, y: 56 }
+// operationObj(a);
+// console.log(a);
+
+// const target = { a: { b: { c: 1 } } };
+// const source = { a: { b: { d: 2 } } };
+// const result = Object.assign(target, source);
+// result.a.b.d = 3;
+// console.log(source);
+
+// let obj1 = { a: 23, b: 45 };
+// let arr1 = [{ ...obj1 }];
+// let arr2 = arr1;
+// arr2[0].c = 5;
+// console.log(arr1)
+
+// let obj1 = { a: 23, b: 45, c: { f: 990 } };
+// let arr1 = [{ ...obj1 }];
+// let arr2 = arr1;
+// arr2[0].c = 5;
+// obj1.c.f = 30;
+// console.log(arr1);
+// console.log(obj1);
+
+// let obj1 = { a: 23, b: 45, c: { f: 990 } };
+// let arr1 = [{ ...obj1 }];
+// let arr2 = arr1;
+// obj1.c.f = 30;
+// console.log(arr1);
+
+// let obj1 = { a: 23, b: 45 };
+// let arr1 = Object.assign([], [{ ...obj1 }]);
+// let arr2 = arr1;
+// arr2[0].c = 5;
+// console.log(arr1);
+
+// let obj1 = { a: 23, b: 45 };
+// let arr1 = [{ ...obj1 }];
+// let arr2 = Object.assign([], arr1);
+// arr2[0].c = 5;
+// console.log(arr1);
+
+// let obj1 = { a: 23, b: 45 };
+// let arr1 = [{ ...obj1 }];
+// let arr2 = Object.assign([], [{ ...arr1[0] }]);
+// arr2[0].c = 5;
+// console.log(arr1);
+
+// let obj1 = { a: 34, b: 56, c: { h: 77, j: 90 } };
+// let obj2 = Object.assign({}, obj1);
+// let obj3 = Object.assign({ ...obj2 }, { c: { k: 44 } });
+// obj2.c.h = 67;
+// console.log(obj1);
+// console.log(obj2);
+// console.log(obj3);
+
+// let array = [1, 2, 3, 4, 5];
+// const [a, b] = array;
+// const [a, , b] = array;
+// const [a = aDefault, b] = array;         // -- 
+// const [a, b, ...rest] = array;
+// const [a, , b, ...rest] = array;
+// const [a, b, ...{ pop, push }] = array;
+// const [a, b, ...[c, d]] = array;
+// console.log(a);
+// console.log(b);
+// console.log(rest);
+
+// const array = [1, 2, { pop: 'pop value', push: 'push value' }, 4, 5];
+// const [a, b, ...{ pop, push }] = array;
+// console.log(a);
+// console.log(b);
+// console.log(pop);
+// console.log(push);
 
 // ------------------Array----------------------
 // let obj1 = [{ id: 1 }, { id: 2 }];
@@ -121,6 +312,101 @@
 // }
 // console.log(swapCase('The Quick Brown Fox'));
 
+// There are two arrays with individual values. Write a JavaScript program to compute the sum of each individual index value in the given array.
+// array1 = [1, 0, 2, 3, 4];
+// array2 = [3, 5, 6, 7, 8, 13, 15];
+// function sumOfIndexes(arr1, arr2) {
+//     let a = [];
+//     arr2.forEach((value, index) => {
+//         if (arr1[index] == undefined) {
+//             a.push(arr2[index]);
+//         } else if (arr2[index] == undefined) {
+//             a.push(arr1[index]);
+//         } else {
+//             a.push(arr1[index] + arr2[index]);
+//         }
+//     });
+//     return a;
+// }
+// console.log(sumOfIndexes(array1, array2));
+
+// Write a JavaScript program to find duplicate values in a JavaScript array.
+// function findDuplicate(arr) {
+//     let a = [];
+//     arr.forEach((value, index) => {
+//         for (let i = index + 1; i < arr.length; i++) {
+//             if (a.includes(arr[i])) {
+//                 return false;
+//             } else if (value == arr[i]) {
+//                 let b = arr.slice(i, i + 1);
+//                 return a = a.concat(b);
+//             }
+//         }
+//     });
+//     return a;
+// }
+// console.log(findDuplicate(['v', 'r', 4, 2, 4, 1, 4, 3, 'v', 'r', 'r']));
+
+//  Write a JavaScript program to find a pair of elements (indices of the two numbers) in a given array whose sum equals a specific target number.
+// function findIndexOfSum(number, sum) {
+//     for (let i = 0; i < number.length; i++) {
+//         for (let j = i; j < number.length; j++) {
+//             if (number[i] + number[j] == sum) {
+//                 return i + " " + j;
+//             }
+//         }
+//     }
+// }
+// console.log(findIndexOfSum([10, 20, 10, 40, 50, 60, 70], 100));
+
+// Write a JavaScript function to create a specified number of elements with a pre-filled numeric value array.
+// function array_filled(indexes, value) {
+//     let empty = [];
+//     for (let i = 0; i < indexes; i++) {
+//         empty.push(value);
+//     }
+//     return empty;
+// }
+// console.log(array_filled(6, 0));
+// console.log(array_filled(5, 121));
+
+// Write a JavaScript function to generate an array of integer numbers, increasing one from the starting position, of a specified length.
+// function array_range(start, total) {
+//     let empty = [];
+//     for (let i = 0; i < total; i++) {
+//         empty.push(start);
+//         start++;
+//     }return empty;
+// }
+// console.log(array_range(1, 4));
+// console.log(array_range(-6, 4));
+
+// Write a JavaScript function to generate an array between two integers of 1 step length.
+// function rangeBetwee(start,end) {
+//     let empty = [];
+//     for (let i = start; i <= end; i++) {
+//         empty.push(i);
+//     }
+//     return empty;
+// }
+// console.log(rangeBetwee(4, 7));
+// console.log(rangeBetwee(-4, 7));
+
+// let string = "Every developer likes to mix kubernetes and javascript";
+// function diffArray(string) {
+//     let a = string.split(" ");
+//     let maxLength = a.reduce((acc, cur) => acc > cur.length ? acc.length : cur.length, 0);
+//     let empty = [];
+//     for (let j = 0; j < maxLength; j++) {
+//         let main = [];
+//         for (let i = 0; i < a.length; i++) {
+//             main.push(a[i].charAt(j));
+//         }
+//         empty.push(main.join(""));
+//     }
+//     return empty;
+// }
+// console.log(diffArray(string));
 
 
 
@@ -128,6 +414,20 @@
 
 
 
+// Write a JavaScript function to find the longest common starting substring in a set of strings
+// function findString(arr1) {
+//     let a = "";
+//     let b = arr1[1].split("");
+//     let c = arr1[0].split("");
+//     for (let i = 0; i < b.length; i++) {             // doubt
+//         console.log(b[i]);
+//         if (b[i] == c[i]) {
+//             a += c[i];
+//         }
+//     }
+//     return a;
+// }
+// console.log(findString(['go', 'google']));
 
 // function calculateAllIntegerSum(arr) {
 //     return arr.map(value => {
