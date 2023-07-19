@@ -4,6 +4,18 @@
 // Object.assign({}, obj1, obj2).c = { a: 20, b: 40 };
 // console.log(obj1);
 
+// function assign(obj1, obj2) {
+//     for (let value in obj2) {
+//         obj1[value] = obj2[value];
+//     }
+//     return obj1;
+// }
+// let obj1 = { a: 10, b: 20 };
+// let obj2 = { b: 30, c: 40 };
+// let obj3 = assign(obj1, obj2);
+// console.log(obj1);
+// console.log(obj2);
+// console.log(obj3);
 
 
 // ------------------Array----------------------
@@ -57,9 +69,61 @@
 // console.log(arr);
 // console.log(a);
 
-let arr = [1,4,3,2];
-arr.sort();
-console.log(arr);
+// let arr = [1,4,3,2];
+// arr.sort();
+// console.log(arr);
+
+// Write a JavaScript program that accepts a number as input and inserts dashes (-) between each even number. For example if you accept 025468 the output should be 0-254-6-8.
+// function addDashBetweenEven(numbers) {
+//     let blank = "";
+//     for (let i = 0; i < numbers.length; i++) {
+//         if (numbers[i] % 2 == 0 && numbers[i - 1] % 2 == 0) {
+//             blank += "-" + numbers[i];
+//         }else{
+//             blank += numbers[i]
+//         }
+//     }
+//     return blank;
+// }
+// console.log(addDashBetweenEven('025468'));
+// console.log(addDashBetweenEven('24681826'));
+
+// Write a JavaScript program to find the most frequent item in an array.
+// function mostFrequentItem(arr) {
+//     let count = 0;
+//     let store = 0;
+//     arr.forEach(value => {
+//         for (let i = 0; i < arr.length; i++) {                               // doubt
+//             let a = arr[i];
+//             if (value == a) {
+//                 count++;
+//             }
+//         }
+//         if (store < count) {
+//             store = count;
+//         }
+//         count = 0;
+//     });
+//     return store;
+// }
+// console.log(mostFrequentItem([3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3]));
+
+// Write a JavaScript program that accepts a string as input and swaps the case of each character.
+// function swapCase(string) {
+//     let a = string.split("");
+//     return a.map(value => {
+//         if(value == value.toUpperCase()){
+//             return value.toLowerCase();
+//         }else{
+//             return value.toUpperCase();
+//         }
+//     }).join("");
+// }
+// console.log(swapCase('The Quick Brown Fox'));
+
+
+
+
 
 
 
