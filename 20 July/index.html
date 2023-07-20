@@ -5,6 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DOM Events</title>
+    <style>
+        #addText {
+            margin: 10px;
+            padding: 20px;
+            border: 2px solid red;
+        }
+
+        #addText>button {
+            padding: 10px 60px;
+            background-color: black;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #input {
+            padding: 5px 20px;
+            font-size: 20px;
+            background-color: aqua;
+            border: 1px solid black;
+        }
+
+        #addText>ol>* {
+            font-size: 20px;
+        }
+
+        .formVal {
+            border: 2px solid red;
+            margin: 10px;
+            padding: 10px;
+        }
+    </style>
 </head>
 
 <body id="body">
@@ -59,6 +91,48 @@
         <p id="secondp">Hello</p>
     </div>
 
+    <div style="padding: 10px;" id="client">
+        <p style="border: solid; padding: 10px;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
+            dolore commodi veritatis maiores repudiandae voluptate, nam temporibus est pariatur quaerat sunt, at
+            architecto? Doloribus corrupti alias blanditiis perspiciatis deserunt quia!</p>
+    </div>
+
+    <a id="w3r" type="text/html" hreflang="en-us" rel="nofollow" target="_self"
+        href="https://www.w3resource.com/">w3resource</a>
+
+    <br><br>
+    <span>click Me to change the image</span>
+    <img id="image1" width="400px"
+        src="https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png" alt="">
+
+    <div id="addA">
+
+    </div>
+
+    <br>
+    <button id="alertMe">Alert</button>
+
+    <div id="addText">
+        <input type="text" id="input">
+        <button id="add">Add</button>
+        <br>
+        <ol id="addOl"></ol>
+    </div>
+
+    <div class="formVal">
+        <form action="">
+            <label for="username">User Name:-</label>
+            <input type="text" id="username">
+            <label for="password">Password</label>
+            <input type="password" name="" id="password"><br><br>
+            <button id="subBtn">Check</button>
+        </form>
+    </div>
+
+    <div class="formVal">
+        <h2>Heighlight Word greater than 7 character</h2>
+        <p id="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae quis rem eveniet non velit dolore a nostrum reprehenderit fugit, provident eius, cumque architecto incidunt consequuntur vel est fugiat aspernatur temporibus at aut! Laboriosam, veniam! Numquam architecto officiis nobis, est eveniet esse ratione suscipit, reiciendis, itaque quos eius! Excepturi cumque sit, rem vero numquam architecto optio dolorem odio amet harum quaerat error similique maiores eum quo nulla! Sunt omnis consectetur fuga voluptatem molestias veniam! Exercitationem velit minima cupiditate expedita iusto, cum esse autem vel cumque porro at ab ad aut iste quis nam. Impedit, ipsum. Explicabo a ullam veniam inventore amet?</p>
+    </div>
 
 
 

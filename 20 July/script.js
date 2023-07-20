@@ -26,12 +26,12 @@
 // document.getElementById('mouseenter').addEventListener('mouseenter', function () {
 //     console.log("Mouse Enter");
 // });
-document.getElementById('mouseout').addEventListener('mouseout', function () {
-    console.log("Mouse Out");
-});
-document.getElementById('mouseleave').addEventListener('mouseleave', function () {
-    console.log("Mouse Leave");
-});
+// document.getElementById('mouseout').addEventListener('mouseout', function () {
+//     console.log("Mouse Out");
+// });
+// document.getElementById('mouseleave').addEventListener('mouseleave', function () {
+//     console.log("Mouse Leave");
+// });
 
 
 // function keyDown(a) {
@@ -142,3 +142,98 @@ let child = document.querySelectorAll('li');
 // dataset
 // console.log(grandParent.dataset);
 // console.log(grandParent.dataset.name);
+// grandParent.dataset.newName = "Hello";
+// console.log(grandParent.dataset);
+
+// replaceChild
+// let old = parent.children[0];
+// console.log(old);
+// let newEle = document.createElement('li');
+// newEle.innerText = "Child Others";
+// parent.replaceChild(newEle, old);
+
+let client = document.getElementById("client");
+client.addEventListener("click", logKey);
+function logKey(e) {
+    console.log("Client X :-" + e.clientX);
+    console.log("Page X :-" + e.pageX);
+    console.log("Screen X :-" + e.screenX);
+    console.log("Off Set X :-" + e.offsetX);
+}
+
+// let link = document.getElementById('w3r');
+// console.log(link);
+
+
+// Creating Element
+// let newElement = document.createElement('h1');
+// newElement.innerText = "This is H1";
+// client.append(newElement);
+// console.log(newElement);
+
+// client.append("Hello");
+
+// changing an image on click
+let image1 = document.getElementById('image1');
+image1.addEventListener('click', function () {
+    image1.src = "https://www.simplilearn.com/ice9/free_resources_article_thumb/what_is_image_Processing.jpg";
+})
+
+// console.log(image1);
+// image1.addEventListener('click', function () {
+//     image1.setAttribute("src", "https://www.simplilearn.com/ice9/free_resources_article_thumb/what_is_image_Processing.jpg")
+// });
+
+// create link with JS
+let addA = document.getElementById('addA');
+let newLink = document.createElement('a');
+newLink.href = "https://www.google.com/";
+newLink.innerText = "This is Google";
+addA.append(newLink);
+
+let alertMe = document.getElementById('alertMe');
+alertMe.addEventListener('click', function () {
+    alert("You are click on BUTTON");
+})
+
+
+// Add 
+let addText = document.getElementById('addText');
+let input = document.getElementById('input');
+let addbtn = document.getElementById('add');
+let addOl = document.getElementById('addOl');
+function addItem() {
+    let newLi = document.createElement('li');
+    let value = input.value;
+    value = value.slice(0, 1).toUpperCase() + value.slice(1).toLowerCase();
+    newLi.innerText = value;
+    addOl.appendChild(newLi);
+    input.value = "";
+}
+addbtn.addEventListener('click', addItem);
+document.addEventListener("keydown", function (e) {
+    if (e.key == 'Enter') {
+        addItem();
+    }
+});
+
+
+// If User name and password are same than alert box print match else password doesn't matched
+let username = document.getElementById('username');
+let password = document.getElementById('password');
+let subBtn = document.getElementById('subBtn');
+subBtn.addEventListener("click", function () {
+    let userValue = username.value;
+    let passValue = password.value;
+    if (userValue == passValue) {
+        alert("Match");
+    } else {
+        alert("Password doesn't matched");
+    }
+});
+
+
+let paragraph = document.getElementById('paragraph');
+let a = paragraph.innerText.split(" ");
+let b = a.map(value => value.length < 8 ? value : `<span style="background-color:yellow;">`+value+"</span>").join(" ");
+paragraph.innerHTML = b;
