@@ -18,6 +18,22 @@
 //     }
 // })
 
+
+// Difference Between mouseover and mouseenter / mouseout and mouseleave
+// document.getElementById('mouseover').addEventListener('mouseover', function () {
+//     console.log("Mouse Over");
+// });
+// document.getElementById('mouseenter').addEventListener('mouseenter', function () {
+//     console.log("Mouse Enter");
+// });
+document.getElementById('mouseout').addEventListener('mouseout', function () {
+    console.log("Mouse Out");
+});
+document.getElementById('mouseleave').addEventListener('mouseleave', function () {
+    console.log("Mouse Leave");
+});
+
+
 // function keyDown(a) {
 //     console.log('Keydown event:', a.key);
 // }
@@ -31,21 +47,15 @@
 // document.addEventListener('keyup', KeyUp);
 // document.addEventListener('keypress', KeyPress);
 
-
-// Difference Between mouseover and mouseenter / mouseout and mouseleave
-// document.getElementById('mouseover').addEventListener('mouseover', function () {
-//     console.log("Mouse Over");
+// document.addEventListener('keyup', function () {
+//     console.log("Key Up");
 // });
-// document.getElementById('mouseenter').addEventListener('mouseenter', function () {
-//     console.log("Mouse Enter");
+// document.addEventListener('keydown', function () {
+//     console.log("Key Down");
 // });
-// document.getElementById('mouseout').addEventListener('mouseout', function () {
-//     console.log("Mouse Out");
+// document.addEventListener('keypress', function () {
+//     console.log("Key Press");
 // });
-// document.getElementById('mouseleave').addEventListener('mouseleave', function () {
-//     console.log("Mouse Leave");
-// });
-
 
 // document.getElementById('innertext').innerText = "Hello World";
 // document.getElementById('innerHTML').innerHTML = "Hello World";
@@ -59,5 +69,76 @@
 // console.log(c.textContent);
 
 
+// Click on the button to change style.
+// let btn1 = document.getElementById('jsstyle');
+// let para = document.getElementById('text');
+// btn1.addEventListener('click', function () {
+//     para.style.fontFamily = "'Courier New', Courier, monospace";
+//     para.style.fontSize = "30px";
+//     para.style.color = "red";
+//     para.style.backgroundColor = "yellow";
+// });
 
 
+let grandParent = document.getElementById('grandParent');
+let firstp = document.getElementById('firstp');
+let secondp = document.getElementById('secondp');
+let parent = document.getElementById('ul');
+let child = document.querySelectorAll('li');
+
+// childNodes 
+// console.log(parent.childNodes);
+
+// firstChild 
+// console.log(parent.firstChild);
+
+// lastChild
+// console.log(parent.lastChild);
+
+// nextSibling 
+// console.log(parent.nextSibling);
+
+// nodeName 
+// console.log(parent.nodeName);
+
+// nodeType 
+// console.log(parent.nodeType);
+
+// nodeValue 
+// console.log(parent.nodeValue);
+
+// parentElement 
+// console.log(parent.parentElement);
+
+// parentNode 
+// console.log(parent.parentNode);
+
+// previousSibling 
+// console.log(parent.previousSibling);
+
+// textContent 
+// console.log(parent.textContent);
+
+
+// remove();
+// firstp.remove();
+// grandParent.append(firstp);
+
+// removeChild();
+// grandParent.removeChild(firstp);
+
+// getAttribute();
+// console.log(grandParent.getAttribute('id'));
+// console.log(grandParent.getAttribute('name'));
+
+// setAttribute();
+// grandParent.setAttribute('class',"grandDiv");
+// console.log(grandParent.getAttribute('class'));
+
+// removeAttribute();
+// grandParent.removeAttribute('id');
+// console.log(grandParent.getAttribute('class'));
+
+// dataset
+// console.log(grandParent.dataset);
+// console.log(grandParent.dataset.name);
