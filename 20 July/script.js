@@ -70,14 +70,14 @@
 
 
 // Click on the button to change style.
-// let btn1 = document.getElementById('jsstyle');
-// let para = document.getElementById('text');
-// btn1.addEventListener('click', function () {
-//     para.style.fontFamily = "'Courier New', Courier, monospace";
-//     para.style.fontSize = "30px";
-//     para.style.color = "red";
-//     para.style.backgroundColor = "yellow";
-// });
+let btn1 = document.getElementById('jsstyle');
+let para = document.getElementById('text');
+btn1.addEventListener('click', function () {
+    para.style.fontFamily = "'Courier New', Courier, monospace";
+    para.style.fontSize = "30px";
+    para.style.color = "red";
+    para.style.backgroundColor = "yellow";
+});
 
 
 let grandParent = document.getElementById('grandParent');
@@ -177,7 +177,7 @@ function logKey(e) {
 let image1 = document.getElementById('image1');
 image1.addEventListener('click', function () {
     image1.src = "https://www.simplilearn.com/ice9/free_resources_article_thumb/what_is_image_Processing.jpg";
-})
+});
 
 // console.log(image1);
 // image1.addEventListener('click', function () {
@@ -194,7 +194,7 @@ addA.append(newLink);
 let alertMe = document.getElementById('alertMe');
 alertMe.addEventListener('click', function () {
     alert("You are click on BUTTON");
-})
+});
 
 
 // Add 
@@ -234,6 +234,47 @@ subBtn.addEventListener("click", function () {
 
 
 let paragraph = document.getElementById('paragraph');
-let a = paragraph.innerText.split(" ");
-let b = a.map(value => value.length < 8 ? value : `<span style="background-color:yellow;">`+value+"</span>").join(" ");
-paragraph.innerHTML = b;
+let arr = paragraph.innerText.split(" ");
+let inputText = arr.map(value => value.length < 8 ? value : `<span style="background-color:yellow;">` + value + "</span>").join(" ");
+paragraph.innerHTML = inputText;
+
+
+// let myBtn = document.getElementById('myBtn');
+// myBtn.addEventListener('click', function (e) {
+//     console.log(e);
+// })
+// document.addEventListener('keydown', function (e) {
+//     console.log(e);
+// });
+
+
+// let printWhichPress = document.getElementById('printWhichPress');
+// document.addEventListener("keyup", function (e) {
+//     printWhichPress.textContent += e.key;
+// });
+
+// let mainDiv = document.getElementById('mainDiv');
+// let parentDiv = document.getElementById('parentDiv');
+// let childDiv = document.getElementById('childDiv');
+
+// mainDiv.addEventListener('click', function (e) {
+//     console.log("Main");
+//     console.log(e.target.id);
+// });
+// parentDiv.addEventListener('click', function (e) {
+//     console.log("Parent");
+//     console.log(e.target.id);
+// });
+// childDiv.addEventListener('click', function (e) {
+//     console.log("Child");
+//     console.log(e.target.id);
+// });
+
+
+// get id of any element which has clicked includes nested element also
+document.addEventListener("click", function (e) {
+    let click = e.target.id;
+    if (!click == "") {
+        console.log("id is:", click);
+    }
+});
