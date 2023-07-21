@@ -4,17 +4,37 @@
 }
 
 body {
+    padding: 10px;
     background-color: lightgray;
     font-family: sans-serif;
 }
 
-.random{
-    border: 2px solid black;
-    margin: 10px;
-    padding: 10px;
+#para {
+    margin-block: 10px;
 }
 
-#generate{
+.random {
+    border: 2px solid black;
+    padding: 10px;
+    background-color: lightblue;
+}
+
+#generate {
     padding: 5px 20px;
     margin-top: 10px;
+    cursor: pointer;
+}
+
+#parent {
+    display: flex;
+    justify-content: center;
+    border: 3px solid black;
+    margin-bottom: 10px;
+    padding: 10px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.titleColor{
+    padding-block: 20px 10px;
 }

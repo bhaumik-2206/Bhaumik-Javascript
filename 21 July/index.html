@@ -1,27 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <p id="addPaddingLeft">Hello</p>
     <h3 id="span"></h3>
 
-    <p id="para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus delectus blanditiis laboriosam cumque ex deleniti beatae nisi iusto nesciunt officia, reiciendis numquam cum, cupiditate voluptatum maiores quibusdam, possimus eaque doloremque.</p>
+    <p id="para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus delectus blanditiis laboriosam cumque
+        ex deleniti beatae nisi iusto nesciunt officia, reiciendis numquam cum, cupiditate voluptatum maiores quibusdam,
+        possimus eaque doloremque.</p>
 
     <div class="random">
-        <p></p>
-        <p></p>
-        <input type="checkbox" name="" id="lowercase"><label for="lowercase">Lower Case</label><br>
-        <input type="checkbox" name="" id="uppercase"><label for="uppercase">Upper Case</label><br>
-        <input type="checkbox" name="" id="number"><label for="number">Number</label><br>
-        <input type="checkbox" name="" id="special"><label for="special">Special Character</label><br>
+        <p id="printRandom"></p>
+        <input type="number" name="" id="inputNumbers" min="8" max="25"><br>
+        <input type="checkbox" class="checkbox" name="" id="lowercase">&emsp;<label for="lowercase">Lower Case</label><br>
+        <input type="checkbox" class="checkbox" name="" id="uppercase">&emsp;<label for="uppercase">Upper Case</label><br>
+        <input type="checkbox" class="checkbox" name="" id="number">&emsp;<label for="number">Number</label><br>
+        <input type="checkbox" class="checkbox" name="" id="special">&emsp;<label for="special">Special Character</label><br>
         <button id="generate">Generate</button>
     </div>
 
+    <h2 class="titleColor">If the number is prime color is <span style="background-color: green;">green</span> number is even color is <span style="background-color: yellow;">yellow</span> , number is odd color is <span style="background-color: red;">red</span></h2>
+    <div id="parent"></div>
+    
+
     <script src="script.js"></script>
 </body>
+
 </html>
