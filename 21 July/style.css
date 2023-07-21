@@ -35,6 +35,43 @@ body {
     gap: 10px;
 }
 
-.titleColor{
+.titleColor {
     padding-block: 20px 10px;
+}
+
+.add {
+    border: 3px solid black;
+    padding: 10px;
+    margin-block: 10px;
+}
+
+.add button {
+    padding: 10px 30px;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+
+}
+
+.table {
+    border-collapse: collapse;
+}
+
+tr,
+th,
+td {
+    border: 3px solid red;
+    padding: 5px 10px;
+}
+
+.forAdd,
+#addCountry {
+    padding: 7px;
+    font-size: 17px;
+}
+
+#mySelect{
+    margin-block: 10px;
+    font-size: 1.2rem;
+    padding: 5px;
 }
