@@ -1,0 +1,28 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.images {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.images img {
+    width: 33%;
+    height: 300px;
+    cursor: pointer;
+}
+
+.block {
+    position: absolute;
+    z-index: 15;
+    font-size: 3rem;
+    cursor: pointer;
+    position: absolute;
+    right: 15px;
+    top: 0;
+    font-weight: bold;
+    display: none;
+}

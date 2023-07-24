@@ -1,0 +1,144 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: sans-serif;
+    background-color: lightcoral;
+}
+
+table {
+    border: 2px solid black;
+    border-collapse: collapse;
+    margin-block: 1rem;
+}
+
+td,
+th {
+    border: 2px solid black;
+    padding: 5px 10px;
+}
+
+.margin {
+    margin: 10px;
+}
+
+.main {
+    border: 3px solid #008000;
+    display: inline-block;
+    padding: 30px;
+    border-radius: 10px;
+    background-color: lightpink;
+    position: relative;
+    font-size: 1.4rem;
+    width: 30%;
+}
+
+.main h4 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.enteredEle {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border: 1px solid red;
+    border-radius: 30px;
+    background-color: white;
+}
+
+.enteredEle input {
+    background-color: transparent;
+    border: none;
+    padding-left: 20px;
+}
+
+.enteredEle input:focus {
+    outline: none;
+}
+
+.enteredEle button {
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: none;
+    background-color: green;
+    cursor: pointer;
+    color: white;
+}
+
+ul {
+    padding: 5px 10px;
+    margin: 10px;
+    position: relative;
+}
+
+ul li {
+    list-style: none;
+    cursor: pointer;
+}
+
+ul .checked {
+    text-decoration: line-through;
+}
+
+ul li span {
+    position: absolute;
+    right: 0;
+}
+
+hr {
+    color: green;
+    height: 10px;
+    background-color: red;
+    border: none;
+    width: 100%;
+}
+
+.calculator {
+    text-align: center;
+    max-width: 30%;
+    margin: auto;
+    padding: 25px;
+    background-color: black;
+    border-radius: 20px;
+}
+
+.first {
+    margin-bottom: 10px;
+}
+
+.second {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.first input {
+    padding: 15px 10px;
+    color: white;
+    font-size: 23px;
+    width: -webkit-fill-available;
+    background-color: transparent;
+    border: 1px solid gray;
+    border-radius: 50px;
+}
+
+.second div {
+    background-color: yellow;
+    width: 25%;
+    height: 50px;
+    margin-block: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.second .zero {
+    width: 50% !important;
+}
