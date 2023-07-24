@@ -41,23 +41,77 @@ notification.addEventListener('click', randomNotification);
 
 
 
-let allTr = document.querySelectorAll('tr');
-let newArray = [];
-for (let i = 1; i < allTr.length; i++) {
-    let a = allTr[0].children;
-    let newObject = {};
-    for (let j = 0; j < a.length; j++) {
-        let id = a[j].innerHTML;
-        let value = allTr[i].children[j].innerHTML;
-        newObject[id] = value;
-    }
-    newArray.push(newObject);
+
+const usersData = [
+    {
+        id: 432,
+        first_name: "Asd",
+        last_name: "paerl",
+        email: "abc@gmail.com",
+        phone: "+919394099203",
+    },
+    {
+        id: 342,
+        first_name: "dsf",
+        last_name: "paerl",
+        email: "sdf@gmail.com",
+        phone: "+919394099089",
+    },
+    {
+        id: 765,
+        first_name: "dfgf",
+        last_name: "dfg",
+        email: "muyjgh@gmail.com",
+        phone: "+919394054345"
+    },
+    {
+        id: 123,
+        first_name: "sdxfg",
+        last_name: "gdfd",
+        email: "werrew@gmail.com",
+        phone: "+915464569203"
+    },
+]
+let tableDynamic = document.getElementById('tableDynamic');
+let headerTr = document.createElement('tr');
+for (const key in usersData[0]) {
+    let newTh = document.createElement('th');
+    newTh.innerHTML = key;
+    headerTr.appendChild(newTh);
 }
-document.getElementById('pre').innerHTML = newArray;
-console.log(newArray);
+tableDynamic.appendChild(headerTr);
+usersData.forEach((value, i) => {
+    let newTr = document.createElement('tr');
+    for (const key in value) {
+        let newTd = document.createElement('td');
+        newTd.innerHTML = value[key];
+        newTr.appendChild(newTd);
+    }
+    tableDynamic.appendChild(newTr);
+});
+
 
 
 let clicking = document.getElementById('clicking');
+let background = document.getElementById('background');
 clicking.addEventListener('click', function (e) {
-    console.log(e.offsetX);
+    let a = e.offsetX;
+    let b = e.offsetY;
+    background.style.left = a + "px";
+    background.style.top = b + "px";
+    background.style.width = "0";
+    background.style.height = "0";
+    background.style.transition = "none";
+    setTimeout(() => {
+        background.style.width = "1000px";
+        background.style.height = "1000px";
+        background.style.transition = "0.5s ease-out";
+    }, 0);
+    setTimeout(() => {
+        background.style.left = "";
+        background.style.top = "";
+        background.style.width = "";
+        background.style.height = "";
+        background.style.transition = "none";
+    }, 500);
 });
