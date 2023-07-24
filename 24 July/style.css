@@ -3,6 +3,10 @@
     margin: 0;
 }
 
+body{
+    background-color: gray;
+}
+
 .images {
     width: 100%;
     display: flex;
@@ -24,5 +28,63 @@
     right: 15px;
     top: 0;
     font-weight: bold;
+    display: none;
+    color: white;
+}
+
+.back-click{
+    padding: 20px;
+    text-align: center;
+}
+
+.clickBtn{
+    padding: 50px 80px;
+    background-color: black;
+    font-size: 2rem;
+    border-radius: 20px;
+    color: white;
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+}
+
+.clickBtn .background{
+    width: 150%;
+    height: 150%;
+    background-color: rgba(255, 255, 255, 0.393);
+    position: absolute;
+    /* z-index: 10; */
+    top: -25%;
+    left: -25%;
+    border-radius: 50%;
+}
+
+
+
+.notification{
+    margin: 20px;
+}
+
+.notificationBtn{
+    padding: 10px 20px;
+    color: white;
+    font-size: 1.5rem;
+    background-color: dodgerblue;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.showNoti{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 10px;
+}
+
+.showNoti div{
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-bottom: 10px;
     display: none;
 }
