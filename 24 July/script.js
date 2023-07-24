@@ -10,6 +10,7 @@ image.forEach(value => {
         img.style.width = "90%";
         img.style.height = "90%";
         img.style.position = "absolute";
+        img.style.zIndex = "2";
         img.style.left = "5%";
         img.style.top = "5%";
         newImages.appendChild(img);
@@ -22,7 +23,7 @@ image.forEach(value => {
 });
 
 
-// Notification
+// Notification - Task
 let notification = document.getElementById('noti');
 let mainNoti = document.getElementById('mainNoti');
 let diffNoti = document.querySelectorAll('.diff-noti');
@@ -40,13 +41,13 @@ setInterval(() => {
 notification.addEventListener('click', randomNotification);
 
 
-
-
+// Make Table Using Array Of Object
 const usersData = [
     {
         id: 432,
         first_name: "Asd",
         last_name: "paerl",
+        Address: "abcd,efgh",
         email: "abc@gmail.com",
         phone: "+919394099203",
     },
@@ -69,36 +70,63 @@ const usersData = [
         first_name: "sdxfg",
         last_name: "gdfd",
         email: "werrew@gmail.com",
-        phone: "+915464569203"
+        phone: "+915464569203",
+        middle_name: "xyz",
     },
 ]
 let tableDynamic = document.getElementById('tableDynamic');
 let headerTr = document.createElement('tr');
-for (const key in usersData[0]) {
+let addAllKeys = [];
+usersData.forEach(value => {
+    for (const key in value) {
+        addAllKeys.push(key);
+    }
+});
+let removeDuplicateKeys = [];
+addAllKeys.forEach(value => removeDuplicateKeys.includes(value) ? false : removeDuplicateKeys.push(value));
+tableDynamic.appendChild(headerTr);
+for (let i = 0; i < removeDuplicateKeys.length; i++) {
     let newTh = document.createElement('th');
-    newTh.innerHTML = key;
+    newTh.innerHTML = removeDuplicateKeys[i];
     headerTr.appendChild(newTh);
 }
-tableDynamic.appendChild(headerTr);
-usersData.forEach((value, i) => {
-    let newTr = document.createElement('tr');
-    for (const key in value) {
+usersData.forEach(userData => {
+    let dataTr = document.createElement('tr');
+    for (let i = 0; i < removeDuplicateKeys.length; i++) {
         let newTd = document.createElement('td');
-        newTd.innerHTML = value[key];
-        newTr.appendChild(newTd);
+        newTd.innerHTML = userData[removeDuplicateKeys[i]] || ""; // Check if the key exists in the data, otherwise use an empty string
+        dataTr.appendChild(newTd);
     }
-    tableDynamic.appendChild(newTr);
+    tableDynamic.appendChild(dataTr);
 });
 
+// let headerTr = document.createElement('tr');
+// for (const key in usersData[0]) {
+//     let newTh = document.createElement('th');
+//     newTh.innerHTML = key;
+//     headerTr.appendChild(newTh);
+// }
+// tableDynamic.appendChild(headerTr);
+// usersData.forEach((value, i) => {
+//     let newTr = document.createElement('tr');
+//     for (const key in value) {
+//         let newTd = document.createElement('td');
+//         newTd.innerHTML = value[key];
+//         newTr.appendChild(newTd);
+//     }
+//     tableDynamic.appendChild(newTr);
+// });
 
 
+
+// Click Effect
 let clicking = document.getElementById('clicking');
 let background = document.getElementById('background');
 clicking.addEventListener('click', function (e) {
     let a = e.offsetX;
-    let b = e.offsetY;
+    let removeDuplicateKeys = e.offsetY;
     background.style.left = a + "px";
-    background.style.top = b + "px";
+    background.style.top = removeDuplicateKeys + "px";
     background.style.width = "0";
     background.style.height = "0";
     background.style.transition = "none";
@@ -115,3 +143,16 @@ clicking.addEventListener('click', function (e) {
         background.style.transition = "none";
     }, 500);
 });
+
+
+// Drag And Drop
+let dragItem = document.getElementById('dragItem');
+let emptyBox = document.querySelectorAll('.emptyBox');
+for (let i = 0; i < emptyBox.length; i++) {
+    emptyBox[i].addEventListener('dragover', function (e) {
+        e.preventDefault();
+    });
+    emptyBox[i].addEventListener('drop', function (e) {
+        e.target.append(dragItem);
+    });
+}

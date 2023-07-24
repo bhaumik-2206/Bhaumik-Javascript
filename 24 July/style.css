@@ -58,30 +58,14 @@ body {
     overflow: hidden;
 }
 
-/* .clickBtn:hover .background{
-    width: 150%;
-    height: 150%;
-    left: 0%;
-    top: 0%;
-    transition: .5s ease;
-} */
-
 .background {
     width: 0%;
     height: 0%;
     background-color: rgba(255, 255, 255, 0.393);
     position: absolute;
-    /* top: 50%;
-    left: 50%; */
-    /*right: -50%;
-    bottom: -50%; */
     border-radius: 50%;
     transform: translate(-50%, -50%);
 }
-
-
-
-
 
 
 .notification {
@@ -110,4 +94,46 @@ body {
     border-radius: 10px;
     margin-bottom: 10px;
     display: none;
+}
+
+.mainTable {
+    padding: 1rem;
+}
+
+#tableDynamic {
+    border-collapse: collapse;
+    background-color: lightcoral;
+    font-size: 1.4rem;
+    width: 100%;
+}
+
+#tableDynamic>tr>th,
+td {
+    border: 2px solid white;
+    padding: 10px 15px;
+}
+
+
+.parent-div {
+    display: flex;
+    background-color: black;
+    padding: 10px;
+    gap: 10px;
+}
+
+.parent-div div .drag {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    background-color: red;
+    cursor: pointer;
+}
+
+.parent-div div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 150px;
+    background-color: white;
 }
