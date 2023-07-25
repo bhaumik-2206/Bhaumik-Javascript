@@ -16,10 +16,10 @@
         }
 
         .main {
-            max-width: 70%;
+            max-width: 50%;
             margin-inline: auto;
             height: 400px;
-            /* overflow: hidden; */
+            overflow: hidden;
             position: relative;
             transition: .5s ease;
         }
@@ -50,7 +50,7 @@
 </head>
 
 <body>
-    <div class="main">
+    <div class="main" id="main">
         <img class="changeImage"
             src="https://images.unsplash.com/photo-1486162928267-e6274cb3106f?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8bmF0dXJlLHJhaW58fHx8fHwxNjkwMjYwODg5&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=900"
             alt="">
@@ -73,22 +73,59 @@
         </div>
     </div>
 
-
-
+    <div id="parent">
+        <div class="hello" id="givenElement">This is the given element.</div>
+        <div class="hello" id="diff">This is</div>
+        <div class="hello" id="givenElement1">This is the given element.</div>
+        <div class="hello" id="givenElement1">This is the given element.</div>
+        <div class="hello" id="givenElement1">This is the given element.</div>
+        <div class="hello" id="givenElement1">This is the given element.</div>
+    </div>
 
 
     <script>
+
         let changeImage = document.querySelectorAll('.changeImage');
         let left = document.getElementById('left');
         let right = document.getElementById('right');
+        let main = document.getElementById('main');
+        let count = 0;
         changeImage.forEach((value, index) => {
             value.style.left = index * 100 + "%";
         });
-        left.addEventListener('click', function () {
+        function slider() {
             changeImage.forEach((value, index) => {
-                value.style.transform = "translateX(-" + index * 100 + "%)";
+                value.style.transform = "translateX(-" + count * 100 + "%)";
             });
+        }
+        left.addEventListener('click', function () {
+            if (count == 0) {
+                count = changeImage.length - 1;
+                slider();
+            } else {
+                count--;
+                slider();
+            }
         });
+        right.addEventListener('click', function () {
+            if (count == changeImage.length - 1) {
+                count = 0;
+                let lastImage = changeImage[changeImage.length - 1];
+                main.removeChild(lastImage);
+                main.insertBefore(lastImage, changeImage[0]);
+                slider();
+            } else {
+                count++;
+                slider();
+            }
+        });
+
+        // let changeImage = document.querySelectorAll('.changeImage');
+        // let main = document.getElementById('main');
+        // let c = changeImage[0];
+        // changeImage[0].remove();
+        // main.insertBefore(c, changeImage[1].nextSibling);
+
     </script>
 </body>
 

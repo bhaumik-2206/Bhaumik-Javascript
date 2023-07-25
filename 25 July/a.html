@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Select Your Favourite</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: lightgrey;
+            font-family: sans-serif;
+
+        }
+
+        .main {
+            margin-top: 2rem;
+            background-color: black;
+            width: 40%;
+            margin-inline: auto;
+            border-radius: 20px;
+            position: relative;
+            z-index: 2;
+            cursor: pointer;
+        }
+
+        h1 {
+            color: white;
+            margin-left: 20px;
+            padding-block: 20px;
+        }
+
+        .select {
+            background-color: red;
+            color: white;
+            width: 40%;
+            border-radius: 20px;
+            padding-block: 10px;
+            font-size: 1.3rem;
+            margin-inline: auto;
+            position: relative;
+            bottom: 250px;
+            transition: all .5s ease;
+        }
+
+        main {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .bottom {
+            bottom: 0px;
+        }
+
+        .child {
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .child>* {
+            cursor: pointer;
+        }
+
+        .check {
+            width: 20px;
+            height: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main" id="main">
+        <h1 id="h1">Select Your Favourite</h1>
+    </div>
+
+    <main>
+        <div class="select" id="select">
+            <div class="child">
+                <input type="checkbox" name="" id="chech-1" class="check">
+                <label for="chech-1">HTML</label>
+            </div>
+            <div class="child">
+                <input type="checkbox" name="" id="chech-2" class="check">
+                <label for="chech-2">CSS</label>
+            </div>
+            <div class="child">
+                <input type="checkbox" name="" id="chech-3" class="check">
+                <label for="chech-3">Javascript</label>
+            </div>
+            <div class="child">
+                <input type="checkbox" name="" id="chech-4" class="check">
+                <label for="chech-4">PHP</label>
+            </div>
+            <div class="child">
+                <input type="checkbox" name="" id="chech-5" class="check">
+                <label for="chech-5">C++</label>
+            </div>
+        </div>
+    </main>
+
+
+    <table id="hello">
+        <tr>
+            <th>Name</th>
+            <th>age</th>
+        </tr>
+
+    </table>
+
+
+    <script>
+        let hello = document.getElementById('hello');
+
+        let data = [
+            { age: 18, name: 'vansh' },
+            { name: 'bhaumik', age: 17 },
+            { name: 'jeel', age: 19 },
+        ]
+
+        data.forEach(value => {
+            let a = document.createElement('tr');
+            a.innerHTML = `<tr>
+            <td>${value.name}</td>
+            <td>${value.age}</td>
+        </tr>`;
+            hello.appendChild(a);
+        })
+
+
+        let main = document.getElementById('main');
+        let select = document.getElementById('select');
+        main.addEventListener('click', function () {
+            select.classList.toggle('bottom');
+        });
+        let a = 0;
+        let b = document.querySelectorAll('p');
+        let check = document.querySelectorAll('.check');
+        let h = document.getElementById('h1');
+        let store = h.innerHTML;
+        check.forEach(value => {
+            value.addEventListener('click', function () {
+                if (value.checked) {
+                    a++;
+                    h.innerHTML = a + " Selected";
+                } else if (!value.checked) {
+                    a--;
+                    h.innerHTML = a + " Selected";
+                }
+                if (h.innerHTML == "0 Selected") {
+                    h.innerHTML = store;
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
