@@ -37,4 +37,18 @@ document.addEventListener('keydown', function (e) {
 });
 
 
-// 
+
+// Clock
+let hour = document.getElementById('hour');
+let minute = document.getElementById('minute');
+let second = document.getElementById('second');
+setInterval(() => {
+    let date = new Date();
+    let h = date.getHours();
+    let m = date.getMinutes();
+    let s = date.getSeconds();
+    hr_rotation = 30 * h + m / 2;
+    second.style.transform = "rotate(" + 6 * s + "deg)";
+    minute.style.transform = "rotate(" + 6 * m + "deg)";
+    hour.style.transform = "rotate(" + 30 * h + "deg)";
+}, 1);
