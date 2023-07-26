@@ -71,7 +71,7 @@ const usersData = [
         email: "werrew@gmail.com",
         phone: "+915464569203",
     },
-]
+];
 let tableDynamic = document.getElementById('tableDynamic');
 usersData.forEach(value => {
     let newTr = document.createElement('tr');
@@ -82,7 +82,7 @@ usersData.forEach(value => {
     <td>${value.email}</td>
     <td>${value.phone}</td>`;
     tableDynamic.appendChild(newTr);
-})
+});
 // let headerTr = document.createElement('tr');
 // let addAllKeys = [];
 // usersData.forEach(value => {

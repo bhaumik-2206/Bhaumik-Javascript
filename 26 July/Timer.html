@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+</head>
+
+<body>
+
+    <input type="number" id="inputMinutes">
+    <button id="btn">Button</button>
+    <h1 id="main"></h1>
+
+
+
+    <script>
+        let main = document.getElementById('main');
+        let btn = document.getElementById('btn');
+        let inputMinutes = document.getElementById('inputMinutes');
+
+        // let b = Number(inputMinutes.value) * (1000 * 60);
+        // let hour = b / (1000 * 60 * 60);
+        // let minute = hour * 60;
+        // let second = minute / 60;
+        // function watch() {
+        //     b--;
+        //     if (b % 100 == 0) {
+        //         second--;
+        //     }
+        //     if (second == 0) {
+        //         second = 60;
+        //         minute--;
+        //     }
+        //     if (minute == 0) {
+        //         minute = 60;
+        //         hour--;
+        //     }
+        //     main.innerHTML = hour + ":" + minute + ":" + second;
+        // }
+        // btn.addEventListener('click', function () {
+        //     setInterval(watch, 10);
+        // })
+
+        // let intervalId;
+        // function startTimer() {
+        //     let b = parseInt(inputMinutes.value) * 60;
+        //     intervalId = setInterval(function () {
+        //         let hours = Math.floor(b / 3600);
+        //         let minutes = Math.floor((b % 3600) / 60);
+        //         let seconds = b % 60;
+        //         main.innerHTML = hours + ":" + minutes + ":" + seconds;
+        //         b--;
+        //         if (b < 0) {
+        //             clearInterval(intervalId);
+        //             main.innerHTML = "Timer Expired!";
+        //         }
+        //     }, 1000);
+        // }
+        // btn.addEventListener('click', startTimer);
+
+        let b = 120 * 60;
+        console.log(Math.floor(b / 3600));
+    </script>
+</body>
+
+</html>

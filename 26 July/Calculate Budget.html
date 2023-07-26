@@ -138,19 +138,20 @@
     <ul id="mainul" class="list"></ul>
 
 
-
     <script>
         let mainul = document.getElementById('mainul');
         let main = document.getElementById('main');
         let showBudget = document.getElementById('showBudget');
         let submitBtn = document.getElementById('submitBtn');
         let input = document.getElementById('input');
+        let store;
         function printUl() {
             if (input.value == "") {
                 alert("Please Enter Your Budget");
             } else {
                 showBudget.innerHTML = "Your Budget is :- " + input.value;
                 main.style.display = "none";
+                store = Number(input.value);
             }
         }
         input.addEventListener('keydown', (e) => {
@@ -163,10 +164,27 @@
         let addYourMoney = document.getElementById('addYourMoney');
         let spentMoney = document.getElementById('spentMoney');
         let reason = document.getElementById('reason');
+
         function enterSpentMoneyReason() {
-            
+            let spentAmount = Number(spentMoney.value);
+            if (spentAmount <= store) {
+                let newLi = document.createElement('li');
+                newLi.innerHTML = reason.value + " :- " + spentAmount;
+                mainul.appendChild(newLi);
+                store -= spentAmount;
+                showBudget.innerHTML = "Now Your Budget is :- " + store;
+                spentMoney.value = "";
+                reason.value = "";
+            } else {
+                alert("Your Budget is Low");
+            }
         }
-        addYourMoney.addEventListener('click',enterSpentMoneyReason)
+        addYourMoney.addEventListener('click', enterSpentMoneyReason)
+        reason.addEventListener('keydown', (e) => {
+            if (e.key == 'Enter') {
+                enterSpentMoneyReason();
+            }
+        });
     </script>
 </body>
 

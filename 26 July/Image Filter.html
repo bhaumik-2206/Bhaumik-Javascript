@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>26 July 2023</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: lightgreen;
+        }
+
+        .images {
+            width: 50%;
+        }
+
+        .images img {
+            width: 100%;
+            display: block;
+            margin-inline: auto;
+            border: 2px solid black;
+            border-radius: 10px;
+        }
+
+        .filters {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        .filters button {
+            display: block;
+            padding: 20px 40px;
+            width: 200px;
+            border-radius: 10px;
+            border: none;
+            background-color: black;
+            color: white;
+            font-size: 1.3rem;
+            margin-inline: auto;
+            margin-block: 10px;
+            cursor: pointer;
+        }
+
+        .first,
+        .third {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 25%;
+            text-align: center;
+        }
+
+        .blur {
+            filter: blur(4px);
+        }
+
+        .brightness {
+            filter: brightness(150%);
+        }
+
+        .contrast {
+            filter: contrast(180%);
+        }
+
+        .grayscale {
+            filter: grayscale(100%);
+        }
+
+        .huerotate {
+            filter: hue-rotate(180deg);
+        }
+
+        .invert {
+            filter: invert(100%);
+        }
+
+        .opacity {
+            filter: opacity(50%);
+        }
+
+        .saturate {
+            filter: saturate(7);
+        }
+
+        .sepia {
+            filter: sepia(100%);
+        }
+
+        .shadow {
+            filter: drop-shadow(8px 8px 10px green);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="filters">
+        <div class="first">
+            <button class="filter-btn">Blur</button>
+            <button class="filter-btn">Brightness</button>
+            <button class="filter-btn">Contrast</button>
+            <button class="filter-btn">Grayscale</button>
+            <button class="filter-btn">Huerotate</button>
+        </div>
+        <div class="images">
+            <img id="main-image"
+                src="https://images.unsplash.com/photo-1690205073996-7fde74f5fd56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNXx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                alt="Image">
+        </div>
+        <div class="third">
+            <button class="filter-btn">Invert</button>
+            <button class="filter-btn">Opacity</button>
+            <button class="filter-btn">Saturate</button>
+            <button class="filter-btn">Sepia</button>
+            <button class="filter-btn">Shadow</button>
+        </div>
+    </div>
+
+
+    <script>
+        let button = document.querySelectorAll('.filter-btn');
+        let mainImage = document.getElementById('main-image');
+        button.forEach(value => {
+            value.addEventListener('click', function () {
+                if (mainImage.classList == 0 || mainImage.classList[0] == value.innerHTML.toLowerCase()) {
+                    mainImage.classList.toggle(value.innerHTML.toLowerCase());
+                } else {
+                    mainImage.removeAttribute('class');
+                    mainImage.setAttribute('class', value.innerHTML.toLowerCase())
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

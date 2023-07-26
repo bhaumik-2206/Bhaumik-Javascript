@@ -73,6 +73,16 @@
             margin: 10px;
             list-style: none;
             font-size: 20px;
+            position: relative;
+        }
+
+        ul li span {
+            position: absolute;
+            font-size: 2rem;
+            right: 10px;
+            top: 10px;
+            font-weight: bold;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -83,7 +93,8 @@
         <button type="submit" id="submitBtn">Submit</button>
     </div>
 
-    <ul id="mainul" class="list"></ul>
+    <ul id="mainul" class="list">
+    </ul>
 
 
     <script>
@@ -96,8 +107,11 @@
                 let a = confirm('If Yes :- Ok \n If No :- Close');
                 if (a == true) {
                     let newLi = document.createElement('li');
+                    let newspan = document.createElement('span');
+                    newspan.innerHTML = "×";
                     newLi.innerHTML = value;
                     mainul.appendChild(newLi);
+                    newLi.appendChild(newspan);
                 }
             }
             input.value = "";
@@ -108,6 +122,11 @@
             }
         });
         submitBtn.addEventListener('click', printUl);
+        mainul.addEventListener('click', function (e) {
+            if (e.target.tagName == "SPAN") {
+                e.target.parentElement.remove();
+            }
+        })
     </script>
 </body>
 
