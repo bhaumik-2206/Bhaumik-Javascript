@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe Game</title>
+    <style>
+        input {
+            width: 50px;
+            height: 50px;
+            font-size: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="first">
+            <input id="in-1" type="text">
+            <input id="in-2" type="text">
+            <input id="in-3" type="text">
+        </div>
+        <div class="first">
+            <input id="in-4" type="text">
+            <input id="in-5" type="text">
+            <input id="in-6" type="text">
+        </div>
+        <div class="first">
+            <input id="in-7" type="text">
+            <input id="in-8" type="text">
+            <input id="in-9" type="text">
+        </div>
+    </div>
+
+    <script>
+        let allInput = document.querySelectorAll('input');
+        document.addEventListener('keyup', function (e) {
+            if (e.key == '0' || e.key == "x") {
+                let a = [];
+                allInput.forEach(value => {
+                    if (!(value.value == "")) {
+                        a.push(true);
+                    }
+                });
+                if (a.length >= 3) {
+                    if (checkWinner()) {
+                        alert("Winner");
+                        removeValue();
+                    }
+                }
+            } else {
+                alert("Please Type 0 or x");
+            }
+        });
+
+        function checkWinner() {
+            let winnerList = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
+            let a = [];
+            let b = [];
+            allInput.forEach((ele, index) => {
+                if (ele.value == "0") {
+                    a.push(index);
+                } else if (ele.value == "x" || ele.value == "X") {
+                    b.push(index);
+                }
+            });
+            console.log(a);
+            console.log(b);
+            hello(winnerList, a, b);
+        }
+        function removeValue() {
+            allInput.forEach(value => {
+                value.value = "";
+            })
+        }
+
+        function hello(mainarray, a, b) {
+            let first = mainarray.some((value, i) => value.every((e, index) => e === a[index]));
+            console.log(first);
+            let second = mainarray.some((value, i) => value.every((e, index) => e === b[index]));
+            console.log(second);
+            
+        }
+
+        // if (a.length >= 3) {
+        //     if (input1.value == input2.value && input2.value == input3.value) {
+        //         alert("Winner");
+        //         removeValue();
+        //     } else if (input4.value == input5.value && input5.value == input6.value) {
+        //         alert('winner');
+        //         removeValue();
+        //     } else if (input7.value == input8.value && input8.value == input9.value) {
+        //         alert('winner');
+        //         removeValue();
+        //     } else if (input1.value == input4.value && input4.value == input7.value) {
+        //         alert("Winner");
+        //         removeValue();
+        //     } else if (input1.value == input5.value && input5.value == input9.value) {
+        //         alert('winner');
+        //         removeValue();
+        //     } else if (input2.value == input5.value && input5.value == input8.value) {
+        //         alert('winner');
+        //         removeValue();
+        //     } else if (input3.value == input6.value && input6.value == input9.value) {
+        //         alert('winner');
+        //         removeValue();
+        //     }
+        // }
+    </script>
+</body>
+
+</html>
