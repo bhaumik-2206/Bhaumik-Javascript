@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: lightgray;
+            color: black;
+        }
+
+        .main {
+            width: 40%;
+            background-color: dodgerblue;
+            /* padding: 10px; */
+            margin-block: 20px;
+            display: flex;
+            justify-content: space-between;
+            margin-left: 20px;
+            border-radius: 10px;
+            gap: 10px;
+        }
+
+        .main>* {
+            margin: 10px;
+        }
+
+        .main input {
+            background-color: transparent;
+            border-radius: 30px;
+            padding: 10px 20px;
+            font-size: 20px;
+            width: 100%;
+            border: none;
+            color: white;
+        }
+
+        ::placeholder {
+            color: white;
+            opacity: .5;
+        }
+
+        .main input:focus {
+            outline: 1px solid white;
+        }
+
+        .main button {
+            padding: 10px 25px;
+            background-color: brown;
+            color: white;
+            font-size: 1.4rem;
+            border: none;
+            border-radius: 2rem;
+            cursor: pointer;
+        }
+
+        ul {
+            width: 40%;
+            margin-left: 20px;
+            border-radius: 10px;
+            background-color: chocolate;
+        }
+
+        ul li {
+            padding: 20px;
+            margin: 10px;
+            list-style: none;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <input type="text" id="input" placeholder="Enter Your Task">
+        <button type="submit" id="submitBtn">Submit</button>
+    </div>
+
+    <ul id="mainul" class="list"></ul>
+
+
+    <script>
+        let mainul = document.getElementById('mainul');
+        let submitBtn = document.getElementById('submitBtn');
+        let input = document.getElementById('input');
+        function printUl() {
+            let value = input.value.trim();
+            if (value.length >= 3) {
+                let a = confirm('If Yes :- Ok \n If No :- Close');
+                if (a == true) {
+                    let newLi = document.createElement('li');
+                    newLi.innerHTML = value;
+                    mainul.appendChild(newLi);
+                }
+            }
+            input.value = "";
+        }
+        input.addEventListener('keydown', (e) => {
+            if (e.key == 'Enter') {
+                printUl();
+            }
+        });
+        submitBtn.addEventListener('click', printUl);
+    </script>
+</body>
+
+</html>

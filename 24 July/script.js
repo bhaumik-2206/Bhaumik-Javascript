@@ -72,7 +72,17 @@ const usersData = [
         phone: "+915464569203",
     },
 ]
-// let tableDynamic = document.getElementById('tableDynamic');
+let tableDynamic = document.getElementById('tableDynamic');
+usersData.forEach(value => {
+    let newTr = document.createElement('tr');
+    newTr.innerHTML = `
+    <td>${value.id}</td>
+    <td>${value.first_name}</td>
+    <td>${value.last_name}</td>
+    <td>${value.email}</td>
+    <td>${value.phone}</td>`;
+    tableDynamic.appendChild(newTr);
+})
 // let headerTr = document.createElement('tr');
 // let addAllKeys = [];
 // usersData.forEach(value => {
@@ -98,22 +108,22 @@ const usersData = [
 //     tableDynamic.appendChild(dataTr);
 // });
 
-let headerTr = document.createElement('tr');
-for (const key in usersData[0]) {
-    let newTh = document.createElement('th');
-    newTh.innerHTML = key;
-    headerTr.appendChild(newTh);
-}
-tableDynamic.appendChild(headerTr);
-usersData.forEach((value, i) => {
-    let newTr = document.createElement('tr');
-    for (const key in value) {
-        let newTd = document.createElement('td');
-        newTd.innerHTML = value[key];
-        newTr.appendChild(newTd);
-    }
-    tableDynamic.appendChild(newTr);
-});
+// let headerTr = document.createElement('tr');
+// for (const key in usersData[0]) {
+//     let newTh = document.createElement('th');
+//     newTh.innerHTML = key;
+//     headerTr.appendChild(newTh);
+// }
+// tableDynamic.appendChild(headerTr);
+// usersData.forEach((value, i) => {
+//     let newTr = document.createElement('tr');
+//     for (const key in value) {
+//         let newTd = document.createElement('td');
+//         newTd.innerHTML = value[key];
+//         newTr.appendChild(newTd);
+//     }
+//     tableDynamic.appendChild(newTr);
+// });
 
 
 

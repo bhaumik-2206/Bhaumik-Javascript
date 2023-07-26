@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate Budget</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: lightgray;
+            color: black;
+        }
+
+        .main {
+            width: 40%;
+            background-color: dodgerblue;
+            margin-block: 20px 0px;
+            display: flex;
+            justify-content: space-between;
+            margin-left: 20px;
+            border-radius: 10px;
+            gap: 10px;
+        }
+
+        .main>* {
+            margin: 10px;
+        }
+
+        .main input {
+            background-color: transparent;
+            border-radius: 30px;
+            padding: 10px 20px;
+            font-size: 20px;
+            width: 100%;
+            border: none;
+            color: white;
+        }
+
+        ::placeholder {
+            color: white;
+            opacity: .5;
+        }
+
+        .main input:focus {
+            outline: 1px solid white;
+        }
+
+        .main button {
+            padding: 10px 25px;
+            background-color: brown;
+            color: white;
+            font-size: 1.4rem;
+            border: none;
+            border-radius: 2rem;
+            cursor: pointer;
+        }
+
+        ul {
+            width: 40%;
+            margin-left: 20px;
+            border-radius: 10px;
+            background-color: chocolate;
+        }
+
+        ul li {
+            padding: 20px;
+            margin: 10px;
+            list-style: none;
+            font-size: 20px;
+        }
+
+        #showBudget {
+            padding: 20px;
+            font-size: 1.5rem;
+        }
+
+        .item {
+            display: flex;
+            width: 40%;
+            background-color: crimson;
+            margin-inline: 20px;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 10px;
+        }
+
+        .item>* {
+            margin: 10px;
+        }
+
+        .money-spent input {
+            display: block;
+            margin-block: 10px;
+            padding: 10px 10px 10px 20px;
+            background-color: gray;
+            font-size: 1.4rem;
+            border: none;
+            border-radius: 2rem;
+        }
+
+        .money-spent input:focus {
+            outline: 3px solid white;
+            color: white;
+        }
+
+        .item button {
+            padding: 10px 30px;
+            font-size: 1.4rem;
+            background-color: green;
+            color: white;
+            border: none;
+            border-radius: 2rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main" id="main">
+        <input type="number" id="input" placeholder="Enter Your Budget">
+        <button type="submit" id="submitBtn">Enter</button>
+    </div>
+    <div id="showBudget"></div>
+
+    <div class="item">
+        <div class="money-spent">
+            <input type="number" name="" id="spentMoney" placeholder="Enter Your ">
+            <input type="text" id="reason" placeholder="Reason">
+        </div>
+        <button type="submit" id="addYourMoney">Add</button>
+    </div>
+
+    <ul id="mainul" class="list"></ul>
+
+
+
+    <script>
+        let mainul = document.getElementById('mainul');
+        let main = document.getElementById('main');
+        let showBudget = document.getElementById('showBudget');
+        let submitBtn = document.getElementById('submitBtn');
+        let input = document.getElementById('input');
+        function printUl() {
+            if (input.value == "") {
+                alert("Please Enter Your Budget");
+            } else {
+                showBudget.innerHTML = "Your Budget is :- " + input.value;
+                main.style.display = "none";
+            }
+        }
+        input.addEventListener('keydown', (e) => {
+            if (e.key == 'Enter') {
+                printUl();
+            }
+        });
+        submitBtn.addEventListener('click', printUl);
+
+        let addYourMoney = document.getElementById('addYourMoney');
+        let spentMoney = document.getElementById('spentMoney');
+        let reason = document.getElementById('reason');
+        function enterSpentMoneyReason() {
+            
+        }
+        addYourMoney.addEventListener('click',enterSpentMoneyReason)
+    </script>
+</body>
+
+</html>
