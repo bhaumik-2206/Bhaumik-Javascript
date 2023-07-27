@@ -112,28 +112,82 @@
         let question = document.getElementById('question');
         let options = document.querySelectorAll('.options');
         let index = 0;
+
+
+        let a = quizQuestions.map((value, i) => {
+            return checkRightAnswer(i) + 1;
+        });
+        
         hideQueOptions();
         startQuiz.addEventListener('click', function () {
             remove.style.display = "none";
-            question.textContent = quizQuestions[index].question;
-            options.forEach((value, i) => {
-                value.style.display = "";
-                value.innerHTML = quizQuestions[index].answer[i].option;
-            });
-            options.forEach(cvalue => {
-
-            })
+            startQuiz.style.display = "none";
+            question.style.display = "block";
+            showQuestions(index);
             startQuiz.textContent = "Next";
             index++;
         });
 
+        function showQuestions(questionsIndex) {
+            if (questionsIndex < quizQuestions.length) {
+                question.textContent = quizQuestions[index].question;
+                quizQuestions[index].answer.forEach((value, i) => {
+                    options[i].style.display = "block";
+                    options[i].textContent = value.option;
+                    options[i].addEventListener('click', function () {
+                        console.log(a[index-1]);
+                    });
+                });
+                startQuiz.style.display = "block";
+            } else {
+                gameOver();
+            }
+        }
+
+
+        function checkRightAnswer(i) {
+            return quizQuestions[i].answer.findIndex(value => value.ans == true);
+        }
 
         function hideQueOptions() {
             question.style.display = "none";
             options.forEach(value => value.style.display = "none");
         }
 
+        function gameOver() {
+            hideQueOptions();
+            question.style.display = "block";
+            question.textContent = "Quiz Is Over";
+        }
+
     </script>
 </body>
 
 </html>
+
+
+<!-- // function showQuestions(qIndex) {
+// if (qIndex < quizQuestions.length) { // question.textContent=quizQuestions[index].question; //
+    quizQuestions[index].answer.forEach((value, i)=> {
+    // options[i].style.display = "block";
+    // options[i].textContent = value.option;
+    // options[i].addEventListener('click', function () {
+    // hello(index);
+    // // console.log("object");
+    // // console.log(quizQuestions[index]);
+    // });
+    // });
+    // } else {
+    // overQuize();
+    // }
+    // }
+
+    // function hello(qIndex) {
+    // let correctIndex = checkRightAnswer(qIndex)+1;
+    // console.log(correctIndex);
+    // startQuiz.style.display = "block";
+    // }
+
+    // function answerClick(i, qIndex) {
+    // let correctAnswer = checkRightAnswer(qIndex);
+    // } -->
