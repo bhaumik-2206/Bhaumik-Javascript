@@ -88,45 +88,51 @@
 </head>
 
 <body>
-    <div class="main">
+    <form action="" class="main" id="form">
         <input type="text" id="input" placeholder="Enter Your Task">
         <button type="submit" id="submitBtn">Submit</button>
-    </div>
+    </form>
 
-    <ul id="mainul" class="list">
-    </ul>
+    <ul id="mainul" class="list"></ul>
 
 
     <script>
-        let mainul = document.getElementById('mainul');
-        let submitBtn = document.getElementById('submitBtn');
-        let input = document.getElementById('input');
-        function printUl() {
-            let value = input.value.trim();
-            if (value.length >= 3) {
-                let a = confirm('If Yes :- Ok \n If No :- Close');
-                if (a == true) {
-                    let newLi = document.createElement('li');
-                    let newspan = document.createElement('span');
-                    newspan.innerHTML = "×";
-                    newLi.innerHTML = value;
-                    mainul.appendChild(newLi);
-                    newLi.appendChild(newspan);
-                }
-            }
-            input.value = "";
-        }
-        input.addEventListener('keydown', (e) => {
-            if (e.key == 'Enter') {
-                printUl();
-            }
-        });
-        submitBtn.addEventListener('click', printUl);
-        mainul.addEventListener('click', function (e) {
-            if (e.target.tagName == "SPAN") {
-                e.target.parentElement.remove();
-            }
-        })
+        // With Array
+
+        // With ul
+        // let mainul = document.getElementById('mainul');
+        // let form = document.getElementById('form');
+        // let submitBtn = document.getElementById('submitBtn');
+        // let input = document.getElementById('input');
+        // function printUl(e) {
+        //     e.preventDefault();
+        //     let value = input.value.trim();
+        //     if (value.length >= 3) {
+        //         let a = confirm('If Yes :- Ok \n If No :- Close');
+        //         if (a) {
+        //             let newLi = document.createElement('li');
+        //             let newspan = document.createElement('span');
+        //             newspan.innerHTML = "×";
+        //             newLi.textContent = value;
+        //             mainul.appendChild(newLi);
+        //             newLi.appendChild(newspan);
+        //         }
+        //     }
+        //     input.value = "";
+        // }
+        // form.addEventListener('submit', printUl);
+        // mainul.addEventListener('click', function (e) {
+        //     if (e.target.tagName == "SPAN") {
+        //         e.target.parentElement.remove();
+        //     }
+        // });
+
+
+        // input.addEventListener('keydown', (e) => {
+        //     if (e.key == 'Enter') {
+        //         printUl();
+        //     }
+        // });
     </script>
 </body>
 
