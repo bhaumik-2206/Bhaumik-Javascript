@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: lightgoldenrodyellow;
+            font-family: sans-serif;
+        }
+
+        main {
+            width: 100%;
+            display: flex;
+        }
+
+        .input {
+            width: 40%;
+        }
+
+        .output {
+            width: 60%;
+            /* border-left: 2px solid red; */
+            padding: 10px 0px 10px 10px;
+        }
+
+        .name {
+            margin-block: 10px;
+            font-size: 2.3rem;
+            text-align: center;
+        }
+
+        .profile {
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            display: none;
+        }
+
+        .underline {
+            border-bottom: 5px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="input">
+            <label for="fullName">Full Name:-</label>
+            <input type="text" id="fullName" required><br>
+            <label for="addProfile">Add Profile:-</label>
+            <textarea name="" id="addProfile" cols="30" rows="5"></textarea>
+            <input type="text" id="course">
+            <input type="text" id="collegeSchool">
+            
+            
+            <button id="generate" type="button">Generate</button>
+        </div>
+        <div class="output">
+            <h1 class="name" id="name"></h1>
+            <h2 class="underline profile" id="proTitle">PROFILE</h2>
+            <p id="printProfile"></p>
+            <h2 class="underline profile" id="educationTitle">EDUCATION</h2>
+            <p id="printEducation"></p>
+        </div>
+    </main>
+
+
+    <script>
+        let printFullName = document.getElementById('name');
+        let fullName = document.getElementById('fullName');
+        let generate = document.getElementById('generate');
+        let addProfile = document.getElementById('addProfile');
+        let proTitle = document.getElementById('proTitle');
+        generate.addEventListener('click', function () {
+            if (fullName.value) {
+                printFullName.innerHTML = upperCaseAllFirst(fullName.value);
+            } if (addProfile.value) {
+                proTitle.style.display = "block";
+                printProfile.innerHTML = addProfile.value;
+            }
+        });
+
+
+        function upperCaseAllFirst(a) {
+            return a.split(" ").map(value => value.at(0).toUpperCase() + value.slice(1)).join(" ");
+        }
+    </script>
+</body>
+
+</html>

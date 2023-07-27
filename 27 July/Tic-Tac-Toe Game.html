@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe Game</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+        }
+        input {
+            width: 70px;
+            height: 70px;
+            font-size: 40px;
+            text-align: center;
+            border: 3px solid yellow;
+            margin: 5px;
+            background-color: transparent;
+            color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="first">
+            <input id="in-1" type="text">
+            <input id="in-2" type="text">
+            <input id="in-3" type="text">
+        </div>
+        <div class="first">
+            <input id="in-4" type="text">
+            <input id="in-5" type="text">
+            <input id="in-6" type="text">
+        </div>
+        <div class="first">
+            <input id="in-7" type="text">
+            <input id="in-8" type="text">
+            <input id="in-9" type="text">
+        </div>
+    </div>
+
+
+
+    <script>
+        let allInput = document.querySelectorAll('input');
+        document.addEventListener('keyup', function (e) {
+            if (e.key == '0' || e.key == "x") {
+                let a = [];
+                allInput.forEach(value => {
+                    if (!(value.value == "")) {
+                        a.push(true);
+                    }
+                });
+                if (a.length >= 3) {
+                    if (checkWinner()) {
+                        alert("Winner");
+                        removeValue();
+                    }
+                }
+            } else {
+                alert("Please Type 0 or x");
+            }
+        });
+
+        function checkWinner() {
+            let winnerList = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
+            let a = [];
+            let b = [];
+            allInput.forEach((ele, index) => {
+                if (ele.value == "0") {
+                    a.push(index);
+                } else if (ele.value == "x" || ele.value == "X") {
+                    b.push(index);
+                }
+            });
+            // console.log(a);
+            // console.log(b);
+            return hello(winnerList, a) || hello(winnerList, b);
+        }
+
+        function removeValue() {
+            allInput.forEach(value => {
+                value.value = "";
+            })
+        }
+
+        function hello(mainArray, a) {
+            return mainArray.some(value => value.every(e => a.includes(e)));
+        }
+    </script>
+</body>
+
+</html>
