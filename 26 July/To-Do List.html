@@ -74,6 +74,7 @@
             list-style: none;
             font-size: 20px;
             position: relative;
+            cursor: pointer;
         }
 
         ul li span {
@@ -98,6 +99,41 @@
 
     <script>
         // With Array
+        let mainArray = [];
+        let mainul = document.getElementById('mainul');
+        let form = document.getElementById('form');
+        let input = document.getElementById('input');
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            if (input.value.trim().length >= 3) {
+                mainArray.push({ task: input.value.trim() });
+                makeLiAndTask(input.value);
+            }
+            input.value = "";
+        });
+        function makeLiAndTask(value) {
+            let newLi = document.createElement("li");
+            newLi.textContent = value;
+            newLi.setAttribute('class', "allLi");
+            mainul.appendChild(newLi);
+            makeCancel(newLi);
+        }
+        function makeCancel(a) {
+            let newspan = document.createElement('span');
+            newspan.textContent = "×";
+            a.appendChild(newspan);
+        }
+        mainul.addEventListener('click', function (e) {
+            if (e.target.tagName === "SPAN") {
+                e.target.parentElement.remove();
+            } else if (e.target.tagName === "LI") {
+                let a = prompt();
+                e.target.textContent = a;
+                makeCancel(e.target);
+            }
+        });
+
+
 
         // With ul
         // let mainul = document.getElementById('mainul');
