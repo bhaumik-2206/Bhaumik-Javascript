@@ -75,8 +75,8 @@
     <h1>Time Sheet</h1>
 
     <form action="" id="form">
-        <input type="time" name="" id="start" min="10:00" max="07:00">
-        <input type="time" name="" id="end">
+        <input type="time" name="" id="start" value="10:00" min="10:00" max="08:00" disabled>
+        <input type="time" name="" id="end" aria-multiselectable="08:00">
         <input type="text" name="" id="work" placeholder="Enter your work">
         <button type="submit" id="submit">Submit</button>
     </form>
@@ -103,7 +103,6 @@
                 newLi.textContent = start.value + " - " + end.value + " :- " + work.value;
                 mainul.appendChild(newLi);
                 start.value = end.value;
-                start.disabled = true;
                 end.setAttribute('min', end.value);
                 end.value = "";
                 work.value = "";

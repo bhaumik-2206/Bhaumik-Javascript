@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-size: 40px;
+        }
+
+        main {
+            width: 50%;
+            margin-inline: auto;
+            background-color: red;
+            flex-wrap: wrap;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .simple {
+            width: 30%;
+            height: 30%;
+            background-color: green;
+            font-size: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .sameClass {
+            color: red;
+            background-color: white;
+        }
+
+        .store {
+            display: none;
+        }
+
+        .white {
+            background-color: green;
+        }
+
+        .winnerClass {
+            width: 30%;
+            height: 30%;
+            background-color: white;
+            font-size: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <main id="main">
+
+    </main>
+    <!-- <div id="store"></div> -->
+
+    <!-- <script>
+        let main = document.getElementById('main');
+        let arr = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6];
+        let a = arr.length;
+
+        // for (let i = 0; i < a; i++) {
+        //     let abc = Math.floor(Math.random() * arr.length);
+        //     let b = arr.splice(abc, 1);
+        //     let newEle = document.createElement('div');
+        //     newEle.textContent = `${b}`;
+        //     newEle.classList.add("simple");
+        //     main.appendChild(newEle);
+        // }
+
+        for (let i = 0; i < a; i++) {
+            let abc = Math.floor(Math.random() * arr.length);
+            let b = arr.splice(abc, 1);
+            let newEle = document.createElement('div');
+            newEle.textContent = `${b}`;
+            newEle.classList.add("simple");
+            main.appendChild(newEle);
+        }
+
+
+
+        let flippedCards = [];
+        let simple = document.querySelectorAll('.simple');
+
+        simple.forEach(card => {
+            card.addEventListener('click', function () {
+                if (flippedCards.length < 2 && !card.classList.contains('winnerClass')) {
+                    card.classList.add('winnerClass');
+                    flippedCards.push(card);
+
+                    if (flippedCards.length === 2) {
+                        if (flippedCards[0].innerHTML === flippedCards[1].innerHTML) {
+                            setTimeout(function () {
+                                flippedCards.forEach(matchedCard => matchedCard.classList.remove('simple'));
+                                flippedCards = [];
+                            }, 1000);
+                        } else {
+                            setTimeout(function () {
+                                flippedCards.forEach(matchedCard => matchedCard.classList.remove('winnerClass'));
+                                flippedCards = [];
+                            }, 1000);
+                        }
+                    }
+                }
+            });
+        });
+    </script> -->
+    <script>
+        let main = document.getElementById('main');
+        let arr = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6];
+        let a = arr.length;
+        for (let i = 0; i < a; i++) {
+            let abc = Math.floor(Math.random() * arr.length);
+            let b = arr.splice(abc, 1);
+            let newEle = document.createElement('div');
+            newEle.textContent = `${b}`;
+            newEle.classList.add("simple");
+            main.appendChild(newEle);
+        }
+
+        let emptyArray = [];
+        let simple = document.querySelectorAll('.simple');
+
+        simple.forEach(value => {
+            value.addEventListener('click', function () {
+                if (emptyArray.length < 2) {
+                    value.classList.add('winnerClass');
+                    emptyArray.push(value);
+                    // console.log(value);
+
+                    if (emptyArray.length == 2) {
+                        if (emptyArray[0].innerHTML == emptyArray[1].innerHTML) {
+                            console.log("first");
+                            emptyArray.forEach(e => e.classList.remove('simple'));
+                            emptyArray = [];
+                        } else {
+                            setTimeout(() => {
+                                console.log("second");
+                                emptyArray.forEach(e => e.classList.add('winnerClass'));
+                                emptyArray = [];
+                            }, 500);
+                        }
+                    }
+                }
+            })
+        })
+
+
+        // simple.forEach(value => {
+        //     value.addEventListener('click', function () {
+        //         value.classList.add('winnerClass');
+        //         let winnerList = document.querySelectorAll('.winnerClass');
+        //         console.log(winnerList);
+        //         if (winnerList.length > 1) {
+        //             if (winnerList[0].innerHTML == winnerList[1].innerHTML) {
+        //                 winnerList[0].classList.add("winnerClass");
+        //                 winnerList[1].classList.add("winnerClass");
+        //                 winnerList[0].classList.remove('simple');
+        //                 winnerList[1].classList.remove('simple');
+        //                 // console.log("same");
+        //             }
+        //             //  else {
+        //             //     winnerList[0].classList.remove("winnerClass");
+        //             //     winnerList[1].classList.remove("winnerClass");
+        //             //     console.log("Diff");
+        //             // }
+        //         }
+        //     });
+        // });
+    </script>
+</body>
+
+</html>
