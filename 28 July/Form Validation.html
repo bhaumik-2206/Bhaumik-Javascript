@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            font-family: sans-serif;
+            height: 100vh;
+            background-color: lightgreen;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main {
+            background-color: lightgrey;
+            width: 40%;
+            font-size: 20px;
+            padding: 2rem;
+            border-radius: 10px;
+            border: 5px solid black;
+        }
+
+        form button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background-color: brown;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+
+        .incorrect {
+            color: red;
+            margin-bottom: 10px;
+            display: none;
+        }
+
+        input {
+            width: -webkit-fill-available;
+            font-size: 20px;
+            padding: 5px 10px;
+            margin-bottom: 10px;
+        }
+
+        .none {
+            display: none;
+        }
+
+        .main h3 {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="" id="form" class="main">
+        <label for="username">User Name:-</label>
+        <input type="text" id="username" placeholder="Enter User Name"><br>
+        <p class="incorrect" id="incorrectUsername">Username must be more than 6 character</p>
+        <label for="password">Password:-</label>
+        <input type="password" id="password" placeholder="Enter Password"><br>
+        <p class="incorrect" id="inPa">Username must be more than 8 character</p>
+        <p class="incorrect" id="incoPassword">Password Must Be
+            <span class="none" id="upper">, Upper Case</span>
+            <span class="none" id="lower">, Lower Case</span>
+            <span class="none" id="special">, Special Character</span>
+            <span class="none" id="number">, Numbers</span>
+        </p>
+        <button type="submit">Submit</button>
+    </form>
+
+    <div class="main none" id="answer">
+        <h2>Your Form Has Been Submitted</h2>
+        <h3 class="printH3">User Name :- <span id="user"></span></h3>
+        <h3 class="printH3">Passwors :- <span id="pass"></span></h3>
+    </div>
+
+
+    <script>
+        let form = document.getElementById('form');
+        let username = document.getElementById('username');
+        let password = document.getElementById('password');
+        let upper = document.getElementById('upper');
+        let lower = document.getElementById('lower');
+        let special = document.getElementById('special');
+        let number = document.getElementById('number');
+        let answer = document.getElementById('answer');
+        let incorrect = document.querySelectorAll('.incorrect');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            correctUserName();
+            correctPassword();
+            if (checkpPreasentOrNot(incorrect)) {
+                printData(username.value, password.value);
+            }
+        });
+
+        function checkpPreasentOrNot(incorrect) {
+            let a = [];
+            incorrect.forEach(value => {
+                if (value.style.display == "none") {
+                    a.push(true);
+                } else {
+                    a.push(false);
+                }
+            });
+            return a.every(e => e == true);
+        }
+
+        function printData(value1, value2) {
+            form.style.display = "none";
+            answer.style.display = "block";
+            let printH3 = document.querySelectorAll('.printH3');
+            printH3.forEach(value => { value.style.display = "block" });
+            let user = document.getElementById('user');
+            let pass = document.getElementById('pass');
+            user.innerHTML = value1;
+            pass.innerHTML = value2;
+        }
+
+        function correctPassword() {
+            let incoPassword = document.getElementById('incoPassword');
+            let inPa = document.getElementById('inPa');
+            let lowercase = 'abcdefghijklmnopqrstuvwxyz';
+            let uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYS";
+            let numbers = "1234567890";
+            let specialChar = `/?.>,<;:[{]}\|=+-_)(*&^%$#@!`;
+            if (password.value.length < 8) {
+                inPa.style.display = "block";
+            } else {
+                inPa.style.display = "none";
+                incoPassword.style.display = "block";
+                if (!checkAnyOne(lowercase, password.value)) {
+                    lower.style.display = "inline";
+                } else {
+                    lower.style.display = "none";
+                }
+                if (!checkAnyOne(uppercase, password.value)) {
+                    upper.style.display = "inline";
+                } else {
+                    upper.style.display = "none";
+                }
+                if (!checkAnyOne(specialChar, password.value)) {
+                    special.style.display = "inline";
+                } else {
+                    special.style.display = "none";
+                }
+                if (!checkAnyOne(numbers, password.value)) {
+                    number.style.display = "inline";
+                } else {
+                    number.style.display = "none";
+                }
+                if (checkAnyOne(uppercase, password.value) && checkAnyOne(numbers, password.value) && checkAnyOne(lowercase, password.value) && checkAnyOne(specialChar, password.value)) {
+                    incoPassword.style.display = "none";
+                }
+            }
+        }
+
+        function checkAnyOne(cases, value) {
+            let a = value.split("");
+            return a.some(value => cases.includes(value));
+        }
+
+        function correctUserName() {
+            let incorrectUsername = document.getElementById('incorrectUsername');
+            if (username.value.length <= 6) {
+                incorrectUsername.style.display = "block";
+            } else if (username.value.length > 5) {
+                incorrectUsername.style.display = "none";
+            }
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Sheet</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: lightseagreen;
+            font-family: sans-serif;
+        }
+
+        form {
+            background-color: gray;
+            color: white;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        form input {
+            background-color: transparent;
+            border: 1px solid black;
+            padding: 5px 10px;
+            color: white;
+            font-size: 20px;
+        }
+
+        form input:focus {
+            outline: none;
+        }
+
+        form button {
+            padding: 10px 20px;
+            font-size: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 50px;
+            border: none;
+        }
+
+        ul {
+            margin: 10px;
+            background-color: black;
+            color: yellow;
+        }
+
+        ul li {
+            list-style: none;
+            font-size: 1.7rem;
+            padding: 10px;
+        }
+
+        ::placeholder {
+            color: white;
+            opacity: .7;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Time Sheet</h1>
+
+    <form action="" id="form">
+        <input type="time" name="" id="start" min="10:00" max="07:00">
+        <input type="time" name="" id="end">
+        <input type="text" name="" id="work" placeholder="Enter your work">
+        <button type="submit" id="submit">Submit</button>
+    </form>
+
+    <ul id="mainul"></ul>
+
+
+
+    <script>
+        let start = document.getElementById('start');
+        let end = document.getElementById('end');
+        let work = document.getElementById('work');
+        let submit = document.getElementById('submit');
+        let form = document.getElementById('form');
+        let mainul = document.getElementById('mainul');
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            addLiAllTime();
+        });
+
+        function addLiAllTime() {
+            if (start.value.length !== 0 && end.value.length !== 0 && work.value.length != 0) {
+                let newLi = document.createElement('li');
+                newLi.textContent = start.value + " - " + end.value + " :- " + work.value;
+                mainul.appendChild(newLi);
+                start.value = end.value;
+                start.disabled = true;
+                end.setAttribute('min', end.value);
+                end.value = "";
+                work.value = "";
+            } else {
+                alert("Please Enter All Value");
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: lightpink;
+            font-family: sans-serif;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+        }
+
+        .quiz {
+            margin-inline: auto;
+            background-color: red;
+            color: white;
+            padding: 20px;
+            width: 70%;
+        }
+
+        .quiz p {
+            text-align: center;
+            font-size: 20px;
+        }
+
+        .answer {
+            margin-block: 1rem;
+            /* border-radius: 20px; */
+            background-color: rgb(129, 129, 129);
+            color: black;
+        }
+
+        .answer div {
+            padding: 10px;
+            border: 1px solid black;
+            cursor: pointer;
+        }
+
+        button {
+            display: block;
+            margin-inline: auto;
+            padding: 10px 30px;
+            font-size: 2rem;
+            background-color: green;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Quiz Game</h1>
+    <div class="quiz">
+        <p id="remove">Tap Start to start the quiz</p>
+        <p id="question"></p>
+        <div class="answer">
+            <div class="options"></div>
+            <div class="options"></div>
+            <div class="options"></div>
+            <div class="options"></div>
+        </div>
+        <button type="button" id="startQuiz">start</button>
+    </div>
+
+
+
+    <script>
+        let quizQuestions = [
+            {
+                question: "In which year the capital of Gujarat shifted from Ahmedabad to Gandhinagar?",
+                answer: [
+                    { option: "1962", ans: false },
+                    { option: "1966", ans: false },
+                    { option: "1970", ans: true },
+                    { option: "1975", ans: false },
+                ]
+            },
+            {
+                question: "Which city is also known as Diamond City of India?",
+                answer: [
+                    { option: "Ahmedabad", ans: false },
+                    { option: "Rajkot", ans: false },
+                    { option: "Gandhinagar", ans: false },
+                    { option: "Surat", ans: true },
+                ]
+            },
+            {
+                question: "Total number of districts in Gujarat?",
+                answer: [
+                    { option: "23", ans: false },
+                    { option: "33", ans: true },
+                    { option: "27", ans: false },
+                    { option: "38", ans: false },
+                ]
+            },
+        ];
+        let startQuiz = document.getElementById('startQuiz');
+        let remove = document.getElementById('remove');
+        let question = document.getElementById('question');
+        let options = document.querySelectorAll('.options');
+        let index = 0;
+
+
+        let a = quizQuestions.map((value, i) => {
+            return checkRightAnswer(i) + 1;
+        });
+
+        hideQueOptions();
+        startQuiz.addEventListener('click', function () {
+            remove.style.display = "none";
+            startQuiz.style.display = "none";
+            question.style.display = "block";
+            showQuestions(index);
+            startQuiz.textContent = "Next";
+            index++;
+        });
+
+        function showQuestions(questionsIndex) {
+            if (questionsIndex < quizQuestions.length) {
+                question.textContent = quizQuestions[index].question;
+                quizQuestions[index].answer.forEach((value, i) => {
+                    options[i].style.display = "block";
+                    options[i].textContent = value.option;
+                    options[i].addEventListener('click', function () {
+                        console.log(a[index - 1]);
+                    });
+                });
+                startQuiz.style.display = "block";
+            } else {
+                gameOver();
+            }
+        }
+
+
+        function checkRightAnswer(i) {
+            return quizQuestions[i].answer.findIndex(value => value.ans == true);
+        }
+
+        function hideQueOptions() {
+            question.style.display = "none";
+            options.forEach(value => value.style.display = "none");
+        }
+
+        function gameOver() {
+            hideQueOptions();
+            question.style.display = "block";
+            question.textContent = "Quiz Is Over";
+        }
+
+    </script>
+</body>
+
+</html>

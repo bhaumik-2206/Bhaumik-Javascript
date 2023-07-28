@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Game</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: lightpink;
+            font-family: sans-serif;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+        }
+
+        .quiz {
+            margin: 0 auto;
+            background-color: red;
+            color: white;
+            padding: 20px;
+            width: 70%;
+        }
+
+        .quiz p {
+            text-align: center;
+            font-size: 20px;
+        }
+
+        .answer {
+            margin: 1rem 0;
+        }
+
+        .options {
+            padding: 10px;
+            border: 1px solid black;
+            background-color: rgb(129, 129, 129);
+            color: black;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        button {
+            display: block;
+            margin: 0 auto;
+            padding: 10px 30px;
+            font-size: 2rem;
+            background-color: green;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Quiz Game</h1>
+    <div class="quiz">
+        <p id="instructions">Tap Start to begin the quiz</p>
+        <p id="question"></p>
+        <div class="answer">
+            <div class="options"></div>
+            <div class="options"></div>
+            <div class="options"></div>
+            <div class="options"></div>
+        </div>
+        <button type="button" id="startQuiz">Start</button>
+    </div>
+
+    <script>
+        let quizQuestions = [
+            {
+                question: "In which year did the capital of Gujarat shift from Ahmedabad to Gandhinagar?",
+                answer: [
+                    { option: "1962", ans: false },
+                    { option: "1966", ans: false },
+                    { option: "1970", ans: true },
+                    { option: "1975", ans: false },
+                ]
+            },
+            {
+                question: "Which city is also known as the Diamond City of India?",
+                answer: [
+                    { option: "Ahmedabad", ans: false },
+                    { option: "Rajkot", ans: false },
+                    { option: "Gandhinagar", ans: false },
+                    { option: "Surat", ans: true },
+                ]
+            },
+            {
+                question: "What is the total number of districts in Gujarat?",
+                answer: [
+                    { option: "23", ans: false },
+                    { option: "33", ans: true },
+                    { option: "27", ans: false },
+                    { option: "38", ans: false },
+                ]
+            },
+        ];
+
+        const startQuizBtn = document.getElementById('startQuiz');
+        const instructions = document.getElementById('instructions');
+        const questionElement = document.getElementById('question');
+        const optionsElements = document.querySelectorAll('.options');
+        let questionIndex = 0;
+
+        hideQuestionOptions();
+
+        startQuizBtn.addEventListener('click', function () {
+            if (questionIndex < quizQuestions.length) {
+                instructions.style.display = "none";
+                startQuizBtn.style.display = "none";
+                questionElement.style.display = "block";
+                showQuestionOptions(questionIndex);
+                startQuizBtn.textContent = "Next";
+                questionIndex++;
+            } else {
+                endQuiz();
+            }
+        });
+
+        function showQuestionOptions(index) {
+            questionElement.textContent = quizQuestions[index].question;
+            quizQuestions[index].answer.forEach((value, i) => {
+                optionsElements[i].style.display = "block";
+                optionsElements[i].innerHTML = value.option;
+                optionsElements[i].style.backgroundColor = "rgb(129, 129, 129)";
+                optionsElements[i].addEventListener('click', function () {
+                    handleAnswerClick(i, index);
+                });
+            });
+        }
+
+        function handleAnswerClick(selectedIndex, questionIndex) {
+            const correctIndex = checkRightAnswer(questionIndex);
+            optionsElements[correctIndex].style.backgroundColor = "rgb(128, 248, 128)";
+            if (selectedIndex === correctIndex) {
+                optionsElements[selectedIndex].style.backgroundColor = "rgb(128, 248, 128)";
+            } else {
+                optionsElements[selectedIndex].style.backgroundColor = "rgb(255, 118, 118)";
+            }
+            startQuizBtn.style.display = "block";
+        }
+
+        function checkRightAnswer(mainIndex) {
+            return quizQuestions[mainIndex].answer.findIndex(value => value.ans === true);
+        }
+
+        function hideQuestionOptions() {
+            questionElement.style.display = "none";
+            optionsElements.forEach(option => option.style.display = "none");
+        }
+
+        function endQuiz() {
+            questionElement.textContent = "Congratulations! You have completed the quiz!";
+            optionsElements.forEach(option => option.style.display = "none");
+            startQuizBtn.style.display = "none";
+        }
+
+    </script>
+</body>
+
+</html>
