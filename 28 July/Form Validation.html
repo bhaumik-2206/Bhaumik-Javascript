@@ -138,7 +138,7 @@
             let uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYS";
             let numbers = "1234567890";
             let specialChar = `/?.>,<;:[{]}\|=+-_)(*&^%$#@!`;
-            if (password.value.length < 8) {
+            if (password.value.split(" ").filter(Boolean).join(" ").length < 8) {
                 inPa.style.display = "block";
             } else {
                 inPa.style.display = "none";
@@ -176,13 +176,13 @@
 
         function correctUserName() {
             let incorrectUsername = document.getElementById('incorrectUsername');
-            if (username.value.length <= 6) {
+            if (username.value.split(" ").filter(Boolean).join(" ").length <= 6) {
                 incorrectUsername.style.display = "block";
             } else if (username.value.length > 5) {
                 incorrectUsername.style.display = "none";
             }
         }
-
+        
     </script>
 </body>
 

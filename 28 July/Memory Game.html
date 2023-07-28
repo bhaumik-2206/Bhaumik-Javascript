@@ -28,6 +28,7 @@
             height: 30%;
             background-color: green;
             font-size: 50px;
+            color: green;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -59,62 +60,9 @@
 </head>
 
 <body>
-    <main id="main">
-
-    </main>
-    <!-- <div id="store"></div> -->
-
-    <!-- <script>
-        let main = document.getElementById('main');
-        let arr = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6];
-        let a = arr.length;
-
-        // for (let i = 0; i < a; i++) {
-        //     let abc = Math.floor(Math.random() * arr.length);
-        //     let b = arr.splice(abc, 1);
-        //     let newEle = document.createElement('div');
-        //     newEle.textContent = `${b}`;
-        //     newEle.classList.add("simple");
-        //     main.appendChild(newEle);
-        // }
-
-        for (let i = 0; i < a; i++) {
-            let abc = Math.floor(Math.random() * arr.length);
-            let b = arr.splice(abc, 1);
-            let newEle = document.createElement('div');
-            newEle.textContent = `${b}`;
-            newEle.classList.add("simple");
-            main.appendChild(newEle);
-        }
+    <main id="main"></main>
 
 
-
-        let flippedCards = [];
-        let simple = document.querySelectorAll('.simple');
-
-        simple.forEach(card => {
-            card.addEventListener('click', function () {
-                if (flippedCards.length < 2 && !card.classList.contains('winnerClass')) {
-                    card.classList.add('winnerClass');
-                    flippedCards.push(card);
-
-                    if (flippedCards.length === 2) {
-                        if (flippedCards[0].innerHTML === flippedCards[1].innerHTML) {
-                            setTimeout(function () {
-                                flippedCards.forEach(matchedCard => matchedCard.classList.remove('simple'));
-                                flippedCards = [];
-                            }, 1000);
-                        } else {
-                            setTimeout(function () {
-                                flippedCards.forEach(matchedCard => matchedCard.classList.remove('winnerClass'));
-                                flippedCards = [];
-                            }, 1000);
-                        }
-                    }
-                }
-            });
-        });
-    </script> -->
     <script>
         let main = document.getElementById('main');
         let arr = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6];
@@ -146,14 +94,15 @@
                         } else {
                             setTimeout(() => {
                                 console.log("second");
-                                emptyArray.forEach(e => e.classList.add('winnerClass'));
+                                emptyArray.forEach(e => e.classList.remove('winnerClass'));
                                 emptyArray = [];
                             }, 500);
                         }
                     }
                 }
-            })
-        })
+            });
+        });
+
 
 
         // simple.forEach(value => {
