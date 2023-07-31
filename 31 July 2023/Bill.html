@@ -7,6 +7,68 @@
     <title>Document</title>
     <style>
         * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ccc;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+
+        input {
+            width: 100%;
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .total {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        /* * {
             padding: 0;
             margin: 0;
         }
@@ -54,7 +116,7 @@
             background-color: black;
             color: yellow;
             padding: 5px 10px;
-        }
+        } */
     </style>
 </head>
 
@@ -65,15 +127,13 @@
             <th>Quantity</th>
             <th>Price</th>
             <th>Amount</th>
-            <th>Discount(25%)</th>
             <th>GST(18%)</th>
             <th>Delete</th>
         </tr>
-        <tr>
+        <tr class="row">
             <td><input type="text" class="productName"></td>
-            <td><input type="number" name="" id="quantity"></td>
-            <td><input type="number" id="amount"></td>
-            <td></td>
+            <td><input type="number" name="" class="quantity" id="quantity"></td>
+            <td><input type="number" class="price" id="amount"></td>
             <td></td>
             <td></td>
             <td><button class="delete" disabled>delete</button></td>
@@ -88,30 +148,58 @@
         let addBtn = document.getElementById('addBtn');
         let table = document.getElementById('table');
         let total = document.getElementById('total');
-        let quantity = document.getElementById('quantity');
-        let amount = document.getElementById('amount');
 
 
         addBtn.addEventListener('click', function () {
             let row = document.createElement('tr');
+            row.setAttribute('class', 'row');
             row.innerHTML = `<td><input type="text" class="productName"></td>
-            <td><input type="number" name="" id=""></td>
-            <td><input type="number"></td>
-            <td></td>
+            <td><input type="number" name="" class="quantity"></td>
+            <td><input type="number" class="price"></td>
             <td></td>
             <td></td>
             <td><button class="delete">delete</button></td>`;
             table.appendChild(row);
         });
 
-        table.addEventListener('keyup', function (e) {
-            let price = 0;
+
+        // function updateTotal() {
+        //     let totalPrice = 0;
+        //     let allRows = document.querySelectorAll('.row');
+        //     allRows.forEach(row => {
+        //         const quantity = parseInt(row.querySelector('.quantity').value);
+        //         const price = parseFloat(row.querySelector('.price').value);
+        //         const amount = quantity * price || 0;
+        //         const gst = amount * 0.18;
+        //         row.cells[3].textContent = amount.toFixed(2);
+        //         row.cells[4].textContent = gst.toFixed(2);
+        //         totalPrice += amount + gst;
+        //     });
+        //     total.textContent = totalPrice.toFixed(2);
+        // }
+        function makeTotal() {
+            let mainTotal = 0;
+            let allTr = document.querySelectorAll('.row');
+            allTr.forEach(ele => {
+                let quantity = ele.querySelector('.quantity').value;
+                let price = ele.querySelector('.price').value;
+                ele.cells[3].innerHTML = quantity * price;
+                ele.cells[4].innerHTML = (price * 18) / 100;
+                mainTotal += (quantity * price) + ((price * 18) / 100);
+            });
+            total.innerHTML = mainTotal;
+        }
+
+        table.addEventListener('click', function (e) {
             if (e.target.tagName == "BUTTON") {
                 e.target.parentElement.parentElement.remove();
             }
-            price = quantity.value * amount.value;
-            total.innerHTML = price;
         });
+
+        table.addEventListener('keyup', function () {
+            makeTotal();
+        });
+
     </script>
 </body>
 

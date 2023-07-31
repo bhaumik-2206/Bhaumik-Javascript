@@ -69,7 +69,9 @@ main {
 .time-date>* {
     text-align: center;
     border: none;
-    padding: 10px 25px;
+    font-size: 1.3rem;
+    width: 30%;
+    padding-block: 2rem;
     border-radius: 15px;
 }
 
@@ -206,6 +208,16 @@ main {
     align-items: center;
 }
 
-#total span{
+#total span {
     font-size: 22px;
+}
+
+#green {
+    color: green;
+    margin-top: 10px;
+}
+
+#red {
+    color: red;
+    margin-top: 10px;
 }
