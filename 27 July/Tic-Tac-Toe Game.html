@@ -26,8 +26,8 @@
         }
 
         .first>div {
-            width: 70px;
-            height: 70px;
+            width: 100px;
+            height: 100px;
             font-size: 40px;
             text-align: center;
             border: 3px solid yellow;
@@ -40,6 +40,10 @@
             justify-content: center;
         }
 
+        .input span {
+            font-size: 5rem;
+        }
+
         .buttons {
             text-align: center;
             padding-block: 1rem;
@@ -47,13 +51,41 @@
 
         .buttons button {
             background-color: yellow;
-            padding: 10px 30px;
+            padding: 20px 50px;
             border: none;
             font-size: 1.5rem;
             font-weight: bold;
             font-weight: bold;
             border-radius: 10px;
             cursor: pointer;
+        }
+
+        .winner {
+            background-color: rgba(128, 128, 128, 0.432);
+            width: 100vw;
+            height: 100vh;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            font-size: 80px;
+            color: white;
+            font-weight: bold;
+            flex-direction: column;
+        }
+
+        .winner button {
+            padding: 10px 20px;
+            background-color: yellow;
+            border-radius: 20px;
+            font-weight: bold;
+            color: black;
+            font-size: 20px;
+            cursor: pointer;
+            margin-block: 10px;
+            border: none;
         }
     </style>
 </head>
@@ -79,12 +111,16 @@
     <div class="buttons">
         <button class="restart" onclick="location.reload()">Restart</button>
     </div>
+    <div class="winner" id="winner">
+        <button>CLOSE</button>
+    </div>
 
 
 
     <script>
         let allInput = document.querySelectorAll('.input');
         let main = document.getElementById('main');
+        let winner = document.getElementById('winner');
 
         main.addEventListener('click', function (e) {
             let a = [];
@@ -95,7 +131,16 @@
             });
             if (a.length >= 5) {
                 if (checkWinner()) {
-                    alert("Winner");
+                    if (a.length % 2 == 0) {
+                        winner.style.display = "flex";
+                        winner.innerHTML = "Player 2 is WINNER!!!<button onclick = offScreen(this)>CLOSE</button>";
+                    } else {
+                        winner.style.display = "flex";
+                        winner.innerHTML = "Player 1 is WINNER!!!<button onclick = offScreen(this)>CLOSE</button>";
+                    }
+                } else if (a.length === 9) {
+                    winner.style.display = "flex";
+                    winner.innerHTML = "MATCH DRAW!!!<button onclick = offScreen(this)>CLOSE</button>";
                 }
             }
         });
@@ -113,8 +158,6 @@
                     }
                 }
             });
-            console.log(a);
-            console.log(b);
             return hello(winnerList, a) || hello(winnerList, b);
         }
 
@@ -144,6 +187,10 @@
             let o = document.createElement('span');
             o.textContent = "O";
             return o;
+        }
+
+        function offScreen(e) {
+            winner.style.display = "none";
         }
     </script>
 </body>

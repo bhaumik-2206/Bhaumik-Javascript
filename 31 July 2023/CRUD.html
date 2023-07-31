@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: lightblue;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            margin: 20px;
+            border: 5px solid black;
+            padding: 10px;
+        }
+
+        form div {
+            width: 100%;
+            font-size: 20px;
+            padding-block: 10px;
+        }
+
+        form div input {
+            width: -webkit-fill-available;
+            font-size: 20px;
+            background-color: transparent;
+            border: 3px solid black;
+            padding: 5px 10px;
+        }
+
+        form div button {
+            width: 100%;
+            padding-block: 10px;
+            background-color: black;
+            color: white;
+            font-size: 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 5px solid white;
+            font-size: 1.5rem;
+            text-align: center;
+            padding: 10px;
+        }
+
+        table tr td span {
+            background-color: black;
+            color: yellow;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>CRUD With JavaScript</h1>
+
+    <form action="" id="form">
+        <div>
+            <label for="fullName">Full Name:-</label>
+            <input type="text" placeholder="Enter Your Full Name" id="fullName" required>
+        </div>
+        <div>
+            <label for="email">Email:-</label>
+            <input type="email" placeholder="Enter Your Email" id="email">
+        </div>
+        <div>
+            <label for="mobile">Mobile Number:-</label>
+            <input type="text" placeholder="Enter Your Mobile Numebr" id="mobile">
+        </div>
+        <div>
+            <label for="city">City:-</label>
+            <input type="text" placeholder="Enter Your City" id="city">
+        </div>
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+
+    <table id="table">
+        <tr>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Mobile Number</th>
+            <th>City</th>
+            <th>Operations</th>
+        </tr>
+    </table>
+
+
+
+
+
+    <script>
+        let fullName = document.getElementById('fullName');
+        let email = document.getElementById('email');
+        let mobile = document.getElementById('mobile');
+        let city = document.getElementById('city');
+        let submit = document.getElementById('submit');
+        let form = document.getElementById('form');
+        let table = document.getElementById('table');
+        let storeVar = null;
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            if (fullName.value.trim() != "") {
+                if (storeVar) {
+                    updateRow(storeVar);
+                    storeVar = null;
+                } else {
+                    let newTr = document.createElement('tr');
+                    newTr.innerHTML = `<td>${fullName.value}</td>
+                    <td>${email.value}</td>
+                    <td>${mobile.value}</td>
+                    <td>${city.value}</td>
+                    <td><span onclick="editTask(this)">edit</span> <span onclick="deleteTask(this)">Delete</span></td>`;
+                    table.appendChild(newTr);
+                }
+                resetAllTheValue();
+            }
+        });
+        function editTask(e) {
+            let first = e.parentElement.parentElement;
+            storeVar = first;
+            fullName.value = first.children[0].innerHTML;
+            email.value = first.children[1].innerHTML;
+            mobile.value = first.children[2].innerHTML;
+            city.value = first.children[3].innerHTML;
+        }
+
+        function deleteTask(e) {
+            let a = confirm("Are You Sure To Delete Data?");
+            if (a) {
+                let row = e.parentElement.parentElement;
+                row.remove();
+            }
+        }
+
+        function updateRow(row) {
+            row.children[0].innerHTML = fullName.value;
+            row.children[1].innerHTML = email.value;
+            row.children[2].innerHTML = mobile.value;
+            row.children[3].innerHTML = city.value;
+        }
+
+        function resetAllTheValue() {
+            fullName.value = "";
+            email.value = "";
+            mobile.value = "";
+            city.value = "";
+        }
+
+    </script>
+</body>
+
+</html>
