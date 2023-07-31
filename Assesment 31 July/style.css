@@ -1,0 +1,211 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: whitesmoke;
+    font-family: sans-serif;
+}
+
+main {
+    display: flex;
+}
+
+.left {
+    width: 50%;
+}
+
+.left>* {
+    padding-inline: 1.5rem;
+}
+
+.left .h2 {
+    font-size: 30px;
+    color: brown;
+    padding-block: 15px;
+}
+
+.left .booking {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: gray;
+}
+
+.image {
+    display: flex;
+    gap: 1rem;
+}
+
+.image img {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+}
+
+.img-title {
+    margin-bottom: 5px;
+}
+
+.pcos {
+    border: 1px solid blue;
+    background-color: transparent;
+    padding: 5px 15px;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+.schedule {
+    font-size: 20px;
+    margin-block: 10px;
+}
+
+.time-date {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.time-date>* {
+    text-align: center;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 15px;
+}
+
+.time-date .date {
+    background-color: pink;
+}
+
+.time-date .time {
+    background-color: #bbd9f7;
+}
+
+.time-date .duration {
+    background-color: rgb(158, 255, 158);
+}
+
+
+
+.right {
+    width: 50%;
+}
+
+.right>* {
+    padding-inline: 2rem;
+}
+
+.pro-title {
+    font-size: 25px;
+    margin-block: 15px;
+    color: gray;
+}
+
+.input-promo {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.input-promo input {
+    width: -webkit-fill-available;
+    font-size: 20px;
+    padding-inline: 20px;
+    border-radius: 20px;
+    border: 1px solid rgb(255, 115, 138);
+}
+
+::placeholder {
+    color: gray;
+    opacity: .7;
+}
+
+.input-promo button {
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(255, 116, 139);
+    cursor: pointer;
+    border: none;
+    border-radius: 20px;
+}
+
+.payNow {
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(255, 62, 94);
+    cursor: pointer;
+    border: none;
+    border-radius: 20px;
+}
+
+.amount-input {
+    display: flex;
+    margin-block: 20px;
+    align-items: center;
+}
+
+.amount-input label {
+    width: 40%;
+    font-size: 20px;
+}
+
+.amount-input input {
+    width: -webkit-fill-available;
+    padding: 10px 20px;
+    background-color: transparent;
+    border: 1px solid black;
+    border-radius: 20px;
+    font-size: 20px;
+}
+
+.details {
+    background-color: #C3C3F6;
+    width: 80%;
+    margin-inline: auto;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.details .first {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-block: 5px;
+    font-size: 20px;
+}
+
+.details .first :first-child {
+    color: blue;
+}
+
+.total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.total :first-child {
+    font-size: 25px;
+}
+
+.total :last-child {
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.pay {
+    margin-block: 2rem;
+    font-size: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#total span{
+    font-size: 22px;
+}

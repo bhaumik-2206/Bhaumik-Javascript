@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: rgb(255, 205, 205);
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            padding: 5px;
+            border: 2px solid black;
+            text-align: center;
+            width: 15%;
+        }
+
+        input {
+            width: 80px;
+            padding: 2px;
+            background-color: transparent;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .productName {
+            width: 80%;
+            padding: 2px;
+            background-color: transparent;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        tr button {
+            background-color: black;
+            color: yellow;
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <table id="table">
+        <tr>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Amount</th>
+            <th>Discount(25%)</th>
+            <th>GST(18%)</th>
+            <th>Delete</th>
+        </tr>
+        <tr>
+            <td><input type="text" class="productName"></td>
+            <td><input type="number" name="" id="quantity"></td>
+            <td><input type="number" id="amount"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><button class="delete" disabled>delete</button></td>
+        </tr>
+    </table>
+
+    <button id="addBtn">Add</button>
+
+    <h1 id="total">0</h1>
+
+    <script>
+        let addBtn = document.getElementById('addBtn');
+        let table = document.getElementById('table');
+        let total = document.getElementById('total');
+        let quantity = document.getElementById('quantity');
+        let amount = document.getElementById('amount');
+
+
+        addBtn.addEventListener('click', function () {
+            let row = document.createElement('tr');
+            row.innerHTML = `<td><input type="text" class="productName"></td>
+            <td><input type="number" name="" id=""></td>
+            <td><input type="number"></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><button class="delete">delete</button></td>`;
+            table.appendChild(row);
+        });
+
+        table.addEventListener('keyup', function (e) {
+            let price = 0;
+            if (e.target.tagName == "BUTTON") {
+                e.target.parentElement.parentElement.remove();
+            }
+            price = quantity.value * amount.value;
+            total.innerHTML = price;
+        });
+    </script>
+</body>
+
+</html>

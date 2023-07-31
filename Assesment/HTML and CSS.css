@@ -1,0 +1,122 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+button {
+    cursor: pointer;
+}
+
+.d-flex {
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    color: #5A2121;
+    padding-block: 2rem;
+    text-align: center;
+}
+
+section {
+    max-width: 90%;
+    margin-inline: auto;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.card {
+    padding: 20px;
+    width: 40%;
+    justify-content: space-between;
+    border: 1px solid black;
+    border-radius: 20px;
+    box-shadow: .5px .5px 3px 0px black;
+    margin-bottom: 2.5rem;
+}
+
+.gray {
+    color: gray;
+}
+
+.para {
+    margin-block: 10px 20px;
+}
+
+.top-part {
+    justify-content: space-between;
+    width: 100%;
+}
+
+.top-part>h3 {
+    color: #5A2121;
+}
+
+.prices {
+    justify-content: space-between;
+}
+
+.price>span {
+    font-size: 1.5rem;
+    color: #5A2121;
+    font-weight: bold;
+}
+
+.book {
+    gap: 10px;
+    text-align: right;
+}
+
+.book>button {
+    padding: 5px 15px;
+    font-size: 1rem;
+    border-radius: 20px;
+    background-color: transparent;
+    border: 1px solid #5A2121;
+}
+
+@media (max-width:1200px) {
+    section {
+        max-width: 1200px;
+    }
+}
+
+@media (max-width:900px) {
+    section {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .card {
+        width: 80%;
+    }
+
+}
+
+@media (max-width:500px) {
+    .card>p {
+        font-size: 15px;
+    }
+
+    .book,
+    .top-part {
+        font-size: 13px;
+    }
+}
+
+@media (max-width:400px) {
+
+    .book,
+    .top-part {
+        font-size: 11px;
+    }
+
+    .card>p {
+        font-size: 13px;
+    }
+}
