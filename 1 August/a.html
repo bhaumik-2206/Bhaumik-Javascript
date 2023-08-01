@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        main {
+            display: flex;
+            gap: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <main id="main">
+        <h1>Hello-1</h1>
+        <h1>Hello-2</h1>
+        <h1>Hello-3</h1>
+        <h1>Hello-4</h1>
+    </main>
+    <button id="button">BUTTON</button>
+
+
+
+    <script>
+        let main = document.getElementById('main');
+        let button = document.getElementById('button');
+        button.addEventListener('click', function () {
+            let h1 = document.querySelectorAll('h1');
+            let a = h1[0];
+            main.appendChild(a);
+        })
+    </script>
+</body>
+
+</html>

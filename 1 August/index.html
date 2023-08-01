@@ -4,84 +4,162 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Search Gallary</title>
     <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
 
+        body {
+            background-color: lightyellow;
+        }
+
+        form {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        form input {
+            padding: 10px 20px;
+            background-color: transparent;
+            border: 2px solid gray;
+            font-size: 20px;
+            margin-right: 10px;
+        }
+
+        form button {
+            padding: 10px 20px;
+            background-color: brown;
+            cursor: pointer;
+            border-radius: 20px;
+            border: none;
+            font-size: 20px;
+            color: white;
+        }
+
+        main {
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            transition: 1s ease;
+        }
+
+        .image {
+            width: 24%;
+            position: relative;
+            margin-block: 5px;
+        }
+
+        .image img {
+            width: 100%;
+        }
+
+        .image-name {
+            font-size: 3rem;
+            color: white;
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            z-index: 1;
+        }
+
+        .print {
+            display: none;
+            font-size: 30px;
+            color: red;
+            text-align: center;
+        }
     </style>
 </head>
 
 <body>
-    <!-- <input type="text" id="input">
-    <p id="p"></p> -->
-
-    <!-- <input type="text" id="forInput"> -->
-
-    <form action="" id="form">
-        <input type="text" id="print">
+    <form action="">
+        <input type="text" id="inputValue">
+        <button type="submit">Check</button>
     </form>
-    <h3 id="submit"></h3>
-    <h3 id="focus"></h3>
-    <h3 id="blur"></h3>
-    <h3 id="change"></h3>
-    <h3 id="contextmenu"></h3>
+    <main>
+        <div class="image">
+            <img class="all-image" src="https://4kwallpapers.com/images/walls/thumbs_2t/5630.jpg" alt="">
+            <p class="image-name">HP</p>
+        </div>
+        <div class="image">
+            <img class="all-image" src="https://4kwallpapers.com/images/walls/thumbs_2t/5630.jpg" alt="">
+            <p class="image-name">Lenovo</p>
+        </div>
+        <div class="image">
+            <img class="all-image" src="https://4kwallpapers.com/images/walls/thumbs_2t/5630.jpg" alt="">
+            <p class="image-name">HP</p>
+        </div>
+        <div class="image">
+            <img class="all-image" src="https://4kwallpapers.com/images/walls/thumbs_2t/5630.jpg" alt="">
+            <p class="image-name">Lenovo</p>
+        </div>
+        <div class="image">
+            <img class="all-image" src="https://4kwallpapers.com/images/walls/thumbs_2t/5630.jpg" alt="">
+            <p class="image-name">Asur</p>
+        </div>
+        <div class="image">
+            <img class="all-image" src="https://4kwallpapers.com/images/walls/thumbs_2t/5630.jpg" alt="">
+            <p class="image-name">Asus</p>
+        </div>
+        <div class="image">
+            <img class="all-image" src="https://4kwallpapers.com/images/walls/thumbs_2t/5630.jpg" alt="">
+            <p class="image-name">Lenovo</p>
+        </div>
+        <div class="image">
+            <img class="all-image" src="https://4kwallpapers.com/images/walls/thumbs_2t/5630.jpg" alt="">
+            <p class="image-name">HP</p>
+        </div>
+        <div class="image">
+            <img class="all-image" src="https://4kwallpapers.com/images/walls/thumbs_2t/5630.jpg" alt="">
+            <p class="image-name">Dell</p>
+        </div>
+        <div class="image">
+            <img class="all-image" src="https://4kwallpapers.com/images/walls/thumbs_2t/5630.jpg" alt="">
+            <p class="image-name">Dell</p>
+        </div>
+        <div class="image">
+            <img class="all-image" src="https://4kwallpapers.com/images/walls/thumbs_2t/5630.jpg" alt="">
+            <p class="image-name">Apple</p>
+        </div>
+        <div class="image">
+            <img class="all-image" src="https://4kwallpapers.com/images/walls/thumbs_2t/5630.jpg" alt="">
+            <p class="image-name">HP</p>
+        </div>
+    </main>
+
+    <div class="print" id="notFound">
+        <h3>Image Not Found!!!</h3>
+    </div>
+
 
 
     <script>
+        let inputValue = document.getElementById('inputValue');
+        let image = document.querySelectorAll('.image');
 
-        let printDate = document.getElementById('print');
-
-        let form = document.getElementById('form');
-        form.addEventListener('submit', function (e) {
+        inputValue.addEventListener('input', function (e) {
             e.preventDefault();
-            let submit = document.getElementById('submit');
-            submit.innerHTML = "Submit Event";
+            let notFound = document.getElementById('notFound');
+            let valueOfSearch = inputValue.value.toLowerCase().trim();
+            let find = "notfound";
+            image.forEach(value => {
+                let imageText = value.querySelector('.image-name').innerHTML.toLowerCase();
+                if (imageText.includes(valueOfSearch)) {
+                    value.style.display = "block";
+                    find = "found";
+                } else {
+                    value.style.display = "none";
+                }
+            });
+            if (find != "found") {
+                notFound.style.display = "block";
+            } else {
+                notFound.style.display = "none";
+            }
         });
-
-        printDate.addEventListener('focus', function (e) {
-            let focus = document.getElementById('focus');
-            focus.innerHTML = "Focus Event";
-        });
-
-        printDate.addEventListener('blur', function (e) {
-            let blur = document.getElementById('blur');
-            blur.innerHTML = "Blur Event";
-        });
-
-        printDate.addEventListener('change', function (e) {
-            let change = document.getElementById('change');
-            change.innerHTML = "Change Event";
-        });
-
-        printDate.addEventListener('contextmenu', function (e) {
-            let contextmenu = document.getElementById('contextmenu');
-            contextmenu.innerHTML = "contextmenu Event";
-        });
-
-        printDate.addEventListener('contextmenu', function (e) {
-            let contextmenu = document.getElementById('contextmenu');
-            contextmenu.innerHTML = "contextmenu Event";
-        });
-
-
-        // let input = document.getElementById('input');
-        // let p = document.getElementById('p');
-        // input.addEventListener('input', function () {
-        //     p.innerHTML = input.value;
-        // });
-
-        // let a = ["off25", "off50", "off75"];
-        // let b = [25, 50, 75];
-        // let forInput = document.getElementById('forInput');
-        // forInput.addEventListener('input', function () {
-        //     if (a.includes(forInput.value)) {
-        //         let abc = forInput.value;
-        //         console.log("object");
-        //         console.log(a.findIndex(e => e == abc));
-        //         console.log(typeof abc);
-        //     }
-        // });
-
-
 
     </script>
 </body>
