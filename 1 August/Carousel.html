@@ -15,28 +15,28 @@
             background-color: lightgray;
         }
 
-        main {
+        .parent {
             width: 25%;
             background-color: red;
             height: 400px;
-            /* margin-inline: auto; */
-            display: flex;
-            transition: 1s ease;
+            margin-inline: auto;
             position: relative;
             /* overflow: hidden; */
+            right: 0;
+        }
+
+        main {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            transition: all 1s ease;
+            transform: translateX(-100%);
         }
 
         main img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            position: relative;
-            right: 0;
-            transition: 1s ease;
-        }
-
-        .changeImage {
-            transition: right 1s ease;
         }
 
         button {
@@ -48,51 +48,132 @@
             color: white;
             cursor: pointer;
         }
+
+        .margin {
+            margin-top: 1rem;
+            text-align: center;
+        }
     </style>
 </head>
 
 <body>
-    <main id="main">
-        <img class="changeImage"
-            src="https://images.unsplash.com/photo-1486162928267-e6274cb3106f?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8bmF0dXJlLHJhaW58fHx8fHwxNjkwMjYwODg5&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=900"
-            alt="">
-        <img class="changeImage"
-            src="https://images.unsplash.com/photo-1477322524744-0eece9e79640?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8bmF0dXJlLHJhaW58fHx8fHwxNjkwMjYwODk4&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=900"
-            alt="">
-        <img class="changeImage"
-            src="https://images.unsplash.com/photo-1514418197935-e0cac2bb695a?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8bmF0dXJlLHJhaW58fHx8fHwxNjkwMjYwOTAw&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=900"
-            alt="">
-        <img class="changeImage"
-            src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8bmF0dXJlLHJhaW58fHx8fHwxNjkwMjYwOTAx&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=900"
-            alt="">
-    </main>
+    <div class="parent">
+        <main id="main">
+            <img class="changeImage"
+                src="https://images.unsplash.com/photo-1486162928267-e6274cb3106f?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8bmF0dXJlLHJhaW58fHx8fHwxNjkwMjYwODg5&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=900"
+                alt="">
+            <img class="changeImage"
+                src="https://images.unsplash.com/photo-1477322524744-0eece9e79640?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8bmF0dXJlLHJhaW58fHx8fHwxNjkwMjYwODk4&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=900"
+                alt="">
+            <img class="changeImage"
+                src="https://images.unsplash.com/photo-1514418197935-e0cac2bb695a?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8bmF0dXJlLHJhaW58fHx8fHwxNjkwMjYwOTAw&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=900"
+                alt="">
+            <img class="changeImage"
+                src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8bmF0dXJlLHJhaW58fHx8fHwxNjkwMjYwOTAx&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=900"
+                alt="">
+        </main>
+    </div>
 
-    <button id="btn">Click</button>
+    <div class="margin">
+        <button id="left">Left</button>
+        <button id="right">Right</button>
+    </div>
 
     <script>
 
-        // let btn = document.getElementById('btn');
-        // let main = document.getElementById('main');
-        // btn.addEventListener('click', function () {
+        let right = document.getElementById('right');
+        let left = document.getElementById('left');
+        let main = document.getElementById('main');
+        let count = -100;
+        let slide = 0;
+
+        right.addEventListener('click', function () {
+            // let changeImage = document.querySelectorAll('.changeImage');
+            // let width = -((changeImage.length - 1) * 100);
+            count -= 100;
+            // console.log(width);
+            // console.log(count);
+            main.style.transform = `translateX(${count}%)`;
+            // if (count <= width) {
+            let a = document.createElement('img');
+            a.setAttribute('class', 'changeImage');
+            a.setAttribute('src', makeNewImg(slide));
+            main.appendChild(a);
+            slide++;
+            if (slide == 4) {
+                slide = 0;
+            }
+            // }
+        });
+
+        let minusCount = 3;
+        let minusLeft = 1;
+        left.addEventListener('click', function () {
+            let changeImage = document.querySelectorAll('changeImage');
+            count += 100;
+            main.style.transform = `translateX(${count}%)`;
+            let newImage = document.createElement('img');
+            newImage.setAttribute('class', 'changeImage');
+            newImage.setAttribute('src', makeNewImg(minusCount));
+            newImage.style.position = "absolute";
+            newImage.style.left = `-${100 * minusLeft}%`;
+            main.insertBefore(newImage, main.firstChild);
+            minusCount--;
+            minusLeft++;
+            if (minusCount == -1) {
+                minusCount = 3;
+            }
+        });
+
+        function makeNewImg(index) {
+            let images = [
+                'https://images.unsplash.com/photo-1486162928267-e6274cb3106f?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8bmF0dXJlLHJhaW58fHx8fHwxNjkwMjYwODg5&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=900',
+                'https://images.unsplash.com/photo-1477322524744-0eece9e79640?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8bmF0dXJlLHJhaW58fHx8fHwxNjkwMjYwODk4&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=900',
+                'https://images.unsplash.com/photo-1514418197935-e0cac2bb695a?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8bmF0dXJlLHJhaW58fHx8fHwxNjkwMjYwOTAw&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=900',
+                'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8bmF0dXJlLHJhaW58fHx8fHwxNjkwMjYwOTAx&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=900'
+            ];
+            return images[index];
+        }
+
+
+        // right.addEventListener('click', function () {
         //     let changeImage = document.querySelectorAll('.changeImage');
-        //     let a = changeImage[0];
-        //     changeImage[0].remove();
-        //     changeImage[0].style.right = "100%";
-        //     main.appendChild(a);
+        //     if (count == 0 || count == 1 || count == 2 || count == 3) {
+        //         let a = document.createElement('img');
+        //         a.setAttribute('class', 'changeImage');
+        //         a.setAttribute('src', makeNewImg(count));
+        //         main.appendChild(a);
+        //         count++;
+        //     }
+        //     if (count == 3) {
+        //         count = 0;
+        //     }
+        //     main.style.transform = `translateX(-${slide * 100}%)`;
+        //     slide++;
         // });
 
-        let btn = document.getElementById('btn');
-        let main = document.getElementById('main');
-        btn.addEventListener('click', function () {
-            let changeImage = document.querySelectorAll('.changeImage');
-            let a = changeImage[0];
-            changeImage[0].remove();
-            changeImage[0].style.right = "100%";
-            main.appendChild(a);
-            setTimeout(function () {
-                a.style.right = "0"; // Move the image back to the original position after removing and adding
-            }, 10); // Slight delay to allow the removal transition to finish
-        })
+        // let minusCount = 3;
+        // left.addEventListener('click', function () {
+        //     let changeImage = document.querySelectorAll('.changeImage');
+        //     if (minusCount == 3 || minusCount == 2 || minusCount == 1 || minusCount == 0) {
+        //         let a = document.createElement('img');
+        //         a.setAttribute('class', 'changeImage');
+        //         a.setAttribute('src', makeNewImg(minusCount));
+        //         main.appendChild(a);
+        //         main.insertBefore(a, main.firstChild);
+        //     }
+        //     if (minusCount == 0) {
+        //         minusCount = 3;
+        //     }
+        //     minusCount--;
+        //     // main.style.transform = `translateX(${slide * 100}%)`;
+        //     // main.style.left = "100%";
+        //     main.style.left = `${slide * 100}%`;
+        //     // console.log(`translateX(${slide * 100} %)`);
+        //     slide++;
+        // });
+
+
     </script>
 </body>
 
