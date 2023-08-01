@@ -162,21 +162,6 @@
             table.appendChild(row);
         });
 
-
-        // function updateTotal() {
-        //     let totalPrice = 0;
-        //     let allRows = document.querySelectorAll('.row');
-        //     allRows.forEach(row => {
-        //         const quantity = parseInt(row.querySelector('.quantity').value);
-        //         const price = parseFloat(row.querySelector('.price').value);
-        //         const amount = quantity * price || 0;
-        //         const gst = amount * 0.18;
-        //         row.cells[3].textContent = amount.toFixed(2);
-        //         row.cells[4].textContent = gst.toFixed(2);
-        //         totalPrice += amount + gst;
-        //     });
-        //     total.textContent = totalPrice.toFixed(2);
-        // }
         function makeTotal() {
             let mainTotal = 0;
             let allTr = document.querySelectorAll('.row');

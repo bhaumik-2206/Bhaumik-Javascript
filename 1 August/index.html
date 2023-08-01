@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <!-- <input type="text" id="input">
+    <p id="p"></p> -->
+
+    <!-- <input type="text" id="forInput"> -->
+
+    <form action="" id="form">
+        <input type="text" id="print">
+    </form>
+    <h3 id="submit"></h3>
+    <h3 id="focus"></h3>
+    <h3 id="blur"></h3>
+    <h3 id="change"></h3>
+    <h3 id="contextmenu"></h3>
+
+
+    <script>
+
+        let printDate = document.getElementById('print');
+
+        let form = document.getElementById('form');
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            let submit = document.getElementById('submit');
+            submit.innerHTML = "Submit Event";
+        });
+
+        printDate.addEventListener('focus', function (e) {
+            let focus = document.getElementById('focus');
+            focus.innerHTML = "Focus Event";
+        });
+
+        printDate.addEventListener('blur', function (e) {
+            let blur = document.getElementById('blur');
+            blur.innerHTML = "Blur Event";
+        });
+
+        printDate.addEventListener('change', function (e) {
+            let change = document.getElementById('change');
+            change.innerHTML = "Change Event";
+        });
+
+        printDate.addEventListener('contextmenu', function (e) {
+            let contextmenu = document.getElementById('contextmenu');
+            contextmenu.innerHTML = "contextmenu Event";
+        });
+
+        printDate.addEventListener('contextmenu', function (e) {
+            let contextmenu = document.getElementById('contextmenu');
+            contextmenu.innerHTML = "contextmenu Event";
+        });
+
+
+        // let input = document.getElementById('input');
+        // let p = document.getElementById('p');
+        // input.addEventListener('input', function () {
+        //     p.innerHTML = input.value;
+        // });
+
+        // let a = ["off25", "off50", "off75"];
+        // let b = [25, 50, 75];
+        // let forInput = document.getElementById('forInput');
+        // forInput.addEventListener('input', function () {
+        //     if (a.includes(forInput.value)) {
+        //         let abc = forInput.value;
+        //         console.log("object");
+        //         console.log(a.findIndex(e => e == abc));
+        //         console.log(typeof abc);
+        //     }
+        // });
+
+
+
+    </script>
+</body>
+
+</html>

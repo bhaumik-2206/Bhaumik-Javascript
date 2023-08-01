@@ -6,6 +6,7 @@
 body {
     background-color: whitesmoke;
     font-family: sans-serif;
+    padding: 2rem;
 }
 
 main {
@@ -14,10 +15,7 @@ main {
 
 .left {
     width: 50%;
-}
-
-.left>* {
-    padding-inline: 1.5rem;
+    padding-inline: 2rem;
 }
 
 .left .h2 {
@@ -66,35 +64,32 @@ main {
     align-items: center;
 }
 
-.time-date>* {
+.time-date div {
     text-align: center;
     border: none;
     font-size: 1.3rem;
     width: 30%;
     padding-block: 2rem;
     border-radius: 15px;
+    margin-bottom: 20px;
 }
 
 .time-date .date {
-    background-color: pink;
+    background-color: rgb(255, 215, 222);
 }
 
 .time-date .time {
-    background-color: #bbd9f7;
+    background-color: #cde2f7;
 }
 
 .time-date .duration {
-    background-color: rgb(158, 255, 158);
+    background-color: rgb(207, 255, 207);
 }
-
-
 
 .right {
     width: 50%;
-}
-
-.right>* {
     padding-inline: 2rem;
+    border-left: 1px solid black;
 }
 
 .pro-title {
@@ -110,10 +105,10 @@ main {
 }
 
 .input-promo input {
-    width: -webkit-fill-available;
+    width: 100%;
     font-size: 20px;
     padding-inline: 20px;
-    border-radius: 20px;
+    border-radius: 30px;
     border: 1px solid rgb(255, 115, 138);
 }
 
@@ -123,40 +118,40 @@ main {
 }
 
 .input-promo button {
-    padding: 10px 20px;
-    font-size: 20px;
+    padding: 15px 30px;
+    font-size: 30px;
     font-weight: bold;
     color: white;
     background-color: rgb(255, 116, 139);
     cursor: pointer;
     border: none;
-    border-radius: 20px;
+    border-radius: 40px;
 }
 
 .payNow {
-    padding: 10px 20px;
-    font-size: 20px;
+    padding: 20px 40px;
+    font-size: 1.7rem;
     font-weight: bold;
     color: white;
     background-color: rgb(255, 62, 94);
     cursor: pointer;
     border: none;
-    border-radius: 20px;
+    border-radius: 50px;
 }
 
 .amount-input {
     display: flex;
     margin-block: 20px;
     align-items: center;
+    gap: 1rem;
 }
 
 .amount-input label {
-    width: 40%;
     font-size: 20px;
 }
 
 .amount-input input {
-    width: -webkit-fill-available;
+    width: 50%;
     padding: 10px 20px;
     background-color: transparent;
     border: 1px solid black;
@@ -166,9 +161,8 @@ main {
 
 .details {
     background-color: #C3C3F6;
-    width: 80%;
     margin-inline: auto;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     border-radius: 20px;
     padding: 20px;
 }
@@ -177,7 +171,7 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-block: 5px;
+    margin-block: 10px;
     font-size: 20px;
 }
 
@@ -189,6 +183,8 @@ main {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-top: 2px solid white;
+    padding-top: 10px;
 }
 
 .total :first-child {
@@ -201,7 +197,7 @@ main {
 }
 
 .pay {
-    margin-block: 2rem;
+    margin-block: 2rem 10px;
     font-size: 30px;
     display: flex;
     justify-content: space-between;
@@ -220,4 +216,88 @@ main {
 #red {
     color: red;
     margin-top: 10px;
+}
+
+#total1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+@media only screen and (max-width: 1050px) {
+    .time-date {
+        flex-wrap: wrap;
+    }
+
+    .time-date div {
+        width: 48%;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .image img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .image .right-image .img-title {
+        font-size: 18px;
+    }
+
+    .image .right-image .pcos {
+        font-size: 15px;
+    }
+
+    .input-promo button {
+        font-size: 20px;
+    }
+}
+
+
+@media only screen and (max-width: 800px) {
+    body {
+        padding: 0;
+    }
+
+    .left {
+        text-align: center;
+    }
+
+    .time-date div {
+        width: 100%;
+    }
+
+    .image {
+        display: block;
+    }
+
+    .image img {
+        width: 100%;
+        height: 100px;
+        margin-bottom: 10px;
+    }
+
+    .input-promo button {
+        font-size: 15px;
+    }
+
+    .pay {
+        display: block;
+        text-align: center;
+    }
+
+    .pay .payNow {
+        margin-top: 15px;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .amount-input {
+        display: block;
+        text-align: left;
+    }
+
+    .amount-input input {
+        margin-top: 10px;
+        width: 70%;
+    }
 }
