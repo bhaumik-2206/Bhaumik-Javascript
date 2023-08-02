@@ -66,10 +66,10 @@ list.addEventListener('click', (e) => {
     }
 });
 function saveTheData() {
-    localStorage.setItem('data', list.innerHTML);
+    localStorage.setItem('myList', list.innerHTML);
 }
 function getInfo() {
-    list.innerHTML = localStorage.getItem('data');
+    list.innerHTML = localStorage.getItem('myList');
 }
 getInfo();
 

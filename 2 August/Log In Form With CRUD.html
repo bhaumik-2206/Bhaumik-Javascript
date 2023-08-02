@@ -90,7 +90,8 @@
             margin: 3px;
         }
 
-        .incorrect {
+        .incorrect,
+        .inc {
             color: red;
             margin-bottom: 10px;
             display: none;
@@ -139,10 +140,10 @@
     <form action="" id="logInBtnForm" class="logInBtnFormCSS">
         <label for="logInBtnUserName">User Name:-</label>
         <input type="text" id="logInBtnUserName" placeholder="Enter User Name"><br>
-        <!-- <p class="incorrect" id="incorrectUsername">Username Not Exits</p> -->
+        <p class="inc" id="notUserName">Username Not Exits</p>
         <label for="logInBtnPassword">Password:-</label>
         <input type="password" id="logInBtnPassword" placeholder="Enter Password"><br>
-        <!-- <p class="incorrect" id="inPa">Username must be more than 8 character</p> -->
+        <p class="inc" id="notUserPassword">Password Does Not Match</p>
         <button type="submit">Submit</button>
     </form>
 
@@ -153,7 +154,7 @@
         <input id="userName" type="text" placeholder="Enter Your User Name">
         <p class="incorrect" id="incorrectUsername">Username must be more than 6 character</p>
         <input id="password" type="password" placeholder="Enter Your Password">
-        <p class="incorrect" id="inPa">Username must be more than 8 character</p>
+        <p class="incorrect" id="inPa">Password must be more than 8 character</p>
         <p class="incorrect" id="incoPassword">Password Must Be
             <span class="none" id="upper">, Upper Case</span>
             <span class="none" id="lower">, Lower Case</span>
@@ -177,14 +178,14 @@
 
 
     <script>
-        let logInBtn = document.getElementById('logInBtn');
-        let inputUserBtn = document.getElementById('inputUserBtn');
+        let logInBtn = document.getElementById('logInBtn');     // Log In Button
+        let inputUserBtn = document.getElementById('inputUserBtn');//Input User Button
         let form = document.getElementById('form');
         let table = document.getElementById('table');
-        let fname = document.getElementById('fname');
-        let lname = document.getElementById('lname');
-        let userName = document.getElementById('userName');
-        let password = document.getElementById('password');
+        let fname = document.getElementById('fname');           // Input Form input element value
+        let lname = document.getElementById('lname');           // Input Form input element value
+        let userName = document.getElementById('userName');     // Input Form input element value
+        let password = document.getElementById('password');     // Input Form input element value
         let logInBtnForm = document.getElementById('logInBtnForm');
         let incorrect = document.querySelectorAll('.incorrect');
         storeVar = null;
@@ -208,6 +209,7 @@
                     storeVar = null;
                 } else {
                     let newTr = document.createElement('tr');
+                    newTr.classList.add("main");
                     newTr.innerHTML = `<td>${fname.value}</td>
                     <td>${lname.value}</td>
                     <td>${userName.value}</td>
@@ -221,6 +223,7 @@
 
         // Onclick function in Edit button
         function editTask(e) {
+            form.style.display = "block";
             let first = e.parentElement.parentElement;
             storeVar = first;
             fname.value = first.children[0].innerHTML;
@@ -325,8 +328,6 @@
             return a.some(value => cases.includes(value));
         }
 
-
-
         // Log In Onlick event
         logInBtn.addEventListener('click', function () {
             table.style.display = "none";
@@ -334,13 +335,46 @@
             logInBtnForm.style.display = "block";
         });
 
-        // 
+        // Log In if user is present in the Table
         let logInBtnUserName = document.getElementById('logInBtnUserName');
         let logInBtnPassword = document.getElementById('logInBtnPassword');
+        let notUserName = document.getElementById('notUserName');
+        let notUserPassword = document.getElementById('notUserPassword');
         logInBtnForm.addEventListener('submit', function (e) {
             e.preventDefault();
-
+            let allRows = document.querySelectorAll('.main');
+            allRows.forEach(value => {
+                if (logInBtnUserName.value.trim() == value.children[2].innerHTML.trim()) {
+                    notUserName.style.display = "none";
+                    if (logInBtnPassword.value.trim() == value.children[3].innerHTML.trim()) {
+                        notUserPassword.style.display = "none";
+                        value.style.backgroundColor = "rgb(142, 241, 142)";
+                        table.style.display = "table";
+                        logInBtnForm.style.display = "none";
+                        alert("Log In Successfully!!!");
+                        resetLogInForm();
+                    } else {
+                        notUserPassword.style.display = "block";
+                    }
+                } else {
+                    notUserName.style.display = "block";
+                }
+            });
         });
+
+        // Reset the value of log in form
+        function resetLogInForm() {
+            logInBtnUserName.value = "";
+            logInBtnPassword.value = "";
+        }
+
+        // function saveTheData() {
+        //     localStorage.setItem('myTable', table.innerHTML);
+        // }
+        // function getInfo() {
+        //     table.innerHTML = localStorage.getItem('myTable');
+        // }
+        // getInfo();
     </script>
 </body>
 
