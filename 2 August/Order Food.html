@@ -112,7 +112,7 @@
             align-items: center;
             padding: 20px;
             text-align: center;
-            display: none;
+            /* display: none; */
         }
 
         #totalPrice {
@@ -206,9 +206,8 @@
                 <div class="spaceBetween">
                     <div>
                         <select name="" id="select">
-                            <option value="">Select Plate</option>
-                            <option value="">Half</option>
-                            <option value="">Full</option>
+                            <option value="Half">Half</option>
+                            <option value="Full">Full</option>
                         </select>
                         <input type="number" name="" value="1" placeholder="Quantity" id="quantity" min="1">
                     </div>
@@ -251,30 +250,59 @@
         let form = document.getElementById('form');
         let table = document.getElementById('table');
 
+
+        let amount = 0
         form.addEventListener('submit', function (e) {
             e.preventDefault();
-            let newTr = document.createElement('tr');
-            newTr.innerHTML = `<td>${dishName.value}</td>
-                    <td>${select.value}</td>
-                    <td>${quantity.value}</td>
-                    <td>Price</td>
-                    <td>Amount</td>`;
-            table.appendChild(newTr);
-            resetForm();
+            if (returnIfDishNameInclude(dishName.value.toLowerCase().trim())) {
+                let printAmount = Number(quantity.value * getPrice(dishName.value.toLowerCase().trim(), select.value.toLowerCase()))
+                amount += printAmount;
+
+                let newTr = document.createElement('tr');
+                newTr.classList.add("tableRow");
+                newTr.innerHTML = `<td>${filterIfValueInclude(dishName.value)}</td>
+                <td>${select.value}</td>
+                <td>${quantity.value}</td>
+                <td>${getPrice(dishName.value.toLowerCase().trim(), select.value.toLowerCase())}</td>
+                <td>${printAmount}</td>`;
+                table.appendChild(newTr);
+                totalPrice.innerHTML = amount;
+                resetForm();
+            } else {
+                alert("Plese Type Dish Name which is in menu card")
+            }
         });
 
         function resetForm() {
             dishName.value = "";
-            select.value = "";
+            select.firstElementChild.setAttribute('selected', "");
             quantity.value = 1;
         }
 
         let mainArray = [];
         let first = document.querySelectorAll('.first');
         first.forEach((value, index) => {
-            mainArray.push({ dishName:value.children[0].innerHTML});
+            mainArray.push({ dishName: value.children[0].innerHTML, half: Number(value.children[1].innerHTML), full: Number(value.children[2].innerHTML) });
         });
-        console.log(mainArray);
+
+        function returnIfDishNameInclude(ele) {
+            return mainArray.some(value => ele === value.dishName.toLowerCase());
+        }
+
+        function getPrice(ele, plate) {
+            let a = mainArray.findIndex(value => ele == value.dishName.toLowerCase());
+            return mainArray[a][plate];
+        }
+
+        function filterIfValueInclude(ele) {
+            let a = mainArray.filter(value => {
+                if (value.dishName.toLowerCase() == ele.toLowerCase()) {
+                    return value;
+                }
+            });
+            return a[0].dishName;
+        }
+
 
     </script>
 </body>
