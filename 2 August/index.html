@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: lightcyan;
+            font-family: sans-serif;
+        }
+
+        .btn {
+            padding-block: 1rem;
+            text-align: center;
+        }
+
+        .btn button,
+        .inputs button {
+            padding: 10px 30px;
+            font-size: 20px;
+            font-weight: bold;
+            background-color: blueviolet;
+            color: white;
+            border: none;
+            margin-inline: 10px;
+            border-radius: 1.5rem;
+            cursor: pointer;
+        }
+
+        .btn button:hover,
+        .inputs button:hover {
+            background-color: rgb(109, 21, 192);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .inputs {
+            width: 70%;
+            margin-inline: auto;
+            border: 2px solid green;
+            padding: 10px;
+            display: none;
+        }
+
+        .inputs input {
+            width: -webkit-fill-available;
+            padding: 5px;
+            font-size: 20px;
+            background-color: transparent;
+            border: 1px solid black;
+            margin-bottom: 5px;
+        }
+
+        .inputs input:focus {
+            outline: 2px solid purple;
+        }
+
+        .inputs button {
+            display: block;
+            margin-inline: auto;
+        }
+
+        .table th,
+        td {
+            border: 2px solid black;
+            font-size: 25px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .table {
+            margin-top: 1.5rem;
+        }
+
+        table tr td span {
+            background-color: black;
+            color: yellow;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin: 3px;
+        }
+
+        .incorrect {
+            color: red;
+            margin-bottom: 10px;
+            display: none;
+        }
+
+        .logInBtnFormCSS {
+            background-color: lightgrey;
+            width: 40%;
+            margin-inline: auto;
+            font-size: 20px;
+            padding: 2rem;
+            border-radius: 10px;
+            border: 5px solid black;
+            display: none;
+        }
+
+        .logInBtnFormCSS button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background-color: brown;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+
+        .logInBtnFormCSS input {
+            width: -webkit-fill-available;
+            font-size: 20px;
+            padding: 5px 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Two Buttons -->
+    <div class="btn">
+        <button id="inputUserBtn">Input User</button>
+        <button id="logInBtn">Log In</button>
+    </div>
+
+    <!-- Log In Form -->
+    <form action="" id="logInBtnForm" class="logInBtnFormCSS">
+        <label for="logInBtnUserName">User Name:-</label>
+        <input type="text" id="logInBtnUserName" placeholder="Enter User Name"><br>
+        <!-- <p class="incorrect" id="incorrectUsername">Username Not Exits</p> -->
+        <label for="logInBtnPassword">Password:-</label>
+        <input type="password" id="logInBtnPassword" placeholder="Enter Password"><br>
+        <!-- <p class="incorrect" id="inPa">Username must be more than 8 character</p> -->
+        <button type="submit">Submit</button>
+    </form>
+
+    <!-- Form To Input The Data In Main Table-->
+    <form action="" id="form" class="inputs">
+        <input id="fname" type="text" placeholder="Enter Your First Name">
+        <input id="lname" type="text" placeholder="Enter Your Last Name">
+        <input id="userName" type="text" placeholder="Enter Your User Name">
+        <p class="incorrect" id="incorrectUsername">Username must be more than 6 character</p>
+        <input id="password" type="password" placeholder="Enter Your Password">
+        <p class="incorrect" id="inPa">Username must be more than 8 character</p>
+        <p class="incorrect" id="incoPassword">Password Must Be
+            <span class="none" id="upper">, Upper Case</span>
+            <span class="none" id="lower">, Lower Case</span>
+            <span class="none" id="special">, Special Character</span>
+            <span class="none" id="number">, Numbers</span>
+        </p>
+        <button type="submit">Submit</button>
+    </form>
+
+    <!-- Table Of Users Data-->
+    <table class="table" id="table">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>User Name</th>
+            <th>Password</th>
+            <th>Operations</th>
+        </tr>
+    </table>
+
+
+
+    <script>
+        let logInBtn = document.getElementById('logInBtn');
+        let inputUserBtn = document.getElementById('inputUserBtn');
+        let form = document.getElementById('form');
+        let table = document.getElementById('table');
+        let fname = document.getElementById('fname');
+        let lname = document.getElementById('lname');
+        let userName = document.getElementById('userName');
+        let password = document.getElementById('password');
+        let logInBtnForm = document.getElementById('logInBtnForm');
+        let incorrect = document.querySelectorAll('.incorrect');
+        storeVar = null;
+
+        // Onclick event on Input User to display block the form for input the data in the table
+        inputUserBtn.addEventListener('click', function () {
+            table.style.display = "table";
+            form.style.display = "block";
+            logInBtnForm.style.display = "none";
+        });
+
+
+        // form Submit fname , lname , username and password
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            correctUserName();
+            correctPassword();
+            if (checkpPresentOrNot(incorrect)) {
+                if (storeVar) {
+                    updateRow(storeVar);
+                    storeVar = null;
+                } else {
+                    let newTr = document.createElement('tr');
+                    newTr.innerHTML = `<td>${fname.value}</td>
+                    <td>${lname.value}</td>
+                    <td>${userName.value}</td>
+                    <td>${password.value}</td>
+                    <td><span onclick="editTask(this)">edit</span> <span onclick="deleteTask(this)">Delete</span></td>`;
+                    table.appendChild(newTr);
+                }
+                resetAllTheValue();
+            }
+        });
+
+        // Onclick function in Edit button
+        function editTask(e) {
+            let first = e.parentElement.parentElement;
+            storeVar = first;
+            fname.value = first.children[0].innerHTML;
+            lname.value = first.children[1].innerHTML;
+            userName.value = first.children[2].innerHTML;
+            password.value = first.children[3].innerHTML;
+        }
+
+        // Onclick function in Delete button
+        function deleteTask(e) {
+            let a = confirm("Are You Sure To Delete Data?");
+            if (a) {
+                let row = e.parentElement.parentElement;
+                row.remove();
+            }
+        }
+
+        // Update Row in Edit Button
+        function updateRow(row) {
+            row.children[0].innerHTML = fname.value;
+            row.children[1].innerHTML = lname.value;
+            row.children[2].innerHTML = userName.value;
+            row.children[3].innerHTML = password.value;
+        }
+
+        // Reset value when form are submited
+        function resetAllTheValue() {
+            fname.value = "";
+            lname.value = "";
+            userName.value = "";
+            password.value = "";
+        }
+
+
+
+        //-----------------User Name and Password Validation---------------------
+        // Check incorrect p is present or not 
+        function checkpPresentOrNot(incorrect) {
+            let a = [];
+            incorrect.forEach(value => {
+                if (value.style.display == "none") {
+                    a.push(true);
+                } else {
+                    a.push(false);
+                }
+            });
+            return a.every(e => e == true);
+        }
+
+        // Correct User Name
+        function correctUserName() {
+            let incorrectUsername = document.getElementById('incorrectUsername');
+            if (userName.value.split(" ").filter(Boolean).join(" ").length <= 6) {
+                incorrectUsername.style.display = "block";
+            } else if (userName.value.length > 5) {
+                incorrectUsername.style.display = "none";
+            }
+        }
+
+        // Correct Password
+        function correctPassword() {
+            let incoPassword = document.getElementById('incoPassword');
+            let inPa = document.getElementById('inPa');
+            let lowercase = 'abcdefghijklmnopqrstuvwxyz';
+            let uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYS";
+            let numbers = "1234567890";
+            let specialChar = `/?.>,<;:[{]}\|=+-_)(*&^%$#@!`;
+            if (password.value.split(" ").filter(Boolean).join(" ").length < 8) {
+                inPa.style.display = "block";
+            } else {
+                inPa.style.display = "none";
+                incoPassword.style.display = "block";
+                if (!checkAnyOne(lowercase, password.value)) {
+                    lower.style.display = "inline";
+                } else {
+                    lower.style.display = "none";
+                }
+                if (!checkAnyOne(uppercase, password.value)) {
+                    upper.style.display = "inline";
+                } else {
+                    upper.style.display = "none";
+                }
+                if (!checkAnyOne(specialChar, password.value)) {
+                    special.style.display = "inline";
+                } else {
+                    special.style.display = "none";
+                }
+                if (!checkAnyOne(numbers, password.value)) {
+                    number.style.display = "inline";
+                } else {
+                    number.style.display = "none";
+                }
+                if (checkAnyOne(uppercase, password.value) && checkAnyOne(numbers, password.value) && checkAnyOne(lowercase, password.value) && checkAnyOne(specialChar, password.value)) {
+                    incoPassword.style.display = "none";
+                }
+            }
+        }
+
+        // Check the password include cases (uppercase , lowercase , special character , number)
+        function checkAnyOne(cases, value) {
+            let a = value.split("");
+            return a.some(value => cases.includes(value));
+        }
+
+
+
+        // Log In Onlick event
+        logInBtn.addEventListener('click', function () {
+            table.style.display = "none";
+            form.style.display = "none";
+            logInBtnForm.style.display = "block";
+        });
+
+        // 
+        let logInBtnUserName = document.getElementById('logInBtnUserName');
+        let logInBtnPassword = document.getElementById('logInBtnPassword');
+        logInBtnForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+        });
+    </script>
+</body>
+
+</html>
