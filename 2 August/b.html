@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            font-family: sans-serif;
+            background-color: lightskyblue;
+        }
+
+        h1 {
+            text-align: center;
+            margin-block: 10px;
+        }
+
+        main {
+            display: flex;
+            width: 100%;
+        }
+
+        .left {
+            width: 50%;
+            background-color: white;
+            padding: 10px;
+        }
+
+        .menu {
+            border-radius: 20px;
+            background-color: black;
+            color: yellow;
+            padding: 20px;
+            font-size: 20px;
+        }
+
+        .menu h3 {
+            margin-block: 20px 10px;
+        }
+
+        .first,
+        .title {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .name {
+            width: 50%;
+        }
+
+        .half,
+        .full {
+            width: 25%;
+            text-align: center;
+        }
+
+
+        .right {
+            width: 50%;
+            background-color: lightcoral;
+            padding: 10px;
+        }
+
+        form {
+            width: 100%;
+        }
+
+        form button {
+            padding: 10px 20px;
+            font-size: 20px;
+            font-weight: bold;
+            background-color: black;
+            color: white;
+            cursor: pointer;
+            border-radius: 30px;
+            border: none;
+        }
+
+        .spaceBetween {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #dishName {
+            width: -webkit-fill-available;
+            padding: 10px;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        #quantity {
+            font-size: 20px;
+            padding: 10px;
+        }
+
+        #select {
+            padding: 10px 20px;
+            font-size: 20px;
+        }
+
+        .payPrice {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+            display: none;
+        }
+
+        #totalPrice {
+            font-size: 40px;
+        }
+
+        .payPrice button {
+            padding: 10px 20px;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 25px;
+            background-color: rgb(255, 76, 44);
+            cursor: pointer;
+            color: black;
+            border: 2px solid black;
+        }
+
+        #table {
+            margin-top: 20px;
+            width: 100%;
+            font-size: 20px;
+        }
+
+        #table th,
+        #table td {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="left">
+            <h1>Menu</h1>
+            <div class="menu">
+                <div class="title">
+                    <h2 class="name">Name</h2>
+                    <h2 class="half">Half</h2>
+                    <h2 class="full">Full</h2>
+                </div>
+                <h3>Chinese</h3>
+                <div class="first">
+                    <p class="name">Chinese</p>
+                    <p class="half">70</p>
+                    <p class="full">100</p>
+                </div>
+                <div class="first">
+                    <p class="name">Chinese Noddels</p>
+                    <p class="half">80</p>
+                    <p class="full">110</p>
+                </div>
+                <h3>Veg:-</h3>
+                <div class="first">
+                    <p class="name">Veg Biryani</p>
+                    <p class="half">110</p>
+                    <p class="full">170</p>
+                </div>
+                <div class="first">
+                    <p class="name">Panner Biryani</p>
+                    <p class="half">120</p>
+                    <p class="full">190</p>
+                </div>
+                <div class="first">
+                    <p class="name">Jeera Rice</p>
+                    <p class="half">90</p>
+                    <p class="full">140</p>
+                </div>
+                <h3>Pulav:-</h3>
+                <div class="first">
+                    <p class="name">Veg Pulav</p>
+                    <p class="half">110</p>
+                    <p class="full">170</p>
+                </div>
+                <div class="first">
+                    <p class="name">Kaju Pulav</p>
+                    <p class="half">120</p>
+                    <p class="full">190</p>
+                </div>
+                <div class="first">
+                    <p class="name">Panner Pulav</p>
+                    <p class="half">90</p>
+                    <p class="full">140</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="right">
+            <h1>Order Details</h1>
+            <form action="" id="form">
+                <input type="text" id="dishName" placeholder="Enter Dish Name">
+                <div class="spaceBetween">
+                    <div>
+                        <select name="" id="select">
+                            <option value="">Select Plate</option>
+                            <option value="">Half</option>
+                            <option value="">Full</option>
+                        </select>
+                        <input type="number" name="" value="1" placeholder="Quantity" id="quantity" min="1">
+                    </div>
+                    <button type="submit">Order</button>
+                </div>
+            </form>
+
+            <table id="table">
+                <tr>
+                    <th>Dish Name</th>
+                    <th>Plate</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Amount</th>
+                </tr>
+            </table>
+
+
+            <div class="total">
+                <div class="payPrice">
+                    <div class="total">
+                        <h2>Total Price</h2>
+                        <h2 id="totalPrice"></h2>
+                    </div>
+                    <button id="payBtn">Pay Now</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+
+
+
+    <script>
+        let dishName = document.getElementById('dishName');
+        let select = document.getElementById('select');
+        let quantity = document.getElementById('quantity');
+        let totalPrice = document.getElementById('totalPrice');
+        let form = document.getElementById('form');
+        let table = document.getElementById('table');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            let newTr = document.createElement('tr');
+            newTr.innerHTML = `<td>${dishName.value}</td>
+                    <td>${select.value}</td>
+                    <td>${quantity.value}</td>
+                    <td>Price</td>
+                    <td>Amount</td>`;
+            table.appendChild(newTr);
+            resetForm();
+        });
+
+        function resetForm() {
+            dishName.value = "";
+            select.value = "";
+            quantity.value = 1;
+        }
+
+        let mainArray = [];
+        let first = document.querySelectorAll('.first');
+        first.forEach((value, index) => {
+            mainArray.push({ dishName:value.children[0].innerHTML});
+        });
+        console.log(mainArray);
+
+    </script>
+</body>
+
+</html>
