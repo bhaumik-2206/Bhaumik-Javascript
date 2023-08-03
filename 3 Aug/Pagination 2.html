@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagination</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: lightcoral;
+            font-family: sans-serif;
+        }
+
+        section {
+            width: 70%;
+            margin-inline: auto;
+            text-align: center;
+        }
+
+        section p {
+            padding: 10px;
+            font-size: 25px;
+        }
+
+        .pagination {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .pagination button {
+            background-color: chocolate;
+            color: black;
+            font-weight: bold;
+            padding: 10px 20px;
+            font-size: 20px;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+        }
+
+        .pagination button:hover {
+            background-color: rgb(224, 119, 44);
+        }
+
+        .pagination span {
+            font-size: 25px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="section">
+        <p>Paragraph No - 1</p>
+        <p>Paragraph No - 2</p>
+        <p>Paragraph No - 3</p>
+        <p>Paragraph No - 4</p>
+        <p>Paragraph No - 5</p>
+        <p>Paragraph No - 6</p>
+        <p>Paragraph No - 7</p>
+        <p>Paragraph No - 8</p>
+        <p>Paragraph No - 9</p>
+        <p>Paragraph No - 10</p>
+        <p>Paragraph No - 11</p>
+        <p>Paragraph No - 12</p>
+        <p>Paragraph No - 13</p>
+        <p>Paragraph No - 14</p>
+        <p>Paragraph No - 15</p>
+        <p>Paragraph No - 16</p>
+        <p>Paragraph No - 17</p>
+        <p>Paragraph No - 18</p>
+        <p>Paragraph No - 19</p>
+        <p>Paragraph No - 20</p>
+    </section>
+
+    <div class="pagination">
+        <button id="prev">Previous</button>
+        <span id="page-numbers"></span>
+        <button id="next">Next</button>
+    </div>
+
+
+
+    <script>
+        let prev = document.getElementById('prev');
+        let next = document.getElementById('next');
+        let totalItemInOnePage = 3;
+        let currectPage = 1;
+        let totalParagraph = document.querySelectorAll('.section p');
+        let totalIndex = totalParagraph.length;
+        let totalPages = Math.ceil(totalIndex / totalItemInOnePage);
+
+
+        let pageNumbers = document.getElementById("page-numbers");
+        pageNumbers.innerText = `${1} / ${totalPages}`;
+
+        prev.addEventListener('click', function () {
+            if (currectPage != 1) {
+                currectPage--;
+                myFunction(currectPage);
+                let pageNumbers = document.getElementById("page-numbers");
+                pageNumbers.innerText = `${currectPage} / ${totalPages}`;
+            }
+        });
+
+        next.addEventListener('click', function () {
+            if (currectPage >= 1 && currectPage < totalPages) {
+                currectPage++;
+                myFunction(currectPage);
+                let pageNumbers = document.getElementById("page-numbers");
+                pageNumbers.innerText = `${currectPage} / ${totalPages}`;
+            }
+        });
+
+
+        function myFunction(para) {
+            totalParagraph.forEach((value, index) => {
+                let start = (para - 1) * totalItemInOnePage;
+                let end = start + totalItemInOnePage;
+                if (index >= start && index < end) {
+                    value.style.display = "block";
+                } else {
+                    value.style.display = "none";
+                }
+            });
+        }
+        myFunction(currectPage);
+    </script>
+</body>
+
+</html>

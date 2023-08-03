@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accordion</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            font-family: sans-serif;
+        }
+
+        .holder {
+            padding: 15px;
+        }
+
+        .holder .item {
+            border: 1px solid black;
+            padding: 5px;
+        }
+
+        .holder .accordion {
+            margin: 0;
+            color: #222222;
+            cursor: pointer;
+            padding: 1.225rem;
+            -webkit-transition: 0.4s;
+            transition: 0.4s;
+            font-size: 1.125rem;
+        }
+
+        .holder .content {
+            padding: 0 18px;
+            max-height: 0;
+            overflow: hidden;
+            -webkit-transition: max-height 0.4s ease-in-out;
+            transition: .5s ease;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="holder">
+        <div class="item">
+            <h3 class="accordion">Consectetur adipisicing elittaque quaerat nostrum esse?</h3>
+            <div class="content">
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem quae dolore labore.</p>
+                <p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt labore dolore magna aliqua.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis voluptate unde veniam impedit assumenda
+                    aperiam vel rerum modi dignissimos ea. Quis sequi ut saepe ab provident, repudiandae, odit nisi
+                    voluptatem incidunt magnam sit expedita asperiores optio reprehenderit, amet quos nobis hic iusto
+                    voluptas obcaecati sapiente laborum temporibus? Doloribus, ipsa aperiam?</p>
+            </div>
+        </div>
+
+        <div class="item">
+            <h3 class="accordion">Nostrud exercitation ullamco laboris nisi?</h3>
+            <div class="content">
+                <p>Ponsectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+            </div>
+        </div>
+
+        <div class="item">
+            <h3 class="accordion">Aliquip exea commodo consequat?</h3>
+            <div class="content">
+                <p>Adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        var accdr = document.querySelectorAll(".accordion");
+        var accordioncontent = document.getElementsByClassName("content");
+        var i;
+
+        accdr.forEach(value => {
+            value.addEventListener('click', function () {
+                for (let i = 0; i < accordioncontent.length; i++) {
+                    accordioncontent[i].style.maxHeight = null;
+                }
+                if (!(value.nextElementSibling.style.maxHeight)) {
+                    value.nextElementSibling.style.maxHeight = value.nextElementSibling.scrollHeight + "px";
+                }
+            });
+        });
+
+    </script>
+</body>
+
+</html>

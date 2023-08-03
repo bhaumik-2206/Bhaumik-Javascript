@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagination</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        main {
+            display: flex;
+        }
+
+        main>* {
+            padding: 5px 10px;
+            font-size: 30px;
+            border: 1px solid black;
+        }
+
+        main button {
+            cursor: pointer;
+        }
+
+        .active {
+            background-color: black;
+            color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <button id="previous">Previous</button>
+        <div class="number start active"></div>
+        <div class="number next"></div>
+        <div class="number next"></div>
+        <div class="number next"></div>
+        <div class="number last"></div>
+        <button id="next">Next</button>
+    </main>
+
+
+    <script>
+        let number = document.querySelectorAll('.number');
+        let previous = document.getElementById('previous');
+        let next = document.getElementById('next');
+
+        let a = 1;
+        number.forEach(value => {
+            value.innerHTML = a;
+            a++;
+        });
+
+        let index = 1;
+        next.addEventListener('click', function () {
+            if (number[number.length - 2].classList.contains('active')) {
+                index++;
+                addOne();
+            } else if (number[index - 1].classList.contains('active')) {
+                number[index - 1].classList.remove('active');
+                number[index].classList.add('active');
+                index++;
+            }
+            console.log(index);
+        });
+
+        previous.addEventListener('click', function () {
+            if (number[1].classList.contains('active')) {
+                index--;
+                removeOne();
+            } else if (number[index - 1].classList.contains('active')) {
+                number[index - 1].classList.remove('active');
+                number[index - 2].classList.add('active');
+                index--;
+            }
+            console.log(index);
+        });
+
+        function addOne() {
+            number.forEach(value => {
+                value.innerHTML = Number(value.innerHTML) + 1;
+            });
+        }
+
+        function removeOne() {
+            number.forEach(value => {
+                value.innerHTML = Number(value.innerHTML) - 1;
+            });
+        }
+    </script>
+</body>
+
+</html>
