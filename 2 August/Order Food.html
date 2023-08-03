@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Hotel</title>
     <style>
         * {
             padding: 0;
@@ -249,13 +249,26 @@
         let totalPrice = document.getElementById('totalPrice');
         let form = document.getElementById('form');
         let table = document.getElementById('table');
-
+        let billDishName = [];
 
         let amount = 0
         form.addEventListener('submit', function (e) {
             e.preventDefault();
-            if (returnIfDishNameInclude(dishName.value.toLowerCase().trim())) {
-                let printAmount = Number(quantity.value * getPrice(dishName.value.toLowerCase().trim(), select.value.toLowerCase()))
+            let printAmount = Number(quantity.value * getPrice(dishName.value.toLowerCase().trim(), select.value.toLowerCase()))
+            if (billDishName.includes(dishName.value.toLowerCase().trim())) {
+                amount += printAmount;
+                let tableRow = document.querySelectorAll('.tableRow');
+                tableRow.forEach(value => {
+                    if (value.children[0].innerHTML.toLowerCase() == dishName.value.toLowerCase().trim()) {
+                        value.innerHTML = `<td>${filterIfValueInclude(dishName.value)}</td>
+                    <td>${select.value}</td>
+                    <td>${Number(quantity.value) + Number(value.children[2].innerHTML)}</td>
+                    <td>${getPrice(dishName.value.toLowerCase().trim(), select.value.toLowerCase())}</td>
+                    <td>${(Number(quantity.value) + Number(value.children[2].innerHTML)) * getPrice(dishName.value.toLowerCase().trim(), select.value.toLowerCase())}</td>`;
+                    }
+                });
+            }
+            else if (returnIfDishNameInclude(dishName.value.toLowerCase().trim())) {
                 amount += printAmount;
 
                 let newTr = document.createElement('tr');
@@ -266,11 +279,13 @@
                 <td>${getPrice(dishName.value.toLowerCase().trim(), select.value.toLowerCase())}</td>
                 <td>${printAmount}</td>`;
                 table.appendChild(newTr);
-                totalPrice.innerHTML = amount;
-                resetForm();
+                billDishName.push(dishName.value.toLowerCase().trim());
+
             } else {
                 alert("Plese Type Dish Name which is in menu card")
             }
+            resetForm();
+            totalPrice.innerHTML = amount;
         });
 
         function resetForm() {

@@ -9,11 +9,17 @@
         * {
             padding: 0;
             margin: 0;
+            scroll-behavior: smooth;
         }
 
         body {
             background-color: lightcyan;
             font-family: sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
         }
 
         nav {
@@ -33,16 +39,21 @@
 
         ul li {
             list-style: none;
+            padding: 10px 30px;
             font-size: 2rem;
             cursor: pointer;
         }
 
-        div{
+        div {
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             font-size: 100px;
+        }
+
+        .active {
+            background-color: rgba(168, 168, 168, 0.7);
         }
     </style>
 </head>
@@ -50,21 +61,26 @@
 <body>
     <nav>
         <ul>
-            <li class="allLi">Home</li>
-            <li class="allLi">Contact</li>
-            <li class="allLi">Sign In</li>
-            <li class="allLi">Profile</li>
+            <li class="allLi active"><a href="#home">Home</a></li>
+            <li class="allLi"><a href="#contact">Contact</a></li>
+            <li class="allLi"><a href="#sighIn">Sign In</a></li>
+            <li class="allLi"><a href="#profile">Profile</a></li>
         </ul>
     </nav>
-    <div>Home</div>
-    <div>Contact</div>
-    <div>Sign In</div>
-    <div>Profile</div>
+    <div id="home">Home</div>
+    <div id="contact">Contact</div>
+    <div id="sighIn">Sign In</div>
+    <div id="profile">Profile</div>
 
 
 
     <script>
-
+        let allLi = document.querySelectorAll('.allLi');
+        allLi.forEach(value => {
+            value.addEventListener('click', function () {
+                value.classList.toggle('active');
+            });
+        });
     </script>
 </body>
 

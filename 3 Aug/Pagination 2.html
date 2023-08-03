@@ -89,12 +89,11 @@
     <script>
         let prev = document.getElementById('prev');
         let next = document.getElementById('next');
-        let totalItemInOnePage = 3;
+        let totalItemInOnePage = 4;
         let currectPage = 1;
         let totalParagraph = document.querySelectorAll('.section p');
         let totalIndex = totalParagraph.length;
         let totalPages = Math.ceil(totalIndex / totalItemInOnePage);
-
 
         let pageNumbers = document.getElementById("page-numbers");
         pageNumbers.innerText = `${1} / ${totalPages}`;
@@ -103,7 +102,6 @@
             if (currectPage != 1) {
                 currectPage--;
                 myFunction(currectPage);
-                let pageNumbers = document.getElementById("page-numbers");
                 pageNumbers.innerText = `${currectPage} / ${totalPages}`;
             }
         });
@@ -112,7 +110,6 @@
             if (currectPage >= 1 && currectPage < totalPages) {
                 currectPage++;
                 myFunction(currectPage);
-                let pageNumbers = document.getElementById("page-numbers");
                 pageNumbers.innerText = `${currectPage} / ${totalPages}`;
             }
         });
