@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accordion</title>
+    <title>Document</title>
     <style>
         * {
             padding: 0;
@@ -84,7 +84,7 @@
                 for (let i = 0; i < accordioncontent.length; i++) {
                     accordioncontent[i].style.maxHeight = null;
                 }
-                if (!(value.nextElementSibling.style.maxHeight)) {
+                if (!value.nextElementSibling.style.maxHeight) {
                     value.nextElementSibling.style.maxHeight = value.nextElementSibling.scrollHeight + "px";
                 }
             });

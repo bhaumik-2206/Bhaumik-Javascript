@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: azure;
+            font-family: sans-serif;
+        }
+
+        form {
+            width: 80%;
+            margin-inline: auto;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: white;
+            margin-block: 20px;
+            border: 1px solid green;
+        }
+
+        form input {
+            background-color: azure;
+            width: -webkit-fill-available;
+            font-size: 20px;
+            padding: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        tr :first-child {
+            width: 20%;
+        }
+
+        tr :last-child {
+            width: 80%;
+        }
+
+        th,
+        td {
+            border: 3px solid black;
+            padding: 10px;
+            font-size: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="" id="form">
+        <input type="text" id="enterName" placeholder="Enter Name">
+    </form>
+
+    <table id="table">
+        <!-- <tr>
+            <th>Letter</th>
+            <th>Names</th>
+        </tr> -->
+    </table>
+
+
+
+
+    <script>
+        let form = document.getElementById('form');
+        let enterName = document.getElementById('enterName');
+        let table = document.getElementById('table');
+        let data = {};
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            let value = enterName.value.trim();
+            if (value == "") {
+                alert("Please Type Name");
+            }
+            let firstLetterOfEnterValue = value.toUpperCase().charAt(0);
+            let fullNameWithSpecificCase = value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
+
+            if (!data[firstLetterOfEnterValue]) {
+                data[firstLetterOfEnterValue] = [fullNameWithSpecificCase];
+            } else {
+                if (data[firstLetterOfEnterValue].includes(fullNameWithSpecificCase)) {
+                    alert("Name Already Exist");
+                } else {
+                    data[firstLetterOfEnterValue].push(fullNameWithSpecificCase);
+                }
+            }
+            makeTable();
+            enterName.value = "";
+        });
+
+        function makeTable() {
+            let allKeys = Object.keys(data);
+            table.innerHTML = `
+                    <tr>
+                        <th>Letter</th>
+                        <th>Names</th>
+                    </tr>`;
+            for (let key of allKeys) {
+                table.innerHTML += `
+                    <tr>
+                        <td>${key}</td>
+                        <td>${data[key].join(" , ")}</td>
+                    </tr>`;
+            }
+        }
+
+
+        // let form = document.getElementById('form');
+        // let enterName = document.getElementById('enterName');
+
+        // let firstLetter = [];
+        // let allNames = [];
+        // form.addEventListener('submit', function (e) {
+        //     e.preventDefault();
+        //     let firstLetterOfEnterValue = enterName.value.toUpperCase().charAt(0);
+        //     let fullNameWithSpecificCase = enterName.value.toUpperCase().slice(0, 1) + enterName.value.slice(1).toLowerCase();
+        //     let table = document.getElementById('table');
+        //     let newTr = document.createElement('tr');
+        //     newTr.classList.add("tr");
+        //     if (enterName.value.trim() != "") {
+        //         if (firstLetter.find(e => e == firstLetterOfEnterValue)) {
+        //             if (allNames.includes(fullNameWithSpecificCase)) {
+        //                 alert("Name Already Exist!!!!");
+        //             } else {
+        //                 let allTr = document.querySelectorAll('.tr');
+        //                 allTr.forEach((value, index) => {
+        //                     if (value.children[0].innerHTML == firstLetterOfEnterValue) {
+        //                         allTr[index].children[1].innerText += " , " + fullNameWithSpecificCase;
+        //                     }
+        //                     console.log(value.children[0].innerHTML);
+        //                 });
+        //                 allNames.push(fullNameWithSpecificCase);
+        //             }
+        //         } else {
+        //             firstLetter.push(enterName.value.charAt(0).toUpperCase());
+        //             newTr.innerHTML = `<td>${firstLetterOfEnterValue}</td>
+        //             <td>${fullNameWithSpecificCase}</td>`;
+        //             allNames.push(fullNameWithSpecificCase);
+        //         }
+        //         table.appendChild(newTr);
+        //     }
+        //     enterName.value = "";
+        // });
+
+        // function groupByAlphabet(arr) {
+        //     return arr.reduce((acc, cur) => {
+        //         let keyName = cur.charAt(0).toUpperCase();
+        //         if (acc[keyName]) {
+        //             acc[keyName].push(cur)
+        //         } else {
+        //             acc[keyName] = [cur];
+        //         }
+        //         return acc;
+        //     }, {});
+        // }
+    </script>
+</body>
+
+</html>
