@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinite Scroll</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #mainUl {
+            font-size: 25px;
+        }
+
+        #mainUl li {
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="mainUl">
+
+    </ul>
+
+
+
+    <script>
+        let mainUl = document.getElementById('mainUl');
+        let newItem = 1;
+
+        function more() {
+            for (let i = 0; i < 20; i++) {
+                let newLi = document.createElement('li');
+                newLi.textContent = `List ${newItem++}`;
+                mainUl.appendChild(newLi);
+            }
+        }
+        document.addEventListener('scroll', function () {
+            // console.log(window.scrollY);
+            // console.log(mainUl.clientHeight - window.scrollY);
+        });
+
+        more();
+    </script>
+</body>
+
+</html>

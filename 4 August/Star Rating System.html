@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>Star Rating System</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: lightsalmon;
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        main {
+            padding: 2rem;
+            width: 30%;
+            background-color: white;
+            text-align: center;
+            border-radius: 20px;
+        }
+
+        .stars {
+            margin-block: 1rem;
+        }
+
+        i {
+            font-size: 3rem;
+            color: rgb(179, 179, 179);
+            cursor: pointer;
+            margin-inline: 5px;
+            margin-bottom: 5px;
+        }
+
+        .active {
+            color: orange;
+        }
+
+        main p {
+            font-size: 25px;
+            /* margin-bottom: 1rem; */
+        }
+
+        main button {
+            padding: 10px 20px;
+            background-color: black;
+            color: white;
+            border: none;
+            font-size: 25px;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main>
+        <p>Enter Your Experience</p>
+        <div class="stars">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+        </div>
+        <button id="submit">Submit</button>
+    </main>
+
+    <script>
+        let stars = document.querySelectorAll('.stars i');
+        let totalStart = 0;
+        stars.forEach((value, index) => {
+            value.addEventListener('click', function () {
+                // console.log(index);
+                totalStart = index + 1;
+                stars.forEach((ele, ind) => {
+                    if (index >= ind) {
+                        ele.classList.add('active');
+                    } else {
+                        ele.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        let submit = document.getElementById('submit');
+        submit.addEventListener('click', function () {
+            if (totalStart == 1 || totalStart == 2) {
+                alert("You are Learning Now!!!");
+            } else if (totalStart == 3 || totalStart == 4) {
+                alert("You Have Some Experience!!!");
+            } else if (totalStart == 5) {
+                alert("You Have More Experience!!!");
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: lightcyan;
+            font-family: sans-serif;
+        }
+
+        li {
+            list-style: none;
+            padding: 10px 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        nav ul {
+            display: flex;
+            width: 80%;
+            justify-content: space-around;
+            align-items: center;
+            font-size: 25px;
+            margin-inline: auto;
+            padding-block: 10px;
+        }
+
+        nav {
+            /* margin-top: 50px; */
+            background-color: rgba(200, 200, 200, 0.532);
+        }
+
+        .fixed {
+            position: fixed;
+            top: 0;
+            /* margin-top: 0; */
+            width: 100%;
+        }
+
+        .width {
+            height: 1000px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            width: 75%;
+            margin-inline: auto;
+            font-size: 20px;
+            padding-block: 20px;
+        }
+
+        .email {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header id="header">
+        <div class="logo">
+            WELCOME
+        </div>
+        <div class="email">
+            <p>email</p>
+            <p>mobileNumber</p>
+        </div>
+    </header>
+
+    <nav id="navbar">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Practice</a></li>
+            <li><a href="#">Details</a></li>
+            <li><a href="#">More</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Sign In</a></li>
+            <li><a href="#">Log In</a></li>
+        </ul>
+    </nav>
+
+    <p class="width"></p>
+
+
+    <script>
+        let navbar = document.getElementById('navbar');
+        let header = document.getElementById('header');
+        document.addEventListener('scroll', function () {
+            if (window.scrollY > header.clientHeight) {
+                navbar.classList.add('fixed');
+            } else {
+                navbar.classList.remove('fixed');
+            }
+        });
+    </script>
+</body>
+
+</html>
