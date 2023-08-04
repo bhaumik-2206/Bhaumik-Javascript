@@ -12,7 +12,37 @@
         }
 
         body {
-            background-color: lightgoldenrodyellow;
+            background-color: rgb(255, 255, 176);
+        }
+
+        form {
+            margin-top: 2rem;
+            width: 50%;
+            margin-inline: auto;
+            background-color: rgb(186, 186, 186);
+            padding: 20px;
+            border-radius: 20px;
+        }
+
+        form input,
+        #month {
+            width: -webkit-fill-available;
+            font-size: 20px;
+            margin-bottom: 15px;
+            padding: 10px 20px;
+            border-radius: 10px;
+            border: none;
+        }
+
+        form button {
+            width: 100%;
+            padding: 10px;
+            font-size: 20px;
+            background-color: black;
+            color: white;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
         }
 
         #printData {
@@ -23,6 +53,7 @@
             color: yellow;
             font-size: 30px;
             text-align: center;
+            margin-block: 2rem;
         }
 
         #printData>* {
@@ -34,45 +65,54 @@
 
 <body>
 
-    <select id="month">
-        <option value="0">January</option>
-        <option value="1">February</option>
-        <option value="2">March</option>
-        <option value="3">April</option>
-        <option value="4">May</option>
-        <option value="5">June</option>
-        <option value="6">July</option>
-        <option value="7">August</option>
-        <option value="8">September</option>
-        <option value="9">October</option>
-        <option value="10">November</option>
-        <option value="11">December</option>
-    </select>
-    <input type="number" name="" placeholder="Enter Year" id="year">
-    <button id="submit">Show</button>
+    <form action="" id="form">
+
+        <select id="month">
+            <option value="0">January</option>
+            <option value="1">February</option>
+            <option value="2">March</option>
+            <option value="3">April</option>
+            <option value="4">May</option>
+            <option value="5">June</option>
+            <option value="6">July</option>
+            <option value="7">August</option>
+            <option value="8">September</option>
+            <option value="9">October</option>
+            <option value="10">November</option>
+            <option value="11">December</option>
+        </select>
+        <input type="number" name="" placeholder="Enter Year" id="year">
+        <button id="submit">Show</button>
+    </form>
 
     <div id="printData"></div>
 
     <script>
         let totalDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
         let submit = document.getElementById('submit');
+        let form = document.getElementById('form');
         let month = document.getElementById('month');
         let year = document.getElementById('year');
         let printData = document.getElementById('printData');
 
-        submit.addEventListener('click', function () {
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
             printData.innerHTML = "";
-            let date = new Date(year.value, month.value, 1).getDate();
-            let lastDate = new Date(year.value, Number(month.value) + 1, 0).getDate();
-            let day = new Date(year.value, month.value, 1).getDay();
-            totalDays.forEach(value => {
-                createParagraph(value);
-            });
-            for (let i = 0; i < Number(day); i++) {
-                createParagraph("");
-            }
-            for (let i = date; i <= lastDate; i++) {
-                createParagraph(i);
+            if (year.value != "") {
+                let date = new Date(year.value, month.value, 1).getDate();
+                let lastDate = new Date(year.value, Number(month.value) + 1, 0).getDate();
+                let day = new Date(year.value, month.value, 1).getDay();
+                totalDays.forEach(value => {
+                    createParagraph(value);
+                });
+                for (let i = 0; i < Number(day); i++) {
+                    createParagraph("");
+                }
+                for (let i = date; i <= lastDate; i++) {
+                    createParagraph(i);
+                }
+            } else {
+                alert("Please Enter Year");
             }
         });
 

@@ -6,17 +6,28 @@ let arr = [
     { type: "game", value: 20 },
     { type: "other", value: 40 },
     { type: "audio", value: 20 },
+    { type: "video", value: 50 },
+    { type: "game", value: 25 },
+    { type: "other", value: 30 },
 ];
-let a = [];
-arr.forEach(value => {
-    if (a.find(e => e.type == value.type)) {
-        a.map(ele => {
-            if (ele.type == value.type) {
-                ele.value += value.value;
-            }
-        });
+
+let mainArray = [];
+arr.forEach(ele => {
+    let currentItem = mainArray.findIndex(obj => obj.type === ele.type);
+    if (currentItem != -1) {
+        mainArray[currentItem].value += ele.value;
     } else {
-        a.push(value);
+        mainArray.push(ele);
     }
 });
-console.log(a);
+console.log(mainArray);
+
+let b = {};
+arr.forEach(ele => {
+    if (b[ele.type]) {
+        b[ele.type] += ele.value;
+    } else {
+        b[ele.type] = ele.value;
+    }
+});
+console.log(b);
