@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search element</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            font-family: sans-serif;
+            background-color: lightgoldenrodyellow;
+            padding: 1rem;
+        }
+
+        input {
+            width: -webkit-fill-available;
+            padding: 10px 20px;
+            border: 3px solid green;
+            color: black;
+            font-size: 25px;
+            border-radius: 2rem;
+        }
+
+        input:focus {
+            outline: none;
+        }
+
+        .inco {
+            display: none;
+            font-size: 20px;
+            color: red;
+            margin-block: 20px;
+        }
+
+        main {
+            margin-top: 20px;
+        }
+
+        #main p {
+            font-size: 25px;
+            color: blue;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <input type="text" id="input" placeholder="Enter Value">
+
+    <main id="main"></main>
+    <p id="incorrect" class="inco">Data not Exists</p>
+
+    <script>
+        let main = document.getElementById('main');
+        let incorrect = document.getElementById('incorrect');
+        let input = document.getElementById('input');
+        let allData = ["apple", "banana", "orange", "grapes", "watermelon", "pineapple", "mango", "strawberry", "blueberry", "cherry", "raspberry", "lemon", "lime", "kiwi", "papaya", "avocado", "peach", "pear", "plum", "apricot", "coconut", "fig", "blackberry", "cranberry", "pomegranate", "guava", "dragonfruit", "melon", "cantaloupe", "honeydew", "laptop", "book", "sunglasses", "coffee mug", "camera", "headphones", "backpack", "watch", "umbrella", "wallet", "jacket", "smartphone", "pencil case", "water bottle", "notebook", "running shoes", "t-shirt", "sunglasses case", "earbuds", "power bank", "keychain", "portable speaker", "gaming console", "snacks", "duffle bag", "fitness tracker", "laptop sleeve", "travel pillow", "bluetooth keyboard", "board game"];
+
+        input.addEventListener('input', function (e) {
+            main.innerHTML = "";
+            let a = 1;
+            if (input.value.trim().length >= 1) {
+                let isValue = false;
+                allData.forEach(ele => {
+                    if (ele.toLowerCase().trim().startsWith(input.value.toLowerCase().trim())) {
+                        let newEle = document.createElement('p');
+                        newEle.innerText = `(${a}) ${ele}`;
+                        main.appendChild(newEle);
+                        isValue = true;
+                        a++;
+                    }
+                });
+                if (isValue) {
+                    incorrect.style.display = "none";
+                    input.style.border = "3px solid green";
+                } else {
+                    incorrect.style.display = "block";
+                    input.style.border = "3px solid red";
+                }
+            }
+
+        });
+    </script>
+</body>
+
+</html>

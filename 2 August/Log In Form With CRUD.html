@@ -201,8 +201,13 @@
         // form Submit fname , lname , username and password
         form.addEventListener('submit', function (e) {
             e.preventDefault();
-            correctUserName();
-            correctPassword();
+            if (fname.value.trim() != "" && lname.value.trim() != "") {
+                if (correctUserName()) {
+                    correctPassword();
+                }
+            } else {
+                alert("first name and last name are required");
+            }
             if (checkpPresentOrNot(incorrect)) {
                 if (storeVar) {
                     updateRow(storeVar);
@@ -280,6 +285,7 @@
                 incorrectUsername.style.display = "block";
             } else if (userName.value.length > 5) {
                 incorrectUsername.style.display = "none";
+                return true;
             }
         }
 
