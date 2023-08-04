@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calender</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: lightgoldenrodyellow;
+        }
+
+        #printData {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            background-color: black;
+            color: yellow;
+            font-size: 30px;
+            text-align: center;
+        }
+
+        #printData>* {
+            width: 14%;
+            padding-block: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <select id="month">
+        <option value="0">January</option>
+        <option value="1">February</option>
+        <option value="2">March</option>
+        <option value="3">April</option>
+        <option value="4">May</option>
+        <option value="5">June</option>
+        <option value="6">July</option>
+        <option value="7">August</option>
+        <option value="8">September</option>
+        <option value="9">October</option>
+        <option value="10">November</option>
+        <option value="11">December</option>
+    </select>
+    <input type="number" name="" placeholder="Enter Year" id="year">
+    <button id="submit">Show</button>
+
+    <div id="printData"></div>
+
+    <script>
+        let totalDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+        let submit = document.getElementById('submit');
+        let month = document.getElementById('month');
+        let year = document.getElementById('year');
+        let printData = document.getElementById('printData');
+
+        submit.addEventListener('click', function () {
+            printData.innerHTML = "";
+            let date = new Date(year.value, month.value, 1).getDate();
+            let lastDate = new Date(year.value, Number(month.value) + 1, 0).getDate();
+            let day = new Date(year.value, month.value, 1).getDay();
+            totalDays.forEach(value => {
+                createParagraph(value);
+            });
+            for (let i = 0; i < Number(day); i++) {
+                createParagraph("");
+            }
+            for (let i = date; i <= lastDate; i++) {
+                createParagraph(i);
+            }
+        });
+
+        function createParagraph(value) {
+            let printDateInNewP = document.createElement('p');
+            printDateInNewP.innerText = value;
+            printData.appendChild(printDateInNewP);
+        }
+    </script>
+</body>
+
+</html>

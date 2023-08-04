@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light and Dark Mode</title>
+    <style>
+        body {
+            background-color: white;
+            color: black;
+        }
+
+        .dark {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+
+<body id="body">
+    <h1>Light and Dark Mode Toggle</h1>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero adipisci omnis voluptatem porro recusandae
+        incidunt quos impedit laborum optio rerum voluptatibus minima voluptate, consectetur nulla quidem molestias cum
+        pariatur praesentium.</p>
+    <button id="btn">Dark Mode</button>
+
+
+    <script>
+        let btn = document.getElementById('btn');
+        let body = document.getElementById('body');
+        btn.addEventListener('click', function () {
+            if (body.classList.contains("dark")) {
+                body.classList.remove("dark");
+                btn.innerText = "Dark More";
+            } else {
+                body.classList.add("dark");
+                btn.innerText = "Light More";
+            }
+        });
+    </script>
+</body>
+
+</html>
