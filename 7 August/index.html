@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: lightcyan;
+        }
+
+        img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        main {
+            display: flex;
+            width: 750px;
+            margin-inline: auto;
+            flex-wrap: wrap;
+            position: relative;
+            transition: 1s ease;
+        }
+
+        #mainImage {
+            position: absolute;
+            width: 0px;
+            height: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="main"> -->
+    <main id="parent">
+        <div class="changeImage">
+            <img src="https://images.unsplash.com/photo-1486162928267-e6274cb3106f?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8bmF0dXJlLHJhaW58fHx8fHwxNjkwMjYwODg5&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=900"
+                alt="">
+        </div>
+        <div class="changeImage">
+            <img src="https://images.unsplash.com/photo-1477322524744-0eece9e79640?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8bmF0dXJlLHJhaW58fHx8fHwxNjkwMjYwODk4&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=900"
+                alt="">
+        </div>
+        <div class="changeImage">
+            <img src="https://images.unsplash.com/photo-1514418197935-e0cac2bb695a?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8bmF0dXJlLHJhaW58fHx8fHwxNjkwMjYwOTAw&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=900"
+                alt="">
+        </div>
+        <div class="changeImage">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8bmF0dXJlLHJhaW58fHx8fHwxNjkwMjYwOTAx&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=900"
+                alt="">
+        </div>
+        <div class="changeImage">
+            <img src="https://images.unsplash.com/photo-1486162928267-e6274cb3106f?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8bmF0dXJlLHJhaW58fHx8fHwxNjkwMjYwODg5&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=900"
+                alt="">
+        </div>
+        <div class="changeImage">
+            <img src="https://images.unsplash.com/photo-1477322524744-0eece9e79640?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8bmF0dXJlLHJhaW58fHx8fHwxNjkwMjYwODk4&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=900"
+                alt="">
+        </div>
+        <div class="changeImage">
+            <img src="https://images.unsplash.com/photo-1514418197935-e0cac2bb695a?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8bmF0dXJlLHJhaW58fHx8fHwxNjkwMjYwOTAw&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=900"
+                alt="">
+        </div>
+        <div class="changeImage">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8bmF0dXJlLHJhaW58fHx8fHwxNjkwMjYwOTAx&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=900"
+                alt="">
+        </div>
+        <div class="changeImage">
+            <img src="https://images.unsplash.com/photo-1486162928267-e6274cb3106f?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8bmF0dXJlLHJhaW58fHx8fHwxNjkwMjYwODg5&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=900"
+                alt="">
+        </div>
+    </main>
+    <!-- </div> -->
+
+    <script>
+        let changeImage = document.querySelectorAll(".changeImage");
+        let images = document.querySelectorAll("img");
+        let parent = document.getElementById("parent");
+        let mainImage = document.getElementById("mainImage");
+
+
+        changeImage.forEach(value => {
+            value.addEventListener('click', function () {
+                let newEle = document.createElement('img');
+                newEle.src = value.children[0].src;
+                newEle.style.width = "750px";
+                newEle.style.height = "750px";
+                newEle.style.transition = "1s ease";
+            });
+        });
+
+    </script>
+</body>
+
+</html>
