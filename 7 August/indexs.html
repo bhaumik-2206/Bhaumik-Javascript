@@ -11,6 +11,7 @@
 
 
     <script>
+        // ------------------Asynchronous------------------------ 
         // console.log("object 1");
         // setTimeout(() => {
         //     for (let i = 0; i < 100; i++) {
@@ -36,6 +37,120 @@
         //     console.log("Then");
         // });
         // console.log("Second");
+
+
+        // console.log("Welcome to The Promise");
+        // let promise2 = new Promise(function (resolve, reject) {
+        //     let error = false;
+        //     console.log("This is an promise");
+        //     if (error) {
+        //         reject();
+        //     } else {
+        //         resolve();
+        //     }
+        // });
+        // promise2.then(function () {
+        //     console.log("This is Then");
+        // });
+        // promise2.catch(function () {
+        //     console.log("This is an ERROR (catch)");
+        // });
+        // promise2.finally(function () {
+        //     console.log("This is inside finally");
+        // });
+        // console.log("Promise End..");
+
+
+        // new Promise(function (resolve, reject) {
+        //     let error = true;
+        //     console.log("This is an promise");
+        //     if (error) {
+        //         reject("This is Rejected Parameter");
+        //     } else {
+        //         resolve("This is resolve parameter");
+        //     }
+        // }).then((rejected) => {
+        //     console.log(rejected);
+        // }).catch((error) => {                       // If we can not use catch parameter then code throw an error.
+        //     console.log(error);
+        // }).finally(function () {
+        //     console.log("Completed..");
+        // })
+
+
+        // let promise3 = new Promise(function (resolve, reject) {
+        //     resolve({ name: "Bhaumik", userName: "bhaumikPanchal", age: 18 });
+        //     reject("Error");
+        // });
+        // promise3.then(function (userData) {
+        //     console.log(userData);
+        //     return userData.name;                   // We can not store his return value to any variable we can chaining with another then
+        // }).then(function (name) {
+        //     console.log(name);
+        // });
+        // promise3.catch(function (error) {
+        //     console.log(error);
+        // });
+
+        // let promise4 = new Promise(function (resolve, reject) {
+        //     resolve({ name: "Bhaumik", userName: "bhaumikPanchal", age: 18 });
+        //     reject("Error");
+        // });
+
+        // promise4.then((value) => {
+        //     console.log(value.userName);
+        // }, (error) => {
+        //     console.log(error);
+        // });
+
+        // new Promise(function (resolve, reject) {
+        //     resolve([10, 20, 30, 40, 50]);
+        //     reject("Error");
+        // }).then(function (data) {
+        //     console.log(data.map(e => e * e));
+        // }).catch((h) => console.log(h));
+
+
+        // let promise6 = new Promise(function (resolve, reject) {
+        //     resolve({ name: "Raj", surname: "Bundela" });
+        //     reject("Error");
+        // });
+        // promise6.then((value) => console.log(value));
+        // promise6.then((getname) => getname.name).then((name) => console.log(name));
+        // promise6.then((getsurname) => getsurname.surname).then((surname) => console.log(surname));
+
+
+        // let promise7 = new Promise(function (resolve, reject) {
+        //     console.log("This is a Promise");
+        //     resolve("Resolve");
+        //     resolve("Rejected");
+        // });
+        // let storeThen = promise7.then(value => console.log(value));
+        // console.log(storeThen);
+        // let storeCatch = promise7.catch(value => console.log(value));
+        // console.log(storeCatch);
+        // setTimeout(() => {
+        //     console.log(storeCatch);
+        //     console.log(storeThen);
+        // }, 500);
+
+        // new Promise(function (resolve, reject) {
+        //     resolve("First");
+        // })
+        //     .then((value => {
+        //         console.log(value);
+        //         return new Promise((resolve, reject) => {
+        //             resolve("Second Promise");
+        //         });
+        //     }))
+        //     .then(second => console.log(second))
+        //     .then(e => console.log(e));
+
+
+        let promise8 = new Promise(function (resolve, reject) {
+            concole.log(promise8);
+        });
+            
 
 
     </script>
