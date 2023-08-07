@@ -4,99 +4,311 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Gallery</title>
-    <style>
-        * {
-            padding: 0;
-            margin: 0;
-        }
-
-        body {
-            background-color: lightcyan;
-        }
-
-        img {
-            width: 250px;
-            height: 250px;
-            object-fit: cover;
-            cursor: pointer;
-        }
-
-        main {
-            display: flex;
-            width: 750px;
-            margin-inline: auto;
-            flex-wrap: wrap;
-            position: relative;
-            transition: 1s ease;
-        }
-
-        #mainImage {
-            position: absolute;
-            width: 0px;
-            height: 0px;
-        }
-    </style>
+    <title>Document</title>
 </head>
 
 <body>
-    <!-- <div class="main"> -->
-    <main id="parent">
-        <div class="changeImage">
-            <img src="https://images.unsplash.com/photo-1486162928267-e6274cb3106f?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8bmF0dXJlLHJhaW58fHx8fHwxNjkwMjYwODg5&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=900"
-                alt="">
-        </div>
-        <div class="changeImage">
-            <img src="https://images.unsplash.com/photo-1477322524744-0eece9e79640?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8bmF0dXJlLHJhaW58fHx8fHwxNjkwMjYwODk4&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=900"
-                alt="">
-        </div>
-        <div class="changeImage">
-            <img src="https://images.unsplash.com/photo-1514418197935-e0cac2bb695a?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8bmF0dXJlLHJhaW58fHx8fHwxNjkwMjYwOTAw&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=900"
-                alt="">
-        </div>
-        <div class="changeImage">
-            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8bmF0dXJlLHJhaW58fHx8fHwxNjkwMjYwOTAx&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=900"
-                alt="">
-        </div>
-        <div class="changeImage">
-            <img src="https://images.unsplash.com/photo-1486162928267-e6274cb3106f?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8bmF0dXJlLHJhaW58fHx8fHwxNjkwMjYwODg5&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=900"
-                alt="">
-        </div>
-        <div class="changeImage">
-            <img src="https://images.unsplash.com/photo-1477322524744-0eece9e79640?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8bmF0dXJlLHJhaW58fHx8fHwxNjkwMjYwODk4&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=900"
-                alt="">
-        </div>
-        <div class="changeImage">
-            <img src="https://images.unsplash.com/photo-1514418197935-e0cac2bb695a?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8bmF0dXJlLHJhaW58fHx8fHwxNjkwMjYwOTAw&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=900"
-                alt="">
-        </div>
-        <div class="changeImage">
-            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8bmF0dXJlLHJhaW58fHx8fHwxNjkwMjYwOTAx&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=900"
-                alt="">
-        </div>
-        <div class="changeImage">
-            <img src="https://images.unsplash.com/photo-1486162928267-e6274cb3106f?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8bmF0dXJlLHJhaW58fHx8fHwxNjkwMjYwODg5&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=900"
-                alt="">
-        </div>
-    </main>
-    <!-- </div> -->
+
+    <ul id="mainUl"></ul>
 
     <script>
-        let changeImage = document.querySelectorAll(".changeImage");
-        let images = document.querySelectorAll("img");
-        let parent = document.getElementById("parent");
-        let mainImage = document.getElementById("mainImage");
+        // ------------------Asynchronous------------------------ 
+        // console.log("object 1");
+        // setTimeout(() => {
+        //     for (let i = 0; i < 100; i++) {
+        //         console.log(i);
+        //     }
+        // }, 1000);
+        // setTimeout(() => {
+        //     for (let i = 100; i < 200; i++) {
+        //         console.log(i);
+        //     }
+        // }, 1000);
+        // console.log("object 2");
+
+        // console.log("First");
+        // let promise = new Promise(function (resolve, reject) {
+        //     setTimeout(() => {
+        //         console.log("Hello I am inside set time out");
+        //         resolve();
+        //     }, 1000);
+        // });
+        // promise.then(function () {
+        //     console.log("Then");
+        // });
+        // console.log("Second");
 
 
-        changeImage.forEach(value => {
-            value.addEventListener('click', function () {
-                let newEle = document.createElement('img');
-                newEle.src = value.children[0].src;
-                newEle.style.width = "750px";
-                newEle.style.height = "750px";
-                newEle.style.transition = "1s ease";
-            });
-        });
+        // console.log("object 1");
+        // let promise1 = new Promise(function (resolve, reject) { console.log("Hello"); })
+        // console.log("object 2");
+
+
+        // console.log("Welcome to The Promise");
+        // let promise2 = new Promise(function (resolve, reject) {
+        //     let error = false;
+        //     console.log("This is an promise");
+        //     if (error) {
+        //         reject();
+        //     } else {
+        //         resolve();
+        //     }
+        // });
+        // promise2.then(function () {
+        //     console.log("This is Then");
+        // });
+        // promise2.catch(function () {
+        //     console.log("This is an ERROR (catch)");
+        // });
+        // promise2.finally(function () {
+        //     console.log("This is inside finally");
+        // });
+        // console.log("Promise End..");
+
+
+        // new Promise(function (resolve, reject) {
+        //     let error = true;
+        //     console.log("This is an promise");
+        //     if (error) {
+        //         reject("This is Rejected Parameter");
+        //     } else {
+        //         resolve("This is resolve parameter");
+        //     }
+        // }).then((rejected) => {
+        //     console.log(rejected);
+        // }).catch((error) => {                       // If we can not use catch parameter then code throw an error.
+        //     console.log(error);
+        // }).finally(function () {
+        //     console.log("Completed..");
+        // })
+
+
+        // let promise3 = new Promise(function (resolve, reject) {
+        //     resolve({ name: "Bhaumik", userName: "bhaumikPanchal", age: 18 });
+        //     reject("Error");
+        // });
+        // promise3.then(function (userData) {
+        //     console.log(userData);
+        //     return userData.name;                   // We can not store his return value to any variable we can chaining with another then
+        // }).then(function (name) {
+        //     console.log(name);
+        // });
+        // promise3.catch(function (error) {
+        //     console.log(error);
+        // });
+
+        // let promise4 = new Promise(function (resolve, reject) {
+        //     resolve({ name: "Bhaumik", userName: "bhaumikPanchal", age: 18 });
+        //     reject("Error");
+        // });
+
+        // promise4.then((value) => {
+        //     console.log(value.userName);
+        // }, (error) => {
+        //     console.log(error);
+        // });
+
+        // new Promise(function (resolve, reject) {
+        //     resolve([10, 20, 30, 40, 50]);
+        //     reject("Error");
+        // }).then(function (data) {
+        //     console.log(data.map(e => e * e));
+        // }).catch((h) => console.log(h));
+
+
+        // let promise6 = new Promise(function (resolve, reject) {
+        //     resolve({ name: "Raj", surname: "Bundela" });
+        //     reject("Error");
+        // });
+        // promise6.then((value) => console.log(value));
+        // promise6.then((getname) => getname.name).then((name) => console.log(name));
+        // promise6.then((getsurname) => getsurname.surname).then((surname) => console.log(surname));
+
+
+        // let promise7 = new Promise(function (resolve, reject) {
+        //     console.log("This is a Promise");
+        //     resolve("Resolve");
+        //     resolve("Rejected");
+        // });
+        // let storeThen = promise7.then(value => console.log(value));
+        // console.log(storeThen);
+        // let storeCatch = promise7.catch(value => console.log(value));
+        // console.log(storeCatch);
+        // setTimeout(() => {
+        //     console.log(storeCatch);
+        //     console.log(storeThen);
+        // }, 500);
+
+        // new Promise(function (resolve, reject) {
+        //     resolve("First");
+        // })
+        //     .then((value => {
+        //         console.log(value);
+        //         return new Promise((resolve, reject) => {
+        //             resolve("Second Promise");
+        //         });
+        //     }))
+        //     .then(second => console.log(second))
+        //     .then(e => console.log(e));
+
+
+        // let promise8 = new Promise((resolve, reject) => {
+        //     reject("Error");
+        // });
+        // promise8.then(null, () => {
+        //     console.log("Resolved");
+        // }, () => {
+        //     console.log("Rejected");
+        // });
+
+
+
+
+        // We can convert any functon to a async and then we can await promise too.
+        // async function asyncFunction() {
+        //     return "Hello, world!";
+        // }
+        // asyncFunction().then(alert);
+        // console.log(asyncFunction());
+
+        // async function asyncFunction() {
+        //     let pro1 = new Promise((resolve, reject) => {
+        //         setTimeout(() => {
+        //             console.log("Promise 1");
+        //             resolve("Promise Resolution");
+        //         }, 2000);
+        //     });
+        //     let pro2 = new Promise((resolve, reject) => {
+        //         setTimeout(() => {
+        //             console.log("Promise 2");
+        //             resolve("Promise Reso");
+        //         }, 4000);
+        //     });
+        //     console.log("Promise 1 Pending...");
+        //     let promise1 = await pro1;
+        //     console.log("Promise 2 Pending...");
+        //     let promise2 = await pro2;
+        //     return [promise1, promise2];
+        // }
+        // asyncFunction().then((value) => console.log(value));
+
+        // async function asyncFunction() {
+        //     let pro1 = new Promise((resolve, reject) => {
+        //         setTimeout(() => {
+        //             // console.log("Promise 1");
+        //             resolve("Promise Resolution 1");
+        //         }, 2000);
+        //     });
+        //     let pro2 = new Promise((resolve, reject) => {
+        //         setTimeout(() => {
+        //             // console.log("Promise 2");
+        //             resolve("Promise Resolution 2");
+        //         }, 5000);
+        //     });
+        //     let promise2 = await pro2;
+        //     console.log(promise2);
+        //     let promise1 = await pro1;
+        //     console.log(promise1);
+        //     return [promise1, promise2];
+        // }
+        // asyncFunction().then((value) => console.log(value));
+        // console.log(asyncFunction());
+
+
+        // async function asyncFunction() {
+        //     let allName = [];
+        //     let myData = [
+        //         { name: "Raj", age: 19 },
+        //         { name: "Bhaumik", age: 18 },
+        //     ];
+        //     let promise1 = new Promise((resolve, reject) => {
+        //         setTimeout(() => {
+        //             // myData.forEach(value => allName.push(value.name));
+        //             // myData.forEach(value => console.log(value.name));
+        //             resolve("Promise 1");
+        //         }, 1000);
+        //     });
+        //     let newData = [
+        //         { name: "YashRaj", age: 19 },
+        //     ];
+        //     let promise2 = new Promise((resolve, reject) => {
+        //         setTimeout(() => {
+        //             newData.forEach(value => myData.push(value));
+        //             resolve("Promise 2");
+        //         }, 2000);
+        //     });
+        //     // console.log(myData);
+        //     let a = await promise2;
+        //     let b = await promise1;
+        //     // console.log(myData);
+        //     return myData;
+        // }
+        // let b = asyncFunction();
+        // b.then(value => console.log(value));
+
+
+        // let mainUl = document.getElementById('mainUl');
+        // let mainUl = document.getElementById('mainUl');
+        // let myData = [
+        //     { name: "Raj", age: 19 },
+        //     { name: "Bhaumik", age: 18 },
+        // ];
+        // function getData() {
+        //     setTimeout(() => {
+        //         myData.forEach(value => {
+        //             let li = document.createElement('li');
+        //             li.innerHTML = value.name;
+        //             mainUl.appendChild(li);
+        //         })
+        //     }, 1000);
+        // }
+        // let newData = [
+        //     { name: "YashRaj", age: 19 },
+        // ];
+        // function setData(callFunction) {
+        //     setTimeout(() => {
+        //         newData.forEach(value => myData.push(value));
+        //         callFunction();
+        //     }, 2000);
+        // }
+        // setData(getData);
+
+
+        // let myData = [
+        //     { name: "Raj", age: 19 },
+        //     { name: "Bhaumik", age: 18 },
+        // ];
+        // function getData() {
+        //     setTimeout(() => {
+        //         myData.forEach(value => {
+        //             let li = document.createElement('li');
+        //             li.innerHTML = value.name;
+        //             mainUl.appendChild(li);
+        //         })
+        //     }, 1000);
+        // }
+        // function setData(value) {
+        //     return new Promise((resolve, reject) => {
+        //         setTimeout(() => {
+        //             myData.push(value);
+        //             resolve();
+        //             // let error = false;
+        //             // if (error) {
+        //             //     reject("ERROR");
+        //             // } else {
+        //             //     resolve();
+        //             // }
+        //         }, 2000);
+        //     })
+        // }
+        // // setData({ name: "YashRaj", age: 19 }).then(getData).catch(error => console.log(error));
+
+        // async function printAllName() {
+        //     await setData({ name: "YashRaj", age: 19 });
+        //     getData();
+        // }
+        // printAllName();
+
 
     </script>
 </body>
