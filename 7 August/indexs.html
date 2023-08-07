@@ -9,6 +9,7 @@
 
 <body>
 
+    <ul id="mainUl"></ul>
 
     <script>
         // ------------------Asynchronous------------------------ 
@@ -32,11 +33,15 @@
         //         resolve();
         //     }, 1000);
         // });
-
         // promise.then(function () {
         //     console.log("Then");
         // });
         // console.log("Second");
+
+
+        // console.log("object 1");
+        // let promise1 = new Promise(function (resolve, reject) { console.log("Hello"); })
+        // console.log("object 2");
 
 
         // console.log("Welcome to The Promise");
@@ -147,10 +152,162 @@
         //     .then(e => console.log(e));
 
 
-        let promise8 = new Promise(function (resolve, reject) {
-            concole.log(promise8);
-        });
-            
+        // let promise8 = new Promise((resolve, reject) => {
+        //     reject("Error");
+        // });
+        // promise8.then(null, () => {
+        //     console.log("Resolved");
+        // }, () => {
+        //     console.log("Rejected");
+        // });
+
+
+
+
+        // We can convert any functon to a async and then we can await promise too.
+        // async function asyncFunction() {
+        //     return "Hello, world!";
+        // }
+        // asyncFunction().then(alert);
+        // console.log(asyncFunction());
+
+        // async function asyncFunction() {
+        //     let pro1 = new Promise((resolve, reject) => {
+        //         setTimeout(() => {
+        //             console.log("Promise 1");
+        //             resolve("Promise Resolution");
+        //         }, 2000);
+        //     });
+        //     let pro2 = new Promise((resolve, reject) => {
+        //         setTimeout(() => {
+        //             console.log("Promise 2");
+        //             resolve("Promise Reso");
+        //         }, 4000);
+        //     });
+        //     console.log("Promise 1 Pending...");
+        //     let promise1 = await pro1;
+        //     console.log("Promise 2 Pending...");
+        //     let promise2 = await pro2;
+        //     return [promise1, promise2];
+        // }
+        // asyncFunction().then((value) => console.log(value));
+
+        // async function asyncFunction() {
+        //     let pro1 = new Promise((resolve, reject) => {
+        //         setTimeout(() => {
+        //             // console.log("Promise 1");
+        //             resolve("Promise Resolution 1");
+        //         }, 2000);
+        //     });
+        //     let pro2 = new Promise((resolve, reject) => {
+        //         setTimeout(() => {
+        //             // console.log("Promise 2");
+        //             resolve("Promise Resolution 2");
+        //         }, 5000);
+        //     });
+        //     let promise2 = await pro2;
+        //     console.log(promise2);
+        //     let promise1 = await pro1;
+        //     console.log(promise1);
+        //     return [promise1, promise2];
+        // }
+        // asyncFunction().then((value) => console.log(value));
+        // console.log(asyncFunction());
+
+
+        // async function asyncFunction() {
+        //     let allName = [];
+        //     let myData = [
+        //         { name: "Raj", age: 19 },
+        //         { name: "Bhaumik", age: 18 },
+        //     ];
+        //     let promise1 = new Promise((resolve, reject) => {
+        //         setTimeout(() => {
+        //             // myData.forEach(value => allName.push(value.name));
+        //             // myData.forEach(value => console.log(value.name));
+        //             resolve("Promise 1");
+        //         }, 1000);
+        //     });
+        //     let newData = [
+        //         { name: "YashRaj", age: 19 },
+        //     ];
+        //     let promise2 = new Promise((resolve, reject) => {
+        //         setTimeout(() => {
+        //             newData.forEach(value => myData.push(value));
+        //             resolve("Promise 2");
+        //         }, 2000);
+        //     });
+        //     // console.log(myData);
+        //     let a = await promise2;
+        //     let b = await promise1;
+        //     // console.log(myData);
+        //     return myData;
+        // }
+        // let b = asyncFunction();
+        // b.then(value => console.log(value));
+
+
+        // let mainUl = document.getElementById('mainUl');
+        // let mainUl = document.getElementById('mainUl');
+        // let myData = [
+        //     { name: "Raj", age: 19 },
+        //     { name: "Bhaumik", age: 18 },
+        // ];
+        // function getData() {
+        //     setTimeout(() => {
+        //         myData.forEach(value => {
+        //             let li = document.createElement('li');
+        //             li.innerHTML = value.name;
+        //             mainUl.appendChild(li);
+        //         })
+        //     }, 1000);
+        // }
+        // let newData = [
+        //     { name: "YashRaj", age: 19 },
+        // ];
+        // function setData(callFunction) {
+        //     setTimeout(() => {
+        //         newData.forEach(value => myData.push(value));
+        //         callFunction();
+        //     }, 2000);
+        // }
+        // setData(getData);
+
+
+        // let myData = [
+        //     { name: "Raj", age: 19 },
+        //     { name: "Bhaumik", age: 18 },
+        // ];
+        // function getData() {
+        //     setTimeout(() => {
+        //         myData.forEach(value => {
+        //             let li = document.createElement('li');
+        //             li.innerHTML = value.name;
+        //             mainUl.appendChild(li);
+        //         })
+        //     }, 1000);
+        // }
+        // function setData(value) {
+        //     return new Promise((resolve, reject) => {
+        //         setTimeout(() => {
+        //             myData.push(value);
+        //             resolve();
+        //             // let error = false;
+        //             // if (error) {
+        //             //     reject("ERROR");
+        //             // } else {
+        //             //     resolve();
+        //             // }
+        //         }, 2000);
+        //     })
+        // }
+        // // setData({ name: "YashRaj", age: 19 }).then(getData).catch(error => console.log(error));
+
+        // async function printAllName() {
+        //     await setData({ name: "YashRaj", age: 19 });
+        //     getData();
+        // }
+        // printAllName();
 
 
     </script>
