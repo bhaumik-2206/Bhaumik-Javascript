@@ -156,9 +156,100 @@
         // };
         // myFunction();
 
+        // console.log(Promise.resolve("Promise Resolved"));
+        // console.log(Promise.reject("Promise Rejected"));
+
+        // console.log("STARTING");
+        // let pro = new Promise((resolve, reject) => {
+        //     resolve("Promise Resolved");
+        // });
+        // pro.then((res) => { console.log(res); });
+        // console.log("STOP");
 
 
+        function first() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve(`Promise Resolved First`);
+                }, 1000);
+            });
+        }
+        function second() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve(`Promise Resolved Second`);
+                }, 500);
+            });
+        }
+        function third() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve(`Promise Resolved Third`);
+                }, 999);
+            });
+        }
+        // console.log(first());                    // Doubt
 
+        // // first()
+        // //     .then(value => {
+        // //         console.log(value);
+        // //         second().then(value => {
+        // //             console.log(value);
+        // //             third().then(value => { console.log(value); });
+        // //         });
+        // //     })
+        // //     .catch(err => console.log("ERROR", err.message));
+
+        // // This is more readable than above code
+        // first().then(value => {
+        //     console.log(value);
+        //     return second();            // Retuen a new Promise and use another then to get the value of the new promises
+        // }).then(value => {
+        //     console.log(value);
+        //     return third();             // Same as above
+        // }).then(value => {
+        //     console.log(value);
+        // }).catch(err => console.log("ERROR", err.message));
+
+
+        // Promise Combinator
+        // ----------------------------Promise.all();----------------------------
+        // Promise.all([
+        //     first(),
+        //     second(),
+        //     third()
+        // ]).then(value => { console.log(value); }).catch(err => console.log("ERROR"));
+
+        // ----------------------------Promise.race();----------------------------
+        // In Promise.race it will return a first promise which will be return first not metter it will resolve or reject.
+        // Promise.race([
+        //     first(),
+        //     second(),
+        //     third()
+        // ]).then(value => { console.log(value); }).catch(err => console.log("ERROR"));
+
+        // ----------------------------Promise.race();----------------------------
+        // In Promise.allSettled it will retuen array of object and return all promises if anyone is rejected it will not gives an error
+        // Promise.allSettled([
+        //     first(),
+        //     second(),
+        //     third()
+        // ]).then(value => { console.log(value); }).catch(err => console.log("ERROR"));
+
+        // ----------------------------Promise.race();----------------------------
+        // In Promise.any first resolved promise will be returned If all promises are reject then the catch method will be called.
+        // Promise.any([
+        //     first(),
+        //     second(),
+        //     third()
+        // ]).then(value => { console.log(value); }).catch(err => console.log("ERROR"));
+
+
+        Promise.allSettled({
+            first: first(),
+            second: second(),
+            third: third()
+        }).then(value => { console.log(value); }).catch(err => console.log("ERROR"));
 
     </script>
 </body>
