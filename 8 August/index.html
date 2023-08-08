@@ -242,7 +242,7 @@
         //     third()
         // ]).then(value => { console.log(value); }).catch(err => console.log("ERROR"));
 
-        // ----------------------------Promise.race();----------------------------
+        // ----------------------------Promise.allSettled();----------------------------
         // In Promise.allSettled it will retuen array of object and return all promises if anyone is rejected it will not gives an error
         // Promise.allSettled([
         //     first(),
@@ -250,7 +250,7 @@
         //     third()
         // ]).then(value => { console.log(value); }).catch(err => console.log("ERROR"));
 
-        // ----------------------------Promise.race();----------------------------
+        // ----------------------------Promise.any();----------------------------
         // In Promise.any first resolved promise will be returned If all promises are reject then the catch method will be called.
         // Promise.any([
         //     first(),
@@ -427,6 +427,69 @@
         //     })
         //     .then(value => console.log(value));
 
+        // let pro = new Promise((resolve, reject) => {
+        //     resolve("HELLO");
+        // });
+        // async function hello() {
+        //     let res = await pro;
+        //     console.log(res);
+        // }
+        // hello();
+        // pro.then((h) => {
+        //     console.log(h);
+        // });
+
+
+
+        // let a = 10;
+        // function myFunction(para) {
+        //     return new Promise((resolve, reject) => {
+        //         setTimeout(() => {
+        //             resolve(para);
+        //         }, 2000);
+        //     });
+        // }
+        // function myFunction(para) {
+        //     return para;
+        // }
+        // async function hello() {
+        //     try {
+        //         let b = await myFunction(a);
+        //         console.log("object");
+        //         // setTimeout(() => {
+        //         console.log(b);
+        //         // }, 2000);
+        //     } catch (error) {
+        //         console.log(error);
+        //     }
+        // }
+        // hello();
+
+        // let promise10 = new Promise((resolve, reject) => {
+        //     reject("ERROR");
+        //     resolve("Resolve Promise");
+        // });
+        // promise10
+        //     .then(value => console.log(value))
+        //     .catch(error => console.log(error));
+
+        // let promise10 = new Promise((resolve, reject) => {
+        //     setTimeout(() => {
+        //         resolve("Resolve Promise - 1");
+        //     }, 0);
+        //     setTimeout(() => {
+        //         resolve("Resolve Promise - 2");
+        //     }, 1);
+        //     setTimeout(() => {
+        //         reject("ERROR - 1");
+        //     }, 2);
+        //     setTimeout(() => {
+        //         reject("ERROR - 2");
+        //     }, 3);
+        // });
+        // promise10
+        //     .then(value => console.log(value))
+        //     .catch(error => console.log(error));
 
 
     </script>
