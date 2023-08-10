@@ -1,0 +1,99 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: lightcoral;
+    font-family: sans-serif;
+    font-family: sans-serif;
+}
+
+.mainBtn {
+    padding: 1rem;
+    text-align: center;
+}
+
+.add-medicine {
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    border: none;
+    font-size: 20px;
+    border-radius: 30px;
+}
+
+form {
+    background-color: white;
+    padding: 1rem;
+    font-size: 18px;
+    width: 80%;
+    margin-inline: auto;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    display: none;
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    top: 20%;
+}
+
+.date-title {
+    margin-bottom: 10px;
+}
+
+.radio-btns {
+    padding-inline: 10px;
+    display: flex;
+    gap: 20px;
+}
+
+#medicine-text,
+#pack-dropdown,
+#quantity,
+#batch-input {
+    width: -webkit-fill-available;
+    padding: 10px;
+    font-size: 18px;
+}
+
+#form div {
+    margin-bottom: 15px;
+}
+
+#form button {
+    width: 100%;
+    padding: 10px;
+    background-color: brown;
+    color: white;
+    cursor: pointer;
+    border: none;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+#addValues input {
+    width: -webkit-fill-available;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+
+
+
+
+table {
+    width: 90%;
+    margin-inline: auto;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 3px solid white;
+    padding: 10px;
+    font-size: 20px;
+    text-align: center;
+}
