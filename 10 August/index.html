@@ -5,11 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>10 August 2023</title>
+    <style>
+        .green{
+            width: 400px;
+            height: 400px;
+            background-color: green;
+            position: relative;
+        }
+
+        .red{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
 </head>
 
 <body>
 
+    <input type="date" name="" id="date">
 
+    <div class="green">
+        <div class="red"></div>
+    </div>
 
     <script>
         // console.log("Hello 1");
@@ -93,9 +115,9 @@
         // }
         // myFunc();
 
-        function promise123(params) {
-            
-        }
+        let date = document.getElementById('date');
+        date.value = "2013-01-08";
+        console.log(date);
 
     </script>
 </body>
