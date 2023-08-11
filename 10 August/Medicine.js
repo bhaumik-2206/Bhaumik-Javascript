@@ -1,3 +1,20 @@
+let form = document.getElementById('form');
+let mainBtn = document.getElementById('mainBtn');
+let table = document.getElementById('table');
+let medicineText = document.getElementById('medicine-text');
+let quantity = document.getElementById('quantity');
+let noti = document.getElementById('noti');
+let formBtn = document.getElementById('formBtn');
+let packDropdown = document.getElementById('pack-dropdown');
+let batchInput = document.getElementById('batch-input');
+let byDate = document.getElementById('by-date');
+let addValues = document.getElementById('addValues');
+let byDays = document.getElementById('by-days');
+let close = document.getElementById('close');
+let trueDate = false;
+let storeVar = null;
+let allMedicine = [];
+
 let packs = [
     { id: 1, value: "pack-1" },
     { id: 2, value: "pack-2" },
@@ -19,7 +36,6 @@ let batch = [
     { pack_id: 8, batch: "A8" },
 ];
 // Adding a Options to Pack Dropdown
-let packDropdown = document.getElementById('pack-dropdown');
 packs.forEach(ele => {
     let option = document.createElement('option');
     option.value = ele.value;
@@ -28,7 +44,6 @@ packs.forEach(ele => {
 });
 
 // Adding a Options to batch Dropdown
-let batchInput = document.getElementById('batch-input');
 batch.forEach(ele => {
     let option = document.createElement('option');
     option.value = ele.batch;
@@ -36,53 +51,37 @@ batch.forEach(ele => {
     batchInput.appendChild(option);
 });
 
-
 // Create date when click on by date
-let byDate = document.getElementById('by-date');
-let addValues = document.getElementById('addValues');
 function forbyDate() {
     addValues.innerHTML = "";
     if (byDate.checked) {
         let newDate = document.createElement('input');
         newDate.setAttribute('type', 'date');
         newDate.setAttribute('id', 'newDate');
-        newDate.setAttribute('required', '');
+        newDate.required = true;
         addValues.appendChild(newDate);
     }
 }
 byDate.addEventListener('change', forbyDate);
 
-
 // Create date when click on by days
-let byDays = document.getElementById('by-days');
 function forbyDays() {
     addValues.innerHTML = "";
     if (byDays.checked) {
         let newDate = document.createElement('input');
         newDate.setAttribute('type', 'date');
         newDate.setAttribute('id', 'newDate');
-        newDate.setAttribute('required', '');
+        newDate.required = true;
         addValues.appendChild(newDate);
         let selDays = document.createElement('input');
         selDays.setAttribute('type', 'number');
         selDays.setAttribute('id', 'allDays');
         selDays.setAttribute('min', '1');
-        selDays.setAttribute('required', '');
+        selDays.required = true;
         addValues.appendChild(selDays);
     }
 }
 byDays.addEventListener('change', forbyDays);
-
-
-let form = document.getElementById('form');
-let mainBtn = document.getElementById('mainBtn');
-let table = document.getElementById('table');
-let medicineText = document.getElementById('medicine-text');
-let quantity = document.getElementById('quantity');
-let noti = document.getElementById('noti');
-let trueDate = false;
-let storeVar = null;
-let allMedicine = [];
 
 // For block the display of form and change the opacity of button and table in click
 mainBtn.addEventListener('click', changeBackground);
@@ -92,29 +91,32 @@ form.addEventListener('submit', (e) => {
     e.preventDefault();
     // let cell = document.querySelectorAll('.addMedicine');
     // cell.forEach(e => allMedicine.push(e.children[0].innerText));
-    if (medicineText.value.trim() !== '' && !allMedicine.includes(medicineText.value.trim().toLowerCase())) {
+    if (storeVar) {
+        updateRow(storeVar);
+        storeVar = null;
+    }
+    else if (medicineText.value.trim() != '' && !allMedicine.includes(medicineText.value.trim().toLowerCase())) {
         trueDate = false;
         returnExpiryDate();
         if (trueDate) {
-            if (storeVar) {
-                updateRow(storeVar);
-                storeVar = null;
-            } else {
-                let newTr = document.createElement('tr');
-                newTr.setAttribute('class', 'addMedicine');
-                newTr.innerHTML = `
+            // if (storeVar) {
+            //     updateRow(storeVar);
+            //     storeVar = null;
+            // } else {
+            let newTr = document.createElement('tr');
+            newTr.setAttribute('class', 'addMedicine');
+            newTr.innerHTML = `
                 <td>${medicineText.value}</td>
                 <td>${quantity.value}</td>
                 <td>${returnExpiryDate()}</td>
                 <td>${packDropdown.value}</td>
                 <td>${batchInput.value}</td>
                 <td><span onclick="editMedicine(this)">edit</span> <span onclick="deleteMedicine(this)">Delete</span></td>`;
-                table.appendChild(newTr);
-                // allMedicine.push(medicineText.value.trim().toLowerCase());
-                normalBackground();
-                showNotification("Medicine Added");
-            }
-            resetAllTheValue();
+            table.appendChild(newTr);
+            allMedicine.push(medicineText.value.trim().toLowerCase());
+            normalBackground();
+            showNotification("Medicine Added");
+            // }
         }
     } else {
         alert("Invalid Name");
@@ -207,26 +209,31 @@ function normalBackground() {
     table.style.opacity = 1;
     mainBtn.style.opacity = 1;
     form.style.display = 'none';
+    storeVar = null;
 }
 function changeBackground() {
     table.style.opacity = ".5";
     mainBtn.style.opacity = ".5";
     form.style.display = 'block';
+    formBtn.innerText = "Add Medicine";
+    medicineText.disabled = false;
+    resetAllTheValue();
 }
 
 // Close the form 
-let close = document.getElementById('close');
 close.addEventListener('click', normalBackground);
 
-
-
-
-// Edit--------------------------------
+// Edit Medicine--------------------------------
 function editMedicine(e) {
     changeBackground();
     let first = e.parentElement.parentElement;
     storeVar = first;
     medicineText.value = first.children[0].innerHTML;
+    medicineText.disabled = true;
+    // const index = allMedicine.indexOf(e.parentElement.parentElement.children[0].innerText.toLowerCase().trim());
+    // if (index > -1) {
+    //     allMedicine.splice(index, 1);
+    // }
     packDropdown.value = first.children[3].innerHTML;
     quantity.value = first.children[1].innerHTML;
     byDate.checked = true;
@@ -234,14 +241,17 @@ function editMedicine(e) {
     forbyDate();
     document.getElementById('newDate').value = first.children[2].innerHTML;;
     batchInput.value = first.children[4].innerHTML;
+    formBtn.textContent = "Update Medicine";
 }
 
+// For Updating a row
 function updateRow(row) {
     row.children[0].innerHTML = medicineText.value;
     row.children[1].innerHTML = quantity.value;
     row.children[2].innerHTML = returnExpiryDate();
     row.children[3].innerHTML = packDropdown.value;
     row.children[4].innerHTML = batchInput.value;
+    // allMedicine.push(medicineText.value.toLowerCase().trim());
     normalBackground();
     resetAllTheValue();
     showNotification("Medicine Updated");
