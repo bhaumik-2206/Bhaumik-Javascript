@@ -130,7 +130,6 @@ packDropdown.addEventListener("change", (e) => {
     let pack = packs.find(ele => ele.value == packId);
     let findBatch = batch.find(ele => ele.pack_id == pack.id);
     batchInput.value = findBatch.batch;
-    batchInput.disabled = false;
 });
 
 // Reset Form

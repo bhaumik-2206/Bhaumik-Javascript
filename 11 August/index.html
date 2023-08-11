@@ -5,12 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>11 August 2023</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: lightcyan;
+        }
+    </style>
 </head>
 
 <body>
 
+    <form action="" id="form">
+        <input type="text" name="inputValue">
+        <button type="submit">Submit</button>
+    </form>
 
     <script>
+        let form = document.getElementById("form");
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            console.log(e);
+            console.log(e.target.inputValue.value);
+            console.log(form.elements.inputValue.value.trim());
+        });
         // fetch('https://example.com/data')
         //     .then(data => {
         //         console.log(data);
@@ -39,17 +60,17 @@
         // }
         // console.log(getData());
 
-        fetch("https://worldtimeapi.org/api/timezone/america/new_york")
-            .then(e => e.json())
-            .then((e) => console.log(e))
-            .catch((err) => console.log("ERROR"));
+        // fetch("https://worldtimeapi.org/api/timezone/america/new_york")
+        //     .then(e => e.json())
+        //     .then((e) => console.log(e))
+        //     .catch((err) => console.log("ERROR"));
 
-        fetch("https://worldtimeapi.org/api/timezone/america/new_york")
-            .then((e) => console.log(e))
-            .catch((err) => console.log("ERROR"));
+        // fetch("https://worldtimeapi.org/api/timezone/america/new_york")
+        //     .then((e) => console.log(e))
+        //     .catch((err) => console.log("ERROR"));
 
-        let b = fetch("https://worldtimeapi.org/api/timezone/america/new_york");
-        console.log(b);
+        // let b = fetch("https://worldtimeapi.org/api/timezone/america/new_york");
+        // console.log(b);
     </script>
 </body>
 
