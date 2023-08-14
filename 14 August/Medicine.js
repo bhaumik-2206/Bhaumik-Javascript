@@ -1,10 +1,8 @@
-
 let form = document.getElementById('form');
 let table = document.getElementById('table');
 let noti = document.getElementById('noti');
 let mainBtn = document.getElementById('mainBtn');
 let close = document.getElementById('close');
-let formBtn = document.getElementById('formBtn');
 let byDate = document.getElementById('by-date');
 let byDays = document.getElementById('by-days');
 let storeVar = null;
@@ -15,11 +13,16 @@ function changeBackground() {
     table.style.opacity = ".5";
     mainBtn.style.opacity = ".5";
     form.style.display = 'block';
-    formBtn.innerText = "Add Medicine";
+    form.elements.formBtn.innerText = "Add Medicine";
     resetAllTheValue();
 }
 
-close.addEventListener('click', normalBackground);
+close.addEventListener('click', () => {
+    table.style.opacity = 1;
+    mainBtn.style.opacity = 1;
+    form.style.display = 'none';
+    storeVar = null;
+});
 function normalBackground() {
     table.style.opacity = 1;
     mainBtn.style.opacity = 1;
@@ -62,6 +65,7 @@ batch.forEach(ele => {
     form.elements.batchName.appendChild(option);
 });
 
+// Add Bacch value from pack value
 form.elements.medicinePack.addEventListener('change', (e) => {
     e.preventDefault();
     let packId = form.elements.medicinePack.value;
@@ -70,39 +74,31 @@ form.elements.medicinePack.addEventListener('change', (e) => {
     form.elements.batchName.value = findBatch.batch;
 });
 
+// Form Submit Events
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     let a = allData.findIndex(ele => ele.medicineName == e.target.medicineName.value.toLowerCase().trim());
+    // checkallValue(e);
     if (storeVar) {
-        updateRow(storeVar);
-        allData[a].medicineName = e.target.medicineName.value;
-        allData[a].medicinePack = e.target.medicinePack.value;
-        allData[a].quantity = e.target.quantity.value;
-        allData[a].expiryDate.date = e.target.quantity.date.value;
-        allData[a].expiryDate.days = daysCount();
-        allData[a].batchName = e.target.batchName.value;
-        // allData.push({
-        //     medicineName: e.target.medicineName.value,
-        //     medicinePack: e.target.medicinePack.value,
-        //     quantity: e.target.quantity.value,
-        //     expiryDate: {
-        //         date: e.target.newDate.value,
-        // days: daysCount(),
-        //     },
-        //     batchName: e.target.batchName.value,
-        // });
-        storeVar = null;
+        let b = allData.findIndex(ele => ele.medicineName == storeVar.children[0].innerText.toLowerCase().trim());
+        if (a != -1 && a != b) {
+            alert("This name is already in the table")
+        } else {
+            updateRow(storeVar);
+            storeVar = null;
+        }
+        console.log(a, b);
     } else {
         if (e.target.medicineName.value.trim() != "" && a == -1) {
             if (returnExpiryDate()) {
                 let newTr = document.createElement("tr");
                 newTr.innerHTML = `
-    <td>${e.target.medicineName.value}</td>
-    <td>${e.target.quantity.value}</td>
-    <td>${returnExpiryDate()}</td>
-    <td>${e.target.medicinePack.value}</td>
-    <td>${e.target.batchName.value}</td>
-    <td><span onclick="editMedicine(this)">edit</span> <span onclick="deleteMedicine(this)">Delete</span></td>`;
+                    <td>${e.target.medicineName.value}</td>
+                    <td>${e.target.quantity.value}</td>
+                    <td>${returnExpiryDate()}</td>
+                    <td>${e.target.medicinePack.value}</td>
+                    <td>${e.target.batchName.value}</td>
+                    <td><span onclick="editMedicine(this)">edit</span> <span onclick="deleteMedicine(this)">Delete</span></td>`;
                 table.appendChild(newTr);
                 allData.push({
                     medicineName: e.target.medicineName.value,
@@ -117,15 +113,16 @@ form.addEventListener('submit', (e) => {
                 // allData.push(e.target.medicineName.value.toLowerCase().trim());
                 showNotification("Medicine Added");
                 normalBackground();
-                resetAllTheValue();
+                // resetAllTheValue();
+                console.log(allData);
             }
         } else {
             alert("Please enter a valid medicine name")
         }
     }
-    console.log(allData);
 });
 
+// This function is return expiry date calculate the date user select by days in form
 function returnExpiryDate() {
     let byDate = document.getElementById('by-date');
     let byDays = document.getElementById('by-days');
@@ -133,15 +130,7 @@ function returnExpiryDate() {
     let selectedDate = new Date(form.elements.newDate.value);
     if (byDate.checked) {
         if (selectedDate.getTime() >= presentDate.getTime()) {
-            let month = selectedDate.getMonth() + 1;
-            let returnDate = selectedDate.getDate();
-            if (month < 10) {
-                month = '0' + month;
-            }
-            if (returnDate < 10) {
-                returnDate = '0' + returnDate;
-            }
-            return selectedDate.getFullYear() + '-' + month + '-' + returnDate;
+            return form.elements.newDate.value;
         } else {
             alert("Please select a valid date");
             return false;
@@ -178,12 +167,12 @@ form.elements["select-date"].forEach(ele => {
         addValues.innerHTML = "";
         if (ele.id == "by-date") {
             // if (ele.checked) {
-            makeForDate(addValues);
+            addDateInRadio(addValues);
             // }
         } else if (ele.id == "by-days") {
             // if (ele.checked) {
-            makeForDate(addValues);
-            makeForDays(addValues);
+            addDateInRadio(addValues);
+            addDayInRadio(addValues);
             // }
         }
     })
@@ -207,9 +196,12 @@ function deleteMedicine(e) {
     if (a) {
         row.remove();
         showNotification("Medicine Delete");
+        let b = allData.findIndex(ele => ele.medicineName == row.children[0].medicineName);
+        allData.splice(b, 1);
     }
 }
 
+// Reset the form 
 function resetAllTheValue() {
     form.elements.medicineName.value = "";
     form.elements.medicinePack.value = "";
@@ -224,41 +216,47 @@ function editMedicine(e) {
     changeBackground();
     let first = e.parentElement.parentElement;
     storeVar = first;
-    let a = allData.findIndex(ele => {
-        return ele.medicineName == first.children[0].innerText;
-    });
+    let a = allData.findIndex(ele => ele.medicineName == first.children[0].innerText);
     form.elements.medicineName.value = allData[a].medicineName;
     form.elements.medicinePack.value = allData[a].medicinePack;
     form.elements.quantity.value = allData[a].quantity;
     if (allData[a].expiryDate.days > 0) {
-        makeForDate(addValues);
-        makeForDays(addValues);
+        addDateInRadio(addValues);
+        addDayInRadio(addValues);
         byDays.checked = true;
         form.elements.newDate.value = allData[a].expiryDate.date;
         form.elements.allDays.value = allData[a].expiryDate.days;
     } else {
-        makeForDate(addValues);
+        addDateInRadio(addValues);
         byDate.checked = true;
         form.elements.newDate.value = allData[a].expiryDate.date;
     }
     form.elements.batchName.value = allData[a].batchName;
-
-    formBtn.textContent = "Update Medicine";
+    form.elements.formBtn.innerText = "Update Medicine";
 }
 
 function updateRow(row) {
+    console.log(row);
+    let a = allData.findIndex(ele => ele.medicineName == row.children[0].innerText);
+    // Change the value of specific index which user is edit
+    allData[a].medicineName = form.elements.medicineName.value;
+    allData[a].quantity = form.elements.quantity.value;
+    allData[a].expiryDate.date = returnExpiryDate();
+    allData[a].expiryDate.days = daysCount();
+    allData[a].medicinePack = form.elements.medicinePack.value;
+    allData[a].batchName = form.elements.batchName.value;
+    // Add the new data to the table
     row.children[0].innerHTML = form.elements.medicineName.value;
     row.children[1].innerHTML = form.elements.quantity.value;
     row.children[2].innerHTML = returnExpiryDate();
     row.children[3].innerHTML = form.elements.medicinePack.value;
     row.children[4].innerHTML = form.elements.batchName.value;
-    // allMedicine.push(medicineText.value.toLowerCase().trim());
     normalBackground();
-    resetAllTheValue();
+    // resetAllTheValue();
     showNotification("Medicine Updated");
 }
 
-function makeForDate(appendParentName) {
+function addDateInRadio(appendParentName) {
     let newDate = document.createElement('input');
     newDate.setAttribute('type', 'date');
     newDate.setAttribute('name', 'newDate');
@@ -266,11 +264,27 @@ function makeForDate(appendParentName) {
     appendParentName.appendChild(newDate);
 }
 
-function makeForDays(appendParentName) {
+function addDayInRadio(appendParentName) {
     let selDays = document.createElement('input');
     selDays.setAttribute('type', 'number');
     selDays.setAttribute('name', 'allDays');
     selDays.setAttribute('min', '1');
     selDays.required = true;
     appendParentName.appendChild(selDays);
+}
+
+function checkallValue(e) {
+    if (e.target.medicineName.value.trim() != "") {
+        if (e.target.medicinePack.value != "") {
+            if (e.target.quantity.value != "") {
+                return true;
+            } else {
+                alert("Please Enter Quantity");
+            }
+        } else {
+            alert("Please Enter Medicine Pack");
+        }
+    } else {
+        alert("Please Enter Medicine Name");
+    }
 }

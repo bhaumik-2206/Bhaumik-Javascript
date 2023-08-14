@@ -280,23 +280,16 @@
             e.preventDefault();
             let a = allData.findIndex(ele => ele.medicineName == e.target.medicineName.value.toLowerCase().trim());
             if (storeVar) {
+                // let b = allData.findIndex(ele => ele.medicineName == e.target.medicineName.value.toLowerCase().trim());
+                // console.log(b);
+                // allData[b].medicineName = e.target.medicineName.value;
+                // console.log(allData[b]);
+                // allData[b].medicinePack = e.target.medicinePack.value;
+                // allData[b].quantity = e.target.quantity.value;
+                // allData[b].expiryDate.date = e.target.newDate.value;
+                // allData[b].expiryDate.days = daysCount();
+                // allData[b].batchName = e.target.batchName.value;
                 updateRow(storeVar);
-                allData[a].medicineName = e.target.medicineName.value;
-                allData[a].medicinePack = e.target.medicinePack.value;
-                allData[a].quantity = e.target.quantity.value;
-                allData[a].expiryDate.date = e.target.quantity.date.value;
-                allData[a].expiryDate.days = daysCount();
-                allData[a].batchName = e.target.batchName.value;
-                // allData.push({
-                //     medicineName: e.target.medicineName.value,
-                //     medicinePack: e.target.medicinePack.value,
-                //     quantity: e.target.quantity.value,
-                //     expiryDate: {
-                //         date: e.target.newDate.value,
-                // days: daysCount(),
-                //     },
-                //     batchName: e.target.batchName.value,
-                // });
                 storeVar = null;
             } else {
                 if (e.target.medicineName.value.trim() != "" && a == -1) {
@@ -413,6 +406,8 @@
             if (a) {
                 row.remove();
                 showNotification("Medicine Delete");
+                let b = allData.findIndex(ele => ele.medicineName == row.children[0].medicineName);
+                allData.splice(b, 1);
             }
         }
 
@@ -427,6 +422,7 @@
 
         // Edit Medicine
         function editMedicine(e) {
+            console.log("object");
             changeBackground();
             let first = e.parentElement.parentElement;
             storeVar = first;
@@ -448,17 +444,25 @@
                 form.elements.newDate.value = allData[a].expiryDate.date;
             }
             form.elements.batchName.value = allData[a].batchName;
-
             formBtn.textContent = "Update Medicine";
         }
 
         function updateRow(row) {
+            console.log(row);
+            let a = allData.findIndex(ele => ele.medicineName == row.children[0].innerText);
+            // Change the value of specific index which user is edit
+            allData[a].medicineName = form.elements.medicineName.value;
+            allData[a].quantity = form.elements.quantity.value;
+            allData[a].expiryDate.date = returnExpiryDate();
+            allData[a].expiryDate.days = daysCount();
+            allData[a].medicinePack = form.elements.medicinePack.value;
+            allData[a].batchName = form.elements.batchName.value;
+            // Add the new data to the table
             row.children[0].innerHTML = form.elements.medicineName.value;
             row.children[1].innerHTML = form.elements.quantity.value;
             row.children[2].innerHTML = returnExpiryDate();
             row.children[3].innerHTML = form.elements.medicinePack.value;
             row.children[4].innerHTML = form.elements.batchName.value;
-            // allMedicine.push(medicineText.value.toLowerCase().trim());
             normalBackground();
             resetAllTheValue();
             showNotification("Medicine Updated");
