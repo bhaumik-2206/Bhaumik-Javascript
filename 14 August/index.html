@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        let url = "https://jsonplaceholder.typicode.com/todos/1";
+
+        // let a = fetch(url);
+        // a.then(e => e.json()).then(data => console.log(data));
+
+        // async function fetchURL() {
+        //     let a = await fetch(url);
+        //     let data = await a.json();
+        //     console.log(data);
+        // }
+        // fetchURL();
+
+        // async function fetchURL() {
+        //     try {
+        //         let a = await fetch(url);
+        //         let data = await a.json();
+        //         console.log(data);
+        //     } catch (err) {
+        //         console.log("ERROR");
+        //     }
+        // }
+        // fetchURL();
+
+        // async function getValue() {
+        //     try {
+        //         let a = await fetch(url);
+        //         let data = await a.json();
+        //         console.log(data);
+        //         console.log(data.userId);
+        //         console.log(data.completed);
+        //         console.log(data.title);
+        //     } catch (err) {
+        //         console.log("ERROR");
+        //     }
+        // }
+        // getValue();
+
+        // fetch("./url.json").then(ele => ele.json()).then(e => console.log(e)).catch(err => console.log(err));
+        // async function myFunc() {
+        //     try {
+        //         let a = await fetch(url);
+        //         console.log(a.ok);
+        //         console.log(a.status);
+        //     } catch (error) {
+        //         console.log("ERROR");
+        //     }
+        // }
+        // myFunc();
+
+        async function weatherAPI() {
+            try {
+                let url = "https://v2.jokeapi.dev/joke/Any?amount=10";
+                let response = await fetch(url);
+                let data = await response.json();
+                console.log(data.jokes[0].setup);
+                console.log(data.jokes[0].delivery);
+            } catch (error) {
+                console.log("ERROR");
+            }
+        }
+        weatherAPI();
+
+
+    </script>
+</body>
+
+</html>

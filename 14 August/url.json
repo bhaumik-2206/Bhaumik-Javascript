@@ -1,0 +1,8 @@
+{
+    "name": "rohit",
+    "surname": "sharma",
+    "Profession": "Cricketer",
+    "batsman": true,
+    "bowler": false,
+    "filder": false
+}

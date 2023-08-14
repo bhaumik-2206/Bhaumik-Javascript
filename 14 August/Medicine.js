@@ -101,7 +101,7 @@ form.addEventListener('submit', (e) => {
                     <td><span onclick="editMedicine(this)">edit</span> <span onclick="deleteMedicine(this)">Delete</span></td>`;
                 table.appendChild(newTr);
                 allData.push({
-                    medicineName: e.target.medicineName.value,
+                    medicineName: e.target.medicineName.value.toLowerCase().trim(),
                     medicinePack: e.target.medicinePack.value,
                     quantity: e.target.quantity.value,
                     expiryDate: {
@@ -110,10 +110,8 @@ form.addEventListener('submit', (e) => {
                     },
                     batchName: e.target.batchName.value,
                 });
-                // allData.push(e.target.medicineName.value.toLowerCase().trim());
                 showNotification("Medicine Added");
                 normalBackground();
-                // resetAllTheValue();
                 console.log(allData);
             }
         } else {
@@ -124,8 +122,6 @@ form.addEventListener('submit', (e) => {
 
 // This function is return expiry date calculate the date user select by days in form
 function returnExpiryDate() {
-    let byDate = document.getElementById('by-date');
-    let byDays = document.getElementById('by-days');
     let presentDate = new Date(new Date().getTime() - (24 * 60 * 60 * 1000));
     let selectedDate = new Date(form.elements.newDate.value);
     if (byDate.checked) {
@@ -166,14 +162,10 @@ form.elements["select-date"].forEach(ele => {
     ele.addEventListener('change', (e) => {
         addValues.innerHTML = "";
         if (ele.id == "by-date") {
-            // if (ele.checked) {
             addDateInRadio(addValues);
-            // }
         } else if (ele.id == "by-days") {
-            // if (ele.checked) {
             addDateInRadio(addValues);
-            addDayInRadio(addValues);
-            // }
+            addDayInRadio(addValues)
         }
     })
 });
@@ -197,7 +189,7 @@ function deleteMedicine(e) {
         row.remove();
         showNotification("Medicine Delete");
         let b = allData.findIndex(ele => ele.medicineName == row.children[0].medicineName);
-        allData.splice(b, 1);
+        allData.splice((b - 1), 1);
     }
 }
 
@@ -238,10 +230,10 @@ function editMedicine(e) {
 function updateRow(row) {
     console.log(row);
     let a = allData.findIndex(ele => ele.medicineName == row.children[0].innerText);
-    // Change the value of specific index which user is edit
-    allData[a].medicineName = form.elements.medicineName.value;
+    // Change the value in main Array (allData) of specific index which user is edit
+    allData[a].medicineName = form.elements.medicineName.value.toLowerCase().trim();
     allData[a].quantity = form.elements.quantity.value;
-    allData[a].expiryDate.date = returnExpiryDate();
+    allData[a].expiryDate.date = form.elements.newDate.value;
     allData[a].expiryDate.days = daysCount();
     allData[a].medicinePack = form.elements.medicinePack.value;
     allData[a].batchName = form.elements.batchName.value;
@@ -252,7 +244,6 @@ function updateRow(row) {
     row.children[3].innerHTML = form.elements.medicinePack.value;
     row.children[4].innerHTML = form.elements.batchName.value;
     normalBackground();
-    // resetAllTheValue();
     showNotification("Medicine Updated");
 }
 
@@ -273,18 +264,18 @@ function addDayInRadio(appendParentName) {
     appendParentName.appendChild(selDays);
 }
 
-function checkallValue(e) {
-    if (e.target.medicineName.value.trim() != "") {
-        if (e.target.medicinePack.value != "") {
-            if (e.target.quantity.value != "") {
-                return true;
-            } else {
-                alert("Please Enter Quantity");
-            }
-        } else {
-            alert("Please Enter Medicine Pack");
-        }
-    } else {
-        alert("Please Enter Medicine Name");
-    }
-}
+// function checkallValue(e) {
+//     if (e.target.medicineName.value.trim() != "") {
+//         if (e.target.medicinePack.value != "") {
+//             if (e.target.quantity.value != "") {
+//                 return true;
+//             } else {
+//                 alert("Please Enter Quantity");
+//             }
+//         } else {
+//             alert("Please Enter Medicine Pack");
+//         }
+//     } else {
+//         alert("Please Enter Medicine Name");
+//     }
+// }

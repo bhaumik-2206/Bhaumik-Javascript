@@ -13,23 +13,22 @@
         <button class="add-medicine">Add Medicine</button>
     </div>
 
-
     <form action="" id="form">
         <div class="padding">
             <div class="medicine">
                 <label for="medicine-text">Medicine:-</label>
-                <input type="text" id="medicine-text" name="medicineName">
+                <input type="text" id="medicine-text" name="medicineName" required>
                 <div id="close">×</div>
             </div>
             <div class="pack">
                 <label for="pack-dropdown">Pack:-</label>
-                <select name="medicinePack" id="pack-dropdown" >
+                <select name="medicinePack" id="pack-dropdown" required>
                     <option value="">Select Pack</option>
                 </select>
             </div>
             <div class="quantity">
                 <label for="quantity">Quantity:-</label>
-                <input type="number" id="quantity" name="quantity" min="1" >
+                <input type="number" id="quantity" name="quantity" min="1" required>
             </div>
             <p class="date-title">Expiry Date:-</p>
             <div class="radio-btns">
