@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: lightcoral;
+            font-family: sans-serif;
+            font-family: sans-serif;
+        }
+
+        .mainBtn {
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .add-medicine {
+            padding: 10px 20px;
+            background-color: black;
+            color: white;
+            cursor: pointer;
+            border: none;
+            font-size: 20px;
+            border-radius: 30px;
+        }
+
+        form {
+            background-color: white;
+            z-index: 10;
+            font-size: 18px;
+            width: 80%;
+            border-radius: 10px;
+            position: absolute;
+            display: none;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .padding {
+            padding: 2rem;
+        }
+
+        .date-title {
+            margin-bottom: 10px;
+        }
+
+        .radio-btns {
+            padding-inline: 10px;
+            display: flex;
+            gap: 20px;
+        }
+
+        #medicine-text,
+        #pack-dropdown,
+        #quantity,
+        #batch-input {
+            width: -webkit-fill-available;
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        #form div {
+            margin-bottom: 15px;
+        }
+
+        #form button {
+            width: 100%;
+            padding: 10px;
+            background-color: brown;
+            color: white;
+            cursor: pointer;
+            border: none;
+            font-size: 20px;
+            border-radius: 10px;
+        }
+
+        #addValues input {
+            width: -webkit-fill-available;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        table {
+            width: 90%;
+            margin-inline: auto;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 3px solid white;
+            padding: 10px;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        table tr td span {
+            background-color: black;
+            color: yellow;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin: 3px;
+        }
+
+        .notification {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+        }
+
+        .notification p {
+            font-size: 30px;
+            font-weight: bold;
+            color: white;
+            padding: 10px;
+            background-color: rgb(0, 128, 255);
+            border-radius: 5px;
+        }
+
+        #close {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            font-size: 40px;
+            cursor: pointer;
+            padding-inline: 10px;
+            border-radius: 50%;
+        }
+
+        #close:hover {
+            background-color: rgba(222, 222, 222, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mainBtn" id="mainBtn">
+        <button class="add-medicine">Add Medicine</button>
+    </div>
+
+
+    <form action="" id="form">
+        <div class="padding">
+            <div class="medicine">
+                <label for="medicine-text">Medicine:-</label>
+                <input type="text" id="medicine-text" name="medicineName">
+                <div id="close">×</div>
+            </div>
+            <div class="pack">
+                <label for="pack-dropdown">Pack:-</label>
+                <select name="medicinePack" id="pack-dropdown" required>
+                    <option value="">Select Pack</option>
+                </select>
+            </div>
+            <div class="quantity">
+                <label for="quantity">Quantity:-</label>
+                <input type="number" id="quantity" name="quantity" min="1" required>
+            </div>
+            <p class="date-title">Expiry Date:-</p>
+            <div class="radio-btns">
+                <div id="by-date-parent">
+                    <input type="radio" id="by-date" name="select-date" value="By Date" required>
+                    <label for="by-date">By Date</label><br>
+                </div>
+                <div id="by-days-parent">
+                    <input type="radio" id="by-days" name="select-date" value="By Days" required>
+                    <label for="by-days">By Days</label><br>
+                </div>
+            </div>
+            <div id="addValues"></div>
+            <div class="batch">
+                <label for="batch-input">Batch:-</label>
+                <select name="batchName" id="batch-input" disabled>
+                    <option value="">Select Pack</option>
+                </select>
+            </div>
+            <button type="submit" name="formBtn" id="formBtn">Add Medicine</button>
+        </div>
+    </form>
+
+
+    <table id="table">
+        <tr>
+            <th>Medicine</th>
+            <th>Quantity</th>
+            <th>Expiry Date</th>
+            <th>Pack</th>
+            <th>Batch</th>
+            <th>Operation</th>
+        </tr>
+    </table>
+
+    <div class="notification" id="noti"></div>
+
+
+
+    
+    <script src="Medicine.js"></script>
+</body>
+
+</html>
