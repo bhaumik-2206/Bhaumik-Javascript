@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: lightcyan;
+            font-family: Arial, Helvetica, sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .jokesParent {
+            width: 50%;
+            background-color: black;
+            color: yellow;
+            text-align: center;
+            padding: 10px;
+        }
+
+        #topic {
+            font-size: 50px;
+        }
+
+        .jokesParent>* {
+            margin-bottom: 10px;
+        }
+
+        .jokesParent p {
+            font-size: 30px;
+        }
+
+        /* .jokesParent #first {
+            color: yellow;
+        } */
+
+        /* .jokesParent #second {
+            color: red;
+        } */
+        .jokesParent button {
+            padding: 10px 30px;
+            color: black;
+            background-color: yellow;
+            font-size: 20px;
+            cursor: pointer;
+            border: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="jokesParent">
+        <h2 id="topic"></h2>
+        <p id="first"></p>
+        <p id="second"></p>
+        <button id="change">Change</button>
+    </div>
+
+    <script>
+        let first = document.getElementById('first');
+        let second = document.getElementById('second');
+        let change = document.getElementById('change');
+        let topic = document.getElementById('topic');
+        async function jokeAPI() {
+            try {
+                let url = "https://v2.jokeapi.dev/joke/Any?amount=10";
+                let response = await fetch(url);
+                let data = await response.json();
+                if (data.jokes[0].setup != undefined) {
+                    topic.innerText = data.jokes[0].category;
+                    first.innerText = data.jokes[0].setup;
+                    second.innerText = data.jokes[0].delivery;
+                }
+                else if (data.jokes[0].joke != undefined) {
+                    topic.innerText = data.jokes[0].category;
+                    first.innerText = data.jokes[0].joke;
+                    second.innerText = "";
+                } else {
+                    alert("Joke Not Found");
+                }
+            } catch (error) {
+                console.log("ERROR :" + error.message);
+            }
+        }
+        jokeAPI();
+        change.addEventListener('click', jokeAPI);
+    </script>
+</body>
+
+</html>

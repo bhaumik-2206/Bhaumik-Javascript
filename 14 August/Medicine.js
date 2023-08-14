@@ -1,16 +1,41 @@
 let form = document.getElementById('form');
-let table = document.getElementById('table');
+let tbody = document.getElementById('tbody');
 let noti = document.getElementById('noti');
 let mainBtn = document.getElementById('mainBtn');
 let close = document.getElementById('close');
 let byDate = document.getElementById('by-date');
 let byDays = document.getElementById('by-days');
 let storeVar = null;
-let allData = [];
+let allData = [
+    // {
+    //     medicineName: "GUYGFEB",
+    //     medicinePack: "pack2",
+    //     quantity: "10",
+    //     expiryDate: {
+    //         date: "e.target.newDate.value",
+    //         days: "daysCount()",
+    //     },
+    //     batchName: "A2",
+    // }
+];
+
+function addRows(e) {
+    tbody.innerHTML = "";
+    allData.forEach(ele => {
+        let a = document.createElement('tr');
+        a.innerHTML += `<td>${ele.medicineName}</td>
+        <td>${ele.quantity}</td>
+        <td>${ele.expiryDate}</td>
+        <td>${ele.medicinePack}</td>
+        <td>${ele.batchName}</td>
+        <td><span onclick="editMedicine(this)">edit</span> <span onclick="deleteMedicine(this)">Delete</span></td>`;
+        tbody.appendChild(a);
+    });
+}
 
 mainBtn.addEventListener('click', changeBackground);
 function changeBackground() {
-    table.style.opacity = ".5";
+    tbody.style.opacity = ".5";
     mainBtn.style.opacity = ".5";
     form.style.display = 'block';
     form.elements.formBtn.innerText = "Add Medicine";
@@ -18,13 +43,13 @@ function changeBackground() {
 }
 
 close.addEventListener('click', () => {
-    table.style.opacity = 1;
+    tbody.style.opacity = 1;
     mainBtn.style.opacity = 1;
     form.style.display = 'none';
     storeVar = null;
 });
 function normalBackground() {
-    table.style.opacity = 1;
+    tbody.style.opacity = 1;
     mainBtn.style.opacity = 1;
     form.style.display = 'none';
 }
@@ -74,51 +99,69 @@ form.elements.medicinePack.addEventListener('change', (e) => {
     form.elements.batchName.value = findBatch.batch;
 });
 
-// Form Submit Events
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     let a = allData.findIndex(ele => ele.medicineName == e.target.medicineName.value.toLowerCase().trim());
-    // checkallValue(e);
-    if (storeVar) {
-        let b = allData.findIndex(ele => ele.medicineName == storeVar.children[0].innerText.toLowerCase().trim());
-        if (a != -1 && a != b) {
-            alert("This name is already in the table")
-        } else {
-            updateRow(storeVar);
-            storeVar = null;
-        }
-        console.log(a, b);
-    } else {
-        if (e.target.medicineName.value.trim() != "" && a == -1) {
-            if (returnExpiryDate()) {
-                let newTr = document.createElement("tr");
-                newTr.innerHTML = `
-                    <td>${e.target.medicineName.value}</td>
-                    <td>${e.target.quantity.value}</td>
-                    <td>${returnExpiryDate()}</td>
-                    <td>${e.target.medicinePack.value}</td>
-                    <td>${e.target.batchName.value}</td>
-                    <td><span onclick="editMedicine(this)">edit</span> <span onclick="deleteMedicine(this)">Delete</span></td>`;
-                table.appendChild(newTr);
-                allData.push({
-                    medicineName: e.target.medicineName.value.toLowerCase().trim(),
-                    medicinePack: e.target.medicinePack.value,
-                    quantity: e.target.quantity.value,
-                    expiryDate: {
-                        date: e.target.newDate.value,
-                        days: daysCount(),
-                    },
-                    batchName: e.target.batchName.value,
-                });
-                showNotification("Medicine Added");
-                normalBackground();
-                console.log(allData);
-            }
-        } else {
-            alert("Please enter a valid medicine name")
-        }
+    if (e.target.medicineName.value.trim() != "" && a == -1 && returnExpiryDate()) {
+        allData.push({
+            medicineName: e.target.medicineName.value.toLowerCase().trim(),
+            medicinePack: e.target.medicinePack.value,
+            quantity: e.target.quantity.value,
+            date: e.target.newDate.value,
+            days: daysCount(),
+            expiryDate: returnExpiryDate(),
+            batchName: e.target.batchName.value,
+        });
+        addRows();
+        normalBackground();
     }
 });
+
+// Form Submit Events
+// form.addEventListener('submit', (e) => {
+//     e.preventDefault();
+//     let a = allData.findIndex(ele => ele.medicineName == e.target.medicineName.value.toLowerCase().trim());
+//     // checkallValue(e);
+//     if (storeVar) {
+//         let b = allData.findIndex(ele => ele.medicineName == storeVar.children[0].innerText.toLowerCase().trim());
+//         if (a != -1 && a != b) {
+//             alert("This name is already in the tbody");
+//         } else {
+//             updateRow(storeVar);
+//             storeVar = null;
+//         }
+//         console.log(a, b);
+//     } else {
+//         if (e.target.medicineName.value.trim() != "" && a == -1) {
+//             if (returnExpiryDate()) {
+//                 let newTr = document.createElement("tr");
+//                 newTr.innerHTML = `
+//                     <td>${e.target.medicineName.value}</td>
+//                     <td>${e.target.quantity.value}</td>
+//                     <td>${returnExpiryDate()}</td>
+//                     <td>${e.target.medicinePack.value}</td>
+//                     <td>${e.target.batchName.value}</td>
+//                     <td><span onclick="editMedicine(this)">edit</span> <span onclick="deleteMedicine(this)">Delete</span></td>`;
+//                 tbody.appendChild(newTr);
+//                 allData.push({
+//                     medicineName: e.target.medicineName.value.toLowerCase().trim(),
+//                     medicinePack: e.target.medicinePack.value,
+//                     quantity: e.target.quantity.value,
+//                     expiryDate: {
+//                         date: e.target.newDate.value,
+//                         days: daysCount(),
+//                     },
+//                     batchName: e.target.batchName.value,
+//                 });
+//                 showNotification("Medicine Added");
+//                 normalBackground();
+//                 console.log(allData);
+//             }
+//         } else {
+//             alert("Please enter a valid medicine name")
+//         }
+//     }
+// });
 
 // This function is return expiry date calculate the date user select by days in form
 function returnExpiryDate() {
@@ -165,7 +208,7 @@ form.elements["select-date"].forEach(ele => {
             addDateInRadio(addValues);
         } else if (ele.id == "by-days") {
             addDateInRadio(addValues);
-            addDayInRadio(addValues)
+            addDayInRadio(addValues);
         }
     })
 });
@@ -193,7 +236,7 @@ function deleteMedicine(e) {
     }
 }
 
-// Reset the form 
+// Reset the form
 function resetAllTheValue() {
     form.elements.medicineName.value = "";
     form.elements.medicinePack.value = "";
@@ -227,6 +270,7 @@ function editMedicine(e) {
     form.elements.formBtn.innerText = "Update Medicine";
 }
 
+// Update Medicine Row
 function updateRow(row) {
     console.log(row);
     let a = allData.findIndex(ele => ele.medicineName == row.children[0].innerText);
@@ -237,7 +281,7 @@ function updateRow(row) {
     allData[a].expiryDate.days = daysCount();
     allData[a].medicinePack = form.elements.medicinePack.value;
     allData[a].batchName = form.elements.batchName.value;
-    // Add the new data to the table
+    // Add the new data to the tbody
     row.children[0].innerHTML = form.elements.medicineName.value;
     row.children[1].innerHTML = form.elements.quantity.value;
     row.children[2].innerHTML = returnExpiryDate();

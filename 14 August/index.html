@@ -5,13 +5,105 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 2px solid black;
+            text-align: center;
+            padding: 10px;
+            font-size: 20px;
+        }
+
+        tr>td>button {
+            padding: 5px 10px;
+            font-size: 18px;
+        }
+    </style>
 </head>
 
 <body>
 
+    <!-- <div id="mainDiv">
+        <p id="para">Hello World</p>
+        <button id="myBtn">Delete</button>
+    </div>-->
+
+    <table id="table">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>College</th>
+            <th>Operation</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Raj</td>
+            <td>Canada</td>
+            <td>
+                <button class="delete">Delete</button>
+            </td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Bhaumik</td>
+            <td>SOU</td>
+            <td>
+                <button class="delete">Delete</button>
+            </td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Vivek</td>
+            <td>C.U. Shah</td>
+            <td>
+                <button class="delete">Delete</button>
+            </td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Krunal</td>
+            <td>ASOIT</td>
+            <td>
+                <button class="delete">Delete</button>
+            </td>
+        </tr>
+    </table>
+
+    <div id="undo"></div>
+
 
     <script>
-        let url = "https://jsonplaceholder.typicode.com/todos/1";
+        let allButton = document.querySelectorAll('.delete');
+        let undo = document.getElementById('undo');
+
+
+        allButton.forEach(button => {
+            button.addEventListener('click', () => {
+                let a = button.parentElement.parentElement;
+                a.remove();
+                let closeBtn = document.createElement('button');
+                closeBtn.setAttribute('id','undo')
+                closeBtn.textContent = 'Undo';
+            });
+        });
+
+
+        // let url = "https://jsonplaceholder.typicode.com/todos/1";
 
         // let a = fetch(url);
         // a.then(e => e.json()).then(data => console.log(data));
@@ -59,19 +151,6 @@
         //     }
         // }
         // myFunc();
-
-        async function weatherAPI() {
-            try {
-                let url = "https://v2.jokeapi.dev/joke/Any?amount=10";
-                let response = await fetch(url);
-                let data = await response.json();
-                console.log(data.jokes[0].setup);
-                console.log(data.jokes[0].delivery);
-            } catch (error) {
-                console.log("ERROR");
-            }
-        }
-        weatherAPI();
 
 
     </script>
