@@ -173,3 +173,9 @@ table tr td span {
     border-bottom: 1px solid black;
     cursor: pointer;
 }
+
+table caption{
+    font-size: 35px;
+    font-weight: bold;
+    margin-block: 10px 20px;
+}

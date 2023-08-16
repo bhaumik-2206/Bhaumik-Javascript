@@ -9,12 +9,14 @@
 </head>
 
 <body>
+    <!-- All Buttons -->
     <div class="mainBtn" id="mainBtn">
         <button class="add-medicine" id="addMedicineBtn">Add Medicine</button>
         <button class="add-medicine" id="addRecordBtn">Add Record</button>
         <button class="add-medicine" id="addOutRecordBtn">Add Out Record</button>
     </div>
 
+    <!-- Add Medicine Form -->
     <form action="" id="form">
         <div class="padding">
             <div class="medicine">
@@ -49,18 +51,19 @@
             </div>
             <div class="batch">
                 <label for="batch-input">Batch:-</label>
-                <select name="batchName" id="batch-input" disabled>
+                <!-- <select name="batchName" id="batch-input" disabled>
                     <option value="">Select Pack</option>
-                </select>
+                </select> -->
+                <input type="text" id="batch-input" name="batchName" disabled>
             </div>
             <button type="submit" name="formBtn" id="formBtn">Medicine</button>
         </div>
     </form>
 
-
+    <!-- Record Form -->
     <form action="" id="addRecord">
         <div class="padding">
-            <div class="search">
+            <div class="search" id="search">
                 <label for="searchMedicine">Search:-</label>
                 <input type="text" name="searchMedicine" class="inputFullWidth" required>
                 <div id="suggestion" class="add"></div>
@@ -86,17 +89,18 @@
         </div>
     </form>
 
+    <!-- Record Out Form -->
     <form action="" id="addOutRecord">
         <div class="padding">
             <div class="search">
-                <label for="searchRecords">Search:-</label>
-                <input type="text" name="searchRecords" class="inputFullWidth">
-                <p class="red">Failed required</p>
+                <label for="searchRecordsAOR">Search:-</label>
+                <input type="text" name="searchRecordsAOR" class="inputFullWidth" required>
+                <p class="red" id="failed2">Failed required</p>
                 <div id="closeAddOutRecord" class="closeBtn forTwoForm">×</div>
             </div>
             <div class="search">
                 <label for="select2">select:-</label>
-                <select name="select2" id="" class="inputFullWidth">
+                <select name="select2" id="" class="inputFullWidth" required>
                     <option value="">Please Select</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -106,32 +110,20 @@
             </div>
             <div class="search">
                 <label for="quantity">Quantity:-</label>
-                <input type="number" name="quantity" class="inputFullWidth">
-                <p class="red">Failed required</p>
+                <input type="number" name="quantity" class="inputFullWidth" required>
+                <p class="red" id="foQuantity">Failed required</p>
             </div>
             <button type="submit">Add Out Record</button>
         </div>
     </form>
 
 
+    <!-- Main Data Table -->
     <table id="table">
-        <!-- <thead> -->
-        <!-- <tr>
-                <th>Medicine</th>
-                <th>Quantity</th>
-                <th>Expiry Date</th>
-                <th>Pack</th>
-                <th>Batch</th>
-                <th>Operation</th>
-            </tr> -->
-        <!-- </thead> -->
-        <!-- <tbody id="tbody">
-
-        </tbody> -->
     </table>
 
+    <!-- Record Table -->
     <table id="recordTable">
-
     </table>
 
     <div class="notification" id="noti"></div>
