@@ -10,7 +10,9 @@
 
 <body>
     <div class="mainBtn" id="mainBtn">
-        <button class="add-medicine">Add Medicine</button>
+        <button class="add-medicine" id="addMedicineBtn">Add Medicine</button>
+        <button class="add-medicine" id="addRecordBtn">Add Record</button>
+        <button class="add-medicine" id="addOutRecordBtn">Add Out Record</button>
     </div>
 
     <form action="" id="form">
@@ -18,7 +20,7 @@
             <div class="medicine">
                 <label for="medicine-text">Medicine:-</label>
                 <input type="text" id="medicine-text" name="medicineName" required>
-                <div id="close">×</div>
+                <div id="close" class="closeBtn">×</div>
             </div>
             <div class="pack">
                 <label for="pack-dropdown">Pack:-</label>
@@ -56,27 +58,87 @@
     </form>
 
 
+    <form action="" id="addRecord">
+        <div class="padding">
+            <div class="search">
+                <label for="searchMedicine">Search:-</label>
+                <input type="text" name="searchMedicine" class="inputFullWidth" required>
+                <div id="suggestion" class="add"></div>
+                <p class="red" id="failed1">No Match Found</p>
+                <div id="closeAddRecord" class="closeBtn forTwoForm">×</div>
+            </div>
+            <div class="search">
+                <label for="select1">select:-</label>
+                <select name="select1" id="" class="inputFullWidth" required>
+                    <option value="">Please Select</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+                <p class="red">Failed required</p>
+            </div>
+            <div class="search">
+                <label for="quantity">Quantity:-</label>
+                <input type="number" name="quantity" class="inputFullWidth" required>
+                <p class="red">Failed required</p>
+            </div>
+            <button type="submit">Add Record</button>
+        </div>
+    </form>
+
+    <form action="" id="addOutRecord">
+        <div class="padding">
+            <div class="search">
+                <label for="searchRecords">Search:-</label>
+                <input type="text" name="searchRecords" class="inputFullWidth">
+                <p class="red">Failed required</p>
+                <div id="closeAddOutRecord" class="closeBtn forTwoForm">×</div>
+            </div>
+            <div class="search">
+                <label for="select2">select:-</label>
+                <select name="select2" id="" class="inputFullWidth">
+                    <option value="">Please Select</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+                <p class="red">Failed required</p>
+            </div>
+            <div class="search">
+                <label for="quantity">Quantity:-</label>
+                <input type="number" name="quantity" class="inputFullWidth">
+                <p class="red">Failed required</p>
+            </div>
+            <button type="submit">Add Out Record</button>
+        </div>
+    </form>
+
+
     <table id="table">
-        <thead>
-            <tr>
+        <!-- <thead> -->
+        <!-- <tr>
                 <th>Medicine</th>
                 <th>Quantity</th>
                 <th>Expiry Date</th>
                 <th>Pack</th>
                 <th>Batch</th>
                 <th>Operation</th>
-            </tr>
-        </thead>
-        <tbody id="tbody">
+            </tr> -->
+        <!-- </thead> -->
+        <!-- <tbody id="tbody">
 
-        </tbody>
+        </tbody> -->
+    </table>
+
+    <table id="recordTable">
+
     </table>
 
     <div class="notification" id="noti"></div>
 
 
 
-    
+
     <script src="Medicine.js"></script>
     <!-- <script src="temp.js"></script> -->
 </body>

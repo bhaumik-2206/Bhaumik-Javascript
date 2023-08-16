@@ -5,8 +5,7 @@
 
 body {
     background-color: lightcoral;
-    font-family: sans-serif;
-    font-family: sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .mainBtn {
@@ -22,6 +21,7 @@ body {
     border: none;
     font-size: 20px;
     border-radius: 30px;
+    margin-inline: 10px;
 }
 
 form {
@@ -37,8 +37,13 @@ form {
     transform: translate(-50%, -50%);
 }
 
+/* #addOutRecord {
+    display: block;
+} */
+
 .padding {
     padding: 2rem;
+    /* position: relative; */
 }
 
 .date-title {
@@ -54,17 +59,18 @@ form {
 #medicine-text,
 #pack-dropdown,
 #quantity,
-#batch-input {
+#batch-input,
+.inputFullWidth {
     width: -webkit-fill-available;
     padding: 10px;
     font-size: 18px;
 }
 
-#form div {
+form div {
     margin-bottom: 15px;
 }
 
-#form button {
+form button {
     width: 100%;
     padding: 10px;
     background-color: brown;
@@ -87,6 +93,7 @@ table {
     width: 90%;
     margin-inline: auto;
     border-collapse: collapse;
+    margin-bottom: 20px;
 }
 
 th,
@@ -120,7 +127,7 @@ table tr td span {
     border-radius: 5px;
 }
 
-#close {
+.closeBtn {
     position: absolute;
     top: 0px;
     right: 0px;
@@ -130,6 +137,39 @@ table tr td span {
     border-radius: 50%;
 }
 
-#close:hover {
+.forTwoForm {
+    top: -30px;
+    right: -30px;
+}
+
+.closeBtn:hover {
     background-color: rgba(222, 222, 222, 0.5);
+}
+
+.red {
+    color: red;
+    padding-top: 10px;
+    display: none;
+}
+
+.search {
+    position: relative;
+}
+
+.add {
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    border: 1px solid black;
+    z-index: 2;
+    background-color: white;
+    display: none;
+    border-bottom: none;
+}
+
+.add>* {
+    font-size: 20px;
+    padding: 10px 20px;
+    border-bottom: 1px solid black;
+    cursor: pointer;
 }
