@@ -8,32 +8,23 @@ let failed1 = document.getElementById('failed1');
 let suggestionInOutRecord = document.getElementById('suggestionInOutRecord');
 let failed2 = document.getElementById('failed2');
 let selectedRow = null;
+let allData = [];
 let addRecordArray = [];
 let outRecordArray = [];
 let additionArray = [];
-allData = [
-    {
-        id: 1,
-        medicineName: "dolo",
-        pack: "pack-1",
-        quantity: 100,
-        selectedDate: "2023-08-16",
-        selectedDays: 10,
-        expiryDate: "2023-08-26",
-        batchName: "A1"
-    },
-    {
-        id: 2,
-        medicineName: "dolo1",
-        pack: "pack-4",
-        quantity: 100,
-        selectedDate: "2023-08-25",
-        selectedDays: false,
-        expiryDate: "2023-08-25",
-        batchName: "A4"
+
+window.addEventListener('load', () => {
+    allData = getData('medicineData') || [];
+    addRecordArray = getData('recordData') || [];
+    if (allData.length > 0) {
+        makeAddMedicineTable();
     }
-];
-makeAddMedicineTable();
+    if (addRecordArray.length > 0) {
+        makeAddRecordTable();
+    }
+});
+
+// makeAddMedicineTable();
 // Add Medicine click event
 document.getElementById('addMedicineBtn').addEventListener('click', () => {
     changeBackground();
@@ -128,9 +119,10 @@ function makeAddMedicineTable() {
         </tr>`;
     });
     document.getElementById('table').appendChild(a);
+    setData('medicineData', allData);
 }
 // let setIdInAddMedicine = 0;
-let setIdInAddMedicine = 2;
+let setIdInAddMedicine = 0;
 addMedicineForm.addEventListener("submit", (e) => {
     e.preventDefault();
     let a = allData.findIndex(ele => ele.medicineName == e.target.medicineName.value.toLowerCase().trim());
@@ -141,12 +133,14 @@ addMedicineForm.addEventListener("submit", (e) => {
         } else {
             updateRows(selectedRow);
             normalBackground();
+            // saveAddMedicineTable();
+            // setData(allData, "allData");
         }
     }
     else if (e.target.medicineName.value.trim() != "" && a == -1 && returnExpiryDate()) {
         setIdInAddMedicine++;
         allData.push({
-            id: setIdInAddMedicine,
+            id: `addMedicine-${setIdInAddMedicine}`,
             medicineName: e.target.medicineName.value.trim(),
             pack: e.target.medicinePack.value,
             quantity: parseInt(e.target.quantity.value),
@@ -158,6 +152,8 @@ addMedicineForm.addEventListener("submit", (e) => {
         makeAddMedicineTable();
         normalBackground();
         addMedicineForm.reset();
+        // saveAddMedicineTable();
+        // setData(allData, "allData");
     } else {
         alert("Please enter Valid Medicine Name");
     }
@@ -170,7 +166,10 @@ function deleteMedicine(e) {
         showNotification("Medicine Delete");
         let b = allData.findIndex(ele => ele.medicineName == row.children[0].medicineName);
         allData.splice((b - 1), 1);
+        // saveAddMedicineTable();
+        // setData(allData, "allData");
     }
+    setData('medicineData', allData);
 }
 // Show Notification
 function showNotification(value) {
@@ -258,13 +257,6 @@ function editMedicine(e) {
 // Update the medicine when user edit the medicine
 function updateRows(value) {
     let b = allData.findIndex(ele => ele.medicineName == value.children[0].innerText);
-    // Change the quantity when we edit the quantity field in table
-    // let index = addRecordArray.findIndex(ele => ele.medicineName == addMedicineForm.elements.medicineName.value.toLowerCase().trim());
-    // if (index != -1) {
-    //     addRecordArray[index].quantity += parseInt(addMedicineForm.elements.quantity.value) - allData[b].quantity
-    //     // addRecordArray[index].quantity = addRecordArray[index].quantity - parseInt(addMedicineForm.elements.quantity.value);
-    // }
-    // Add the editing record to the array 
     allData[b].medicineName = addMedicineForm.elements.medicineName.value.toLowerCase().trim();
     allData[b].pack = addMedicineForm.elements.medicinePack.value;
     allData[b].quantity = parseInt(addMedicineForm.elements.quantity.value);
@@ -274,6 +266,7 @@ function updateRows(value) {
     allData[b].batchName = addMedicineForm.elements.batchName.value;
     makeAddMedicineTable();
     makeAddRecordTable();
+    setData('medicineData', allData);
 }
 
 //----------------------------------------------------------------
@@ -361,12 +354,12 @@ addRecord.addEventListener('submit', (e) => {
         if (e.target.select1.value != "") {
             document.getElementById('selectRed1').style.display = "none";
             if (clicked) {
-                if (e.target.quantity.value != "") {
+                if (e.target.quantity.value != "" && e.target.quantity.value <= allData[a].quantity && e.target.quantity.value >= 0) {
                     document.getElementById('quantityRed').style.display = "none";
                     setIdInAddRecord++;
                     addRecordArray.push(
                         {
-                            id: setIdInAddRecord,
+                            id: `addRecord-${setIdInAddRecord}`,
                             medicineName: allData[a].medicineName,
                             pack: allData[a].pack,
                             batch: allData[a].batchName,
@@ -375,10 +368,13 @@ addRecord.addEventListener('submit', (e) => {
                             selectedItem: e.target.select1.value
                         }
                     );
+                    allData[a].quantity -= Number(e.target.quantity.value);
                     addMedicineArray(JSON.parse(JSON.stringify(addRecordArray)));
                     makeAddRecordTable();
+                    makeAddMedicineTable();
                     normalBackground();
                     clicked = false;
+                    setData("recordData", addRecordArray);
                 } else {
                     document.getElementById('quantityRed').style.display = "block";
                 }
@@ -394,6 +390,7 @@ addRecord.addEventListener('submit', (e) => {
 });
 // Give suggestions when we type in input box for add record table
 addRecord.elements.searchMedicine.addEventListener('input', (e) => {
+    clicked = false;
     suggestion.innerHTML = "";
     if (allData.length == 0 && e.target.value.trim() != "") {
         failed1.style.display = "block";
@@ -433,7 +430,7 @@ function indexOfSlesh(e) {
         return a;
     }
 }
-
+let setIdInOutTable = 0;
 // Add Out Record button submit event
 addOutRecord.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -446,8 +443,10 @@ addOutRecord.addEventListener('submit', (e) => {
                 document.getElementById('foQuantity').style.display = 'none';
                 additionArray[a].quantity = additionArray[a].quantity - Number(e.target.quantity.value);
                 // additionArray[a].selectedItem = e.target.select2.value;
+                setIdInOutTable++;
                 outRecordArray.push(
                     {
+                        id: `out-${setIdInOutTable}`,
                         medicineName: additionArray[a].medicineName,
                         quantity: Number(e.target.quantity.value),
                         selectedItem: e.target.select2.value,
@@ -550,4 +549,27 @@ function addButtonClass() {
         ele.classList.add('button');
         ele.disabled = false;
     });
+}
+// function saveAddMedicineTable() {
+//     localStorage.setItem('addMedicineTable', table.innerHTML);
+// }
+// function getAddMedicineData() {
+//     table.innerHTML = localStorage.getItem('addMedicineTable');
+// }
+
+// function setData(arrName, setName) {
+//     localStorage.setItem(setName, JSON.stringify(arrName));
+// }
+// function getData(nameOfSaveData) {
+//     let myList = localStorage.getItem(nameOfSaveData);
+//     let arr = JSON.parse(myList);
+//     return arr;
+// }
+
+function setData(setName, arrName) {
+    localStorage.setItem(setName, JSON.stringify(arrName));
+}
+function getData(setName) {
+    const storedData = localStorage.getItem(setName);
+    return JSON.parse(storedData);
 }

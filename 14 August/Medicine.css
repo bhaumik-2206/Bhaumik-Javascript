@@ -37,10 +37,6 @@ form {
     transform: translate(-50%, -50%);
 }
 
-/* #addOutRecord {
-    display: block;
-} */
-
 .padding {
     padding: 2rem;
     /* position: relative; */
@@ -184,4 +180,12 @@ table caption{
 
 .button{
     cursor: pointer;
+}
+
+.block{
+    display: block;
+}
+
+.none{
+    display: none;
 }

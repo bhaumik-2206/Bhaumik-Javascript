@@ -3,9 +3,13 @@ let table = document.getElementById('table');
 let addMedicineBtn = document.getElementById('addMedicineBtn');
 let byDate = document.getElementById('by-date');
 let byDays = document.getElementById('by-days');
-let closeBtn = document.querySelectorAll('.closeBtn');
-let red = document.querySelectorAll('.red');
+let addRecord = document.getElementById('addRecord');
+let addOutRecord = document.getElementById('addOutRecord');
+let recordTable = document.getElementById('recordTable');
+let recordOutTable = document.getElementById('recordOutTable');
 let selectedRow = null;
+let addRecordArray = [];
+let outRecordArray = [];
 allData = [
     {
         id: 1,
@@ -30,12 +34,6 @@ allData = [
 ];
 makeAddMedicineTable();
 //----------------------------------------------------------------
-let addRecord = document.getElementById('addRecord');
-let addOutRecord = document.getElementById('addOutRecord');
-let recordTable = document.getElementById('recordTable');
-let recordOutTable = document.getElementById('recordOutTable');
-let addRecordArray = [];
-let outRecordArray = [];
 // Add Medicine click event
 addMedicineBtn.addEventListener('click', () => {
     changeBackground();
@@ -65,7 +63,7 @@ function normalBackground() {
     blockRed();
 }
 // Click on cancel button to cancel the form
-closeBtn.forEach(ele => {
+document.querySelectorAll('.closeBtn').forEach(ele => {
     ele.addEventListener('click', normalBackground);
 });
 let packs = [
@@ -483,7 +481,7 @@ addOutRecord.addEventListener('submit', (e) => {
 });
 // Display none the all red lines
 function blockRed() {
-    red.forEach(ele => ele.style.display = "none");
+    document.querySelectorAll('.red').forEach(ele => ele.style.display = "none");
 }
 // For display none of the suggestions when we focus out the input field
 document.addEventListener('click', (e) => {
