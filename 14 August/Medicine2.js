@@ -40,6 +40,7 @@ let recordTable = document.getElementById('recordTable');
 let recordOutTable = document.getElementById('recordOutTable');
 let addRecordArray = [];
 let outRecordArray = [];
+let additionArray = [];
 // Add Medicine click event
 addMedicineBtn.addEventListener('click', () => {
     changeBackground();
@@ -364,13 +365,7 @@ let clicked = false;
 addRecord.addEventListener('submit', (e) => {
     e.preventDefault();
     let a = allData.findIndex(ele => ele.medicineName == e.target.searchMedicine.value.trim().slice(0, e.target.searchMedicine.value.indexOf("|") - 1));
-    let b = addRecordArray.findIndex(value => value.medicineName == allData[a].medicineName);
-    if (b != -1) {
-        addRecordArray[b].quantity += Number(e.target.quantity.value);
-        makeAddRecordTable();
-        normalBackground();
-        clicked = false;
-    } else if (failed1.style.display == "none") {
+    if (failed1.style.display == "none") {
         if (e.target.select1.value != "") {
             document.getElementById('selectRed1').style.display = "none";
             if (clicked) {
@@ -386,6 +381,7 @@ addRecord.addEventListener('submit', (e) => {
                         quantity: Number(e.target.quantity.value),      // Doubt
                         selectedItem: e.target.select1.value
                     });
+                    addMedicineArray(JSON.parse(JSON.stringify(addRecordArray)));
                     makeAddRecordTable();
                     normalBackground();
                     clicked = false;
@@ -444,32 +440,35 @@ function indexOfSlesh(e) {
         return a;
     }
 }
+
 // Add Out Record button submit event
 addOutRecord.addEventListener('submit', (e) => {
     e.preventDefault();
-    let a = addRecordArray.findIndex(ele => ele.medicineName == e.target.searchRecordsAOR.value.toLowerCase().trim());
-    let b = outRecordArray.findIndex(ele => ele.medicineName == e.target.searchRecordsAOR.value.toLowerCase().trim());
-    if (b != -1) {
-        addRecordArray[a].quantity = addRecordArray[a].quantity - Number(e.target.quantity.value);
-        outRecordArray[b].quantity += Number(e.target.quantity.value);
-        makeOutRecordTable();
-        makeAddRecordTable();
-        normalBackground();
-    } else if (e.target.searchRecordsAOR.value.trim() != "") {
+    let a = additionArray.findIndex(ele => ele.medicineName == e.target.searchRecordsAOR.value.toLowerCase().trim());
+    // let b = outRecordArray.findIndex(ele => ele.medicineName == e.target.searchRecordsAOR.value.toLowerCase().trim());
+    // if (b != -1) {
+    //     additionArray[a].quantity = additionArray[a].quantity - Number(e.target.quantity.value);
+    //     outRecordArray[b].quantity += Number(e.target.quantity.value);
+    //     makeOutRecordTable();
+    //     makeAddRecordTable();
+    //     normalBackground();
+    // } else 
+    if (e.target.searchRecordsAOR.value.trim() != "") {
         document.getElementById('failed2').style.display = "none";
         if (e.target.select2.value != "") {
             document.getElementById('selectRed2').style.display = "none";
-            if (e.target.quantity.value <= Number(addRecordArray[a].quantity) && e.target.quantity.value != "") {
+            if (e.target.quantity.value <= Number(additionArray[a].quantity) && e.target.quantity.value != "") {
                 document.getElementById('foQuantity').style.display = 'none';
-                addRecordArray[a].quantity = addRecordArray[a].quantity - Number(e.target.quantity.value);
-                // addRecordArray[a].selectedItem = e.target.select2.value;
+                additionArray[a].quantity = additionArray[a].quantity - Number(e.target.quantity.value);
+                // additionArray[a].selectedItem = e.target.select2.value;
                 outRecordArray.push(
                     {
-                        medicineName: addRecordArray[a].medicineName,
+                        medicineName: additionArray[a].medicineName,
                         quantity: Number(e.target.quantity.value),
                         selectedItem: e.target.select2.value,
                     }
                 )
+                minusTheValueOfTable(Number(e.target.quantity.value), addRecordArray, additionArray[a].medicineName);
                 makeOutRecordTable();
                 makeAddRecordTable();
                 normalBackground();
@@ -506,7 +505,7 @@ addOutRecord.elements.searchRecordsAOR.addEventListener('input', (e) => {
     } else if (e.target.value.trim() == "") {
         failed2.style.display = "none";
     } else if (e.target.value.trim() != "") {
-        addRecordArray.forEach(ele => {
+        additionArray.forEach(ele => {
             if (ele.medicineName.toLowerCase().includes(e.target.value.toLowerCase().trim().slice(0, indexOfSlesh(e)).trim())) {
                 suggestionInOutRecord.style.display = "block";
                 failed2.style.display = "none";
@@ -524,3 +523,29 @@ addOutRecord.elements.searchRecordsAOR.addEventListener('input', (e) => {
         });
     }
 });
+function addMedicineArray(arr) {
+    additionArray = [];
+    arr.forEach(ele => {
+        let currentItem = additionArray.findIndex(obj => obj.medicineName === ele.medicineName);
+        if (currentItem != -1) {
+            additionArray[currentItem].quantity += ele.quantity;
+        } else {
+            additionArray.push(ele);
+        }
+    });
+    return additionArray;
+}
+function minusTheValueOfTable(minusValue, arr, checkName) {
+    arr.forEach(ele => {
+        if (ele.medicineName == checkName) {
+            if (ele.quantity <= minusValue) {
+                minusValue -= ele.quantity;
+                ele.quantity = 0;
+            } else if (ele.quantity > minusValue) {
+                ele.quantity -= minusValue;
+                minusValue = 0;
+            }
+        }
+    });
+    return arr;
+}
