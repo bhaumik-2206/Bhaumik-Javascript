@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" id="form">
+        <input type="radio" id="a" name="input">
+        <label for="a">Hello-1</label><br>
+        <input type="radio" id="b" name="input">
+        <label for="b">Hello-2</label><br>
+        <input type="radio" id="c" name="input">
+        <label for="c">Hello-3</label><br>
+        <input type="radio" id="d" name="input">
+        <label for="d">Hello-4</label><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            e.target.input.forEach(e => {
+                if(e.checked){
+                    console.log(e.id);
+                }
+            });
+        })
+    </script>
+</body>
+
+</html>

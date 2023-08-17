@@ -1,7 +1,5 @@
 let addMedicineForm = document.getElementById('addMedicineForm');
-let mainBtn = document.getElementById('mainBtn');
 let table = document.getElementById('table');
-let noti = document.getElementById('noti');
 let addMedicineBtn = document.getElementById('addMedicineBtn');
 let byDate = document.getElementById('by-date');
 let byDays = document.getElementById('by-days');
@@ -32,8 +30,6 @@ allData = [
 ];
 makeAddMedicineTable();
 //----------------------------------------------------------------
-let addRecordBtn = document.getElementById('addRecordBtn');
-let addOutRecordBtn = document.getElementById('addOutRecordBtn');
 let addRecord = document.getElementById('addRecord');
 let addOutRecord = document.getElementById('addOutRecord');
 let recordTable = document.getElementById('recordTable');
@@ -51,19 +47,21 @@ addMedicineBtn.addEventListener('click', () => {
 // Blur background
 function changeBackground() {
     table.style.opacity = ".5";
-    mainBtn.style.opacity = ".5";
+    document.getElementById('mainBtn').style.opacity = ".5";
     addMedicineForm.elements.formBtn.innerText = "Add Medicine";
     addMedicineForm.elements.newDate.style.display = "none";
     addMedicineForm.elements.allDays.style.display = "none";
+    removeButtonClass();
 }
 // Normal Background and remove the form
 function normalBackground() {
     table.style.opacity = 1;
-    mainBtn.style.opacity = 1;
+    document.getElementById('mainBtn').style.opacity = 1;
     selectedRow = null;
     addMedicineForm.style.display = 'none';
     addRecord.style.display = 'none';
     addOutRecord.style.display = 'none';
+    addButtonClass();
     blockRed();
 }
 // Click on cancel button to cancel the form
@@ -128,7 +126,7 @@ function makeAddMedicineTable() {
         <td>${ele.expiryDate}</td>
         <td>${ele.pack}</td>
         <td>${ele.batchName}</td>
-        <td><span onclick="editMedicine(this)">edit</span> <span onclick="deleteMedicine(this)">Delete</span></td>
+        <td><button class="sameClass button" onclick="editMedicine(this)">edit</button> <button class="sameClass button" onclick="deleteMedicine(this)">Delete</button></td>
         </tr>`;
     });
     table.appendChild(a);
@@ -182,7 +180,7 @@ function showNotification(value) {
     let newp = document.createElement('p');
     newp.style.marginBottom = "10px";
     newp.innerHTML = value;
-    noti.appendChild(newp);
+    document.getElementById('noti').appendChild(newp);
     setTimeout(() => {
         newp.remove();
     }, 4000);
@@ -287,7 +285,7 @@ let failed1 = document.getElementById('failed1');
 let suggestionInOutRecord = document.getElementById('suggestionInOutRecord');
 let failed2 = document.getElementById('failed2');
 // Get Add Record Form
-addRecordBtn.addEventListener('click', (e) => {
+document.getElementById('addRecordBtn').addEventListener('click', (e) => {
     changeBackground();
     addMedicineForm.style.display = 'none';
     addRecord.style.display = 'block';
@@ -295,7 +293,7 @@ addRecordBtn.addEventListener('click', (e) => {
     addOutRecord.style.display = 'none';
 });
 // Get Add Out Record Form
-addOutRecordBtn.addEventListener('click', (e) => {
+document.getElementById('addOutRecordBtn').addEventListener('click', (e) => {
     changeBackground();
     addMedicineForm.style.display = 'none';
     addRecord.style.display = 'none';
@@ -383,7 +381,7 @@ addRecord.addEventListener('submit', (e) => {
                         pack: allData[a].pack,
                         batch: allData[a].batchName,
                         // quantity: Number(e.target.quantity.value) + allData[a].quantity,
-                        quantity: Number(e.target.quantity.value),      // Doubt
+                        quantity: Number(e.target.quantity.value),      // addornot
                         selectedItem: e.target.select1.value
                     });
                     makeAddRecordTable();
@@ -449,17 +447,17 @@ addOutRecord.addEventListener('submit', (e) => {
     e.preventDefault();
     let a = addRecordArray.findIndex(ele => ele.medicineName == e.target.searchRecordsAOR.value.toLowerCase().trim());
     let b = outRecordArray.findIndex(ele => ele.medicineName == e.target.searchRecordsAOR.value.toLowerCase().trim());
-    if (b != -1) {
-        addRecordArray[a].quantity = addRecordArray[a].quantity - Number(e.target.quantity.value);
+    if (b != -1 && Number(e.target.quantity.value) <= Number(addRecordArray[a].quantity)) {
+        addRecordArray[a].quantity -= Number(e.target.quantity.value);
         outRecordArray[b].quantity += Number(e.target.quantity.value);
         makeOutRecordTable();
         makeAddRecordTable();
         normalBackground();
-    } else if (e.target.searchRecordsAOR.value.trim() != "") {
+    } else if (e.target.searchRecordsAOR.value.trim() != "" && a != -1) {
         document.getElementById('failed2').style.display = "none";
         if (e.target.select2.value != "") {
             document.getElementById('selectRed2').style.display = "none";
-            if (e.target.quantity.value <= Number(addRecordArray[a].quantity) && e.target.quantity.value != "") {
+            if (Number(e.target.quantity.value) <= Number(addRecordArray[a].quantity) && e.target.quantity.value != "") {
                 document.getElementById('foQuantity').style.display = 'none';
                 addRecordArray[a].quantity = addRecordArray[a].quantity - Number(e.target.quantity.value);
                 // addRecordArray[a].selectedItem = e.target.select2.value;
@@ -497,7 +495,6 @@ document.addEventListener('click', (e) => {
         suggestionInOutRecord.style.display = "none";
     }
 });
-
 // Give suggestions when we type in input box for out record table
 addOutRecord.elements.searchRecordsAOR.addEventListener('input', (e) => {
     suggestionInOutRecord.innerHTML = "";
@@ -524,3 +521,17 @@ addOutRecord.elements.searchRecordsAOR.addEventListener('input', (e) => {
         });
     }
 });
+function removeButtonClass() {
+    let buttons = document.querySelectorAll('.sameClass');
+    buttons.forEach(ele => {
+        ele.classList.remove('button');
+        ele.disabled = true;
+    });
+}
+function addButtonClass() {
+    let buttons = document.querySelectorAll('.sameClass');
+    buttons.forEach(ele => {
+        ele.classList.add('button');
+        ele.disabled = false;
+    });
+}
