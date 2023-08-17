@@ -1,4 +1,4 @@
-let form = document.getElementById('form');
+let addMedicineForm = document.getElementById('addMedicineForm');
 let mainBtn = document.getElementById('mainBtn');
 let table = document.getElementById('table');
 let noti = document.getElementById('noti');
@@ -10,51 +10,56 @@ let red = document.querySelectorAll('.red');
 let selectedRow = null;
 allData = [
     {
+        id: 1,
         medicineName: "dolo",
         pack: "pack-1",
-        quantity: 10,
+        quantity: 100,
         selectedDate: "2023-08-16",
         selectedDays: 10,
         expiryDate: "2023-08-26",
         batchName: "A1"
     },
     {
+        id: 2,
         medicineName: "dolo1",
         pack: "pack-4",
-        quantity: 10,
-        selectedDate: "2023-08-16",
+        quantity: 100,
+        selectedDate: "2023-08-25",
         selectedDays: false,
-        expiryDate: "2023-08-16",
+        expiryDate: "2023-08-25",
         batchName: "A4"
     }
 ];
 makeAddMedicineTable();
-//------
+//----------------------------------------------------------------
 let addRecordBtn = document.getElementById('addRecordBtn');
 let addOutRecordBtn = document.getElementById('addOutRecordBtn');
 let addRecord = document.getElementById('addRecord');
 let addOutRecord = document.getElementById('addOutRecord');
 let recordTable = document.getElementById('recordTable');
-let allRecords = [];
+let recordOutTable = document.getElementById('recordOutTable');
+let addRecordArray = [];
+let outRecordArray = [];
 
 addMedicineBtn.addEventListener('click', () => {
     changeBackground();
-    form.style.display = 'block';
+    addMedicineForm.style.display = 'block';
     addRecord.style.display = 'none';
     addOutRecord.style.display = 'none';
+    addMedicineForm.reset();
 });
 function changeBackground() {
     table.style.opacity = ".5";
     mainBtn.style.opacity = ".5";
-    form.elements.formBtn.innerText = "Add Medicine";
-    form.elements.newDate.style.display = "none";
-    form.elements.allDays.style.display = "none";
+    addMedicineForm.elements.formBtn.innerText = "Add Medicine";
+    addMedicineForm.elements.newDate.style.display = "none";
+    addMedicineForm.elements.allDays.style.display = "none";
 }
 function normalBackground() {
     table.style.opacity = 1;
     mainBtn.style.opacity = 1;
     selectedRow = null;
-    form.style.display = 'none';
+    addMedicineForm.style.display = 'none';
     addRecord.style.display = 'none';
     addOutRecord.style.display = 'none';
     blockRed();
@@ -87,43 +92,48 @@ packs.forEach(ele => {
     let option = document.createElement('option');
     option.value = ele.value;
     option.innerText = ele.value;
-    form.elements.medicinePack.appendChild(option);
+    addMedicineForm.elements.medicinePack.appendChild(option);
 });
 
 // Add Bacch value from pack value
-form.elements.medicinePack.addEventListener('change', (e) => {
+addMedicineForm.elements.medicinePack.addEventListener('change', (e) => {
     e.preventDefault();
-    let packId = form.elements.medicinePack.value;
+    let packId = addMedicineForm.elements.medicinePack.value;
     let pack = packs.find(ele => ele.value == packId);
     let findBatch = batch.find(ele => ele.pack_id == pack.id);
-    form.elements.batchName.value = findBatch.batch;
+    addMedicineForm.elements.batchName.value = findBatch.batch;
 });
 
 function makeAddMedicineTable() {
     table.innerHTML = "";
     table.innerHTML += `
     <caption>Medicine Table</caption>
-    <tr>
-        <th>Medicine</th>
-        <th>Quantity</th>
-        <th>Expiry Date</th>
-        <th>Pack</th>
-        <th>Batch</th>
-        <th>Operation</th>
-    </tr>`;
+    <thead>
+        <tr>
+            <th>Medicine</th>
+            <th>Quantity</th>
+            <th>Expiry Date</th>
+            <th>Pack</th>
+            <th>Batch</th>
+            <th>Operation</th>
+        </tr>
+    </thead>`;
+    let a = document.createElement('tbody');
     allData.forEach(ele => {
-        let a = document.createElement('tr');
-        a.innerHTML += `<td>${ele.medicineName}</td>
+        a.innerHTML += `<tr id ="addMedicine-${ele.id}">
+        <td>${ele.medicineName}</td>
         <td>${ele.quantity}</td>
         <td>${ele.expiryDate}</td>
         <td>${ele.pack}</td>
         <td>${ele.batchName}</td>
-        <td><span onclick="editMedicine(this)">edit</span> <span onclick="deleteMedicine(this)">Delete</span></td>`;
-        table.appendChild(a);
+        <td><span onclick="editMedicine(this)">edit</span> <span onclick="deleteMedicine(this)">Delete</span></td>
+        </tr>`;
     });
+    table.appendChild(a);
 }
-
-form.addEventListener("submit", (e) => {
+// let setIdInAddMedicine = 0;
+let setIdInAddMedicine = 2;
+addMedicineForm.addEventListener("submit", (e) => {
     e.preventDefault();
     let a = allData.findIndex(ele => ele.medicineName == e.target.medicineName.value.toLowerCase().trim());
     if (selectedRow) {
@@ -136,33 +146,34 @@ form.addEventListener("submit", (e) => {
         }
     }
     else if (e.target.medicineName.value.trim() != "" && a == -1 && returnExpiryDate()) {
+        setIdInAddMedicine++;
         allData.push({
+            id: setIdInAddMedicine,
             medicineName: e.target.medicineName.value.trim(),
             pack: e.target.medicinePack.value,
-            quantity: e.target.quantity.value,
+            quantity: parseInt(e.target.quantity.value),
             selectedDate: e.target.newDate.value,
             selectedDays: daysCount(),
             expiryDate: returnExpiryDate(),
             batchName: e.target.batchName.value
         });
-        makeAddMedicineTable();
         normalBackground();
-        form.reset();
+        addMedicineForm.reset();
     } else {
         alert("Please enter Valid Medicine Name");
     }
 });
 
-// function deleteMedicine(e) {
-//     let a = confirm("Are You Sure To Delete Data?");
-//     let row = e.parentElement.parentElement;
-//     if (a) {
-//         row.remove();
-//         showNotification("Medicine Delete");
-//         let b = allData.findIndex(ele => ele.medicineName == row.children[0].medicineName);
-//         allData.splice((b - 1), 1);
-//     }
-// }
+function deleteMedicine(e) {
+    let a = confirm("Are You Sure To Delete Data?");
+    let row = e.parentElement.parentElement;
+    if (a) {
+        row.remove();
+        showNotification("Medicine Delete");
+        let b = allData.findIndex(ele => ele.medicineName == row.children[0].medicineName);
+        allData.splice((b - 1), 1);
+    }
+}
 
 function showNotification(value) {
     let newp = document.createElement('p');
@@ -175,34 +186,34 @@ function showNotification(value) {
 }
 
 byDate.addEventListener('change', () => {
-    form.elements.newDate.style.display = "block";
-    form.elements.allDays.style.display = "none";
+    addMedicineForm.elements.newDate.style.display = "block";
+    addMedicineForm.elements.allDays.style.display = "none";
 });
 byDays.addEventListener('change', () => {
-    form.elements.newDate.style.display = "block";
-    form.elements.allDays.style.display = "block";
+    addMedicineForm.elements.newDate.style.display = "block";
+    addMedicineForm.elements.allDays.style.display = "block";
 });
 
 function daysCount() {
     if (byDate.checked) {
         return false;
     } else if (byDays.checked) {
-        return form.elements.allDays.value;
+        return parseInt(addMedicineForm.elements.allDays.value);
     }
 }
 
 function returnExpiryDate() {
     let presentDate = new Date(new Date().getTime() - (24 * 60 * 60 * 1000));
-    let selectedDate = new Date(form.elements.newDate.value);
+    let selectedDate = new Date(addMedicineForm.elements.newDate.value);
     if (byDate.checked) {
         if (selectedDate.getTime() >= presentDate.getTime()) {
-            return form.elements.newDate.value;
+            return addMedicineForm.elements.newDate.value;
         } else {
             alert("Please select a valid date");
             return false;
         }
     } else if (byDays.checked) {
-        let newDate = new Date(selectedDate.getTime() + (form.elements.allDays.value * 24 * 60 * 60 * 1000));
+        let newDate = new Date(selectedDate.getTime() + (addMedicineForm.elements.allDays.value * 24 * 60 * 60 * 1000));
         if (newDate.getTime() >= presentDate.getTime()) {
             let month = newDate.getMonth() + 1;
             let returnDate = newDate.getDate();
@@ -222,117 +233,179 @@ function returnExpiryDate() {
 
 function editMedicine(e) {
     changeBackground();
-    form.style.display = 'block';
+    addMedicineForm.style.display = 'block';
     addRecord.style.display = 'none';
     addOutRecord.style.display = 'none';
     selectedRow = e.parentElement.parentElement;;
     let a = allData.findIndex(ele => ele.medicineName == selectedRow.children[0].innerText);
-    form.elements.medicineName.value = allData[a].medicineName;
-    form.elements.medicinePack.value = allData[a].pack;
-    form.elements.quantity.value = allData[a].quantity;
-    if (allData[a].selectedDays > 0) {
+    addMedicineForm.elements.medicineName.value = allData[a].medicineName;
+    addMedicineForm.elements.medicinePack.value = allData[a].pack;
+    addMedicineForm.elements.quantity.value = allData[a].quantity;
+    if (typeof allData[a].selectedDays == 'number') {
         byDays.checked = true;
-        form.elements.newDate.style.display = "block";
-        form.elements.allDays.style.display = "block";
-        form.elements.newDate.value = allData[a].selectedDate;
-        form.elements.allDays.value = allData[a].selectedDays;
+        addMedicineForm.elements.newDate.style.display = "block";
+        addMedicineForm.elements.allDays.style.display = "block";
+        addMedicineForm.elements.newDate.value = allData[a].selectedDate;
+        addMedicineForm.elements.allDays.value = allData[a].selectedDays;
     } else {
         byDate.checked = true;
-        form.elements.newDate.style.display = "block";
-        form.elements.allDays.style.display = "none";
-        form.elements.newDate.value = allData[a].selectedDate;
+        addMedicineForm.elements.newDate.style.display = "block";
+        addMedicineForm.elements.allDays.style.display = "none";
+        addMedicineForm.elements.newDate.value = allData[a].selectedDate;
+        addMedicineForm.elements.allDays.value = "";
     }
-    form.elements.batchName.value = allData[a].batchName;
+    addMedicineForm.elements.batchName.value = allData[a].batchName;
 }
 
 function updateRows(value) {
     let b = allData.findIndex(ele => ele.medicineName == value.children[0].innerText);
-    allData[b].medicineName = form.elements.medicineName.value.toLowerCase().trim();
-    allData[b].pack = form.elements.medicinePack.value;
-    allData[b].quantity = form.elements.quantity.value;
-    allData[b].selectedDate = form.elements.newDate.value;
+    // Change the quantity when we edit the quantity field in table
+    let index = addRecordArray.findIndex(ele => ele.medicineName == addMedicineForm.elements.medicineName.value.toLowerCase().trim());
+    if (index != -1) {
+        addRecordArray[index].quantity += parseInt(addMedicineForm.elements.quantity.value) - allData[b].quantity
+        // addRecordArray[index].quantity = addRecordArray[index].quantity - parseInt(addMedicineForm.elements.quantity.value);
+    }
+    // Add the editing record to the array 
+    allData[b].medicineName = addMedicineForm.elements.medicineName.value.toLowerCase().trim();
+    allData[b].pack = addMedicineForm.elements.medicinePack.value;
+    allData[b].quantity = parseInt(addMedicineForm.elements.quantity.value);
+    allData[b].selectedDate = addMedicineForm.elements.newDate.value;
     allData[b].selectedDays = daysCount();
     allData[b].expiryDate = returnExpiryDate();
-    allData[b].batchName = form.elements.batchName.value
+    allData[b].batchName = addMedicineForm.elements.batchName.value;
     makeAddMedicineTable();
+    makeAddRecordTable();
 }
 
-//--------------------------------------------
+//----------------------------------------------------------------
 let suggestion = document.getElementById('suggestion');
 let failed1 = document.getElementById('failed1');
-let clicked = false;
-// Get the Add Record Form
+let suggestionInOutRecord = document.getElementById('suggestionInOutRecord');
+let failed2 = document.getElementById('failed2');
+// Get Add Record Form
 addRecordBtn.addEventListener('click', (e) => {
     changeBackground();
-    form.style.display = 'none';
+    addMedicineForm.style.display = 'none';
     addRecord.style.display = 'block';
     addRecord.reset();
     addOutRecord.style.display = 'none';
 });
-// Get the Add Out Record Form
+// Get Add Out Record Form
 addOutRecordBtn.addEventListener('click', (e) => {
     changeBackground();
-    form.style.display = 'none';
+    addMedicineForm.style.display = 'none';
     addRecord.style.display = 'none';
     addOutRecord.style.display = 'block';
     addOutRecord.reset();
 });
-// Print The Table When for is submited
+// Print The Add Record Table
 function makeAddRecordTable() {
-    recordTable.innerHTML = "";
-    recordTable.innerHTML += `
-    <caption>Record Table</caption>
-    <tr>
-        <th>Medicine Name</th>
-        <th>Quantity</th>
-        <th>Batch Name</th>
-        <th>Quantity</th>
-        <th>Selected Item</th>
-    </tr>`;
-
-    allRecords.forEach(ele => {
+    if (addRecordArray.length != 0) {
+        recordTable.innerHTML = "";
         recordTable.innerHTML += `
-        <tr>
-            <td>${ele.medicineName}</td>
-            <td>${ele.pack}</td>
-            <td>${ele.batch}</td>
-            <td>${ele.quantity}</td>
-            <td>${ele.selectedItem}</td>
-        </tr>
+        <caption>Record Table</caption>
+        <thead>
+            <tr>
+                <th>Medicine Name</th>
+                <th>Quantity</th>
+                <th>Batch Name</th>
+                <th>Quantity</th>
+                <th>Selected Item</th>
+            </tr>
+        </thead>`;
+        let a = document.createElement('tbody');
+        addRecordArray.forEach(ele => {
+            a.innerHTML += `
+            <tr id ="addRecord-${ele.id}">
+                <td>${ele.medicineName}</td>
+                <td>${ele.pack}</td>
+                <td>${ele.batch}</td>
+                <td>${ele.quantity}</td>
+                <td>${ele.selectedItem}</td>
+            </tr>
         `;
-    });
+        });
+        recordTable.appendChild(a);
+    }
+}
+// Print Out Record Table
+function makeOutRecordTable() {
+    if (outRecordArray.length != 0) {
+        recordOutTable.innerHTML = "";
+        recordOutTable.innerHTML += `
+        <caption>Out Record Table</caption>
+        <thead>
+            <tr>
+                <th>Medicine Name</th>
+                <th>Removed Quantity</th>
+                <th>Selected Item</th>
+            </tr>
+        </thead>`;
+        let a = document.createElement('tbody');
+        outRecordArray.forEach(ele => {
+            a.innerHTML += `
+            <tr id ="out-${ele.id}">
+                <td>${ele.medicineName}</td>
+                <td>${ele.quantity}</td>
+                <td>${ele.selectedItem}</td>
+            </tr>
+        `;
+        });
+        recordOutTable.appendChild(a);
+    }
 }
 // Add Record submit event
+let setIdInAddRecord = 0;
+let clicked = false;
 addRecord.addEventListener('submit', (e) => {
     e.preventDefault();
     let a = allData.findIndex(ele => ele.medicineName == e.target.searchMedicine.value.trim().slice(0, e.target.searchMedicine.value.indexOf("|") - 1));
-    let b = allRecords.findIndex(value => value.medicineName == allData[a].medicineName);
-    if (failed1.style.display == "none" && b == -1) {
-        if (clicked) {
-            allRecords.push({
-                medicineName: allData[a].medicineName,
-                pack: allData[a].pack,
-                batch: allData[a].batchName,
-                quantity: e.target.quantity.value,
-                selectedItem: e.target.select1.value
-            });
-            makeAddRecordTable();
-            addRecord.reset();
-            normalBackground();
-            clicked = false;
+    let b = addRecordArray.findIndex(value => value.medicineName == allData[a].medicineName);
+    if (b != -1) {
+        addRecordArray[b].quantity += Number(e.target.quantity.value);
+        makeAddRecordTable();
+        normalBackground();
+        clicked = false;
+    } else if (failed1.style.display == "none") {
+        if (e.target.select1.value != "") {
+            document.getElementById('selectRed1').style.display = "none";
+            if (clicked) {
+                if (e.target.quantity.value != "") {
+                    document.getElementById('quantityRed').style.display = "none";
+                    setIdInAddRecord++;
+                    addRecordArray.push({
+                        id: setIdInAddRecord,
+                        medicineName: allData[a].medicineName,
+                        pack: allData[a].pack,
+                        batch: allData[a].batchName,
+                        // quantity: Number(e.target.quantity.value) + allData[a].quantity,
+                        quantity: Number(e.target.quantity.value),      // Doubt
+                        selectedItem: e.target.select1.value
+                    });
+                    makeAddRecordTable();
+                    normalBackground();
+                    clicked = false;
+                } else {
+                    document.getElementById('quantityRed').style.display = "block";
+                }
+            } else {
+                alert("You can not select Value From Suggestion");
+            }
         } else {
-            alert("You can not select Value From Suggestion")
+            document.getElementById('selectRed1').style.display = "block";
         }
-    } else {
+    }
+    else {
         alert("Invalid Medicine Name");
     }
 });
-// Input event when we search for the medicine
+// Give suggestions when we type in input box for add record table
 addRecord.elements.searchMedicine.addEventListener('input', (e) => {
     suggestion.innerHTML = "";
     if (allData.length == 0 && e.target.value.trim() != "") {
         failed1.style.display = "block";
     } else if (e.target.value.trim() == "") {
+        clicked = false;
         failed1.style.display = "none";
     } else if (e.target.value.trim() != "") {
         allData.forEach(ele => {
@@ -349,10 +422,13 @@ addRecord.elements.searchMedicine.addEventListener('input', (e) => {
                 });
                 suggestion.appendChild(newEle);
             } else {
+                // clicked = false;
                 suggestion.style.display = "none";
                 failed1.style.display = "block";
             }
         });
+    } else {
+        clicked = false;
     }
 });
 // Check (|) index is -1 or not
@@ -364,25 +440,42 @@ function indexOfSlesh(e) {
         return a;
     }
 }
+
 // Add Out Record button submit event
 addOutRecord.addEventListener('submit', (e) => {
     e.preventDefault();
-    let a = allRecords.findIndex(ele => ele.medicineName == e.target.searchRecordsAOR.value);
-    if (e.target.searchRecordsAOR.value.trim() != "" && a != -1) {
+    let a = addRecordArray.findIndex(ele => ele.medicineName == e.target.searchRecordsAOR.value.toLowerCase().trim());
+    let b = outRecordArray.findIndex(ele => ele.medicineName == e.target.searchRecordsAOR.value.toLowerCase().trim());
+    if (b != -1) {
+        addRecordArray[a].quantity = addRecordArray[a].quantity - Number(e.target.quantity.value);
+        outRecordArray[b].quantity += Number(e.target.quantity.value);
+        makeOutRecordTable();
+        makeAddRecordTable();
+        normalBackground();
+    } else if (e.target.searchRecordsAOR.value.trim() != "") {
         document.getElementById('failed2').style.display = "none";
-        if (e.target.quantity.value <= Number(allRecords[a].quantity)) {
-            document.getElementById('foQuantity').style.display = 'none';
-            allRecords[a].quantity = allRecords[a].quantity - Number(e.target.quantity.value);
-            allRecords[a].selectedItem = e.target.select2.value;
-            makeAddRecordTable();
-            normalBackground();
+        if (e.target.select2.value != "") {
+            document.getElementById('selectRed2').style.display = "none";
+            if (e.target.quantity.value <= Number(addRecordArray[a].quantity) && e.target.quantity.value != "") {
+                document.getElementById('foQuantity').style.display = 'none';
+                addRecordArray[a].quantity = addRecordArray[a].quantity - Number(e.target.quantity.value);
+                // addRecordArray[a].selectedItem = e.target.select2.value;
+                outRecordArray.push(
+                    {
+                        medicineName: addRecordArray[a].medicineName,
+                        quantity: Number(e.target.quantity.value),
+                        selectedItem: e.target.select2.value,
+                    }
+                )
+                makeOutRecordTable();
+                makeAddRecordTable();
+                normalBackground();
+            } else {
+                document.getElementById('foQuantity').style.display = 'block';
+            }
         } else {
-            document.getElementById('foQuantity').style.display = 'block';
+            document.getElementById('selectRed2').style.display = "block";
         }
-        // if (checkQuantity(e.target.quantity)) {
-        //     allRecords[a].quantity = allRecords[a].quantity - Number(e.target.quantity.value);
-        //     makeAddRecordTable();
-        // }
     } else {
         document.getElementById('failed2').style.display = "block";
     }
@@ -391,54 +484,40 @@ addOutRecord.addEventListener('submit', (e) => {
 function blockRed() {
     red.forEach(ele => ele.style.display = "none");
 }
-
+// For display none of the suggestions when we focus out the input field
 document.addEventListener('click', (e) => {
-    if (e.target.id == suggestion) {
+    if (e.target.id == suggestion && e.target.id == suggestionInOutRecord) {
         suggestion.style.display = "block";
+        suggestionInOutRecord.style.display = "block";
     } else {
         suggestion.style.display = "none";
+        suggestionInOutRecord.style.display = "none";
     }
 });
 
-function deleteMedicine(e) {
-    let a = confirm("Are You Sure To Delete Data?");
-    let row = e.parentElement.parentElement;
-    if (a) {
-        // row.remove();
-        showNotification("Medicine Delete");
-        let b = allData.findIndex(ele => ele.medicineName == row.children[0].medicineName);
-        let c = allRecords.findIndex(ele => ele.medicineName == allData[b].medicineName);
-        allRecords.splice((c - 1), 1);
-        allData.splice((b - 1), 1);
-        makeAddMedicineTable();
-        makeAddRecordTable();
+// Give suggestions when we type in input box for out record table
+addOutRecord.elements.searchRecordsAOR.addEventListener('input', (e) => {
+    suggestionInOutRecord.innerHTML = "";
+    if (addRecordArray.length == 0 && e.target.value.trim() != "") {
+        failed2.style.display = "block";
+    } else if (e.target.value.trim() == "") {
+        failed2.style.display = "none";
+    } else if (e.target.value.trim() != "") {
+        addRecordArray.forEach(ele => {
+            if (ele.medicineName.toLowerCase().includes(e.target.value.toLowerCase().trim().slice(0, indexOfSlesh(e)).trim())) {
+                suggestionInOutRecord.style.display = "block";
+                failed2.style.display = "none";
+                let newEle = document.createElement('p');
+                newEle.innerText = ele.medicineName;
+                newEle.addEventListener("click", function () {
+                    e.target.value = ele.medicineName;
+                    suggestionInOutRecord.style.display = "none";
+                });
+                suggestionInOutRecord.appendChild(newEle);
+            } else {
+                suggestionInOutRecord.style.display = "none";
+                failed2.style.display = "block";
+            }
+        });
     }
-}
-
-// addRecord.elements.searchMedicine.addEventListener('blur', () => {
-//     let value = false;
-//     function checkClick() {
-//         suggestion.style.display = "block";
-//         value = true;
-//     }
-//     suggestion.addEventListener('click', checkClick);
-//     if (value) {
-//         suggestion.style.display = "none";
-//     } else {
-//         suggestion.style.display = "block";
-//     }
-// });
-// addOutRecord.elements.quantity.addEventListener('input', (e) => {
-//     checkQuantity(e.target);
-// });
-
-// function checkQuantity(e) {
-//     let a = allRecords.findIndex(ele => ele.medicineName == addOutRecord.elements.searchRecordsAOR.value);
-//     if (e.value <= Number(allRecords[a].quantity)) {
-//         document.getElementById('foQuantity').style.display = 'none';
-//         return true;
-//     } else {
-//         document.getElementById('foQuantity').style.display = 'block';
-//         return false;
-//     }
-// }
+});

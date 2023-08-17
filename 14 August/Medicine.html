@@ -17,7 +17,7 @@
     </div>
 
     <!-- Add Medicine Form -->
-    <form action="" id="form">
+    <form action="" id="addMedicineForm">
         <div class="padding">
             <div class="medicine">
                 <label for="medicine-text">Medicine:-</label>
@@ -72,18 +72,18 @@
             </div>
             <div class="search">
                 <label for="select1">select:-</label>
-                <select name="select1" id="" class="inputFullWidth" required>
+                <select name="select1" id="" class="inputFullWidth">
                     <option value="">Please Select</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                 </select>
-                <p class="red">Failed required</p>
+                <p class="red" id="selectRed1">Failed required</p>
             </div>
             <div class="search">
                 <label for="quantity">Quantity:-</label>
-                <input type="number" name="quantity" class="inputFullWidth" required>
-                <p class="red">Failed required</p>
+                <input type="number" name="quantity" class="inputFullWidth">
+                <p class="red" id="quantityRed">Failed required</p>
             </div>
             <button type="submit">Add Record</button>
         </div>
@@ -94,23 +94,24 @@
         <div class="padding">
             <div class="search">
                 <label for="searchRecordsAOR">Search:-</label>
-                <input type="text" name="searchRecordsAOR" class="inputFullWidth" required>
+                <input type="text" name="searchRecordsAOR" class="inputFullWidth">
                 <p class="red" id="failed2">Failed required</p>
+                <div id="suggestionInOutRecord" class="add"></div>
                 <div id="closeAddOutRecord" class="closeBtn forTwoForm">×</div>
             </div>
             <div class="search">
                 <label for="select2">select:-</label>
-                <select name="select2" id="" class="inputFullWidth" required>
+                <select name="select2" id="" class="inputFullWidth">
                     <option value="">Please Select</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                 </select>
-                <p class="red">Failed required</p>
+                <p class="red" id="selectRed2">Failed required</p>
             </div>
             <div class="search">
                 <label for="quantity">Quantity:-</label>
-                <input type="number" name="quantity" class="inputFullWidth" required>
+                <input type="number" name="quantity" class="inputFullWidth">
                 <p class="red" id="foQuantity">Failed required</p>
             </div>
             <button type="submit">Add Out Record</button>
@@ -124,6 +125,10 @@
 
     <!-- Record Table -->
     <table id="recordTable">
+    </table>
+
+    <!-- Record Out Table -->
+    <table id="recordOutTable">
     </table>
 
     <div class="notification" id="noti"></div>
