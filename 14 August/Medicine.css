@@ -111,10 +111,9 @@ table tr td button {
 }
 
 .notification {
-    position: absolute;
+    position: fixed;
     right: 20px;
     bottom: 20px;
-    margin-bottom: 10px;
 }
 
 .notification p {
@@ -124,6 +123,7 @@ table tr td button {
     padding: 10px;
     background-color: rgb(0, 128, 255);
     border-radius: 5px;
+    margin-bottom: 10px;
 }
 
 .closeBtn {
@@ -171,20 +171,20 @@ table tr td button {
     cursor: pointer;
 }
 
-table caption{
+table caption {
     font-size: 35px;
     font-weight: bold;
     margin-block: 10px 20px;
 }
 
-.button{
+.button {
     cursor: pointer;
 }
 
-.block{
+.block {
     display: block;
 }
 
-.none{
+.none {
     display: none;
 }
