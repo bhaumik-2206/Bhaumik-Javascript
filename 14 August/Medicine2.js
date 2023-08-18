@@ -8,6 +8,7 @@ let failed1 = document.getElementById('failed1');
 let suggestionInOutRecord = document.getElementById('suggestionInOutRecord');
 let failed2 = document.getElementById('failed2');
 let selectedRow = null;
+let clicked = false;
 let allData = [];
 let addRecordArray = [];
 let outRecordArray = [];
@@ -257,7 +258,6 @@ function updateRows(value) {
 }
 
 //----------------------------------------------------------------
-let clicked = false;
 // Get Add Record Form
 document.getElementById('addRecordBtn').addEventListener('click', (e) => {
     changeBackground();
@@ -282,6 +282,7 @@ function makeAddRecordTable() {
         <thead>
             <tr>
                 <th>Medicine Name</th>
+                <th>Date</th>
                 <th>Quantity</th>
                 <th>Batch Name</th>
                 <th>Quantity</th>
@@ -292,6 +293,7 @@ function makeAddRecordTable() {
         addRecordArray.forEach(ele => {
             a.innerHTML += `<tr id ="addRecord-${ele.id}">
                 <td>${ele.medicineName}</td>
+                <td>${ele.date}</td>
                 <td>${ele.pack}</td>
                 <td>${ele.batch}</td>
                 <td>${ele.quantity}</td>
@@ -342,7 +344,7 @@ addRecord.addEventListener('submit', (e) => {
         return;
     }
     if (!clicked) {
-        alert("You can not select Value From Suggestion");
+        showNotification("Please Select The Value From Suggesstion");
         return;
     }
     let a = allData.findIndex(ele => ele.medicineName == e.target.searchMedicine.value.trim().slice(0, e.target.searchMedicine.value.indexOf("|") - 1));
@@ -352,6 +354,7 @@ addRecord.addEventListener('submit', (e) => {
         addRecordArray.push(
             {
                 id: `addRecord-${setIdInAddRecord}`,
+                date: `${new Date().getDate()}-${new Date().getMonth() + 1}-${new Date().getFullYear()}`,
                 medicineName: allData[a].medicineName,
                 pack: allData[a].pack,
                 batch: allData[a].batchName,
@@ -368,6 +371,7 @@ addRecord.addEventListener('submit', (e) => {
         setData("additionalData", additionArray);
         setData("recordId", setIdInAddRecord);
     } else {
+        showNotification(`There are only ${allData[a].quantity} Quantity`)
         document.getElementById('quantityRed').style.display = "block";
     }
 });
@@ -375,7 +379,7 @@ addRecord.addEventListener('submit', (e) => {
 function indexOfSlesh(e) {
     let a = e.target.value.indexOf("|");
     if (a == -1) {
-        return e.target.value.length;
+        return;
     } else {
         return a;
     }
@@ -394,6 +398,10 @@ addOutRecord.addEventListener('submit', (e) => {
     }
     if (e.target.select2.value == "") {
         document.getElementById('selectRed2').style.display = "block";
+        return;
+    }
+    if (!clicked) {
+        showNotification("Please Select The Value From Suggesstion");
         return;
     }
     if (e.target.quantity.value <= Number(additionArray[a].quantity) && e.target.quantity.value != "" && e.target.quantity.value > 0) {
@@ -447,12 +455,11 @@ function giveSuggestion(e, suggestion, allData, failed1) {
                 failed1.style.display = "none";
                 let newEle = document.createElement('p');
                 newEle.innerText = ele.medicineName;
-                newEle.addEventListener("click", function () {
+                newEle.addEventListener("click", () => {
                     if (ele.id.startsWith("addMedicine")) {
                         e.target.value = ele.medicineName + " | " + ele.pack + " | " + ele.batchName;
                         addRecord.elements.quantity.value = ele.quantity;
                     } else if (ele.id.startsWith("addRecord")) {
-                        console.log(ele);
                         e.target.value = ele.medicineName;
                     }
                     suggestion.style.display = "none";
@@ -511,15 +518,16 @@ function addButtonClass() {
         ele.disabled = false;
     });
 }
-
+// Set the data in local storage with stored name name and stored value
 function setData(setName, arrName) {
     localStorage.setItem(setName, JSON.stringify(arrName));
 }
+// Get the data in local storage with stored name
 function getData(setName) {
     const storedData = localStorage.getItem(setName);
     return JSON.parse(storedData);
 }
-document.querySelectorAll('.add').forEach(ele => ele.classList.add('none'));
+document.querySelectorAll('.add').forEach(ele => ele.classList.add('none'));        // Display None all failed required which is block when any field is missing or wrong
 // Give suggestions when we type in input box for add record table
 // addRecord.elements.searchMedicine.addEventListener('input', (e) => {
 //     clicked = false;
