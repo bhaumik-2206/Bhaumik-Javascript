@@ -31,7 +31,7 @@ form {
     width: 50%;
     border-radius: 10px;
     position: absolute;
-    display: none;
+    /* display: none; */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -114,6 +114,7 @@ table tr td button {
     position: absolute;
     right: 20px;
     bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .notification p {
@@ -146,8 +147,6 @@ table tr td button {
 
 .red {
     color: red;
-    padding-top: 10px;
-    display: none;
 }
 
 .search {
@@ -161,7 +160,7 @@ table tr td button {
     border: 1px solid black;
     z-index: 2;
     background-color: white;
-    display: none;
+    /* display: none; */
     border-bottom: none;
 }
 
