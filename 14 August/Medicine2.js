@@ -241,8 +241,8 @@ function editMedicine(e) {
         addMedicineForm.elements.newDate.value = allData[a].selectedDate;
         addMedicineForm.elements.allDays.value = 0;
     }
-    byDate.addEventListener("click", () => addMedicineForm.elements.newDate.value = allData[a].expiryDate);
-    byDays.addEventListener("click", () => addMedicineForm.elements.newDate.value = allData[a].selectedDate);
+    // byDate.addEventListener("click", () => addMedicineForm.elements.newDate.value = allData[a].expiryDate);
+    // byDays.addEventListener("click", () => addMedicineForm.elements.newDate.value = allData[a].selectedDate);
     addMedicineForm.elements.batchName.value = allData[a].batchName;
 }
 // Update the medicine when user edit the medicine
