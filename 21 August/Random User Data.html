@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random User Data</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: rgb(119, 119, 119);
+            color: white;
+        }
+
+        #myBtn {
+            padding: 20px 40px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            color: white;
+            background-color: black;
+            border: none;
+            margin: 10px;
+            border-radius: 40px;
+        }
+
+        #myBtn:hover {
+            background-color: rgb(42, 42, 42);
+        }
+
+        #randomData {
+            width: 100%;
+            text-align: center;
+        }
+
+        #randomData>* {
+            margin-bottom: 10px;
+        }
+
+        #randomData img {
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <center>
+        <button id="myBtn">CLICK ME</button>
+    </center>
+
+    <div id="randomData">
+
+    </div>
+
+
+    <script>
+
+        async function getRandomUserData() {
+            document.getElementById('randomData').innerHTML = "";
+            try {
+                let a = await fetch('https://randomuser.me/api/');      // Get random user data
+                let b = await a.json();
+                console.log(b.results);
+                document.getElementById('randomData').innerHTML += `
+                    <h1>Name:- ${b.results[0].name.title}. ${b.results[0].name.first} ${b.results[0].name.last}</h1>
+                    <h2>Email:- ${b.results[0].email}</h2>
+                    <h2>Age:- ${b.results[0].dob.age}</h2>
+                    <img src="${b.results[0].picture.large}">
+                `;
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        document.getElementById('myBtn').addEventListener('click', getRandomUserData);
+
+    </script>
+</body>
+
+</html>

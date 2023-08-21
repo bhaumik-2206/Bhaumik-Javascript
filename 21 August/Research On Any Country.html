@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research On Any Country</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <style>
+    </style> -->
+</head>
+
+<body>
+
+    <h1>Research On Any Country</h1>
+    <form action="" id="form">
+        <div class="search" id="search">
+            <label for="change">Search:-</label>
+            <input type="text" id="change" name="searchForCountry" class="searchForCountry">
+            <div id="suggestion" class="add"></div>
+        </div>
+        <button type="submit">Search</button>
+    </form>
+
+    <div id="country">
+
+    </div>
+
+    <script>
+
+        let array = [];
+        async function addingInArray() {
+            let a = await fetch("https://restcountries.com/v3.1/all");
+            let b = await a.json();
+            b.forEach(ele => {
+                array.push(ele.name.common);
+            });
+        }
+        addingInArray();
+
+        async function giveSuggestion(value) {
+            clicked = false;
+            document.getElementById('suggestion').innerHTML = "";
+            if (value != "") {
+                array.forEach(ele => {
+                    if (ele.toLowerCase().includes(value)) {
+                        document.getElementById('suggestion').style.display = "block";
+                        let newEle = document.createElement('p');
+                        newEle.innerText = ele;
+                        newEle.addEventListener("click", () => {
+                            document.getElementById("form").elements.searchForCountry.value = ele;
+                            suggestion.style.display = "none";
+                            clicked = true;
+                        });
+                        document.getElementById('suggestion').appendChild(newEle);
+                    }
+                });
+            }
+        }
+
+        document.getElementById('form').elements.searchForCountry.addEventListener('input', (e) => {
+            giveSuggestion(e.target.value.toLowerCase().trim());
+        });
+
+        document.getElementById('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (clicked) {
+                getData(e.target.searchForCountry.value.trim());
+            } else {
+                alert("Please Click on the suggestion")
+            }
+        });
+
+        async function getData(value) {
+            let fetchRequest = await fetch("https://restcountries.com/v3.1/all");
+            let country = await fetchRequest.json();
+            let index = country.findIndex(countryName => countryName.name.common == value);
+            console.log(country[index]);
+            document.getElementById('country').style.display = "block";
+            document.getElementById('country').innerHTML = `
+            <h1>Flag:-</h1>
+            <img src="${country[index].flags.png}"><br>
+            <h4>Capital Of ${value} is <span> ${country[index].capital.join(",")} </span></h4>
+            <h1>Languages:-</h1>
+            <ul>
+                ${getLanguages(country, index)}
+            </ul>
+            <a href="${country[index].maps.googleMaps}" target="_blank">Find In Google Map</a>
+            <p>Population of ${value} is <span> ${country[index].population} </span></p>
+            `;
+        }
+        function getLanguages(country, index) {
+            let a = "";
+            for (const key in country[index].languages) {
+                a += `<li>- ${country[index].languages[key]}</li>`;
+            }
+            return a;
+        }
+
+
+    </script>
+</body>
+
+</html>

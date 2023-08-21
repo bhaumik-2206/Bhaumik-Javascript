@@ -30,11 +30,12 @@
 
         .search {
             position: relative;
-            width: 50%;
         }
 
         .search input {
             width: -webkit-fill-available;
+            border-radius: 10px;
+            border: none;
         }
 
         .add {
@@ -46,8 +47,8 @@
             background-color: white;
             display: none;
             border-bottom: none;
-            height: 200px;
-            overflow: scroll;
+            max-height: 200px;
+            overflow-y: scroll;
         }
 
         .add>* {
@@ -56,12 +57,48 @@
             border-bottom: 1px solid black;
             cursor: pointer;
             margin: 0;
+            color: black;
+            text-align: left;
+        }
+
+        form button {
+            padding: 10px 20px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            color: white;
+            background-color: black;
+            border: none;
+            margin: 10px;
+            border-radius: 20px;
+        }
+
+        form button:hover {
+            background-color: rgb(42, 42, 42);
+        }
+
+        form {
+            width: 100%;
+            margin-inline: auto;
+            text-align: center;
+        }
+
+        .findDateTime {
+            background-color: rgb(0, 79, 0);
+            color: white;
+            text-align: center;
+            width: 50%;
+            margin-inline: auto;
+            padding: 2rem;
+            margin-block: 1rem;
+            border-radius: 20px;
         }
     </style>
 </head>
 
 <body>
 
+    <!-- Print the table with API's data -->
     <table>
         <thead>
             <tr>
@@ -77,14 +114,23 @@
         </tbody>
     </table>
 
-    <form action="">
-        <input type="text" id="input">
-        <div class="search" id="search">
-            <label for="change">Search:-</label>
-            <input type="text" id="change" name="searchMedicine" class="searchForCountry">
-            <div id="suggestion" class="add"></div>
+    <!-- <input type="text" id="input"> -->
+
+    <!-- Find Date and Time for specific place in world -->
+    <div class="findDateTime">
+        <form action="" id="form">
+            <div class="search" id="search">
+                <label for="change">Search:-</label>
+                <input type="text" id="change" name="searchForCountry" class="searchForCountry">
+                <div id="suggestion" class="add"></div>
+            </div>
+            <button type="submit">Search</button>
+        </form>
+
+        <div class="dateTime">
         </div>
-    </form>
+    </div>
+
 
 
     <script>
@@ -153,7 +199,6 @@
         // Fetch return a promise
         // Fetch reject when network error is occured
         // We want to take data from network or upload the data to network we use fetch API
-        // https://api.github.com/users/hiteshchoudhary
 
         // async function fetchAPI() {
         //     let a = await fetch('https://worldtimeapi.org/api/timezone/america/new_york');
@@ -204,38 +249,32 @@
         makeTableOfData();
 
 
-        async function getDataOfUserInput(value) {
-            try {
-                let a = await fetch('https://api.publicapis.org/entries');
-                let b = await a.json();
-                let matches = b.entries.filter(ele => {
-                    if (ele.Category.toLowerCase().trim().includes(value.toLowerCase().trim())) {
-                        return ele;
-                    }
-                });
-                console.log(matches);
-            } catch (error) {
-                console.log(error);
-            }
-        }
+        // async function getDataOfUserInput(value) {
+        //     try {
+        //         let a = await fetch('https://api.publicapis.org/entries');
+        //         let b = await a.json();
+        //         let matches = b.entries.filter(ele => {
+        //             if (ele.Category.toLowerCase().trim().includes(value.toLowerCase().trim())) {
+        //                 return ele;
+        //             }
+        //         });
+        //         console.log(matches);
+        //     } catch (error) {
+        //         console.log(error);
+        //     }
+        // }
         // document.querySelector('form').addEventListener('submit', (e) => {
         //     e.preventDefault();
         //     getDataOfUserInput(document.getElementById('input').value);
         // });
 
-        // async function getRandomUserData() {
-        //     try {
-        //         let a = await fetch('https://randomuser.me/api/');      // Get random user data
-        //         let b = await a.json();
-        //         console.log(`${b.results[0].name.title}. ${b.results[0].name.first} ${b.results[0].name.last}`);
-        //         console.log(b);
-        //     } catch (error) {
-        //         console.log(error)
-        //     }
-        // }
-        // getRandomUserData();
 
+        // Find Date and Time for specific place in world
+
+        let clicked = false;
         async function fetchAPI(value) {
+            clicked = false;
+            document.querySelector('.dateTime').innerHTML = ""
             document.getElementById('suggestion').innerHTML = "";
             let a = await fetch('https://worldtimeapi.org/api/timezone/');
             let b = await a.json();
@@ -245,6 +284,11 @@
                         document.getElementById('suggestion').style.display = "block";
                         let newEle = document.createElement('p');
                         newEle.innerText = ele;
+                        newEle.addEventListener("click", () => {
+                            document.getElementById("form").elements.searchForCountry.value = ele;
+                            suggestion.style.display = "none";
+                            clicked = true;
+                        });
                         document.getElementById('suggestion').appendChild(newEle);
                     }
                 });
@@ -253,13 +297,43 @@
         document.querySelector('.searchForCountry').addEventListener('input', (e) => {
             fetchAPI(e.target.value.toLowerCase());
         });
+        document.getElementById("form").addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (clicked) {
+                getData(e.target.searchForCountry.value);
+            } else {
+                alert("Please Click on the suggestion")
+            }
+        });
+        async function getData(value) {
+            let a = await fetch(`https://worldtimeapi.org/api/timezone/${value}`);
+            let b = await a.json();
+            // console.log(b);
+            document.querySelector('.dateTime').innerHTML = `
+            <h2>Date:- <span>${new Date(b.datetime).getDate()}-${new Date(b.datetime).getMonth()}-${new Date(b.datetime).getFullYear()}</span></h2>
+            <h2>Time:- <span>${new Date(b.datetime).getHours()}:${new Date(b.datetime).getMinutes()}:${new Date(b.datetime).getSeconds()}</span></h2>
+            `;
+        }
 
 
+
+
+
+
+
+        // async function myFunc() {
+        //     let a = await fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita%");
+        //     let b = await a.json();
+        //     console.log(b);
+        // }
+        // myFunc();
+        
 
         // Random User Data :- https://randomuser.me/api/
         // https://api.publicapis.org/entries
         // https://jsonplaceholder.typicode.com/users
-        // 
+        // https://www.boredapi.com/api/activity
+        // https://restcountries.com/v3.1/all
     </script>
 </body>
 
