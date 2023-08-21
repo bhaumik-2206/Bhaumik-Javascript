@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find University In World</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        td,
+        th {
+            border: 2px solid black;
+            text-align: center;
+            padding: 5px;
+            font-size: 20px;
+        }
+
+        form {
+            text-align: center;
+            padding-bottom: 2rem;
+        }
+
+        form input {
+            padding: 10px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>
+        <center>Enter a Country Name</center>
+    </h2>
+    <form action="">
+        <input type="text" name="input">
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>SR NO.</th>
+                <th>Country Name</th>
+                <th>University Name</th>
+                <th>Website Name</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <script>
+        async function getUniversityName(value) {
+            let num = 0;
+            document.querySelector('tbody').innerHTML = "";
+            try {
+                let a = await fetch('http://universities.hipolabs.com/search?country');
+                let b = await a.json();
+                for (const ele of b) {
+                    if (num === 100) {
+                        break;
+                    } else if (ele.country.toLowerCase().includes(value)) {
+                        document.querySelector('tbody').innerHTML += `
+                        <tr>
+                            <td>${++num}</td>
+                            <td>${ele.country}</td>
+                            <td>${ele.name}</td>
+                            <td><a href="${ele.web_pages[0]}">${ele.web_pages[0]}</a></td>
+                        </tr>
+                        `;
+                    }
+                }
+                if(num == 0){
+                    alert("Invalid Country Name");
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            getUniversityName(e.target.input.value.toLowerCase().trim());
+            e.target.input.value = "";
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        // async function myFunc1() {
+        //     setTimeout(() => {
+        //         console.log("object");
+        //     }, 2000);
+        // }
+        // async function myFunc2() {
+        //     console.log("Inside 2");
+        //     let a = await myFunc1();
+        //     console.log("HELLO");
+        // }
+        // myFunc2();
+
+        // let myFunc1 = new Promise((resolve, reject) => {
+        //     setTimeout(() => {
+        //         console.log("Inside 1");
+        //         resolve("Hii");
+        //     }, 2000);
+        // });
+        // async function myFunc2() {
+        //     console.log("Inside 2");
+        //     let a = await myFunc1();
+        //     console.log("HELLO");
+        // }
+        // myFunc2();
+
+        // function myFunc1() {
+        //     return new Promise((resolve, reject) => {
+        //         console.log("First function");
+        //     });
+        // }
+        // async function myFunc2() {
+        //     console.log("Inside 2");
+        //     let a = await myFunc1();             // Here the function is waiting for the promise to resolve or reject promise is not resolve or reject so next console.log not printed
+        //     console.log("HELLO");
+        // }
+        // myFunc2();
+
+        // function myFunc1() {
+        //     return new Promise((resolve, reject) => {
+        //         console.log("First function");
+        //         resolve();
+        //     });
+        // }
+        // async function myFunc2() {
+        //     console.log("Inside 2");
+        //     let a = await myFunc1();     // Here, promise is resolved so next console.log is printed
+        //     console.log("HELLO");
+        // }
+        // myFunc2();
+
+        // async function myFunc1() {
+        //     await new Promise((resolve, reject) => {
+        //         resolve("Resolved");
+        //     });
+        // }
+        // async function myFunc2() {
+        //     console.log("Inside 2");
+        //     let a = await myFunc1();
+        //     console.log("HELLO");
+        // }
+        // myFunc2();
+
+        // async function foo() {
+        //     return Promise.resolve('foo');
+        // }
+        // async function bar() {
+        //     return 'bar';
+        // }
+        // (async function () {
+        //     let result1 = await foo();
+        //     let result2 = await bar();
+        //     console.log(result1, result2);
+        // })();
+
+        // async function fetchUserData(id) {
+        //     return new Promise((resolve, reject) => {
+        //         setTimeout(() => {
+        //             resolve(`User ${id}`);
+        //         }, 1000);
+        //     });
+        // }
+        // async function myLastFunction () {
+        //     let array = [1, 2, 3];
+        //     let promiseArray = array.map(ele => fetchUserData(ele));
+        //     console.log(promiseArray);
+        //     let users = await Promise.all(promiseArray);
+        //     console.log(users);
+        // };
+        // myLastFunction();
+
+        // async function foo1() {
+        //     let a = await new Promise(function (resolve, reject) {
+        //         resolve("Resolved");
+        //     });
+        //     console.log(a, "First");
+        //     return a;
+        // }
+        // async function foo2(foo1) {
+        //     let a = await foo1();
+        //     console.log("object 1");
+        //     console.log(a);
+        // }
+        // foo2(foo1);
+
+        // async function foo1() {
+        //     let a = new Promise(function (resolve, reject) {
+        //         resolve("Resolved");
+        //     });
+        //     console.log(a, "First");
+        //     return a;
+        // }
+        // async function foo2(foo1) {
+        //     let a = await foo1();
+        //     console.log("object 1");
+        //     console.log(a);
+        // }
+        // foo2(foo1);
+
+        // async function foo1() {
+        //     let a = await new Promise(function (resolve, reject) {
+        //         resolve("Resolved");
+        //     });
+        //     console.log(a, "First");
+        //     return a;
+        // }
+        // async function foo2(foo1) {
+        //     let a = foo1();
+        //     console.log("object 1");
+        //     console.log(a);
+        // }
+        // foo2(foo1);
+
+        // async function foo1() {
+        //     let a = new Promise(function (resolve, reject) {
+        //         resolve("Resolved");
+        //     });
+        //     console.log(a, "First");
+        //     return a;
+        // }
+        // async function foo2(foo1) {
+        //     try {
+        //         let a = foo1();
+        //         console.log("object 1");
+        //         console.log(a);
+        //     } catch (error) {
+        //         console.log(error);
+        //     }
+        // }
+        // foo2(foo1);
+
+        // function myFunc1() {
+        //     return new Promise((resolve, reject) => {
+        //         console.log("First function");
+        //     });
+        // }
+        // async function myFunc2() {
+        //     try {
+        //         console.log("Inside 2");
+        //         let a = await myFunc1();
+        //         console.log("HELLO");
+        //     } catch (error) {
+        //         console.log("ERROR");
+        //     }
+        // }
+        // myFunc2();
+
+
+
+
+
+    </script>
+</body>
+
+</html>

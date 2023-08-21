@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        td,
+        th {
+            border: 2px solid black;
+            text-align: center;
+            padding: 5px;
+            font-size: 20px;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 20px;
+        }
+
+        label {
+            font-size: 20px;
+        }
+
+        .search {
+            position: relative;
+            width: 50%;
+        }
+
+        .search input {
+            width: -webkit-fill-available;
+        }
+
+        .add {
+            position: absolute;
+            top: 100%;
+            width: 100%;
+            border: 1px solid black;
+            z-index: 2;
+            background-color: white;
+            display: none;
+            border-bottom: none;
+            height: 200px;
+            overflow: scroll;
+        }
+
+        .add>* {
+            font-size: 20px;
+            padding: 10px 20px;
+            border-bottom: 1px solid black;
+            cursor: pointer;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Mobile Number</th>
+                <th>User Name</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <form action="">
+        <input type="text" id="input">
+        <div class="search" id="search">
+            <label for="change">Search:-</label>
+            <input type="text" id="change" name="searchMedicine" class="searchForCountry">
+            <div id="suggestion" class="add"></div>
+        </div>
+    </form>
+
+
+    <script>
+        // let promise1 = new Promise((resolve, reject) => {
+        //     setTimeout(() => {
+        //         console.log("Promise 1");
+        //         resolve("promise1 Resolved successfully ");
+        //     }, 1000);
+        // });
+        // let promise2 = new Promise((resolve, reject) => {
+        //     setTimeout(() => {
+        //         console.log("Promise 2");
+        //         resolve("promise2 Resolved successfully ");
+        //     }, 2000);
+        // });
+        // let promise3 = new Promise((resolve, reject) => {
+        //     setTimeout(() => {
+        //         console.log("Promise 3");
+        //         resolve("promise3 Resolved successfully ");
+        //     }, 3000);
+        // });
+        // Promise.all([promise1, promise2, promise3]).then((result) => console.log(`Result is ${result} `)).catch((error) => console.log("ERROR"));
+
+        // let promise1 = new Promise((resolve, reject) => {
+        //     setTimeout(() => {
+        //         console.log("Promise 1");
+        //         reject("promise1 Resolved successfully ");
+        //     }, 1000);
+        // });
+        // let promise2 = new Promise((resolve, reject) => {
+        //     setTimeout(() => {
+        //         console.log("Promise 2");
+        //         resolve("promise2 Resolved successfully ");
+        //     }, 2000);
+        // });
+        // let promise3 = new Promise((resolve, reject) => {
+        //     setTimeout(() => {
+        //         console.log("Promise 3");
+        //         reject("promise3 Resolved successfully ");
+        //     }, 3000);
+        // });
+        // Promise.allSettled([promise1, promise2, promise3]).then((result) => console.log(result)).catch((error) => console.log("ERROR"));
+
+        // let promise1 = new Promise((resolve, reject) => {
+        //     setTimeout(() => {
+        //         console.log("Promise 1");
+        //         reject("promise1 Resolved successfully ");
+        //     }, 1000);
+        // });
+        // let promise2 = new Promise((resolve, reject) => {
+        //     setTimeout(() => {
+        //         console.log("Promise 2");
+        //         resolve("promise2 Resolved successfully ");
+        //     }, 2000);
+        // });
+        // let promise3 = new Promise((resolve, reject) => {
+        //     setTimeout(() => {
+        //         console.log("Promise 3");
+        //         reject("promise3 Resolved successfully ");
+        //     }, 3000);
+        // });
+        // Promise.race([promise1, promise2, promise3]).then((result) => console.log(result)).catch((error) => console.log("ERROR"));
+
+
+        // Fetch :-
+        // Fetch return a promise
+        // Fetch reject when network error is occured
+        // We want to take data from network or upload the data to network we use fetch API
+        // https://api.github.com/users/hiteshchoudhary
+
+        // async function fetchAPI() {
+        //     let a = await fetch('https://worldtimeapi.org/api/timezone/america/new_york');
+        //     console.log(a);         // We get response from the API server
+        //     let b = await a.json();
+        //     console.log(b);
+        // }
+        // fetchAPI();
+
+        // let fetchAPI = fetch('https://worldtimeapi.org/api/timezone/america/new_york');
+        // fetchAPI
+        //     .then((res) => res.json())
+        //     .then((e) => console.log(e))
+        //     .catch((err) => console.log(err));
+
+        // let a = fetch('https://worldtimeapi.org/api/timezone/america/new_york');
+        // console.log(a);
+        // let b = a.json();           // We can not use directly because a (fetch) is return promise and we cannot use json() in promise we use this in async function and wait for the frtch response and then we convert it into json format
+        // console.log(b);
+
+        // async function fetchAPI() {
+        //     try {
+        //         let a = await fetch('https://worldtimeapi.org/api/timezone/america/new_york');
+        //         console.log(a);         // We get response from the API server
+        //         let b = await a.json();
+        //         console.log(b);
+        //     } catch (error) {
+        //         console.log(error)
+        //     }
+        // }
+        // fetchAPI();
+
+        async function makeTableOfData() {
+            let responce = await fetch('https://jsonplaceholder.typicode.com/users');
+            let b = await responce.json();
+            b.forEach(ele => {
+                document.querySelector('tbody').innerHTML += `
+                <tr>
+                    <td>${ele.id}</td>
+                    <td>${ele.name}</td>
+                    <td>${ele.email}</td>
+                    <td>${ele.phone}</td>
+                    <td>${ele.username}</td>
+                </tr>
+                `;
+            });
+        }
+        makeTableOfData();
+
+
+        async function getDataOfUserInput(value) {
+            try {
+                let a = await fetch('https://api.publicapis.org/entries');
+                let b = await a.json();
+                let matches = b.entries.filter(ele => {
+                    if (ele.Category.toLowerCase().trim().includes(value.toLowerCase().trim())) {
+                        return ele;
+                    }
+                });
+                console.log(matches);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        // document.querySelector('form').addEventListener('submit', (e) => {
+        //     e.preventDefault();
+        //     getDataOfUserInput(document.getElementById('input').value);
+        // });
+
+        // async function getRandomUserData() {
+        //     try {
+        //         let a = await fetch('https://randomuser.me/api/');      // Get random user data
+        //         let b = await a.json();
+        //         console.log(`${b.results[0].name.title}. ${b.results[0].name.first} ${b.results[0].name.last}`);
+        //         console.log(b);
+        //     } catch (error) {
+        //         console.log(error)
+        //     }
+        // }
+        // getRandomUserData();
+
+        async function fetchAPI(value) {
+            document.getElementById('suggestion').innerHTML = "";
+            let a = await fetch('https://worldtimeapi.org/api/timezone/');
+            let b = await a.json();
+            if (value != "") {
+                b.forEach(ele => {
+                    if (ele.toLowerCase().includes(value)) {
+                        document.getElementById('suggestion').style.display = "block";
+                        let newEle = document.createElement('p');
+                        newEle.innerText = ele;
+                        document.getElementById('suggestion').appendChild(newEle);
+                    }
+                });
+            }
+        }
+        document.querySelector('.searchForCountry').addEventListener('input', (e) => {
+            fetchAPI(e.target.value.toLowerCase());
+        });
+
+
+
+        // Random User Data :- https://randomuser.me/api/
+        // https://api.publicapis.org/entries
+        // https://jsonplaceholder.typicode.com/users
+        // 
+    </script>
+</body>
+
+</html>
