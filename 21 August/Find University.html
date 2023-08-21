@@ -32,6 +32,18 @@
             padding: 10px;
             font-size: 20px;
         }
+
+        form button {
+            padding: 10px 20px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            color: white;
+            background-color: black;
+            border: none;
+            margin: 10px;
+            border-radius: 20px;
+        }
     </style>
 </head>
 
@@ -42,6 +54,7 @@
     </h2>
     <form action="">
         <input type="text" name="input">
+        <button type="submit">Find University</button>
     </form>
 
     <table>
@@ -79,7 +92,7 @@
                         `;
                     }
                 }
-                if(num == 0){
+                if (num == 0) {
                     alert("Invalid Country Name");
                 }
             } catch (error) {

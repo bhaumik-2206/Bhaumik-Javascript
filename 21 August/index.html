@@ -4,8 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>21 August 2023</title>
     <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 5px;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
@@ -93,6 +103,32 @@
             margin-block: 1rem;
             border-radius: 20px;
         }
+
+        #bored {
+            width: 50%;
+            padding: 20px;
+            margin-inline: auto;
+            text-align: center;
+            background-color: lightcoral;
+            border-radius: 20px;
+        }
+
+        #bored button {
+            padding: 10px 20px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            color: white;
+            background-color: black;
+            border: none;
+            margin: 10px;
+            border-radius: 20px;
+        }
+
+        #activity {
+            margin-block: 10px;
+            color: red;
+        }
     </style>
 </head>
 
@@ -131,6 +167,12 @@
         </div>
     </div>
 
+    <div id="bored">
+        <h1 id="type"></h1>
+        <h2 id="activity"></h2>
+        <button class="btn" id="yes" type="submit">Yes</button>
+        <button class="btn" id="no" type="submit">No</button>
+    </div>
 
 
     <script>
@@ -195,6 +237,7 @@
         // Promise.race([promise1, promise2, promise3]).then((result) => console.log(result)).catch((error) => console.log("ERROR"));
 
 
+
         // Fetch :-
         // Fetch return a promise
         // Fetch reject when network error is occured
@@ -216,7 +259,7 @@
 
         // let a = fetch('https://worldtimeapi.org/api/timezone/america/new_york');
         // console.log(a);
-        // let b = a.json();           // We can not use directly because a (fetch) is return promise and we cannot use json() in promise we use this in async function and wait for the frtch response and then we convert it into json format
+        // let b = a.json();           // We can not use directly because a (fetch) is return promise and we cannot use json() in promise we use this in async function and wait for the fetch response and then we convert it into json format
         // console.log(b);
 
         // async function fetchAPI() {
@@ -270,7 +313,6 @@
 
 
         // Find Date and Time for specific place in world
-
         let clicked = false;
         async function fetchAPI(value) {
             clicked = false;
@@ -315,25 +357,43 @@
             `;
         }
 
+        async function myFunc() {
+            let a = await fetch("https://fakestoreapi.com/products");
+            let b = await a.json();
+            console.log(b);
+        }
+        myFunc();
+
+        let activityName = "";
+        async function myFunc() {
+            try {
+                let a = await fetch("https://www.boredapi.com/api/activity");
+                let b = await a.json();
+                document.getElementById('type').innerText = `Do you like ${b.type}`;
+                activityName = b.activity;
+                // console.log("LETS DO SOMETHING");
+                // console.log(`On:-${b.type}`);
+                // console.log(b.activity);
+                // console.log(b);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        window.addEventListener("load", myFunc);
+        document.getElementById('yes').addEventListener('click', () => {
+            document.getElementById('activity').innerText = activityName;
+        });
+        document.getElementById('no').addEventListener('click', myFunc);
 
 
-
-
-
-
-        // async function myFunc() {
-        //     let a = await fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita%");
-        //     let b = await a.json();
-        //     console.log(b);
-        // }
-        // myFunc();
-        
 
         // Random User Data :- https://randomuser.me/api/
         // https://api.publicapis.org/entries
         // https://jsonplaceholder.typicode.com/users
         // https://www.boredapi.com/api/activity
         // https://restcountries.com/v3.1/all
+        // https://pokeapi.co/api/v2/pokemon/ditto
+        // https://fakestoreapi.com/products
     </script>
 </body>
 
