@@ -10,6 +10,7 @@
 <body>
 
     <img src="" alt="" id="image">
+    <ul id="list"></ul>
 
     <script>
         // Yesterday Questions
@@ -342,21 +343,105 @@
         }
         myFunc();
 
-        async function findDataFromIdmul() {
-            let a = await fetch(`https://fakestoreapi.com/products`, {
-                method: 'POST',
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    // id: 1,
-                    title: "Hello",
-                })
-            });
+        // async function findDataFromIdmul() {
+        //     let a = await fetch(`https://fakestoreapi.com/products`, {
+        //         method: 'POST',
+        //         headers: {
+        //             "Content-Type": "application/json"
+        //         },
+        //         body: JSON.stringify({
+        //             // id: 1,
+        //             title: "Hello",
+        //         })
+        //     });
+        //     let b = await a.json();
+        //     console.log(b);
+        // }
+        // findDataFromIdmul();
+
+        // async function myFunction() {
+        //     let a = await fetch("https://jsonplaceholder.typicode.com/posts/1", {
+        //         method: 'PUT',
+        //         headers: {
+        //             "Content-Type": "application/json"
+        //         },
+        //         body: JSON.stringify({
+        //             name: "HELLO",
+        //         })
+        //     });
+        //     let b = await a.json();
+        //     console.log(b);
+        // }
+        // myFunction();
+
+        // async function getData() {
+        //     let a = await fetch("https://jsonplaceholder.typicode.com/posts", {
+        //         headers: { 'x-steve': 'hello' },
+        //         method: 'GET',
+        //         cache: 'no-store',
+        //     });
+        //     let b = await a.json();
+        //     console.log(b);
+        // }
+        // getData();
+
+
+        // const imgstr = 'https://picsum.photos/id/237/300/200'; // image file
+        // let obj = {
+        //     id: crypto.randomUUID(),
+        //     name: 'the one who knocks',
+        //     favouriteColor: 'blue',
+        // };
+        // async function getData() {
+        //     //
+        //     fetch(imgstr)
+        //         .then((resp) => {
+        //             if (!resp.ok) throw new Error('invalid');
+        //             return resp.blob();
+        //         })
+        //         .then((blob) => {
+        //             console.log(blob);
+        //             let url = URL.createObjectURL(blob);
+        //             let img = document.getElementById('image');
+        //             img.src = url;
+        //         })
+        //         .catch(console.warn);
+
+        //     let jsonstring = JSON.stringify(obj);
+        //     let file = new File([jsonstring], 'mydata.json', { type: 'application/json' });
+
+        //     let response = new Response(file, {
+        //         status: 200,
+        //         statusText: 'Say my name',
+        //         headers: {
+        //             'content-type': 'application/json',
+        //             'content-length': file.size,
+        //             'x-steve': 'starts with x for a custom header name',
+        //         },
+        //     });
+
+        //     console.log(response.headers.get('content-type'));
+        //     console.log(response.headers.get('content-length'));
+        // }
+        // getData();
+
+
+
+
+        async function getData() {
+            let list = document.getElementById('list');
+            let a = await fetch('https://random-data-api.com/api/v2/users?size=10')
             let b = await a.json();
-            console.log(b);
+            list.innerHTML = b.map((ele) => {
+                return `<li class="listitem" data-uid="${ele.uid}">
+                        <p>${ele.first_name}</p>
+                        <p>${ele.last_name}</p>
+                    </li>`;
+            }).join('');
         }
-        findDataFromIdmul();
+        getData();
+
+
 
 
 
