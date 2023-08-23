@@ -37,16 +37,16 @@
         //     }
         // }
         // myFunc();
-        async function myFunc1() {
-            try {
-                let a = await fetch("https://fakestoreapi.com/products");
-                let b = await a.json();
-                console.log(b);
-            } catch (error) {
-                console.log(error);
-            }
-        }
-        myFunc1();
+        // async function myFunc1() {
+        //     try {
+        //         let a = await fetch("https://fakestoreapi.com/products");
+        //         let b = await a.json();
+        //         console.log(b);
+        //     } catch (error) {
+        //         console.log(error);
+        //     }
+        // }
+        // myFunc1();
 
 
         // async function myFunc() {
@@ -110,50 +110,116 @@
         //     }
         // }
         // findData(3);
-        async function postData(data) {
+
+        async function allData() {
             try {
-                // Simulate the response from a server after a successful POST request
-                const simulatedResponse = { message: 'New product created', data };
-                console.log('POST response:', simulatedResponse);
+                let a = await fetch("https://api.publicapis.org/entries");
+                let b = await a.json();
+                console.log(b);
             } catch (error) {
-                console.error('Error making POST request:', error);
+                console.log(error);
             }
         }
+        allData();
+        // GET Request:-
+        // async function findDataFromId(id) {
+        //     let a = await fetch(`https://jsonplaceholder.typicode.com/posts?id=${id}`);
+        //     let b = await a.json();
+        //     console.log(b);
+        // }
+        // findDataFromId(3);
+        // async function findDataFromIdmul(id1, id2) {
+        //     let a = await fetch(`https://jsonplaceholder.typicode.com/posts?id=${id1}&id=${id2}`);
+        //     let b = await a.json();
+        //     console.log(b);
+        // }
+        // findDataFromIdmul(10, 20);
+        // async function findDataFromUserId(id) {
+        //     let a = await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${id}`);
+        //     let b = await a.json();
+        //     console.log(b);
+        // }
+        // findDataFromUserId(3);
 
-        async function updateData(id, newData) {
-            try {
-                // Simulate the response from a server after a successful PUT request
-                const simulatedResponse = { message: `Product with ID ${id} updated`, data: newData };
-                console.log('PUT response:', simulatedResponse);
-            } catch (error) {
-                console.error('Error making PUT request:', error);
-            }
-        }
+        // POST Request:-
+        // async function postRequest() {
+        //     let a = await fetch(`https://jsonplaceholder.typicode.com/posts`, {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         },
+        //         body: JSON.stringify({
+        //             "userId": 1,
+        //             "title": "new title",
+        //             "body": "new body"
+        //         }),
+        //     });
+        //     let b = await a.json();
+        //     console.log(b);
+        // }
+        // postRequest();
 
-        // Simulated data for POST and PUT requests
-        const newData = {
-            title: 'New Product',
-            price: 10.99,
-            // Add other properties as needed
-        };
+        // PUT Request:-
+        // async function putRequest(id) {
+        //     let a = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+        //         method: 'PUT',
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         },
+        //         body: JSON.stringify({
+        //             "userId": 20,
+        //             "title": "new title",
+        //             "body": "new body"
+        //         }),
+        //     });
+        //     let b = await a.json();
+        //     console.log(b);
+        // }
+        // putRequest(10);
 
-        const updatedData = {
-            title: 'Updated Product',
-            price: 15.99,
-            // Add other properties as needed
-        };
+        // PATCH Request:-
+        // async function putRequest(id) {
+        //     let a = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+        //         method: 'PATCH',
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         },
+        //         body: JSON.stringify({
+        //             "body": "new body"
+        //         }),
+        //     });
+        //     let b = await a.json();
+        //     console.log(b);
+        // }
+        // putRequest(10);
 
-        // Simulate a POST request
-        postData(newData);
+        // async function change() {
+        //     let data = {
+        //         "API": "Cats",
+        //         "Description": "Pictures of cats from Tumblr",
+        //         "Auth": "apiKey",
+        //         "HTTPS": true,
+        //         "Cors": "no",
+        //         "Link": "https://docs.thecatapi.com/",
+        //         "Category": "Animals"
+        //     }
+        //     let a = fetch("https://api.publicapis.org/entries")
+        // }
+        // change()
 
-        // Simulate a PUT request
-        updateData(1, updatedData);
 
 
 
 
 
-        // GET :- 
+
+
+
+
+
+
+
+        // GET :-
         // This method is used to retrieve data from a server. It's the default method used by browsers when you enter a URL in the address bar or click on a link.
         // POST :-
         // POST request is used to sends data to the server.
@@ -163,6 +229,12 @@
         // Used to update and create a resource on a server
         // DELETE :-
         // This method is used to request the removal of a resource from the server.
+        // PATCH :-
+        // Change the response of api data
+        // PUT vs PATCH :-
+        // PATCH -> Change the full object of specific id
+        // PUT -> Change data not change full object
+
     </script>
 </body>
 
