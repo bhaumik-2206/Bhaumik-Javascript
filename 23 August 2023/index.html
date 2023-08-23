@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23 August 2023</title>
+</head>
+
+<body>
+
+
+    <script>
+        // const userData = {
+        //     category: "Mens",
+        //     title: 'Hoddies',
+        //     description: "BEST",
+        //     price: 5000,
+        //     rating: { rate: 3.6, count: 145 },
+        //     age: 30,
+        //     image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+        // };
+        // const options = {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify(userData)
+        // };
+        // async function myFunc() {
+        //     try {
+        //         let a = await fetch("https://fakestoreapi.com/products", options);
+        //         let b = await a.json();
+        //         console.log(b);
+        //     } catch (error) {
+        //         console.log(error);
+        //     }
+        // }
+        // myFunc();
+        async function myFunc1() {
+            try {
+                let a = await fetch("https://fakestoreapi.com/products");
+                let b = await a.json();
+                console.log(b);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        myFunc1();
+
+
+        // async function myFunc() {
+        //     try {
+        //         let a = await fetch(url, {
+        //             method: 'PUT',
+        //             headers: {
+        //                 'Content-Type': 'application/json'
+        //             },
+        //             body: JSON.stringify({
+        //                 id: 1,
+        //                 category: "Mens",
+        //                 title: 'Hoddies',
+        //                 description: "BEST",
+        //                 price: 5000,
+        //                 rating: { rate: 3.6, count: 145 },
+        //                 age: 30,
+        //                 image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+        //             }),
+        //         });
+        //         let b = await a.json();
+        //         console.log(b);
+        //     } catch (error) {
+        //         console.log(error);
+        //     }
+        // }
+        // myFunc();
+
+        // const data = {
+        //     category: "Mens",
+        //     title: 'Hoddies',
+        //     description: "BEST",
+        //     price: 5000,
+        //     age: 30,
+        //     image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+        // };
+        // async function putRequest() {
+        //     try {
+        //         let a = await fetch("https://fakestoreapi.com/products/1", {
+        //             method: 'PUT',
+        //             headers: {
+        //                 'Content-Type': 'application/json',
+        //             },
+        //             body: JSON.stringify(data),
+        //         });
+        //         let b = await a.json();
+        //         console.log(b);
+        //     } catch (error) {
+        //         console.log(error);
+        //     }
+        // }
+        // putRequest();
+
+        // async function findData(id) {
+        //     try {
+        //         let a = await fetch('https://fakestoreapi.com/products');
+        //         let b = await a.json();
+        //         console.log(b.find(ele => ele.id === id));
+        //     } catch (error) {
+
+        //     }
+        // }
+        // findData(3);
+        async function postData(data) {
+            try {
+                // Simulate the response from a server after a successful POST request
+                const simulatedResponse = { message: 'New product created', data };
+                console.log('POST response:', simulatedResponse);
+            } catch (error) {
+                console.error('Error making POST request:', error);
+            }
+        }
+
+        async function updateData(id, newData) {
+            try {
+                // Simulate the response from a server after a successful PUT request
+                const simulatedResponse = { message: `Product with ID ${id} updated`, data: newData };
+                console.log('PUT response:', simulatedResponse);
+            } catch (error) {
+                console.error('Error making PUT request:', error);
+            }
+        }
+
+        // Simulated data for POST and PUT requests
+        const newData = {
+            title: 'New Product',
+            price: 10.99,
+            // Add other properties as needed
+        };
+
+        const updatedData = {
+            title: 'Updated Product',
+            price: 15.99,
+            // Add other properties as needed
+        };
+
+        // Simulate a POST request
+        postData(newData);
+
+        // Simulate a PUT request
+        updateData(1, updatedData);
+
+
+
+
+
+        // GET :- 
+        // This method is used to retrieve data from a server. It's the default method used by browsers when you enter a URL in the address bar or click on a link.
+        // POST :-
+        // POST request is used to sends data to the server.
+        // It's commonly used when you want to submit data to a server for processing, such as submitting a form, creating a new user account, or adding data to a database.
+        // PUT :-
+        // PUT is a method of modifying resources where the client sends data that updates the entire resource.
+        // Used to update and create a resource on a server
+        // DELETE :-
+        // This method is used to request the removal of a resource from the server.
+    </script>
+</body>
+
+</html>
