@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form name="myform" id="myform" action="https://www.google.ca/">
+        <p>
+            <label for="jsonfile">JSON:</label>
+            <input type="file" id="jsonfile" name="jsonfile" accept="application/json" />
+        </p>
+        <p>
+            <label for="imgfile">Image:</label>
+            <input type="file" id="imgfile" name="imgfile" accept="image/*" />
+        </p>
+        <p>
+            <button id="btnSend">Send</button>
+        </p>
+    </form>
+
+
+    <script>
+        // let url = "https://jsonplaceholder.typicode.com/posts";
+        // async function setData() {
+        //     //
+        //     const imgInput = document.getElementById('imgfile');
+        //     const jsonInput = document.getElementById('jsonfile');
+
+        //     document.getElementById('myform').addEventListener('submit', (ev) => {
+        //         ev.preventDefault();
+        //         //upload something
+        //         let obj = {
+        //             id: 2,
+        //             name: 'steve',
+        //         };
+        //         let jsonstring = JSON.stringify(obj);
+
+        //         let fd = new FormData(document.getElementById('myform'));
+        //         // let fd = new FormData();
+        //         // console.log(imgInput.files[0]);
+        //         // fd.append('imageFile', imgInput.files[0], imgInput.files[0].name);
+        //         console.log(fd);
+        //         fetch(url, {
+        //             method: 'POST',
+        //             // body: jsonstring,
+        //             body: fd,
+        //             headers: {
+        //                 'content-type': 'multipart/form-data',
+        //             },
+        //         })
+        //             .then((response) => {
+        //                 if (!response.ok) throw new Error('invalid');
+        //                 return response.text();
+        //             })
+        //             .then((txt) => {
+        //                 console.log(txt);
+        //             })
+        //             .catch(console.warn);
+        //     });
+        // }
+        // setData();
+
+
+        // async function getData() {
+        //     //
+        //     const imgurl = `https://picsum.photos/id/237/300/200`;
+
+        //     let request = new Request(imgurl, {
+        //         cache: 'default',
+        //         credentials: 'same-origin',
+        //         method: 'GET',
+        //         mode: 'no-cors',
+        //     });
+
+        //     fetch(imgurl).then((resp) => {
+        //         console.log('External IMG mode: cors');
+        //         console.log(resp.status); // 200
+        //     });
+        //     fetch(imgurl, { mode: 'no-cors' }).then((resp) => {
+        //         console.log('External IMG mode: no-cors');
+        //         console.log(resp.status); // 0
+        //     });
+
+        //     fetch(url, { mode: 'cors' }).then((resp) => {
+        //         console.log('Local JSON mode: cors');
+        //         console.log(resp.status); // 200
+        //     });
+        //     fetch(url, { mode: 'no-cors' }).then((resp) => {
+        //         console.log('Local JSON mode: no-cors');
+        //         console.log(resp.status); // 0
+        //     });
+        // }
+        // getData();
+
+        // let jsonurl = "https://random-data-api.com/api/v2/users?size=10";
+        // let imageurl = "https://picsum.photos/id/237/300/200";
+        // async function getData() {
+        //     // First Method
+        //     // let json;
+        //     // let image;
+        //     // fetch(imageurl)
+        //     //     .then(res => {
+        //     //         return res.blob();
+        //     //     })
+        //     //     .then(data => {
+        //     //         image = data;
+        //     //         return fetch(jsonurl);
+        //     //     })
+        //     //     .then((data) => {
+        //     //         json = data;
+        //     //         return Promise.all([json, image])
+        //     //     })
+        //     //     .then(([json, image]) => {          // Destructuring the both object
+        //     //         console.log(json);
+        //     //         console.log(image);
+        //     //     })
+        //     //     .catch((err) => {
+        //     //         console.log(err);
+        //     //     })
+
+        //     // Second Method
+        //     Promise.all([fetch(imageurl), fetch(jsonurl)])
+        //         .then(([image, json]) => {
+        //             return Promise.all([image.blob(), json.json()]);
+        //         }).then(([img, json]) => {
+        //             console.log(img);
+        //             console.log(json);
+        //         })
+        // }
+        // getData();
+
+        async function myFunc() {
+            let a = await fetch("https://fakestoreapi.com/products", {
+                // method: "POST",
+                // headers: {
+                //     "Content-Type": "application/json",
+                // },
+                // body: JSON.stringify({
+                //     // id: 1234,
+                //     first_name: 'Stacy'
+                // })
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    // id: 1234,
+                    title: "Hello",
+                    first_name: 'Stacy'
+                })
+            });
+            console.log(a);
+            let b = await a.json();
+            console.log(b);
+        }
+        myFunc();
+
+
+
+    </script>
+</body>
+
+</html>
