@@ -47,6 +47,7 @@
         let url1 = "https://jsonplaceholder.typicode.com/posts";
         let url2 = "https://random-data-api.com/api/v2/users?size=10";
         let url3 = "https://fakestoreapi.com/products";
+        let url4 = "https://v6.exchangerate-api.com/v6/india/latest/USD"
         // async function setData() {
         //     //
         //     const imgInput = document.getElementById('imgfile');
@@ -226,29 +227,29 @@
         // }
         // allAPIs();
 
-        async function fetchData(url) {
-            let a = await fetch(url);
-            let b = await a.json();
-            return b;
-        }
-        async function displayPosts() {
-            let data = await fetchData(url1);
-            let random = data[Math.floor(Math.random() * data.length)];
-            document.getElementById("posts").innerHTML = `<h2>Random Post</h2><p>${random.title}</p><p>${random.body}</p>`;
-        }
-        async function displayUsers() {
-            let data = await fetchData(url2);
-            let random = data[Math.floor(Math.random() * data.length)];
-            document.getElementById("users").innerHTML = `<h2>Random User</h2><p>Name: ${random.first_name} ${random.last_name}</p>`;
-        }
-        async function displayProducts() {
-            let data = await fetchData(url3);
-            let random = data[Math.floor(Math.random() * data.length)];
-            document.getElementById("products").innerHTML = `<h2>Random Product</h2><p>Name: ${random.title}</p><p>Price: $${random.price}</p>`;
-        }
-        displayPosts();
-        displayUsers();
-        displayProducts();
+        // async function fetchData(url) {
+        //     let a = await fetch(url);
+        //     let b = await a.json();
+        //     return b;
+        // }
+        // async function displayPosts() {
+        //     let data = await fetchData(url1);
+        //     let random = data[Math.floor(Math.random() * data.length)];
+        //     document.getElementById("posts").innerHTML = `<h2>Random Post</h2><p>${random.title}</p><p>${random.body}</p>`;
+        // }
+        // async function displayUsers() {
+        //     let data = await fetchData(url2);
+        //     let random = data[Math.floor(Math.random() * data.length)];
+        //     document.getElementById("users").innerHTML = `<h2>Random User</h2><p>Name: ${random.first_name} ${random.last_name}</p>`;
+        // }
+        // async function displayProducts() {
+        //     let data = await fetchData(url3);
+        //     let random = data[Math.floor(Math.random() * data.length)];
+        //     document.getElementById("products").innerHTML = `<h2>Random Product</h2><p>Name: ${random.title}</p><p>Price: $${random.price}</p>`;
+        // }
+        // displayPosts();
+        // displayUsers();
+        // displayProducts();
 
 
         // function getData(str, idNumber) {
@@ -305,6 +306,20 @@
         //     });
 
 
+        async function setData() {
+            let a = await fetch(url1, {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    title: "Hello"
+                })
+            });
+            let b = await a.json();
+            console.log(b);
+        }
+        setData();
 
 
 
