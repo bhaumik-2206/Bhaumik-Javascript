@@ -23,3 +23,12 @@
 //     { name: "Book 5", author: "author 5" }
 // ];
 // export default booksName;
+
+// 5 :-
+let options = [
+    { name: "T-shirt", price: 499 },
+    { name: "Shirt", price: 1299 },
+    { name: "Pant", price: 999 },
+    { name: "Cargo", price: 1599 },
+]
+export default options;

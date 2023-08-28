@@ -29,3 +29,25 @@
 //         return arr[a].author;
 //     }
 // }
+
+// const myValue = 10;
+// export default myValue;
+
+// export function one(){
+//     return "one";
+// }
+// export function two(){
+//     return "Two";
+// }
+// export function three(){
+//     return "Three";
+// }
+// export function four(){
+//     return "Four";
+// }
+
+
+// 5 :-
+export function checkValue(arr, value) {
+    return arr.findIndex(ele => ele.name.toLowerCase().trim() == value.toLowerCase().trim());
+}

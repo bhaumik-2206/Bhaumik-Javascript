@@ -26,12 +26,15 @@
 
 
 // -------------------Short Conditionals: &&, ||, Ternary Operator :-
-
+// console.log(null && "Object");
+// console.log("object" && null);
+// console.log(null || "Object");
+// console.log("object" || null);
 
 
 // -------------------Three Array Methods: .map(), .filter(), .reduce()
 // function myFunc1() {
-//     const programmers = ["Reed", "John", "Jane"];
+//     let programmers = ["Reed", "John", "Jane"];
 //     return programmers.filter((programmer) => !programmer.startsWith("J"))
 //         .map((ele) => console.log(ele))
 // }
@@ -52,8 +55,8 @@
 // myFunc2();
 
 // Chaning
-// const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-// const result = numbers
+// let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+// let result = numbers
 //     .filter(num => num % 2 === 0)
 //     .map(num => num * 2)
 //     .reduce((sum, num) => sum + num, 0);
@@ -68,6 +71,40 @@ let priceArray = [
 //     return { ...ele, total: ele.price * ele.quantity };
 // });
 // console.log(a);
+// let b = priceArray.reduce((acc, cur) => {
+//     acc.push({ ...cur, total: cur.price * cur.quantity });
+//     return acc;
+// }, []);
+// console.log(b);
+
+// let values = [0, 1, '', 'Hello', null, undefined, false];
+// let truthyValues = values.filter(ele => ele);
+// console.log(truthyValues);
+
+// async function asyncFilterExample() {
+//     let p1 = new Promise((resolve, reject) => resolve("Promise Resolved"));
+//     let p2 = new Promise((resolve, reject) => reject("Promise Rejected"));
+//     let p3 = new Promise((resolve, reject) => resolve("Promise Resolved"));
+//     let items = [p1, p2, p3];
+//     let validItems = await Promise.allSettled(
+//         items.map(async item => item)
+//     );
+//     console.log(validItems);
+// }
+// asyncFilterExample();
+
+// let numbers = [1, 2, 2, 3, 4, 4, 5];
+// let duplicateValue = numbers.filter((num, index, array) => array.indexOf(num) === index);
+// console.log(duplicateValue);
+
+// let a = [1, 2, 3, 4, 2, 3, 4, 2, 6, 8];
+// let b = [];
+// a.forEach((value, index, array) => {
+//     if (array.indexOf(value) != index && !b.includes(value)){
+//         b.push(value);
+//     }
+// });
+// console.log(b , "<= Duplicate value");
 
 
 
@@ -125,11 +162,13 @@ let priceArray = [
 // let arr2 = [4, 5, 6];
 // let finalArray = [...arr1, ...arr2];
 // console.log(finalArray);
+
 // let obj1 = { a: 1, b: 2 };
 // let obj2 = { c: 3, d: 4 };
 // let obj3 = { d: 30, e: 40 };
 // let finalObject = { ...obj1, ...obj2, ...obj3 };
 // console.log(finalObject);
+
 // let person = {
 //     name: "Alice",
 //     age: 30,
@@ -140,11 +179,13 @@ let priceArray = [
 // console.log(name);
 // console.log(age);
 // console.log(other);
+
 // let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 // let [a, b, ...rest] = arr;           // Use rest in the last position
 // console.log(a);
 // console.log(b);
 // console.log(rest);
+
 // let user = {
 //     name: "Raj",
 //     age: 19,
@@ -159,6 +200,11 @@ let priceArray = [
 //     laptop : "HP",
 // };
 // console.log(secondUser);
+
+// function myBio(firstName, lastName, ...otherInfo) {
+//     return otherInfo;
+// }
+// console.log(myBio("a", "b", "c", "d", "e", "f"));
 
 //---------------------------Promises + Async/Await Syntax :-
 let myPromise = new Promise((resolve, reject) => {
@@ -177,12 +223,24 @@ let myPromise = new Promise((resolve, reject) => {
 //         console.error(error);
 //     });
 // async function checkPromise() {
-//     let a = await myPromise;
-//     return a;
+//     try {
+//         let a = await myPromise;
+//         return a
+//     } catch (error) {
+//         console.log(error);
+//     };
 // }
 // console.log(checkPromise());
 // checkPromise().then(res => console.log(res)).catch(error => console.log(error));
-
+// const myFunction = async () => {
+//     try {
+//         let a = await myPromise;
+//         console.log(a);
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }
+// myFunction();
 
 // -----------------export and import
 // import { add, subtract } from './module1.js';
@@ -199,4 +257,4 @@ let myPromise = new Promise((resolve, reject) => {
 // import myObject, { printUser } from "./module1.js";
 // let a = myObject;
 // printUser(a.fname, a.lname)
-// printUser("Bhaumik","Panchal")
+// printUser("Bhaumik","Panchal");
