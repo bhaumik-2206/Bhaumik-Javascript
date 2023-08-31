@@ -12,10 +12,14 @@ window.addEventListener('scroll', () => {
         document.getElementById("scroll-top").classList.remove("add-button");
     }
 });
-
 document.getElementById('scroll-top').addEventListener('click', (e) => {
     window.scroll(0, 0);
-})
+});
 
-let allBold = document.querySelectorAll('.changeText b');
-console.log(allBold);
+document.getElementById('log-in-btn').addEventListener('click', (e) => {
+    document.getElementById('form').classList.add('openForm');
+});
+
+document.getElementById('closeBtn').addEventListener('click', (e) => {
+    document.getElementById('form').classList.remove('openForm');
+});

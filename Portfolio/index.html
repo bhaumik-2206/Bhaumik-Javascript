@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 
 <body>
@@ -34,15 +35,15 @@
                     <ul class="d-flex m-auto align-items-center">
                         <li class="px-3"><a href="#">Home</a></li>
                         <li class="px-3"><a href="#aboutMe">About Me</a></li>
+                        <li class="px-3"><a href="#resume">Resume</a></li>
                         <li class="px-3"><a href="#skill">Skills</a></li>
-                        <li class="px-3"><a href="#">Resume</a></li>
                         <li class="px-3"><a href="#project">Project</a></li>
                         <li class="px-3"><a href="#">Contact</a></li>
                     </ul>
                 </div>
                 <div class="logIn">
-                    <button class="btn fs-5 btn-outline-primary">Log In</button>
-                    <button class="ms-3 fs-5 btn rounded-pill btn-primary">Get Started</button>
+                    <button id="log-in-btn" class="btn fs-5 btn-outline-primary">Log In</button>
+                    <button class="ms-3 fs-5 btn rounded-pill btn-primary">Contact</button>
                 </div>
             </nav>
         </div>
@@ -55,12 +56,31 @@
         </div>
     </header>
 
+    <form action="" id="form" class="myForm p-4 bg-white">
+        <!-- <p class="">×</p> -->
+        <i id="closeBtn" class="fa-solid fa-xmark position-absolute fs-3 cancel"></i>
+        <h2 class="text-center">Log In</h2>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label fs-5">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label fs-5">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1">
+        </div>
+        <div class="d-grid gap-2">
+            <button class="btn btn-primary fs-4" type="button">Log In</button>
+        </div>
+    </form>
+
     <section class="bg-success-subtle" id="aboutMe">
         <div class="container">
             <h1 style="border-bottom: 10px groove black;" class="pt-3 pb-2 m-0 d-inline-block">About Me</h1>
-            <div class="row w-100 py-5">
+            <div class="row w-100 py-5 align-items-center">
                 <div class="col-lg-4">
-                    <!-- <img src="20230114_175539.jpg" alt="" class="img-fluid"> -->
+                    <img src="https://yaminshaikh.netlify.app/img/Group.svg" style="width: 100%;" alt=""
+                        class="img-fluid">
                 </div>
                 <div class="col-lg-8">
                     <h1>I'm Software Engineer</h1>
@@ -85,10 +105,17 @@
         </div>
     </section>
 
-    <section class="bg-black text-white" id="skill">
+    <section class="bg-secondary">
+        <div class="container py-5">
+
+        </div>
+    </section>
+
+    <section class="bg-dark text-white" id="skill">
         <div class="container py-4">
             <h1 style="border-bottom: 10px groove white;" class="d-inline-block pb-3">SKILLS</h1>
-            <p class="fs-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium quam recusandae fugiat quia error
+            <p class="fs-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium quam recusandae fugiat
+                quia error
                 ullam ad! Ab tenetur unde earum doloremque recusandae tempora cumque, neque, eligendi, veritatis eveniet
                 blanditiis facere.</p>
             <div class="row">
@@ -147,12 +174,12 @@
         </span>
     </h1> -->
 
-    <section class="text-bg-dark">
+    <section class="bg-black text-white">
         <div class="container py-4 ">
             <h1 class="text-center mb-4" id="project">Projects</h1>
             <div class="row">
                 <div class="col-lg-8 mb-3">
-                    <div class="border border-black bg-primary">
+                    <div class=" bg-primary white-border">
                         <div class="row justify-content-center align-items-center">
                             <div class="col-6">
                                 <img src="spotify_clone.png" class="img-fluid mb-1" alt="">
@@ -170,8 +197,9 @@
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <div class="border border-black text-bg-primary p-4">
-                        <p class="fs-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio tempora ipsam tenetur magni
+                    <div class="white-border text-bg-primary p-4">
+                        <p class="fs-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio tempora ipsam
+                            tenetur magni
                             nemo, nostrum ipsa soluta suscipit sint veritatis vel praesentium doloremque aperiam
                             repellat rem, ratione quos, ut quaerat.</p>
                     </div>

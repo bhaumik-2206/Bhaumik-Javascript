@@ -9,14 +9,12 @@ body {
     scroll-behavior: smooth;
 }
 
+
 header {
     height: 100vh;
     width: 100%;
     background-color: rgb(30, 30, 30);
-    /* background-image: linear-gradient(rgba(0, 0, 0, 0.5),black); */
-    /* background: url('20230114_175539.jpg'); */
-    background-repeat: no-repeat;
-    background-position: top;
+    /* background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('20230114_175539.jpg') center no-repeat; */
     background-attachment: fixed;
     background-size: cover;
     color: white;
@@ -67,11 +65,40 @@ nav ul li a:hover {
     opacity: 1;
 }
 
-.changeText {
-    /* width: 50px; */
-    /* overflow: hidden; */
+.progress {
+    height: 10px !important;
 }
 
-.progress{
-    height: 10px !important;
+.white-border {
+    border: 3px dashed white;
+}
+
+.myForm {
+    border-radius: 10px;
+    width: 50%;
+    height: auto;
+    transition: .5s ease-in-out;
+    position: fixed;
+    /* top: 50%; */
+    top: -100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+}
+
+.openForm {
+    opacity: 1;
+    top: 50%;
+}
+
+.cancel {
+    padding: 10px 13px;
+    border-radius: 50%;
+    right: 5px;
+    top: 5px;
+    cursor: pointer;
+}
+
+.cancel:hover {
+    background-color: rgb(222, 222, 222);
 }
