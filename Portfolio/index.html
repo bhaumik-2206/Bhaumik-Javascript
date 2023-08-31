@@ -16,14 +16,14 @@
     <div class="scroll-top position-fixed" id="scroll-top">
         <p>⬆️</p>
     </div>
-    <header class="w-100 d-flex flex-column align-items-between">
+    <header style="position: relative;overflow: hidden;" class="w-100 d-flex flex-column align-items-between">
         <div id="main-top" class="container d-flex justify-content-between align-items-center py-3">
             <div class="name">
                 <h5>BHAUMIK PANCHAL</h5>
             </div>
-            <div class="d-flex justify-content-center align-items-center gap-3">
-                <b>9429613731</b>
-                <b>bhaumikpanchal2206@gmail.com</b>
+            <div class="d-flex mob-email justify-content-center align-items-center gap-3">
+                <b><i class="fa-solid fa-mobile"></i> 9429613731</b>
+                <b><i class="fa-solid fa-envelope"></i> bhaumikpanchal2206@gmail.com</b>
             </div>
         </div>
         <div class="top-nav" id="main-navBar">
@@ -31,7 +31,7 @@
                 <div class="title">
                     <h1>Portfolio</h1>
                 </div>
-                <div class="navbar align-items-center">
+                <div class="navbar mainNav align-items-center">
                     <ul class="d-flex m-auto align-items-center">
                         <li class="px-3"><a href="#">Home</a></li>
                         <li class="px-3"><a href="#aboutMe">About Me</a></li>
@@ -39,19 +39,25 @@
                         <li class="px-3"><a href="#skill">Skills</a></li>
                         <li class="px-3"><a href="#project">Project</a></li>
                         <li class="px-3"><a href="#">Contact</a></li>
+                        <i id="close-navBar" class="fa-solid d-none fa-xmark position-absolute fs-3 cancel"></i>
                     </ul>
+                </div>
+                <div class="menu" id="show-menu">
+                    <i class="fa-solid fa-bars"></i>
                 </div>
                 <div class="logIn">
                     <button id="log-in-btn" class="btn fs-5 btn-outline-primary">Log In</button>
-                    <button class="ms-3 fs-5 btn rounded-pill btn-primary">Contact</button>
+                    <!-- <button class="ms-3 fs-5 btn rounded-pill btn-primary">Contact</button> -->
                 </div>
             </nav>
         </div>
         <div class="main-name d-flex align-items-center flex-direction-column ">
             <div class="name container m-auto">
-                <h5>Hello <span class="fs-2">👋</span> My Name is </h5>
-                <h1>BHAUMIK PANCHAL</h1>
-                <h2>I'm <span>Software Engineer</span></h2>
+                <h4>Hello <span class="fs-2">👋</span> My Name is </h4>
+                <h1 style="font-size: 60px;">BHAUMIK PANCHAL</h1>
+                <h2 class="changeText">
+                    <span class="fs-1 add-text"></span><span class="cursor"></span>
+                </h2>
             </div>
         </div>
     </header>
@@ -80,7 +86,7 @@
             <div class="row w-100 py-5 align-items-center">
                 <div class="col-lg-4">
                     <img src="https://yaminshaikh.netlify.app/img/Group.svg" style="width: 100%;" alt=""
-                        class="img-fluid">
+                        class="img-fluid mb-5">
                 </div>
                 <div class="col-lg-8">
                     <h1>I'm Software Engineer</h1>
@@ -89,15 +95,15 @@
                         improving, andobtaining the necessary skills in order to become the best employee possible. I am
                         looking forward to challengingmy potential and be worthy of Management trust and confidence.</p>
                     <div class="row  fs-5 fw-bold">
-                        <div class="col-6">
+                        <div class="col-sm-6">
                             <p>Degree :- BCA(Running)</p>
                             <p>HSC :- 75%</p>
                             <p>SSC :- 71%</p>
                         </div>
-                        <div class="col-6">
+                        <div class="col-sm-6">
                             <p>Full Name :- Bhaumik J. Panchal</p>
                             <p>Birth Date :- 22/06/2005</p>
-                            <p>Age :- 18</p>
+                            <p id="resume">Age :- 18</p>
                         </div>
                     </div>
                 </div>
@@ -106,8 +112,80 @@
     </section>
 
     <section class="bg-secondary">
-        <div class="container py-5">
-
+        <div class="container py-5 text-white">
+            <h1 style="border-bottom: 10px groove black;" class="d-inline-block text-black pb-3">RESUME</h1>
+            <div class="row align-items-center ">
+                <div class="col-lg-6">
+                    <h2 style="color: blue;">Education</h2>
+                    <div class="ps-3 border-left">
+                        <div class="parent">
+                            <h3 class="add-dot">Bachelors Of Computer Application</h3>
+                        </div>
+                        <p class="border bg-dark py-2 m-0 fs-5 px-3 d-inline-block">2022-2025</p>
+                        <p class="fs-3">Silver Oak University</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, consectetur omnis autem unde,
+                            blanditiis earum, voluptatibus aut corrupti esse optio harum voluptas. Ab quasi, quos
+                            tempore error quis doloribus blanditiis?</p>
+                        <div class="parent">
+                            <h3 class="add-dot">HSC</h3>
+                        </div>
+                        <p class="border bg-dark py-2 m-0 fs-5 px-3 d-inline-block">2020-2022</p>
+                        <p class="fs-3">Vijay Nagar School,Narayanpura</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, consectetur omnis autem unde,
+                            blanditiis earum, voluptatibus aut corrupti esse optio harum voluptas. Ab quasi, quos
+                            tempore error quis doloribus blanditiis?</p>
+                        <div class="parent">
+                            <h3 class="add-dot">SSC</h3>
+                        </div>
+                        <p class="border bg-dark py-2 m-0 fs-5 px-3 d-inline-block">2019</p>
+                        <p class="fs-3">Vijay Nagar School,Narayanpura</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, consectetur omnis autem unde,
+                            blanditiis earum, voluptatibus aut corrupti esse optio harum voluptas. Ab quasi, quos
+                            tempore error quis doloribus blanditiis?</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h2 style="color: blue;">Experience</h2>
+                    <div class="ps-3 border-left">
+                        <div class="parent">
+                            <h3 class="add-dot">Software Engineer</h3>
+                        </div>
+                        <p class="border bg-dark py-2 m-0 fs-5 px-3 d-inline-block">April/2023-Till Now</p>
+                        <p class="fs-3">Saeculum Solution Private Limited</p>
+                        <p>I have almost 5 month experience at the post of software engineer in Saeculum solution pvt.
+                            ltd.
+                            I am learn about HTML , CSS , Bootstrap , JS and React JS. Officia eius quidem blanditiis
+                            veniam maxime porro velit tempora asperiores. Similique, incidunt.
+                        </p>
+                    </div>
+                    <h2 style="color: blue;">My Skiils</h2>
+                    <div class="ps-3 border-left">
+                        <div class="parent">
+                            <h3 class="add-dot">Programming Skills</h3>
+                        </div>
+                        <p class="gs-4">HTML , CSS , Bootstrap ,JAVASCRPIT , PHP</p>
+                        <div class="parent">
+                            <h3 class="add-dot">Soft Skills</h3>
+                        </div>
+                        <p class="gs-4">Leadership , Problem Solving , Team Work , Group Discussion, Time Management</p>
+                    </div>
+                    <h2 style="color: blue;">Certificates</h2>
+                    <div class="ps-3 border-left">
+                        <div class="parent">
+                            <h3 class="add-dot">Online Course Certificates</h3>
+                        </div>
+                        <h3>Great Learning</h3>
+                        <p class="gs-4">CSS Tutorial , HTML Tutorials , C For Beginners</p>
+                    </div>
+                    <h2 style="color: blue;">Hobbies</h2>
+                    <div class="ps-3 border-left">
+                        <div class="parent">
+                            <h3 class="add-dot">Intrested In</h3>
+                        </div>
+                        <p class="gs-4">Drawing , Listening Music , Plaing Cricket , Programming</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -130,14 +208,14 @@
                     <h3>CSS</h3>
                     <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="0"
                         aria-valuemin="0" aria-valuemax="100">
-                        <div class="progress-bar" style="width: 100%"></div>
+                        <div class="progress-bar" style="width: 90%"></div>
                     </div>
                 </div>
                 <div class="col-sm-6 pe-5 mb-4">
                     <h3>JAVASCRIPT</h3>
                     <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="0"
                         aria-valuemin="0" aria-valuemax="100">
-                        <div class="progress-bar" style="width: 100%"></div>
+                        <div class="progress-bar" style="width: 85%"></div>
                     </div>
                 </div>
                 <div class="col-sm-6 pe-5 mb-4">
@@ -156,7 +234,7 @@
                 </div>
                 <div class="col-sm-6 pe-5 mb-4">
                     <h3>PHP</h3>
-                    <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="0"
+                    <div id="project" class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="0"
                         aria-valuemin="0" aria-valuemax="100">
                         <div class="progress-bar" style="width: 50%"></div>
                     </div>
@@ -165,27 +243,18 @@
         </div>
     </section>
 
-    <!-- <h1 class="text-center mb-4 d-flex justify-content-center">
-        <span>My Priority is </span>
-        <span class="changeText">
-            <b class="text-primary one">Quality</b>
-            <b class="text-primary two">Trust</b>
-            <b class="text-primary three">Patience</b>
-        </span>
-    </h1> -->
-
     <section class="bg-black text-white">
         <div class="container py-4 ">
-            <h1 class="text-center mb-4" id="project">Projects</h1>
+            <h1 class="text-center mb-4">Projects</h1>
             <div class="row">
                 <div class="col-lg-8 mb-3">
                     <div class=" bg-primary white-border">
                         <div class="row justify-content-center align-items-center">
-                            <div class="col-6">
+                            <div class="col-lg-6">
                                 <img src="spotify_clone.png" class="img-fluid mb-1" alt="">
                                 <img src="spo_2.png" class="img-fluid" alt="">
                             </div>
-                            <div class="col-6">
+                            <div class="col-lg-6 px-4">
                                 <h3 class="text-center py-2 d-inline-block" style="border-bottom: 10px groove white;">
                                     Spotify Clone
                                 </h3>
@@ -198,6 +267,9 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="white-border text-bg-primary p-4">
+                        <h3 class="text-center py-2 d-inline-block" style="border-bottom: 10px groove white;">
+                            Other Projects on Bootstrap
+                        </h3>
                         <p class="fs-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio tempora ipsam
                             tenetur magni
                             nemo, nostrum ipsa soluta suscipit sint veritatis vel praesentium doloremque aperiam
@@ -212,7 +284,7 @@
                 </h2>
                 <div class="row justify-content-center">
                     <div class="col-lg-6">
-                        <h2 class="text-center">Made Keka Clone</h2>
+                        <h2 class="text-center">Made Keka Clone ....</h2>
                     </div>
                 </div>
             </div>
@@ -221,8 +293,51 @@
 
 
 
-    <footer>
+    <footer class="bg-dark text-white text-center">
+        <div class="container py-4">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <h4>Mobile No:- <b>9429613731</b></h4>
+                    <h4>Email:- <b>bhaumikpanchal2206@gmail.com</b></h4>
+                </div>
 
+                <div class="col-md-6">
+                    <h3>Social Media</h3>
+                    <div class="d-flex justify-content-center gap-3">
+                        <div
+                            class="overflow-hidden rounded-circle position-relative z-3 text-center common instagram border-2 border border-white">
+                            <a class="text-white" target="_blank" href="https://www.instagram.com/_bhaumik_2206/"><i
+                                    class="fa-brands fa-instagram position-relative"></i></a>
+                        </div>
+                        <div
+                            class="overflow-hidden rounded-circle position-relative z-3 text-center common facebook border-2 border border-white">
+                            <a class="text-white" target="_blank" href="https://www.facebook.com/bhaumik.panchal.526"><i
+                                    class="fa-brands fa-facebook-f position-relative"></i></a>
+                        </div>
+                        <div
+                            class="overflow-hidden rounded-circle position-relative z-3 text-center common skype border-2 border border-white">
+                            <a class="text-white" target="_blank" href="https://join.skype.com/invite/KoIn8H5iJVSz"><i
+                                    class="fa-brands fa-skype position-relative"></i></a>
+                        </div>
+                        <div
+                            class="overflow-hidden rounded-circle position-relative z-3 text-center common linked-in border-2 border border-white">
+                            <a class="text-white" target="_blank"
+                                href="https://www.linkedin.com/in/bhaumik-panchal-b184b8263/"><i
+                                    class="fa-brands fa-linkedin position-relative"></i></a>
+                        </div>
+                        <div
+                            class="overflow-hidden rounded-circle position-relative z-3 text-center common whatsapp border-2 border border-white">
+                            <a class="text-white" target="_blank" href="#"><i
+                                    class="fa-brands fa-whatsapp position-relative"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center bg-secondary text-white py-3 fs-2">
+            @copyrightbybhaumikpanchal
+        </div>
     </footer>
 
 

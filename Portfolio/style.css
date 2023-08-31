@@ -9,12 +9,12 @@ body {
     scroll-behavior: smooth;
 }
 
-
 header {
     height: 100vh;
     width: 100%;
     background-color: rgb(30, 30, 30);
     /* background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('20230114_175539.jpg') center no-repeat; */
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('laptop2.jpg') center no-repeat;
     background-attachment: fixed;
     background-size: cover;
     color: white;
@@ -101,4 +101,162 @@ nav ul li a:hover {
 
 .cancel:hover {
     background-color: rgb(222, 222, 222);
+}
+
+.menu {
+    display: none;
+    font-size: 25px;
+    border: 1px solid white;
+    padding: 0px 8px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.add-text {
+    text-shadow: 1px 1px 10px white;
+}
+
+.cursor {
+    border-left: 4px solid white;
+    margin-left: 5px;
+    height: 100%;
+}
+
+@media screen and (max-width: 992px) {
+    .title h1 {
+        font-size: 30px;
+    }
+
+    .logIn {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .menu {
+        display: block;
+    }
+
+    .navbar {
+        position: static !important;
+    }
+
+    .mainNav ul {
+        padding: 0;
+        display: block !important;
+        background-color: black;
+        width: 50%;
+        height: 100vh;
+        top: 0;
+        right: -50%;
+        position: absolute;
+        text-align: center;
+        /* border: 1px solid white; */
+        transition: .5s ease;
+    }
+
+    #close-navBar {
+        display: block !important;
+    }
+
+    .mainNav ul li {
+        padding: 25px;
+        border-bottom: 1px solid white;
+    }
+
+    #main-top .mob-email,
+    #main-top .name {
+        display: block !important;
+    }
+
+    #main-top .name h5 {
+        font-size: 25px;
+    }
+
+    #main-top .mob-email b {
+        display: block;
+        font-size: 15px;
+        text-align: right;
+    }
+}
+
+@media screen and (max-width:576px) {
+    #main-top .name h5 {
+        font-size: 18px;
+    }
+}
+
+.show-navbar {
+    right: 0 !important;
+}
+
+/* For Social media Logo */
+.common {
+    padding: 7px 10px;
+    cursor: pointer;
+}
+
+.common::after {
+    content: " ";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: -2;
+    transition: .5s ease;
+}
+
+.common:hover::after {
+    top: 0;
+}
+
+.common>a>i {
+    font-size: 25px;
+    transition: all .5s ease;
+}
+
+.common:hover>i {
+    transform: rotateY(360deg);
+    color: white;
+}
+
+.facebook::after {
+    background-color: blue;
+}
+
+.instagram::after {
+    background-image: linear-gradient(135deg, purple, rgb(245, 73, 102), red 20%, yellow);
+}
+
+.skype::after {
+    background-color: dodgerblue;
+}
+
+.whatsapp::after {
+    background-color: green;
+}
+
+.linked-in::after {
+    background-color: rgb(0, 0, 173);
+}
+
+.border-left {
+    border-left: 3px solid blue;
+}
+
+.parent {
+    position: relative;
+}
+
+.add-dot:before {
+    content: " ";
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid blue;
+    background-color: blue;
+    position: absolute;
+    left: -28px;
+    top: 10px;
 }

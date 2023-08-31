@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hover</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            font-family: sans-serif;
+            background-color: black;
+            color: white;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+        }
+
+        #main span {
+            display: inline-block;
+            width: 60px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="main">
+        <span>B</span><span>H</span><span>A</span><span>U</span><span>M</span><span>I</span><span>K</span><span>
+        </span><span>P</span><span>A</span><span>N</span><span>C</span><span>H</span><span>A</span><span>L</span>
+    </h1>
+
+
+    <script>
+        let a = document.querySelectorAll("#main span");
+        let array = [];
+        a.forEach(ele => {
+            array.push(ele.textContent);
+        });
+        console.log(array);
+
+        let storVar;
+        console.log(array.length);
+        let value = 65;
+        index = 0;
+
+        function addValue() {
+            clearTimeout(storVar);
+            let value1 = array[index].charCodeAt();
+            if (value <= value1) {
+                a[index].textContent = String.fromCharCode(value);
+                value++;
+                storVar = setTimeout(addValue, 25);
+            }
+            else {
+                index++;
+                if (array.length == index) {
+                    console.log("object");
+                    index = 0;
+                    return;
+                } else {
+                    value = 65;
+                    storVar = setTimeout(addValue, 25);
+                }
+            }
+        }
+        // addValue();
+        document.getElementById('main').addEventListener('mouseover', () => {
+            addValue();
+        });
+    </script>
+</body>
+
+</html>

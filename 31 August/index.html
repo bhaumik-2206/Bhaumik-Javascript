@@ -9,18 +9,64 @@
 
 <body>
 
-    <div id="demo">
-
+    <div style="font-size: 40px;" id="demo">
+        <p>
+            hmmm
+            <span class="add-text"></span><span class="cursor"></span>
+        </p>
     </div>
+
+    <div id="main">BHAUMIK PANCHAL</div>
 
 
 
     <script>
-        for (let i = 0; i < 10; i++) {
-            setInterval(() => {
-                document.getElementById('demo').innerHTML = i;
-            }, 10);
+        // let a = 0;
+        // function hello() {
+        //     if (a < 100) {
+        //         document.getElementById('main').textContent = a;
+        //         a++;
+        //         setTimeout(hello, 100);
+        //     }
+        // }
+        // hello();
+
+
+
+
+
+        let texts = ["Hello", "World", "Hello World"];
+        let index = 0;
+        let character = 0;
+        let delay = 200;
+        let place = document.querySelector('.add-text');
+        function change() {
+            if (character < texts[index].length) {
+                place.textContent += texts[index].charAt(character);
+                character++;
+                setTimeout(change, delay);
+            } else {
+                setTimeout(erase, delay);
+            }
         }
+
+        function erase() {
+            if (character > 0) {
+                place.textContent = texts[index].slice(0, character - 1);
+                character--;
+                setTimeout(erase, delay);
+            }
+            else {
+                index++;
+                if (index >= texts.length) {
+                    index = 0;
+                }
+                setTimeout(change, delay);
+            }
+        }
+        document.addEventListener("DOMContentLoaded", () => {
+            setTimeout(change, delay);
+        });
     </script>
 </body>
 
