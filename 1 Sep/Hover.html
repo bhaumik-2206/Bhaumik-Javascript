@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hover</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #1e1e1e;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            color: #fff;
+            font-family: monospace;
+            display: grid;
+            place-items: center;
+            cursor: none;
+        }
+
+        h1 {
+            font-size: 150px;
+            z-index: 10;
+            text-shadow: 1px 1px 20px rgb(151, 151, 151), -2px 1px 30px rgb(151, 151, 151);
+        }
+
+        .animation {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(to right, aquamarine, mediumpurple);
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.8;
+            filter: blur(10px);
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="animation" id="hover"></div>
+    <h1>BHAUMIK PANCHAL</h1>
+    <!-- <div class="bgBlur"></div> -->
+
+
+
+    <script>
+        // let blob = document.querySelector(".blob");
+        let myH1 = document.querySelector("h1");
+        let randomCharacter = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        let myName = myH1.innerHTML;
+
+        let interval = null;
+
+        myH1.addEventListener("mouseover", (e) => {
+            clearInterval(interval);
+            let characterIndex = 0;
+            interval = setInterval(() => {
+                let a = myName.split("").map((ele, index) => {
+                    if (characterIndex > index) {
+                        return myName[index];
+                    }
+                    return randomCharacter[Math.floor(Math.random() * randomCharacter.length)];
+                });
+                e.target.textContent = a.join("");
+                if (characterIndex >= myName.length) {
+                    clearInterval(interval);
+                }
+                characterIndex = characterIndex + 1 / 10;
+            }, 10);
+        });
+
+        let a = document.querySelector('.animation');
+        document.addEventListener("mousemove", (e) => {
+            a.style.top = `${e.clientY}px`;
+            a.style.left = `${e.clientX}px`;
+        });
+    </script>
+</body>
+
+</html>
